@@ -1,0 +1,12 @@
+/package.json
+/requirements.txt
+/build/
+/dist/
+/venv/
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/web_test_app.iml
+__pycache__/main.cpython-310.pyc
