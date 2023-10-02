@@ -8,3 +8,4 @@
 .idea/vcs.xml
 .idea/web_test_app.iml
 __pycache__/main.cpython-310.pyc
+/chrome/
