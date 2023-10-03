@@ -13,67 +13,55 @@
 # 3. daily execution of entire test suite remotely
 #
 
-import threading
-import os
-import time
-
+import sys
 from fastapi import FastAPI, Body, Query, HTTPException
 from typing import Dict, Optional
 from enum import Enum
 from uvicorn import run
+from src.globals import JsonType
 from process_api import process_api
 from process_api.modules.selenium import SeleniumModule
 from process_api.modules.selenium.conversions import clean_google_recording, GoogleRecording
-
-SCHEMA = "schema"
-SELENIUM = "selenium"
-GOOGLE_RECORDING = "google_recording"
-SELENIUM_RECORDING = "selenium_recording"
+from src.json_identifier import identify_json
+from src.test_runner import TestRunner
 
 app = FastAPI()
 
+SeleniumModule.register(process_api)
+process_api.logger.set_level("error")
 
 @app.get("/")
 async def index():
     return {"message": "Hello, world!"}
 
-@app.get("/testinfo")
-async def test_info(uuid: str):
-    return "test not in queue"
-
-
-    return {"message": "... what is going on with that test"}
-
-
-async def put_template(recording_json: Dict = Body(...)):
-    pass
-
-
-async def del_template(id: str):
-    pass
-
-
-async def clear_templates():
-    pass
-
 @app.post("/convert_recording")
-def convert_recording(recording_type: str, recording_json: Dict = Body(...)):
-    if recording_type == GOOGLE_RECORDING:
+def convert_recording(recording_json: Dict = Body(...)):
+    json_type = identify_json(recording_json)
+
+    if json_type == JsonType.GOOGLE_RECORDING:
         clean_recording_json = clean_google_recording(recording_json)
         converter = GoogleRecording(clean_recording_json)
         return converter.to_json()
 
-    if recording_type == SELENIUM_RECORDING:
+    if json_type == JsonType.SELENIUM_RECORDING:
         return {"message": "Recording not supported YET, but stay tuned"}
 
     return {"message": "Recording not supported"}
 
 
 @app.post("/test")
-async def test(data: Dict = Body(...)):
-    # 1. figure out what type of recording it is (schema, selenium, chrome)
-    # 2. convert it to a schema
-    # 3. create uuid for process
-    # 4. start running a process
-    # 5. return uuid
-    pass
+async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome")):
+    json_type = identify_json(data)
+    return await TestRunner.test(process_api, data, browser, json_type)
+
+host_address = "127.0.0.1"
+host_port = 8000
+
+# read the host_address from args if it was defined using --host, and the same with port
+if sys.argv.__contains__("--host"):
+    host_address = sys.argv[sys.argv.index("--host") + 1]
+
+if sys.argv.__contains__("--port"):
+    host_port = sys.argv[sys.argv.index("--port") + 1]
+
+run(app, host=host_address, port=host_port)
