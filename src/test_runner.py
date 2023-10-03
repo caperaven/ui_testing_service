@@ -40,39 +40,24 @@ class DriverFactory:
         full_chrome_path = os.path.join(current_directory, "./chrome/chromedriver.exe")
         full_chrome_path = os.path.normpath(full_chrome_path)
 
-        driver = await api.call("selenium", "init_driver", {
+        return await api.call("selenium", "init_driver", {
             "browser": "chrome",
             "options": {
                 "driver_path": full_chrome_path
             }
         })
 
-        return driver
-
     @staticmethod
     async def firefox(api):
-        pass
+        return await api.call("selenium", "init_driver", {
+            "browser": "firefox",
+            "options": {
+                "arguments": ["--no-sandbox", "--disable-dev-shm-usage"],
+            }
+        })
 
     @staticmethod
     async def safari(api):
-        pass
-
-
-
-# from process_api import process_api
-# from process_api.modules.selenium import SeleniumModule
-# import os
-#
-# SeleniumModule.register(process_api)
-# process_api.logger.set_level("error")
-#
-# current_directory = os.getcwd()
-# full_chrome_path = os.path.join(current_directory, "./../../../chrome/chromedriver.exe")
-# full_chrome_path = os.path.normpath(full_chrome_path)
-#
-# driver = await process_api.call("selenium", "init_driver", {
-#     "browser": "chrome",
-#     "options": {
-#         "driver_path": full_chrome_path
-#     }
-# })
+        return await api.call("selenium", "init_driver", {
+            "browser": "safari"
+        })
