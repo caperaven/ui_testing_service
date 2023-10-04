@@ -71,6 +71,14 @@ async def test_status(job_id: str):
     return status
 
 
+@app.delete("/test_status")
+async def test_status(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    await queue.remove(job_id)
+
+
 def run_in_new_loop():
     # Create a new event loop
     loop = asyncio.new_event_loop()
