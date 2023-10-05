@@ -30,7 +30,7 @@ app = FastAPI()
 queue = TaskQueue()
 
 SeleniumModule.register(process_api)
-process_api.logger.set_level("error")
+process_api.logger.set_level("info")
 
 
 @app.get("/")
@@ -58,7 +58,10 @@ async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome"))
     json_type = identify_json(data)
 
     job_id = await queue.add(TestRunner.test, process_api, data, browser, json_type)
-    threading.Thread(target=run_in_new_loop).start()
+
+    if queue.running is False:
+        threading.Thread(target=run_in_new_loop).start()
+
     return {"job_id": job_id}
 
 
@@ -77,6 +80,11 @@ async def test_status(job_id: str):
         raise HTTPException(status_code=404, detail="Job not found")
 
     await queue.remove(job_id)
+
+
+@app.get("/status")
+async def status():
+    return queue.statuses
 
 
 def run_in_new_loop():

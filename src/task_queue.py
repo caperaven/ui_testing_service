@@ -8,6 +8,7 @@ class TaskQueue:
     def __init__(self):
         self.queue = []
         self.statuses = {}
+        self.running = False
 
     async def add(self, fn, *args, **kwargs):
         task_id = str(uuid.uuid4())
@@ -30,7 +31,10 @@ class TaskQueue:
 
     async def run_first_task(self):
         if len(self.queue) == 0:
+            self.running = False
             return
+
+        self.running = True
 
         task = self.queue.pop(0)
         task_id = task["id"]
