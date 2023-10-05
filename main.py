@@ -27,6 +27,7 @@ from src.json_identifier import identify_json
 from src.test_runner import TestRunner
 from src.task_queue import TaskQueue
 from src.globals import globals
+from src.memory_logger import MemoryLogger
 
 app = FastAPI()
 queue = TaskQueue()
@@ -37,6 +38,7 @@ process_api.break_on_error = True
 
 globals["queue"] = queue
 globals["api"] = process_api
+globals["memory_logger"] = MemoryLogger()
 
 @app.get("/")
 async def index():

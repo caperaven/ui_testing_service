@@ -1,4 +1,5 @@
 import os
+from src.globals import globals
 
 
 class TestRunner:
@@ -6,6 +7,7 @@ class TestRunner:
     async def test(api, data, browser, json_type):
         driver = await get_driver(api, browser)
         api.set_variable("driver", driver)
+        globals["process_id"] = driver.service.process.pid
 
         try:
             method = getattr(TestRunner, json_type.value)
@@ -29,7 +31,8 @@ class TestRunner:
 
 
 async def run_callback(api, step, ctx, process, item):
-    print("callback")
+    step_name = step.get("name")
+    await globals["memory_logger"].log(step_name)
 
 
 async def get_driver(api, browser):

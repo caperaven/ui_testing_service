@@ -37,7 +37,9 @@ class TaskQueue:
             return
 
         logger = globals["api"].logger
+        memory_logger = globals["memory_logger"]
         logger.clear_log()
+        memory_logger.clear()
 
         self.running = True
 
@@ -77,6 +79,8 @@ class TaskQueue:
 
             logger.info(f"Task {task_id} completed in {status['duration']}")
             logger.save_to_file(log_file_path)
+
+            memory_logger.save_to_file(log_file_path)
 
             # call self recursively to run the next task
             await self.run_first_task()
