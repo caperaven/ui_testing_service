@@ -36,6 +36,9 @@ class TaskQueue:
             self.running = False
             return
 
+        logger = globals["api"].logger
+        logger.clear_log()
+
         self.running = True
 
         task = self.queue.pop(0)
@@ -71,7 +74,7 @@ class TaskQueue:
             status["log"] = log_file_path
             status["error_count"] = globals["api"].logger.error_count
 
-            logger = globals["api"].logger
+
             logger.info(f"Task {task_id} completed in {status['duration']}")
             logger.save_to_file(log_file_path)
 

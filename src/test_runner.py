@@ -17,7 +17,7 @@ class TestRunner:
 
     @staticmethod
     async def schema(api, data):
-        return await api.run_schema(data)
+        return await api.run_schema(data, None, None, run_callback)
 
     @staticmethod
     async def google_recording(api, driver, data):
@@ -26,6 +26,10 @@ class TestRunner:
     @staticmethod
     async def selenium_recording(api, driver, data):
         pass
+
+
+async def run_callback(api, step, ctx, process, item):
+    print("callback")
 
 
 async def get_driver(api, browser):

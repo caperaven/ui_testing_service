@@ -37,7 +37,6 @@ process_api.logger.set_level("info")
 globals["queue"] = queue
 globals["api"] = process_api
 
-
 @app.get("/")
 async def index():
     return {"message": "Hello, world!"}
