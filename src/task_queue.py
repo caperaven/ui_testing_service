@@ -52,14 +52,23 @@ class TaskQueue:
         try:
             await fn(*args, **kwargs)
         finally:
-            log_file_path = os.path.normpath(f"{globals['log_folder']}/{task_id}/test.log")
-
             status = self.statuses[task_id]
+
+            date_folder = datetime.today().strftime('%Y-%m-%d')
+            time_stamp = datetime.now().strftime('%H-%M-%S')
+            test_name = status["name"]
+
+            path = f"{globals['log_folder']}/{date_folder}/{time_stamp}_{test_name}/test.log"
+
+            if globals["api"].logger.error_count > 0:
+                path = f"{globals['log_folder']}/{date_folder}/ERROR_{time_stamp}_{test_name}/test.log"
+
+            log_file_path = os.path.normpath(path)
+
             status["status"] = "complete"
             status["end_time"] = datetime.now()
             status["duration"] = get_time_format(status["start_time"], status["end_time"])
             status["log"] = log_file_path
-            status["has_error"] = globals["api"].logger.has_error
             status["error_count"] = globals["api"].logger.error_count
 
             logger = globals["api"].logger

@@ -87,8 +87,18 @@ async def test_status(job_id: str):
 
 
 @app.get("/status")
-async def status():
-    return queue.statuses
+async def status(only_errors: Optional[bool] = Query(False)):
+    if only_errors is False:
+        return queue.statuses
+
+    result = {}
+    # from the statuses dict, only return the ones that have errors
+    for key, value in queue.statuses.items():
+        if value["status"] == "complete" and value["error_count"] > 0:
+            result[key] = value
+
+    return result
+
 
 @app.get("/log")
 async def log(job_id: str):
