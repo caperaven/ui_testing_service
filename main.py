@@ -8,6 +8,7 @@
 # 404 Not Found for resource not found errors.
 # 500 Internal Server Error for server errors.
 import asyncio
+import json
 # 1. run this on my machine record a test and run it locally
 # 2. run this on my machine record a test and run it on a remote machine - hosted on a server
 # 3. daily execution of entire test suite remotely
@@ -88,6 +89,29 @@ async def test_status(job_id: str):
 @app.get("/status")
 async def status():
     return queue.statuses
+
+@app.get("/log")
+async def log(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    status = queue.statuses[job_id]
+
+    if status["status"] != "complete":
+        raise HTTPException(status_code=400, detail="Job not complete")
+
+    log_file_path = status["log"]
+
+    result = []
+
+    with open(log_file_path, "r") as file:
+        for line in file:
+            line = line.replace("\n", "")
+            line = line.replace("\r", "")
+            line = line.replace("\t", "    ")
+            result.append(line)
+
+    return result
 
 
 def run_in_new_loop():
