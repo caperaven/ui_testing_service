@@ -60,6 +60,7 @@ class TaskQueue:
             status["duration"] = get_time_format(status["start_time"], status["end_time"])
             status["log"] = log_file_path
             status["has_error"] = globals["api"].logger.has_error
+            status["error_count"] = globals["api"].logger.error_count
 
             logger = globals["api"].logger
             logger.info(f"Task {task_id} completed in {status['duration']}")
