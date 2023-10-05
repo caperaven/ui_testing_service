@@ -33,6 +33,7 @@ queue = TaskQueue()
 
 SeleniumModule.register(process_api)
 process_api.logger.set_level("info")
+process_api.break_on_error = True
 
 globals["queue"] = queue
 globals["api"] = process_api
