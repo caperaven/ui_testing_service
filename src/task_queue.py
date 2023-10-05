@@ -1,7 +1,8 @@
 # this is a class that allows you to create a queue of tasks that can be executed in a separate thread
 import uuid
-import asyncio
 from datetime import datetime
+from src.globals import globals
+import os
 
 
 class TaskQueue:
@@ -10,7 +11,7 @@ class TaskQueue:
         self.statuses = {}
         self.running = False
 
-    async def add(self, fn, *args, **kwargs):
+    async def add(self, name, fn, *args, **kwargs):
         task_id = str(uuid.uuid4())
 
         self.queue.append({
@@ -21,6 +22,7 @@ class TaskQueue:
         })
 
         self.statuses[task_id] = {
+            "name": name,
             "status": "queued",
             "start_time": None,
             "end_time": None,
@@ -50,10 +52,18 @@ class TaskQueue:
         try:
             await fn(*args, **kwargs)
         finally:
+            log_file_path = os.path.normpath(f"{globals['log_folder']}/{task_id}/test.log")
+
             status = self.statuses[task_id]
             status["status"] = "complete"
             status["end_time"] = datetime.now()
             status["duration"] = get_time_format(status["start_time"], status["end_time"])
+            status["log"] = log_file_path
+            status["has_error"] = globals["api"].logger.has_error
+
+            logger = globals["api"].logger
+            logger.info(f"Task {task_id} completed in {status['duration']}")
+            logger.save_to_file(log_file_path)
 
             # call self recursively to run the next task
             await self.run_first_task()

@@ -25,12 +25,16 @@ from process_api.modules.selenium.conversions import clean_google_recording, Goo
 from src.json_identifier import identify_json
 from src.test_runner import TestRunner
 from src.task_queue import TaskQueue
+from src.globals import globals
 
 app = FastAPI()
 queue = TaskQueue()
 
 SeleniumModule.register(process_api)
 process_api.logger.set_level("info")
+
+globals["queue"] = queue
+globals["api"] = process_api
 
 
 @app.get("/")
@@ -56,8 +60,8 @@ async def convert_recording(recording_json: Dict = Body(...)):
 @app.post("/test")
 async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome")):
     json_type = identify_json(data)
-
-    job_id = await queue.add(TestRunner.test, process_api, data, browser, json_type)
+    test_id = data.get("id", "unknown")
+    job_id = await queue.add(test_id, TestRunner.test, process_api, data, browser, json_type)
 
     if queue.running is False:
         threading.Thread(target=run_in_new_loop).start()
@@ -70,8 +74,7 @@ async def test_status(job_id: str):
     if job_id not in queue.statuses:
         raise HTTPException(status_code=404, detail="Job not found")
 
-    status = queue.statuses[job_id]
-    return status
+    return queue.statuses[job_id]
 
 
 @app.delete("/test_status")

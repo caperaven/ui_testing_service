@@ -1,4 +1,5 @@
 import enum
+import os
 
 SCHEMA = "schema"
 SELENIUM = "selenium"
@@ -11,3 +12,7 @@ class JsonType(enum.Enum):
     GOOGLE_RECORDING = "google_recording"
     SELENIUM_RECORDING = "selenium_recording"
 
+
+globals = {
+    "log_folder": os.path.join(os.getcwd(), "logs")
+}
