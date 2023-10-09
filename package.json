@@ -1,5 +1,8 @@
 {
     "scripts": {
         "build": "pyinstaller --onefile main.py"
+    },
+    "dependencies": {
+        "matplotlib": "^1.0.0"
     }
 }

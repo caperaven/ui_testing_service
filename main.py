@@ -22,6 +22,7 @@ from uvicorn import run
 from src.globals import JsonType
 from process_api import process_api
 from process_api.modules.selenium import SeleniumModule
+from process_api.modules.data import DataModule
 from process_api.modules.selenium.conversions import clean_google_recording, GoogleRecording
 from src.json_identifier import identify_json
 from src.test_runner import TestRunner
@@ -33,6 +34,8 @@ app = FastAPI()
 queue = TaskQueue()
 
 SeleniumModule.register(process_api)
+DataModule.register(process_api)
+
 process_api.logger.set_level("info")
 process_api.break_on_error = True
 
@@ -58,7 +61,6 @@ async def convert_recording(recording_json: Dict = Body(...)):
         return {"message": "Recording not supported YET, but stay tuned"}
 
     return {"message": "Recording not supported"}
-
 
 @app.post("/test")
 async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome")):
