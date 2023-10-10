@@ -49,6 +49,10 @@ globals["api"] = process_api
 globals["memory_logger"] = MemoryLogger()
 
 register_extensions(process_api)
+process_api.process_templates.load_from_folder(globals["templates_folder"])
+
+
+### ABOUT:BLANK before and after each test
 
 
 @app.get("/")

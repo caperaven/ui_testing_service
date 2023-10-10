@@ -11,6 +11,9 @@ def register_extensions(api):
     sys.path.append(folder)
 
     for file in files:
+        if ".py" not in file:
+            continue
+
         module_name = file.replace(".py", "")
         module = importlib.import_module(module_name)
         default_class = getattr(module, "DefaultModule", None)
