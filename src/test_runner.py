@@ -66,5 +66,6 @@ class DriverFactory:
     @staticmethod
     async def safari(api):
         return await api.call("selenium", "init_driver", {
-            "browser": "safari"
+            "browser": "safari",
+            "options": {}
         })

@@ -1,7 +1,8 @@
 {
     "scripts": {
         "install_packages": "pip install -r requirements.txt",
-        "build": "pyinstaller --onefile main.py"
+        "build": "pyinstaller --onefile main.py",
+        "run": "python3 main.py"
     },
     "dependencies": {
         "matplotlib": "^1.0.0"

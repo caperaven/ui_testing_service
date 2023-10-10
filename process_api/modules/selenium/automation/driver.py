@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from process_api.modules.selenium.automation.wait import wait
-
+import time
 
 class DriverActions:
     @staticmethod
@@ -64,7 +64,14 @@ class DriverActions:
 
     @staticmethod
     async def safari(options):
-        driver = webdriver.Safari()
-        driver.maximize_window()
-        driver.get("about:blank")
-        return driver
+        try:
+            driver = webdriver.Safari()
+            time.sleep(0.2)
+            driver.get("about:blank")
+            time.sleep(0.2)
+            driver.maximize_window()
+            time.sleep(0.2)
+            return driver
+        except Exception as e:
+            raise Exception("Safari not supported on this platform")
+
