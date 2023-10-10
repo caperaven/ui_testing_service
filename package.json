@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "install_packages": "pip install -r requirements.txt",
         "build": "pyinstaller --onefile main.py"
     },
     "dependencies": {
