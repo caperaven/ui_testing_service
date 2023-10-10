@@ -42,7 +42,6 @@ class TaskQueue:
         await memory_logger.clear()
 
         self.running = True
-
         task = self.queue.pop(0)
         task_id = task["id"]
 

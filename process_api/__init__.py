@@ -38,7 +38,7 @@ class ProcessAPI:
         self.variables[name] = value
 
     def get_variable(self, name):
-        return self.variables[name]
+        return self.variables.get(name)
 
     def delete_variable(self, name):
         if name in self.variables:
