@@ -29,6 +29,9 @@ from src.test_runner import TestRunner
 from src.task_queue import TaskQueue
 from src.globals import globals
 from src.memory_logger import MemoryLogger
+from src.extensions import register_extensions
+from process_api.utils.get_value import get_value
+from process_api.utils.set_value import set_value
 
 app = FastAPI()
 queue = TaskQueue()
@@ -38,10 +41,15 @@ DataModule.register(process_api)
 
 process_api.logger.set_level("info")
 process_api.break_on_error = True
+process_api.get_value = get_value
+process_api.set_value = set_value
 
 globals["queue"] = queue
 globals["api"] = process_api
 globals["memory_logger"] = MemoryLogger()
+
+register_extensions(process_api)
+
 
 @app.get("/")
 async def index():

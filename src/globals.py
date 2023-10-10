@@ -14,5 +14,6 @@ class JsonType(enum.Enum):
 
 
 globals = {
-    "log_folder": os.path.join(os.getcwd(), "logs")
+    "log_folder": os.path.join(os.getcwd(), "logs"),
+    "ext_folder": os.path.join(os.getcwd(), "extensions")
 }
