@@ -16,7 +16,10 @@ import json
 
 import sys
 import threading
+import mimetypes
 from fastapi import FastAPI, Body, Query, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, Optional
 from uvicorn import run
 from src.globals import JsonType
@@ -36,6 +39,18 @@ from process_api.utils.set_value import set_value
 app = FastAPI()
 queue = TaskQueue()
 
+mimetypes.add_type("application/javascript", ".js")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.mount("/", StaticFiles(directory="static"), name="static")
+
 SeleniumModule.register(process_api)
 DataModule.register(process_api)
 
@@ -50,11 +65,6 @@ globals["memory_logger"] = MemoryLogger()
 
 register_extensions(process_api)
 process_api.process_templates.load_from_folder(globals["templates_folder"])
-
-@app.get("/")
-async def index():
-    return {"message": "Hello, world!"}
-
 
 @app.post("/convert_recording")
 async def convert_recording(recording_json: Dict = Body(...)):

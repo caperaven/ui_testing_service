@@ -1,0 +1,28 @@
+@import "/packages/crs-framework/styles/styles.css";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 3rem auto;
+}
+
+header {
+    border-bottom: var(--border);
+}
+
+aside {
+    display: block;
+    overflow: auto;
+    border-right: var(--border);
+}
+
+main {
+    display: block;
+    overflow: auto;
+}
