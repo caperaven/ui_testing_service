@@ -69,11 +69,14 @@ class TaskQueue:
 
             log_file_path = os.path.normpath(path)
 
-            status["status"] = "complete"
             status["end_time"] = datetime.now()
             status["duration"] = get_time_format(status["start_time"], status["end_time"])
             status["log"] = log_file_path
             status["error_count"] = globals["api"].logger.error_count
+            status["status"] = "complete"
+
+            if status["error_count"] > 0:
+                status["status"] = "error"
 
             await memory_logger.ensure_path(log_file_path)
             await memory_logger.save_to_file(log_file_path)

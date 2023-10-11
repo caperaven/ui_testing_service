@@ -1,10 +1,32 @@
-<h2>Current Server Status</h2>
+<link rel="stylesheet" href="/packages/crs-framework/styles/lib/buttons.css">
+<link rel="stylesheet" href="/packages/crs-framework/styles/lib/input.css">
+<link rel="stylesheet" href="/packages/crs-framework/styles/lib/toolbar.css">
+
+<div role="toolbar">
+    <h2>Current Server Status</h2>
+    <label>
+        <span>Refresh</span>
+        <combo-box value.bind="refreshRate">
+            <option value="1000">01 second</option>
+            <option value="5000">05 second</option>
+            <option value="10000">10 second</option>
+            <option value="30000">30 second</option>
+            <option value="0">Never</option>
+        </combo-box>
+        <button class="icon" click.call="refresh">refresh</button>
+    </label>
+
+    <button click.call="clearCache">clear cache</button>
+</div>
 
 <template>
-    <li classlist.if="error_count > 0 ? 'error'">
+    <li classlist.if="error_count > 0 ? 'error'" data-status="${status}">
+        <div class="date">${date}</div>
+        <div class="time">${time}</div>
         <div class="name">${name}</div>
         <div class="status">${status}</div>
         <div class="error-count">${error_count}</div>
+        <div class="duration">${duration}</div>
     </li>
 </template>
 

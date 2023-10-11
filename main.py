@@ -54,6 +54,7 @@ globals["memory_logger"] = MemoryLogger()
 register_extensions(process_api)
 process_api.process_templates.load_from_folder(globals["templates_folder"])
 
+
 @app.post("/convert_recording")
 async def convert_recording(recording_json: Dict = Body(...)):
     json_type = identify_json(recording_json)
@@ -67,6 +68,7 @@ async def convert_recording(recording_json: Dict = Body(...)):
         return {"message": "Recording not supported YET, but stay tuned"}
 
     return {"message": "Recording not supported"}
+
 
 @app.post("/test")
 async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome")):
@@ -108,6 +110,20 @@ async def status(only_errors: Optional[bool] = Query(False)):
             result[key] = value
 
     return result
+
+
+@app.delete("/status")
+async def del_status(status_filter: Optional[str] = Query(None)):
+    if status_filter is None:
+        queue.statuses = {}
+        return
+
+    keys = list(queue.statuses.keys())
+
+    for key in keys:
+        value = queue.statuses[key]
+        if status_filter == value["status"]:
+            await queue.remove(key)
 
 
 @app.get("/log")

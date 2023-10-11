@@ -2,6 +2,7 @@
     display: block;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
 }
 
 h2 {
@@ -17,19 +18,81 @@ ul {
 li {
     display: flex;
     flex-direction: row;
-    padding: var(--padding) 0;
     border-bottom: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
 }
+
+li div {
+    padding: var(--padding);
+    border-right: var(--border);
+}
+
+li[data-status="running"] {
+    background-color: var(--blue-s2);
+    color: var(--blue);
+    border: solid 1px var(--blue);
+}
+
+li[data-status="queue"] {
+    background-color: var(--grey-s3);
+    color: var(--grey);
+    border: solid 1px var(--grey);
+}
+
 
 .error {
     color: var(--red);
 }
 
-.name {
-    flex: 1;
-    max-width: 30rem;
-}
 
 .error-count {
     margin-left: var(--padding);
 }
+
+.date {
+    width: 5rem
+}
+
+.time {
+    width: 5rem
+}
+
+.name {
+    width: 30rem;
+}
+
+.status {
+    width: 5rem;
+}
+
+.error-count {
+    width: 6rem;
+}
+
+.duration {
+    width: 6rem;
+}
+
+[role="toolbar"] {
+    display: flex;
+    flex-direction: row;
+    padding: var(--padding);
+    align-items: center;
+}
+
+[role="toolbar"] h2 {
+    font-size: 1rem;
+    flex: 1
+}
+
+[role="toolbar"] label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+[role="toolbar"] label span {
+    margin-right: var(--padding);
+}
+
