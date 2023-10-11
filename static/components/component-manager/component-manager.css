@@ -20,3 +20,7 @@ aside div:hover {
     color: var(--blue);
     background-color: var(--blue-s2);
 }
+
+main {
+    padding: var(--padding);
+}

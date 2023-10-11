@@ -39,18 +39,6 @@ from process_api.utils.set_value import set_value
 app = FastAPI()
 queue = TaskQueue()
 
-mimetypes.add_type("application/javascript", ".js")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.mount("/", StaticFiles(directory="static"), name="static")
-
 SeleniumModule.register(process_api)
 DataModule.register(process_api)
 
@@ -166,5 +154,17 @@ if sys.argv.__contains__("--host"):
 
 if sys.argv.__contains__("--port"):
     host_port = sys.argv[sys.argv.index("--port") + 1]
+
+mimetypes.add_type("application/javascript", ".js")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.mount("/", StaticFiles(directory="static"), name="static")
 
 run(app, host=host_address, port=host_port)
