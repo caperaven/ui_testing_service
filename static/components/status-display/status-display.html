@@ -1,1 +1,11 @@
 <h2>Current Server Status</h2>
+
+<template>
+    <li classlist.if="error_count > 0 ? 'error'">
+        <div class="name">${name}</div>
+        <div class="status">${status}</div>
+        <div class="error-count">${error_count}</div>
+    </li>
+</template>
+
+<ul ref="collection"></ul>

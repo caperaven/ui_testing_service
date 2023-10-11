@@ -8,3 +8,28 @@ h2 {
     padding: 0;
     margin: 0;
 }
+
+ul {
+    padding: 0;
+    border-top: var(--border);
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    padding: var(--padding) 0;
+    border-bottom: var(--border);
+}
+
+.error {
+    color: var(--red);
+}
+
+.name {
+    flex: 1;
+    max-width: 30rem;
+}
+
+.error-count {
+    margin-left: var(--padding);
+}
