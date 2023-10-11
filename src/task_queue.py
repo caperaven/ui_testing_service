@@ -79,7 +79,7 @@ class TaskQueue:
                 status["status"] = "error"
 
             await memory_logger.ensure_path(log_file_path)
-            await memory_logger.save_to_file(log_file_path)
+            await memory_logger.save_to_file(log_file_path, args[1])
             await memory_logger.save_graph(log_file_path)
 
             logger.info(f"Task {task_id} completed in {status['duration']}")

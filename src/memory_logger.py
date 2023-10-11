@@ -1,10 +1,8 @@
 import csv
 from datetime import datetime
 from src.globals import globals
-import concurrent.futures
 import os
-import asyncio
-
+import json
 
 class MemoryLogger:
     def __init__(self):
@@ -31,18 +29,22 @@ class MemoryLogger:
         if not os.path.exists(path):
             os.makedirs(path)
 
-    async def save_to_file(self, file_name):
+    async def save_to_file(self, file_name, test_schema):
         new_file_name = file_name.replace(".log", ".memory.csv")
 
-        with open(new_file_name, 'w', newline='') as csvfile:
+        with open(new_file_name, 'w', newline='') as csv_file:
             fieldnames = ['date_time', 'name', 'memory']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
             writer.writeheader()
             for item in self.memory:
                 writer.writerow(item)
 
-            csvfile.flush()
+            csv_file.flush()
+
+        schema_file = new_file_name.replace(".memory.csv", ".schema.json")
+        with open(schema_file, 'w') as schema_file:
+            json.dump(test_schema, schema_file, indent=4)
 
     async def save_graph(self, file_name):
         api = globals["api"]
