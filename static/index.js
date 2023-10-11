@@ -11,8 +11,6 @@ import "/packages/crs-framework/packages/crs-binding/managers/static-inflation-m
 
 import "/packages/crs-framework/packages/crs-modules/crs-modules.js";
 import {initialize} from "/packages/crs-framework/packages/crs-process-api/crs-process-api.js";
-import "/components/component-manager/component-manager.js";
-
 await initialize("/packages/crs-framework/packages/crs-process-api");
 
 // import "./packages/crs-schema/crs-schema.js";
@@ -53,6 +51,8 @@ export class IndexViewModel {
         crs.binding.data.addContext(this.#bid, this);
         crs.binding.dom.enableEvents(this);
         crs.binding.parsers.parseElements(document.body.children, this);
+
+        import("/components/component-manager/component-manager.js");
     }
 
     dispose() {

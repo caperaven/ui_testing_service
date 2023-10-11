@@ -1,4 +1,5 @@
 import "./../../packages/crs-framework/components/combo-box/combo-box.js";
+import "./../../packages/crs-framework/components/context-menu/context-menu-actions.js";
 
 export default class StatusDisplay extends crs.classes.BindableElement {
     #running = false;
@@ -50,12 +51,45 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         }
     }
 
+    async refreshRateChanged(newValue) {
+        newValue = Number(newValue);
+
+        if (newValue == 0) {
+            return this.#running = false;
+        }
+
+        this.#running = true;
+        await this.refresh();
+    }
+
     async refresh() {
         await this.getStatus();
     }
 
-    async clearCache() {
+    async clearCache(event) {
+        const options = [
+            { icon:"", id: "completed", title: "Clear Completed" },
+            { icon:"", id: "all", title: "Clear All" }
+        ];
 
+        const target = event.composedPath()[0];
+        await crs.call("context_menu", "show", {
+            element: target,
+            callback: this.#clearStatus.bind(this),
+            options
+        })
+    }
+
+    async #clearStatus(args) {
+        const detail = args.detail;
+        let url = "/status";
+
+        if (detail == "completed") {
+            url = "/status?status_filter=complete"
+        }
+
+        await fetch(url, { method: "DELETE" });
+        await this.refresh();
     }
 }
 

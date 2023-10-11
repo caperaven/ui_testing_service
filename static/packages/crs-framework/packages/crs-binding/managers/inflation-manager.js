@@ -21,7 +21,8 @@ function syncCollection(elements, count, template) {
   elements = Array.from(elements);
   if (elements.length > count) {
     for (let i = elements.length - 1; i >= count; i--) {
-      elements[i].remove();
+        elements[i].remove();
+        elements.splice(i, 1);
     }
   } else if (elements.length < count) {
     let templateElement = elements[0];
