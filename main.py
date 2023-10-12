@@ -17,9 +17,11 @@ import json
 import sys
 import threading
 import mimetypes
+import io
 from fastapi import FastAPI, Body, Query, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from typing import Dict, Optional
 from uvicorn import run
 from src.globals import JsonType
@@ -149,8 +151,9 @@ async def log(job_id: str):
 
     return result
 
+
 @app.get("/memory_data")
-async def memory(job_id: str):
+async def memory_data(job_id: str):
     if job_id not in queue.statuses:
         raise HTTPException(status_code=404, detail="Job not found")
 
@@ -170,6 +173,25 @@ async def memory(job_id: str):
             result.append(line)
 
     return result
+
+
+@app.get("/memory_graph")
+async def memory_graph(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    status = queue.statuses[job_id]
+
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
+
+    file = status["log"].replace(".log", ".memory.png")
+
+    # load the image and return it as a base64 string
+    with open(file, "rb") as file:
+        image = file.read()
+
+    return StreamingResponse(io.BytesIO(image), media_type="image/png")
 
 
 def run_in_new_loop():
