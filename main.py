@@ -149,6 +149,28 @@ async def log(job_id: str):
 
     return result
 
+@app.get("/memory_data")
+async def memory(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    status = queue.statuses[job_id]
+
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
+
+    file = status["log"].replace(".log", ".memory.csv")
+    result = []
+
+    with open(file, "r") as file:
+        for line in file:
+            line = line.replace("\n", "")
+            line = line.replace("\r", "")
+            line = line.replace("\t", "    ")
+            result.append(line)
+
+    return result
+
 
 def run_in_new_loop():
     # Create a new event loop

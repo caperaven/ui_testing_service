@@ -1,10 +1,23 @@
+<template id="memory-template">
+    <li classlist.if="error_count > 0 ? 'error'" data-status="${status}" data-id="${uuid}" data-name="${name}">
+        <div class="date">${date}</div>
+        <div class="time">${time}</div>
+        <div class="name">${name}</div>
+        <div class="value">${value}</div>
+    </li>
+</template>
+
 <tab-sheet>
     <page data-title="Log" data-id="log">
         <p id="log" ref="logContainer"></p>
     </page>
 
-    <page data-title="Memory" data-id="memory">
-        <h2>Test Memory</h2>
+    <page data-title="Memory Details" data-id="memory">
+        <ul id="memory" ref="memoryContainer"></ul>
+    </page>
+
+    <page data-title="Memory Graph" data-id="memory-graph">
+        <div id="graph" ref="graphContainer"></div>
     </page>
 
     <page data-title="Schema" data-id="schema">

@@ -8,13 +8,38 @@ export default class TestDetails extends crs.classes.BindableElement {
     }
 
     async load() {
+        const template = this.shadowRoot.querySelector("template");
+        await crs.binding.inflation.manager.register("memory", template);
+
+        await this.#loadLog();
+        await this.#loadMemory();
+        await this.#loadSchema();
+    }
+
+    async disconnectedCallback() {
+        await crs.binding.inflation.manager.unregister("memory");
+        await super.disconnectedCallback();
+    }
+
+    async #loadLog() {
         const log = await fetch(`/log?job_id=${this.id}`);
         const logCollection = await log.json();
         const logHtml = createLogHTML(logCollection);
         this.logContainer.innerHTML = logHtml;
     }
 
+    async #loadMemory() {
+        const log = await fetch(`/memory_data?job_id=${this.id}`);
+        const logCollection = parseCollection(await log.json());
+        const elements = await crs.binding.inflation.manager.get("memory", logCollection, this.memoryContainer.children);
+        this.memoryContainer.innerHTML = "";
+        this.memoryContainer.append(...elements);
 
+    }
+
+    async #loadSchema() {
+
+    }
 }
 
 function createLogHTML(logCollection) {
@@ -51,6 +76,50 @@ function createLogHTML(logCollection) {
     }
 
     return html.join("");
+}
+
+function parseCollection(collection) {
+    const result = [
+        {
+            date: "Date",
+            time: "Time",
+            name: "Step",
+            value: "Memory"
+        }
+    ];
+
+    for (let i = 1; i < collection.length; i++) {
+        const line = collection[i];
+        const parts = line.split(",");
+        const date = parseDate(parts[0]);
+
+        result.push({
+            date: date.date,
+            time: date.time,
+            name: parts[1],
+            value: parts[2]
+        })
+    }
+
+    const startMemory = result[1].value;
+    const endMemory = result[result.length - 1].value;
+    const memoryChange = endMemory - startMemory;
+
+    result.push({
+        date: "",
+        time: "",
+        name: "DIFFERENCE",
+        value: memoryChange
+    });
+
+    return result;
+}
+
+function parseDate(dateStr) {
+    const parts = dateStr.split(" ");
+    const date = parts[0];
+    const time = parts[1].split(".")[0];
+    return {date, time};
 }
 
 customElements.define("test-details", TestDetails);
