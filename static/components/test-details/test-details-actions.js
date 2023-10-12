@@ -1,5 +1,6 @@
 import "./../../packages/crs-framework/components/dialogs/dialogs-actions.js";
 import "./../../packages/crs-framework/components/tab-sheet/tab-sheet.js";
+import "./../../packages/crs-framework/components/text-editor/text-editor.js";
 import "./test-details.js";
 
 export class TestDetailsActions {
