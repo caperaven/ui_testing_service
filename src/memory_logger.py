@@ -29,7 +29,7 @@ class MemoryLogger:
         if not os.path.exists(path):
             os.makedirs(path)
 
-    async def save_to_file(self, file_name, test_schema):
+    async def save_to_file(self, file_name):
         new_file_name = file_name.replace(".log", ".memory.csv")
 
         with open(new_file_name, 'w', newline='') as csv_file:
@@ -42,9 +42,6 @@ class MemoryLogger:
 
             csv_file.flush()
 
-        schema_file = new_file_name.replace(".memory.csv", ".schema.json")
-        with open(schema_file, 'w') as schema_file:
-            json.dump(test_schema, schema_file, indent=4)
 
     async def save_graph(self, file_name):
         api = globals["api"]
@@ -68,4 +65,10 @@ class MemoryLogger:
         await api.call("data", "unload", {
             "name": "memory"
         })
+
+    def difference(self):
+        start = self.memory[0]["memory"]
+        end = self.memory[-1]["memory"]
+        diff = end - start
+        return diff
 

@@ -81,6 +81,10 @@ li[data-status="queue"] {
     width: 6rem;
 }
 
+.memory {
+    width: 6rem;
+}
+
 [role="toolbar"] {
     display: flex;
     flex-direction: row;

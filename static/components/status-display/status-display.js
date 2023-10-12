@@ -111,7 +111,8 @@ function statusToArray(statusObject) {
         error_count: "Error Count",
         date: "Date",
         time: "Time",
-        duration: "Duration"
+        duration: "Duration",
+        memory_diff: "Memory Diff",
     }];
 
     const keys = Object.keys(statusObject);
@@ -131,6 +132,8 @@ function statusToArray(statusObject) {
 
 function cleanTime(time) {
     if (time == null || time.trim().length == 0) return {date: "", time: ""};
+
+    time = time.replace(" ", "T");
 
     const parts = time.split("T");
     const date = parts[0];

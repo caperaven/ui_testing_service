@@ -3,6 +3,7 @@ import uuid
 from datetime import datetime
 from src.globals import globals
 import os
+import json
 
 
 class TaskQueue:
@@ -74,13 +75,17 @@ class TaskQueue:
             status["log"] = log_file_path
             status["error_count"] = globals["api"].logger.error_count
             status["status"] = "complete"
+            status["memory_diff"] = memory_logger.difference()
 
             if status["error_count"] > 0:
                 status["status"] = "error"
 
             await memory_logger.ensure_path(log_file_path)
-            await memory_logger.save_to_file(log_file_path, args[1])
+            await memory_logger.save_to_file(log_file_path)
             await memory_logger.save_graph(log_file_path)
+
+            save_schema_to_file(log_file_path, args[1])
+            save_summary_to_file(log_file_path, status)
 
             logger.info(f"Task {task_id} completed in {status['duration']}")
             logger.save_to_file(log_file_path)
@@ -91,6 +96,20 @@ class TaskQueue:
     async def remove(self, task_id):
         del self.statuses[task_id]
 
+
+def save_schema_to_file(file_name, test_schema):
+    schema_file = file_name.replace(".log", ".schema.json")
+    with open(schema_file, 'w') as schema_file:
+        json.dump(test_schema, schema_file, indent=4)
+
+
+def save_summary_to_file(file_name, summary):
+    summary["start_time"] = summary["start_time"].strftime("%Y-%m-%d %H:%M:%S")
+    summary["end_time"] = summary["end_time"].strftime("%Y-%m-%d %H:%M:%S")
+
+    summary_file = file_name.replace(".log", ".summary.json")
+    with open(summary_file, 'w') as summary_file:
+        json.dump(summary, summary_file, indent=4)
 
 def get_time_format(start_time, end_time):
     duration = end_time - start_time
