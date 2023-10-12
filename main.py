@@ -128,6 +128,7 @@ async def del_status(status_filter: Optional[str] = Query(None)):
             await queue.remove(key)
 
 
+# get the log of a test that was run
 @app.get("/log")
 async def log(job_id: str):
     if job_id not in queue.statuses:
@@ -152,6 +153,7 @@ async def log(job_id: str):
     return result
 
 
+# get the memory chart
 @app.get("/memory_data")
 async def memory_data(job_id: str):
     if job_id not in queue.statuses:
@@ -175,6 +177,7 @@ async def memory_data(job_id: str):
     return result
 
 
+# get the schema of a test that was run
 @app.get("/memory_graph")
 async def memory_graph(job_id: str):
     if job_id not in queue.statuses:
@@ -192,6 +195,24 @@ async def memory_graph(job_id: str):
         image = file.read()
 
     return StreamingResponse(io.BytesIO(image), media_type="image/png")
+
+
+@app.get("/test_schema")
+async def test_schema(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    status = queue.statuses[job_id]
+
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
+
+    file = status["log"].replace(".log", ".schema.json")
+
+    with open(file, "r") as json_file:
+        data = json.load(json_file)
+
+    return data
 
 
 def run_in_new_loop():
