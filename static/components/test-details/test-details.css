@@ -31,6 +31,11 @@ li div {
     pointer-events: none;
 }
 
+img {
+    width: 100%;
+    margin: var(--padding);
+}
+
 .red {
     color: var(--red);
     font-style: normal;

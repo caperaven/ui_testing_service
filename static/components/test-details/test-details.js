@@ -35,6 +35,9 @@ export default class TestDetails extends crs.classes.BindableElement {
         this.memoryContainer.innerHTML = "";
         this.memoryContainer.append(...elements);
 
+        const blob = await fetch(`/memory_graph?job_id=${this.id}`).then(result => result.blob());
+        const url = URL.createObjectURL(blob);
+        this.graphContainer.src = url;
     }
 
     async #loadSchema() {
