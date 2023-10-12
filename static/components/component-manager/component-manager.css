@@ -10,16 +10,19 @@ aside {
     display: block;
     overflow: auto;
     border-right: solid 1px silver;
+    background: var(--grey-surface);
 }
 
 aside div {
     padding: var(--padding);
     cursor: pointer;
+    box-sizing: border-box;
+    border-bottom: var(--border);
 }
 
 aside div:hover {
     color: var(--blue);
-    background-color: var(--blue-s2);
+    background: var(--blue-s2);
 }
 
 main {
