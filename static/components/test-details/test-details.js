@@ -41,7 +41,8 @@ export default class TestDetails extends crs.classes.BindableElement {
     }
 
     async #loadSchema() {
-
+        const schema = await fetch(`/test_schema?job_id=${this.id}`).then(result => result.text());
+        console.log(schema);
     }
 }
 
