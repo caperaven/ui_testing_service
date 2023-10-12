@@ -133,7 +133,7 @@ async def log(job_id: str):
 
     status = queue.statuses[job_id]
 
-    if status["status"] != "complete":
+    if status["status"] != "complete" and status["status"] != "error":
         raise HTTPException(status_code=400, detail="Job not complete")
 
     log_file_path = status["log"]

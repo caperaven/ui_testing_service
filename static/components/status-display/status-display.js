@@ -1,5 +1,6 @@
 import "./../../packages/crs-framework/components/combo-box/combo-box.js";
 import "./../../packages/crs-framework/components/context-menu/context-menu-actions.js";
+import "./../test-details/test-details-actions.js";
 
 export default class StatusDisplay extends crs.classes.BindableElement {
     #running = false;
@@ -20,7 +21,7 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         const template = this.shadowRoot.querySelector("template");
         await crs.binding.inflation.manager.register("statuses", template);
         this.#running = true;
-        await this.getStatus();
+        await this.#getStatus();
     }
 
     async disconnectedCallback() {
@@ -29,7 +30,19 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         await super.disconnectedCallback();
     }
 
-    async getStatus() {
+    async #clearStatus(args) {
+        const detail = args.detail;
+        let url = "/status";
+
+        if (detail == "completed") {
+            url = "/status?status_filter=complete"
+        }
+
+        await fetch(url, { method: "DELETE" });
+        await this.refresh();
+    }
+
+    async #getStatus() {
         const response = await fetch("/status");
         const statuses = statusToArray(await response.json());
 
@@ -46,7 +59,7 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         if (this.#running) {
             const timeout = setTimeout(() => {
                 clearTimeout(timeout);
-                this.getStatus();
+                this.#getStatus();
             }, refreshRate);
         }
     }
@@ -63,7 +76,7 @@ export default class StatusDisplay extends crs.classes.BindableElement {
     }
 
     async refresh() {
-        await this.getStatus();
+        await this.#getStatus();
     }
 
     async clearCache(event) {
@@ -80,16 +93,14 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         })
     }
 
-    async #clearStatus(args) {
-        const detail = args.detail;
-        let url = "/status";
+    async listExecute(event) {
+        const target = event.composedPath()[0];
+        const id = target.dataset.id;
+        const name = target.dataset.name;
 
-        if (detail == "completed") {
-            url = "/status?status_filter=complete"
-        }
+        if (id == null) return;
 
-        await fetch(url, { method: "DELETE" });
-        await this.refresh();
+        await crs.call("test_details", "show", { id, name });
     }
 }
 

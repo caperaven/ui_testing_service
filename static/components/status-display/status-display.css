@@ -21,11 +21,18 @@ li {
     border-bottom: var(--border);
     border-left: var(--border);
     border-right: var(--border);
+    user-select: none;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: var(--blue-s2)
 }
 
 li div {
     padding: var(--padding);
     border-right: var(--border);
+    pointer-events: none;
 }
 
 li[data-status="running"] {

@@ -10,7 +10,6 @@ aside {
     display: block;
     overflow: auto;
     border-right: solid 1px silver;
-    background: var(--grey-surface);
 }
 
 aside div {

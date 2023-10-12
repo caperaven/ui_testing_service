@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.red {
+    color: var(--red);
+    font-style: normal;
+}
+
+.green {
+    color: var(--greensea);
+    font-style: normal;
+}
+
+.grey {
+    color: var(--grey-s1);
+    font-style: normal;
+}
