@@ -42,9 +42,21 @@ export default class TestDetails extends crs.classes.BindableElement {
 
     async #loadSchema() {
         requestAnimationFrame(async () => {
-            const schema = await fetch(`/test_schema?job_id=${this.id}`).then(result => result.json());
-            this.schemaContainer.value = JSON.stringify(schema, null, 4);
+            this.schema = await fetch(`/test_schema?job_id=${this.id}`).then(result => result.json());
+            this.schemaContainer.value = JSON.stringify(this.schema, null, 4);
         })
+    }
+
+    async runSchema() {
+        await fetch("/test", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.schema)
+        })
+
+        await crs.call("test_details", "close", {})
     }
 }
 

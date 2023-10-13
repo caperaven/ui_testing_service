@@ -25,6 +25,12 @@ export class TestDetailsActions {
             }
         })
     }
+
+    static async close(step, context, process, item) {
+        await crs.call("dialogs", "close", {
+            id: "test-details"
+        })
+    }
 }
 
 crs.intent.test_details = TestDetailsActions;

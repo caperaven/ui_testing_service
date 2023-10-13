@@ -13,21 +13,21 @@ p {
 
 ul {
     padding: 0;
-    border-top: var(--border);
+    border-top: solid 1px silver;
 }
 
 li {
     display: flex;
     flex-direction: row;
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
+    border-bottom: solid 1px silver;
+    border-left: solid 1px silver;
+    border-right: solid 1px silver;
     user-select: none;
 }
 
 li div {
     padding: var(--padding);
-    border-right: var(--border);
+    border-right: solid 1px silver;
     pointer-events: none;
 }
 
@@ -64,4 +64,17 @@ img {
 
 .value {
     width: 5rem;
+}
+
+.code-panel {
+    display: grid;
+    grid-template-rows: 2rem 1fr;
+    width: 100%;
+    height: 100%
+}
+
+[role="toolbar"] {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }

@@ -74,6 +74,17 @@ class CRSDialog extends crs.classes.BindableElement {
         this.style.top = "50%";
         this.style.left = "50%";
         this.style.translate = "-50% -50%";
+        if (options?.maximized === true) {
+          this.classList.toggle("fullscreen");
+          if (options?.transform != null) {
+            this.style.translate = `${options.transform.x}px ${options.transform.y}px`;
+            this.style.width = `${options.transform.width}px`;
+            this.style.height = `${options.transform.height}px`;
+          }
+          this.style.translate = "0px";
+          this.style.top = 0;
+          this.style.left = 0;
+        }
         if (options?.transform != null) {
           const x = options.transform.x;
           const y = options.transform.y;
@@ -110,11 +121,10 @@ class CRSDialog extends crs.classes.BindableElement {
     await crs.call("dialogs", "close", { id: this.dataset.id });
   }
   async toggleFullscreen(event) {
-    const btnResize = event.composedPath()[0];
     this.classList.toggle("fullscreen");
-    const icon = this.classList.contains("fullscreen") ? "close-fullscreen" : "open-fullscreen";
-    btnResize.textContent = icon;
-    const canMove = this.classList.contains("fullscreen") ? false : true;
+    const isFullScreen = this.classList.contains("fullscreen");
+    this.dataset.fullscreen = isFullScreen;
+    const canMove = isFullScreen ? false : true;
     await this.#canMove(canMove);
     if (canMove == false) {
       this.#translateBackup = this.style.translate;
@@ -127,6 +137,9 @@ class CRSDialog extends crs.classes.BindableElement {
       this.style.translate = this.#translateBackup;
       this.#translateBackup = null;
     }
+    const icon = this.classList.contains("fullscreen") ? "close-fullscreen" : "open-fullscreen";
+    const btnResize = this.shadowRoot.querySelector("#btnResize");
+    btnResize.textContent = icon;
   }
 }
 customElements.define("crs-dialog", CRSDialog);
