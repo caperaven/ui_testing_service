@@ -52,6 +52,9 @@ process_api.set_value = set_value
 globals["queue"] = queue
 globals["api"] = process_api
 globals["memory_logger"] = MemoryLogger()
+globals["server"] = "https://localhost"
+
+process_api.state = globals
 
 register_extensions(process_api)
 process_api.process_templates.load_from_folder(globals["templates_folder"])
@@ -73,9 +76,10 @@ async def convert_recording(recording_json: Dict = Body(...)):
 
 
 @app.post("/test")
-async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome")):
+async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome"), server: Optional[str] = Query("https://localhost")):
     json_type = identify_json(data)
     test_id = data.get("id", "unknown")
+    process_api.state["server"] = server
     job_id = await queue.add(test_id, TestRunner.test, process_api, data, browser, json_type)
 
     if queue.running is False:

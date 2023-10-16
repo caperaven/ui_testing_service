@@ -13,6 +13,10 @@ class PerformModule:
     @staticmethod
     async def navigate(api, step, ctx=None, process=None, item=None):
         api.logger.debug(f'navigate: {step["args"]["url"]}')
+
+        if step["args"]["url"] == "${state.server}":
+            step["args"]["url"] = api.state["server"]
+
         await api.call("selenium", "goto", step["args"], ctx, process, item)
 
     @staticmethod
