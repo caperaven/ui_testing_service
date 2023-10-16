@@ -17,7 +17,21 @@ export default class ComposeTest extends crs.classes.BindableElement {
         return import.meta.url.replace(".js", ".html");
     }
 
-    get load() {
+    preLoad() {
+        const status = {
+            date: "",
+            time: "",
+            name: "",
+            status: "",
+            error_count: 0,
+            duration: 0,
+            memory_diff: 0
+        }
+
+        this.setProperty("status", status);
+    }
+
+    load() {
         requestAnimationFrame(() => {
             this.markdownEditor.value = startText.join("\n");
         })

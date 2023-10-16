@@ -13,4 +13,23 @@
     </div>
 </split-view>
 
-<div class="summary"></div>
+<ul class="summary">
+    <li>
+        <div class="date">Date</div>
+        <div class="time">Time</div>
+        <div class="name">Name</div>
+        <div class="status">Status</div>
+        <div class="error-count">Error Count</div>
+        <div class="duration">Duration</div>
+        <div class="memory">Memory Diff</div>
+    </li>
+    <li>
+        <div class="date">${status.date}</div>
+        <div class="time">${status.time}</div>
+        <div class="name">${status.name}</div>
+        <div class="status">${status.status}</div>
+        <div class="error-count">${status.error_count}</div>
+        <div class="duration">${status.duration}</div>
+        <div class="memory">${status.memory_diff}</div>
+    </li>
+</ul>
