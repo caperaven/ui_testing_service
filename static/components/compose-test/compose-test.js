@@ -1,4 +1,5 @@
 import {textToJson} from "./text-to-json.js";
+import {cleanTime} from "../utils/clean-time.js";
 
 const startText = [
     "#my_process",
@@ -9,6 +10,8 @@ const startText = [
 
 export default class ComposeTest extends crs.classes.BindableElement {
 
+    #jobId = null;
+
     get shadowDom() {
         return true;
     }
@@ -17,7 +20,56 @@ export default class ComposeTest extends crs.classes.BindableElement {
         return import.meta.url.replace(".js", ".html");
     }
 
-    preLoad() {
+    async preLoad() {
+        await this.clearJobStatus();
+    }
+
+    load() {
+        requestAnimationFrame(() => {
+            this.markdownEditor.value = startText.join("\n");
+        })
+    }
+
+    async #monitorJob() {
+        const timeout = setTimeout(async () => {
+            clearTimeout(timeout);
+            const status = await fetch(`/test_status?job_id=${this.#jobId}`).then(result => result.json());
+
+            const dateTime = cleanTime(status.start_time);
+            status.date = dateTime.date;
+            status.time = dateTime.time;
+
+            this.setProperty("status", status);
+
+            if (status.status != "complete" && status.status != "error") {
+                await this.#monitorJob();
+            }
+
+        }, 500);
+    }
+
+    async runSchema() {
+        const schema = this.schemaEditor.value;
+        const json = JSON.parse(schema);
+
+        const result = await fetch("/test", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(json)
+        }).then(result => result.json());
+
+        this.#jobId = result.job_id;
+        await this.clearJobStatus();
+        await this.#monitorJob();
+    }
+
+    async markdownEditorChange() {
+        this.schemaEditor.value = textToJson(event.detail.split("\n"));
+    }
+
+    async clearJobStatus() {
         const status = {
             date: "",
             time: "",
@@ -29,29 +81,6 @@ export default class ComposeTest extends crs.classes.BindableElement {
         }
 
         this.setProperty("status", status);
-    }
-
-    load() {
-        requestAnimationFrame(() => {
-            this.markdownEditor.value = startText.join("\n");
-        })
-    }
-
-    async runSchema() {
-        const schema = this.schemaEditor.value;
-        const json = JSON.parse(schema);
-
-        await fetch("/test", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(json)
-        })
-    }
-
-    async markdownEditorChange() {
-        this.schemaEditor.value = textToJson(event.detail.split("\n"));
     }
 }
 

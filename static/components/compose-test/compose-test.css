@@ -51,12 +51,21 @@ li {
     border-right: var(--border);
     user-select: none;
     cursor: pointer;
+    color: var(--cl-text);
 }
 
 li div {
     padding: var(--padding);
     border-right: var(--border);
     pointer-events: none;
+}
+
+li[data-status="error"] {
+    color: var(--red);
+}
+
+li[data-status="complete"] {
+    color: var(--green);
 }
 
 .date {

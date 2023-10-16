@@ -1,6 +1,7 @@
 import "./../../packages/crs-framework/components/combo-box/combo-box.js";
 import "./../../packages/crs-framework/components/context-menu/context-menu-actions.js";
 import "./../test-details/test-details-actions.js";
+import {cleanTime} from "../utils/clean-time.js";
 
 export default class StatusDisplay extends crs.classes.BindableElement {
     #running = false;
@@ -128,17 +129,6 @@ function statusToArray(statusObject) {
     }
 
     return result;
-}
-
-function cleanTime(time) {
-    if (time == null || time.trim().length == 0) return {date: "", time: ""};
-
-    time = time.replace(" ", "T");
-
-    const parts = time.split("T");
-    const date = parts[0];
-    const time_stamp = parts[1].split(".")[0];
-    return {date, time: time_stamp}
 }
 
 customElements.define("status-display", StatusDisplay);
