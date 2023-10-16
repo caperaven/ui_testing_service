@@ -13,7 +13,7 @@ html, body {
 
 body {
     display: grid;
-    grid-template-rows: 3rem auto;
+    grid-template-rows: 3rem minmax(0, 1fr);
 }
 
 header {
@@ -23,11 +23,12 @@ header {
 
 aside {
     display: block;
-    overflow: auto;
     border-right: var(--border);
+    height: 100%;
 }
 
 main {
     display: block;
-    overflow: auto;
+    width: 100%;
+    height: 100%;
 }
