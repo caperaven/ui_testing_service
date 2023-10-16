@@ -1,0 +1,16 @@
+<div class="toolbar">
+    <button click.call="newTest">New</button>
+    <spacer></spacer>
+    <button click.call="runSchema">Run Schema</button>
+</div>
+
+<split-view>
+    <div class="left">
+        <text-editor change.call="markdownEditorChange" data-language="markdown"  ref="markdownEditor"></text-editor>
+    </div>
+    <div class="right">
+        <text-editor data-language="json" ref="schemaEditor"></text-editor>
+    </div>
+</split-view>
+
+<div class="summary"></div>

@@ -42,8 +42,12 @@ class TextEditor extends HTMLElement {
     } else if (content.length > 0) {
       this.#setValue(content);
     }
+  }
+
+  async parseCompleted(context) {
     await crs.call("component", "notify_ready", { element: this });
   }
+
   async disconnectedCallback() {
     this.#editor = null;
     this.#update = null;

@@ -23,6 +23,10 @@ async function parseElement(element, context, options) {
   for (const provider of crs.binding.providers.textProviders) {
     await provider.parseElement(element, context, ctxName);
   }
+
+  if (element.parseCompleted != null) {
+      await element.parseCompleted(context);
+  }
 }
 function ignore(element, options) {
   for (const query of options) {
