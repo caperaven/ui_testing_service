@@ -107,5 +107,13 @@ li:hover:not(.header) {
 }
 
 combo-box {
-    margin-right: var(--padding);
+    margin: 0 var(--padding);
+}
+
+divider {
+    display: block;
+    height: 1rem;
+    width: 1px;
+    background: var(--grey-s1);
+    margin: var(--padding);
 }

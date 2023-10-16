@@ -1,0 +1,345 @@
+<link rel="stylesheet" href="/components/reference-component/reference-component.css">
+
+<article>
+    <h2 class="typeAct">Perform Actions</h2>
+    <section>
+        <h2 class="subHeading">process</h2>
+        <p>Define a process</p>
+        <code>process my_process_name</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">navigate</h2>
+        <p>
+            Navigate to a url
+            Use <code>state.server</code> to use the server passed in as part of the args
+        </p>
+        <code>navigate ${state.server}</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">perform_close_window</h2>
+        <p>Close the window for a given index</p>
+        <code>perform_close_window 0</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">perform_refresh</h2>
+        <p>Perform a refresh on the current browser tab</p>
+        <code>perform_refresh</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">perform_click</h2>
+        <p>Click on an element</p>
+        <code>perform_click #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">perform_type_text</h2>
+        <p>Type text into an element</p>
+        <code>perform_type_text #element "text"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">dbl_click</h2>
+        <p>Perform a double click action on a defined element</p>
+        <code>perform_dbl_click #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">context_click</h2>
+        <p>Perform context click on defined element</p>
+        <code>perform_context_click #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">click_sequence</h2>
+        <p>perform a sequence of click events over multiple elements</p>
+        <code>perform_click_sequence ["#element1", "#element2"]</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">press_key</h2>
+        <p>perform a key press on a defined element</p>
+        <code>perform_press_key #element ENTER</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">perform_print_screen</h2>
+        <p> capture the screen as png and save to the rest results folder</p>
+        <code>perform_print_screen C://myFilePath</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">select_option</h2>
+        <p>select an option from a select element</p>
+        <code>perform_select_option #element "Hello World"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">switch_to_frame </h2>
+        <p> set the focus on a defined frame element so that it becomes the queryable context</p>
+        <code>perform_switch_to_frame #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">switch_to_default </h2>
+        <p>switch back to the default window, normally used to exit a frame</p>
+        <code>perform_switch_to_default </code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">switch_to_tab </h2>
+        <p>for the given index, switch to that tab</p>
+        <code>perform_switch_to_tab 0</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">drag_by</h2>
+        <p>drag and element by x and y number of pixels.</p>
+        <code>perform_drag_by #element 77 108</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">hover_over_element</h2>
+        <p>move the cursor over an element</p>
+        <code>perform_hover_over_element #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">mouse_drag</h2>
+        <p> perform a click a drag operation on an element from a start location to a target location - like a box
+            select</p>
+        <code>perform_mouse_drag "25 77" "88 100"</code>
+    </section>
+    <h2 class="typeAct">Assert Actions</h2>
+    <section>
+        <h2 class="subHeading">attributes</h2>
+        <p>validate multiple attributes checking that their values are as expected</p>
+        <code>assert_attributes #elem value1=myVal value2=yourVal </code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">attribute_eq</h2>
+        <p>Check that an attribute value and expected value match</p>
+        <code>assert_attribute_eq #element myAttr "true"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">attribute_neq</h2>
+        <p>Check that an attribute value and expected value do NOT match</p>
+        <code>assert_attribute_neq #element myAttr "true"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">child_count_eq</h2>
+        <p>check that the number of child elements match the expected count</p>
+        <code>assert_child_count_eq #element 5</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">child_count_neq</h2>
+        <p>check that the number of child elements are NOT equal to the expected count</p>
+        <code>assert_child_count_neq #element 5</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">style_property_eq </h2>
+        <p>check that an element's style property has an expected value</p>
+        <code>assert_style_property_eq #element background blue</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">style_property_neq </h2>
+        <p>check that an element's style property is different from an expected value</p>
+        <code>assert_style_property_neq #element background pink</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element_property_eq </h2>
+        <p>check that an element's property has an expected value</p>
+        <code>assert_element_property_eq #my-input "hello world"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element_property_neq </h2>
+        <p>check that an element's property has a different value from expected value</p>
+        <code>assert_element_property_neq #my-input "hello world"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">tag_name_eq</h2>
+        <p> check that an element tag name is what was expected</p>
+        <code>assert_tag_name_eq #element BUTTON</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">tag_name_neq</h2>
+        <p> check if an element tag name is different from what was expected</p>
+        <code>assert_tag_name_neq #element BUTTON</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">text_content_eq</h2>
+        <p> check that the text content of an element matches the defined value</p>
+        <code>assert_text_content_eq #element "Hello World"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">text_content_neq</h2>
+        <p> check that the text content of an element matches the defined value</p>
+        <code>assert_text_content_neq #elemebt "Goodbye World"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">value_eq</h2>
+        <p>check that the value property of an input matches the defined value</p>
+        <code>assert_value_eq #element 777</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">value_neq</h2>
+        <p>check if the value property of an input does NOT match the defined value</p>
+        <code>assert_value_neq #element 777</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element_exists</h2>
+        <p>assert that an element is in the dom</p>
+        <code>assert_element_exists #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element_not_exists </h2>
+        <p>assert that an element is NOT in the dom</p>
+        <code>assert_element_not_exists #element</code>
+    </section>
+    <h2 class="typeAct">Wait Actions</h2>
+    <section>
+        <h2 class="subHeading">time</h2>
+        <p>wait for a given amount of time</p>
+        <code>wait_time 5</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">is_ready</h2>
+        <p>wait until the defined element's dataset has a ready property set to true</p>
+        <code>wait_is_ready #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element</h2>
+        <p>wait until element exists and is visible</p>
+        <code>wait_element #element</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">attribute</h2>
+        <p>wait for attribute to have a particular value</p>
+        <code>wait_attribute #element myAttr true</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">attributes</h2>
+        <p>wait for multiple attributes to have their defined values</p>
+        <code>wait_attributes #element value1=1 value2=2</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">style_property</h2>
+        <p>wait for element's style to have the defined property value</p>
+        <code>wait_style_property #element border none</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element_properties</h2>
+        <p>wait for element's style properties to be set to defined values</p>
+        <code>wait_element_properties #element type=text src=mySrc</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">text_content</h2>
+        <p>wait until element's text content equals defined text</p>
+        <code>wait_text_content #element "Hello World"</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">text_value</h2>
+        <p>wait until element's value property equals defined value</p>
+        <code>wait_text_value #element true</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">selected</h2>
+        <p>wait for checkbox or radio buttons to be selected</p>
+        <code>wait_selected #checkbox</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">child_count</h2>
+        <p>wait until defined element has a defined number of children</p>
+        <code>wait_child_count #container 7</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">element_count</h2>
+        <p>wait until queried elements equal defined count</p>
+        <code>wait_element_count #container 7</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">window_count</h2>
+        <p>wait until window count equals defined</p>
+        <code>wait_window_count #element 3</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">idle</h2>
+        <p>wait for cpu idle</p>
+        <code>wait_idle</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">has_attribute</h2>
+        <p>wait until an element has the defined attribute</p>
+        <code>wait_has_attribute #element status</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">has_not_attribute</h2>
+        <p> wait until the defined attribute is no longer on element</p>
+        <code>wait_has_not_attribute #element status</code>
+    </section>
+    <h2 class="typeAct">System Actions</h2>
+    <section>
+        <h2 class="subHeading">attributes_to_variables</h2>
+        <p>create variables from element attribute values for future use</p>
+        <code>system_attributes_to_variables myVar val1=1 val2=2</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">properties_to_variables</h2>
+        <p>create variables from element property values for future use</p>
+        <code>system_properties_to_variables myVar val1=1 val2=2</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">system_set_variables</h2>
+        <p>Set variables in dictionary for future use</p>
+        <code>system_set_variables firstName=John lastName=Doe</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">set_uuid_variables</h2>
+        <p>Generates uuid and assign them to variables</p>
+        <code>system_set_uuid_variables code1 code2</code>
+    </section>
+
+    <section>
+        <h2 class="subHeading">sleep</h2>
+        <p>Let's the system sleep for defined duration</p>
+        <code>system_sleep 5</code>
+    </section>
+
+</article>

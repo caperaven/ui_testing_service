@@ -1,6 +1,12 @@
 <div class="toolbar">
     <button click.call="newTest">New</button>
+    <button click.call="openTest">Open</button>
+    <button click.call="saveTest">Save</button>
+    <divider></divider>
+    <button click.call="importRecording">Import Recording</button>
+
     <spacer></spacer>
+    <button click.call="showHelp">Help</button>
     <combo-box value.bind="browser">
         <option value="chrome">Chrome</option>
         <option value="firefox">Firefox</option>

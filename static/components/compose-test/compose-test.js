@@ -1,6 +1,8 @@
 import {textToJson} from "./text-to-json.js";
 import {cleanTime} from "../utils/clean-time.js";
+import "./../../components/reference-component/reference-component.js";
 import "./../../packages/crs-framework/components/combo-box/combo-box.js";
+import "./../../packages/crs-framework/components/dialogs/dialogs-actions.js";
 
 const startText = [
     "#my_process",
@@ -91,6 +93,38 @@ export default class ComposeTest extends crs.classes.BindableElement {
 
         const status = this.getProperty("status");
         await crs.call("test_details", "show", { id: this.#jobId, name: status["id"] });
+    }
+
+    async newTest() {
+
+    }
+
+    async openTest() {
+
+    }
+
+    async saveTest() {
+
+    }
+
+    async importRecording() {
+
+    }
+
+    async showHelp() {
+        const body = document.createElement("reference-component");
+        const header = document.createElement("h2");
+        header.textContent = "Test Actions";
+
+        await crs.call("dialogs", "show", {
+            id: "test-details",
+            content: {
+                header, body
+            },
+            options: {
+                maximized: true
+            }
+        })
     }
 }
 
