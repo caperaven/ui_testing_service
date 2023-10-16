@@ -68,6 +68,10 @@ li[data-status="complete"] {
     color: var(--green);
 }
 
+li:hover:not(.header) {
+    background-color: var(--blue-s2)
+}
+
 .date {
     width: 5rem
 }
@@ -100,4 +104,8 @@ li[data-status="complete"] {
     padding: var(--padding);
     border-right: var(--border);
     pointer-events: none;
+}
+
+combo-box {
+    margin-right: var(--padding);
 }

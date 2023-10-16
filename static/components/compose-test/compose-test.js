@@ -1,5 +1,6 @@
 import {textToJson} from "./text-to-json.js";
 import {cleanTime} from "../utils/clean-time.js";
+import "./../../packages/crs-framework/components/combo-box/combo-box.js";
 
 const startText = [
     "#my_process",
@@ -21,6 +22,7 @@ export default class ComposeTest extends crs.classes.BindableElement {
     }
 
     async preLoad() {
+        this.setProperty("browser", "chrome");
         await this.clearJobStatus();
     }
 
@@ -45,14 +47,15 @@ export default class ComposeTest extends crs.classes.BindableElement {
                 await this.#monitorJob();
             }
 
-        }, 500);
+        }, 100);
     }
 
     async runSchema() {
         const schema = this.schemaEditor.value;
         const json = JSON.parse(schema);
 
-        const result = await fetch("/test", {
+        const browser = this.getProperty("browser");
+        const result = await fetch(`/test?browser=${browser}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -81,6 +84,13 @@ export default class ComposeTest extends crs.classes.BindableElement {
         }
 
         this.setProperty("status", status);
+    }
+
+    async showStatus() {
+        if (this.#jobId == null) return;
+
+        const status = this.getProperty("status");
+        await crs.call("test_details", "show", { id: this.#jobId, name: status["id"] });
     }
 }
 

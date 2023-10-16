@@ -1,6 +1,10 @@
 <div class="toolbar">
     <button click.call="newTest">New</button>
     <spacer></spacer>
+    <combo-box value.bind="browser">
+        <option value="chrome">Chrome</option>
+        <option value="firefox">Firefox</option>
+    </combo-box>
     <button click.call="runSchema">Run Schema</button>
 </div>
 
@@ -14,7 +18,7 @@
 </split-view>
 
 <ul class="summary">
-    <li>
+    <li class="header">
         <div class="date">Date</div>
         <div class="time">Time</div>
         <div class="name">Name</div>
@@ -23,7 +27,7 @@
         <div class="duration">Duration</div>
         <div class="memory">Memory Diff</div>
     </li>
-    <li data-status.attr="status.status">
+    <li data-status.attr="status.status" dblclick.call="showStatus">
         <div class="date">${status.date}</div>
         <div class="time">${status.time}</div>
         <div class="name">${status.name}</div>
