@@ -5,11 +5,7 @@
 <div role="toolbar">
     <h2>Test History</h2>
 
-    <combo-box value.bind="currentDate" ready.call="loadDates">
-        <template>
-            <option value.attr="item.value">${item.text}</option>
-        </template>
-    </combo-box>
+    <combo-box value.bind="currentDate" ready.call="loadDates"></combo-box>
 </div>
 
 <template>

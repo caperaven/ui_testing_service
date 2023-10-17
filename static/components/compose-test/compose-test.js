@@ -57,9 +57,9 @@ export default class ComposeTest extends crs.classes.BindableElement {
     async runSchema() {
         const schema = this.schemaEditor.value;
         const json = JSON.parse(schema);
-
+        const server = this.getProperty("server");
         const browser = this.getProperty("browser");
-        const result = await fetch(`/test?browser=${browser}`, {
+        const result = await fetch(`/test?browser=${browser}&server=${server}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -202,6 +202,17 @@ export default class ComposeTest extends crs.classes.BindableElement {
                 maximized: true
             }
         })
+    }
+
+    async loadServers() {
+        const servers = await fetch("/server_list").then(result => result.json());
+        const combobox = this.shadowRoot.querySelector("combo-box");
+        combobox.items = servers;
+        combobox.value = servers[0].url;
+
+        const cb = this.shadowRoot.querySelector("#cbServers");
+        cb.items = servers;
+        cb.value = servers[0].value;
     }
 }
 

@@ -62,6 +62,15 @@ register_extensions(process_api)
 process_api.process_templates.load_from_folder(globals["templates_folder"])
 
 
+@app.get("/server_list")
+async def server_list():
+    file = os.path.normpath(globals["config_folder"] + "\\servers.json")
+    with open(file, "r") as json_file:
+        data = json.load(json_file)
+
+    return data
+
+
 @app.post("/convert_recording")
 async def convert_recording(recording_json: Dict = Body(...)):
     json_type = identify_json(recording_json)

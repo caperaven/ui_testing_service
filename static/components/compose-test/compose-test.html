@@ -7,6 +7,9 @@
 
     <spacer></spacer>
     <button click.call="showHelp">Help</button>
+
+    <combo-box id="cbServers" value.bind="server" ready.call="loadServers"></combo-box>
+
     <combo-box value.bind="browser">
         <option value="chrome">Chrome</option>
         <option value="firefox">Firefox</option>

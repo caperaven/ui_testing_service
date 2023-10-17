@@ -1,3 +1,10 @@
 [
-    "https://localhost"
+    {
+        "text": "localhost",
+        "value": "https://localhost"
+    },
+    {
+        "text": "google",
+        "value": "https://www.google.com"
+    }
 ]
