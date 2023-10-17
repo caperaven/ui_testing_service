@@ -42,6 +42,10 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
         this.collection.innerHTML = "";
         this.collection.append(...elements);
     }
+
+    async listExecute(event) {
+
+    }
 }
 
 function statusToArray(summary) {

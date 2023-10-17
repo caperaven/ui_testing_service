@@ -25,6 +25,9 @@ def get_summary(date):
         if os.path.isfile(file):
             with open(file, "r") as json_file:
                 data = json.load(json_file)
+                file_path = data["log"]
+                parts = file_path.split('\\logs\\')
+                data["log"] = parts[1].replace("test.log", "")
                 result.append(data)
 
     return result

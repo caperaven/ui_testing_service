@@ -135,20 +135,16 @@ async def del_status(status_filter: Optional[str] = Query(None)):
 
 # get the log of a test that was run
 @app.get("/log")
-async def log(job_id: Optional[str] = Query(None), log_file: Optional[str] = Query(None)):
+async def log(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
 
-    if job_id is not None:
-        if job_id not in queue.statuses:
-            raise HTTPException(status_code=404, detail="Job not found")
+    status = queue.statuses[job_id]
 
-        status = queue.statuses[job_id]
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
 
-        if status["status"] != "complete" and status["status"] != "error":
-            raise HTTPException(status_code=400, detail="Job not complete")
-
-        log_file_path = status["log"]
-    else:
-        log_file_path = log_file
+    log_file_path = status["log"]
 
     result = []
 
@@ -164,19 +160,16 @@ async def log(job_id: Optional[str] = Query(None), log_file: Optional[str] = Que
 
 # get the memory chart
 @app.get("/memory_data")
-async def memory_data(job_id: Optional[str] = Query(None), log_file: Optional[str] = Query(None)):
-    if job_id is not None:
-        if job_id not in queue.statuses:
-            raise HTTPException(status_code=404, detail="Job not found")
+async def memory_data(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
 
-        status = queue.statuses[job_id]
+    status = queue.statuses[job_id]
 
-        if status["status"] != "complete" and status["status"] != "error":
-            raise HTTPException(status_code=400, detail="Job not complete")
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
 
-        file = status["log"].replace(".log", ".memory.csv")
-    else:
-        file = log_file.replace(".log", ".memory.csv")
+    file = status["log"].replace(".log", ".memory.csv")
 
     result = []
 
@@ -192,19 +185,16 @@ async def memory_data(job_id: Optional[str] = Query(None), log_file: Optional[st
 
 # get the schema of a test that was run
 @app.get("/memory_graph")
-async def memory_graph(job_id: Optional[str] = Query(None), log_file: Optional[str] = Query(None)):
-    if job_id is not None:
-        if job_id not in queue.statuses:
-            raise HTTPException(status_code=404, detail="Job not found")
+async def memory_graph(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
 
-        status = queue.statuses[job_id]
+    status = queue.statuses[job_id]
 
-        if status["status"] != "complete" and status["status"] != "error":
-            raise HTTPException(status_code=400, detail="Job not complete")
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
 
-        file = status["log"].replace(".log", ".memory.png")
-    else:
-        file = log_file.replace(".log", ".memory.png")
+    file = status["log"].replace(".log", ".memory.png")
 
     # load the image and return it as a base64 string
     with open(file, "rb") as file:
@@ -214,19 +204,16 @@ async def memory_graph(job_id: Optional[str] = Query(None), log_file: Optional[s
 
 
 @app.get("/test_schema")
-async def test_schema(job_id: Optional[str] = Query(None), log_file: Optional[str] = Query(None)):
-    if job_id is not None:
-        if job_id not in queue.statuses:
-            raise HTTPException(status_code=404, detail="Job not found")
+async def test_schema(job_id: str):
+    if job_id not in queue.statuses:
+        raise HTTPException(status_code=404, detail="Job not found")
 
-        status = queue.statuses[job_id]
+    status = queue.statuses[job_id]
 
-        if status["status"] != "complete" and status["status"] != "error":
-            raise HTTPException(status_code=400, detail="Job not complete")
+    if status["status"] != "complete" and status["status"] != "error":
+        raise HTTPException(status_code=400, detail="Job not complete")
 
-        file = status["log"].replace(".log", ".schema.json")
-    else:
-        file = log_file.replace(".log", ".schema.json")
+    file = status["log"].replace(".log", ".schema.json")
 
     with open(file, "r") as json_file:
         data = json.load(json_file)
