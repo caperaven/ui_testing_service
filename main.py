@@ -37,6 +37,7 @@ from src.memory_logger import MemoryLogger
 from src.extensions import register_extensions
 from process_api.utils.get_value import get_value
 from process_api.utils.set_value import set_value
+from src.history import get_dates, get_summary
 
 app = FastAPI()
 queue = TaskQueue()
@@ -217,6 +218,13 @@ async def test_schema(job_id: str):
         data = json.load(json_file)
 
     return data
+
+@app.get("/history")
+async def history(date: Optional[str] = Query(None)):
+    if date is None:
+        return get_dates()
+
+    return get_summary(date)
 
 
 def run_in_new_loop():
