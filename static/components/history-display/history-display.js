@@ -27,7 +27,11 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
             items.push({value: date, text: date});
         }
 
-        this.shadowRoot.querySelector("combo-box").items = items;
+        const lastDate = items[dates.length - 1];
+        const combobox = this.shadowRoot.querySelector("combo-box");
+        combobox.items = items;
+        combobox.value = lastDate.value;
+        await this.currentDateChanged(lastDate.value);
     }
 
     async disconnectedCallback() {

@@ -17,4 +17,5 @@ globals = {
     "log_folder": os.path.join(os.getcwd(), "logs"),
     "ext_folder": os.path.join(os.getcwd(), "extensions"),
     "templates_folder": os.path.join(os.getcwd(), "templates"),
+    "config_folder": os.path.join(os.getcwd(), "config"),
 }
