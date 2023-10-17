@@ -206,13 +206,13 @@ export default class ComposeTest extends crs.classes.BindableElement {
 
     async loadServers() {
         const servers = await fetch("/server_list").then(result => result.json());
-        const combobox = this.shadowRoot.querySelector("combo-box");
-        combobox.items = servers;
-        combobox.value = servers[0].url;
-
         const cb = this.shadowRoot.querySelector("#cbServers");
         cb.items = servers;
-        cb.value = servers[0].value;
+
+        requestAnimationFrame(() => {
+            cb.value = servers[0].value;
+            this.setProperty("server", servers[0].value);
+        })
     }
 }
 
