@@ -21,6 +21,7 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
     async loadDates() {
         // get the dates for the combo box
         const dates = await fetch("/history").then(response => response.json());
+        if (dates.length === 0) return;
 
         const items = [];
         for (const date of dates) {
