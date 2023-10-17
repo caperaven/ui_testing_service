@@ -161,7 +161,31 @@ export default class ComposeTest extends crs.classes.BindableElement {
     }
 
     async importRecording() {
+        this.#loading = true;
+        try {
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile();
+            const contents = await file.text();
 
+            const result = await fetch("/convert_recording", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: contents
+            }).then(result => result.text());
+
+            const json = JSON.parse(result);
+            const text = processToText(json);
+            this.schemaEditor.value = JSON.stringify(json, null, 4);
+            this.markdownEditor.value = text;
+        }
+        catch (error) {
+            alert(error.message)
+        }
+        finally {
+            this.#loading = false;
+        }
     }
 
     async showHelp() {
