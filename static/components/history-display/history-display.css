@@ -109,3 +109,15 @@ li[data-status="queue"] {
 [role="toolbar"] label span {
     margin-right: var(--padding);
 }
+
+.total, .passed, .failed {
+    margin-right: var(--padding)
+}
+
+.passed {
+    color: var(--greensea)
+}
+
+.failed {
+    color: var(--red)
+}

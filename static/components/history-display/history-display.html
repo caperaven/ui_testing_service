@@ -4,7 +4,9 @@
 
 <div role="toolbar">
     <h2>Test History</h2>
-
+    <div class="total">Total: ${summary.total}</div>
+    <div class="passed">Passed: ${summary.passed}</div>
+    <div class="failed">Failed: ${summary.failed}</div>
     <combo-box value.bind="currentDate" ready.call="loadDates"></combo-box>
 </div>
 

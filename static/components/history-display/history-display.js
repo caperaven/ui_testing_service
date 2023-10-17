@@ -46,6 +46,28 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
         const elements = await crs.binding.inflation.manager.get("history_status", summary_array, this.collection.children);
         this.collection.innerHTML = "";
         this.collection.append(...elements);
+
+        // we must remove the header row from the total
+        const total = summary_array.length - 1;
+        let passed = 0;
+        let failed = 0;
+
+        for (const summary of summary_array) {
+            switch (summary.status) {
+                case "complete": {
+                    passed++;
+                    break;
+                }
+                case "error": {
+                    failed++;
+                    break;
+                }
+            }
+        }
+
+        this.setProperty("summary", {
+            total, passed, failed
+        })
     }
 
     async listExecute(event) {
