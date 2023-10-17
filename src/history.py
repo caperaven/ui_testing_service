@@ -27,7 +27,7 @@ def get_summary(date):
                 data = json.load(json_file)
                 file_path = data["log"]
                 parts = file_path.split('\\logs\\')
-                data["log"] = parts[1].replace("test.log", "")
+                data["log"] = parts[1].replace("test.log", "").replace("#", "_35_")
                 result.append(data)
 
     return result

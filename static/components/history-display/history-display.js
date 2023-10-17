@@ -44,7 +44,13 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
     }
 
     async listExecute(event) {
+        const target = event.composedPath()[0];
+        const id = target.dataset.id;
+        const name = target.dataset.name;
 
+        if (id == null) return;
+
+        await crs.call("test_details", "show", { id, name });
     }
 }
 
