@@ -21,9 +21,10 @@ def get_summary(date):
     for sub_folder in sub_folders:
         file = os.path.normpath(folder + "/" + sub_folder + "/test.summary.json")
 
-        # load the file as json and add it to the result
-        with open(file, "r") as json_file:
-            data = json.load(json_file)
-            result.append(data)
+        # check if the file exists
+        if os.path.isfile(file):
+            with open(file, "r") as json_file:
+                data = json.load(json_file)
+                result.append(data)
 
     return result

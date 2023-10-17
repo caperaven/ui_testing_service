@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/packages/crs-framework/styles/lib/buttons.css">
+<link rel="stylesheet" href="/packages/crs-framework/styles/lib/input.css">
+<link rel="stylesheet" href="/packages/crs-framework/styles/lib/toolbar.css">
+
+<div role="toolbar">
+    <h2>Test History</h2>
+
+    <combo-box value.bind="currentDate" ready.call="loadDates">
+        <template>
+            <option value.attr="item.value">${item.text}</option>
+        </template>
+    </combo-box>
+</div>
+
+<template>
+    <li classlist.if="error_count > 0 ? 'error'" data-status="${status}" data-id="${uuid}" data-name="${name}">
+        <div class="date">${date}</div>
+        <div class="time">${time}</div>
+        <div class="name">${name}</div>
+        <div class="status">${status}</div>
+        <div class="error-count">${error_count}</div>
+        <div class="duration">${duration}</div>
+        <div class="memory">${memory_diff}</div>
+    </li>
+</template>
+
+<ul ref="collection" dblclick.call="listExecute"></ul>

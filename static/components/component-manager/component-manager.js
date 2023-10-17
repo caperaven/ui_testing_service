@@ -1,5 +1,6 @@
 import "./../status-display/status-display.js";
 import "./../compose-test/compose-test.js";
+import "./../history-display/history-display.js";
 
 export default class ComponentManager extends crs.classes.BindableElement {
     get shadowDom() {
