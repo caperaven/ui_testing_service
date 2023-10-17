@@ -1,5 +1,6 @@
 import {textToJson} from "./text-to-json.js";
 import {cleanTime} from "../utils/clean-time.js";
+import {processToText} from "./process-to-text.js";
 import "./../../components/reference-component/reference-component.js";
 import "./../../packages/crs-framework/components/combo-box/combo-box.js";
 import "./../../packages/crs-framework/components/dialogs/dialogs-actions.js";
@@ -14,6 +15,7 @@ const startText = [
 export default class ComposeTest extends crs.classes.BindableElement {
 
     #jobId = null;
+    #loading = false;
 
     get shadowDom() {
         return true;
@@ -29,8 +31,8 @@ export default class ComposeTest extends crs.classes.BindableElement {
     }
 
     load() {
-        requestAnimationFrame(() => {
-            this.markdownEditor.value = startText.join("\n");
+        requestAnimationFrame(async () => {
+            await this.newTest()
         })
     }
 
@@ -71,6 +73,7 @@ export default class ComposeTest extends crs.classes.BindableElement {
     }
 
     async markdownEditorChange() {
+        if (this.#loading === true) return;
         this.schemaEditor.value = textToJson(event.detail.split("\n"));
     }
 
@@ -96,15 +99,65 @@ export default class ComposeTest extends crs.classes.BindableElement {
     }
 
     async newTest() {
-
+        this.markdownEditor.value = startText.join("\n");
     }
 
     async openTest() {
+        this.#loading = true;
+        try {
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile();
+            const contents = await file.text();
 
+            const json = JSON.parse(contents);
+
+            const text = processToText(json);
+            this.schemaEditor.value = contents;
+            this.markdownEditor.value = text;
+        }
+        catch (error) {
+            alert(error.message)
+        }
+        finally {
+            this.#loading = false;
+        }
     }
 
     async saveTest() {
+        await this.saveTestAs();
+    }
 
+    async saveTestAs() {
+        const content = this.schemaEditor.value;
+        let json;
+
+        try {
+            json = JSON.parse(content);
+        }
+        catch (error) {
+            alert("Invalid JSON");
+            return;
+        }
+
+        try {
+            const fileHandle = await window.showSaveFilePicker({
+                suggestedName: this.suggestedName ?? `${json.id}.json`,
+                types: [{
+                    description: 'Schema Files',
+                    accept: {
+                        'application/json': ['.json']
+                    }
+                }]
+            });
+
+            // Write the content to the chosen file
+            const writable = await fileHandle.createWritable();
+            await writable.write(content);
+            await writable.close();
+        }
+        catch (error) {
+            alert(error.message)
+        }
     }
 
     async importRecording() {
