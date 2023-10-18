@@ -250,6 +250,46 @@ async def history(date: Optional[str] = Query(None)):
 
     return get_summary(date)
 
+@app.get("/templates")
+async def templates():
+    result = []
+    folder = os.path.normpath(globals["templates_folder"])
+    for file in os.listdir(folder):
+        if file.endswith(".json"):
+            result.append(file)
+
+    return result
+
+@app.put("/template")
+async def template(name: str, data: Dict = Body(...)):
+    folder = os.path.normpath(globals["templates_folder"])
+    file = os.path.normpath(folder + "\\" + name)
+
+    with open(file, "w") as json_file:
+        json.dump(data, json_file, indent=2)
+
+    return {"message": "Template saved"}
+
+@app.get("/template")
+async def template(name: str):
+    folder = os.path.normpath(globals["templates_folder"])
+    file = os.path.normpath(folder + "\\" + name)
+
+    with open(file, "r") as json_file:
+        data = json.load(json_file)
+
+    return data
+
+@app.get("/extensions")
+async def templates():
+    result = []
+    folder = os.path.normpath(globals["ext_folder"])
+    for file in os.listdir(folder):
+        if file.endswith(".py"):
+            result.append(file)
+
+    return result
+
 
 def get_log_file_path(job_id: str):
     return globals["log_folder"] + "\\" + job_id.replace("_35_", "#") + "\\test.log"
@@ -264,7 +304,6 @@ def run_in_new_loop():
     loop.run_until_complete(queue.run_first_task())
     # Close the loop after the task is done
     loop.close()
-
 
 host_address = "127.0.0.1"
 host_port = 8000

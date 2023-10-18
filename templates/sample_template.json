@@ -1,0 +1,14 @@
+{
+    "id": "sample_template",
+
+    "main": {
+        "steps": {
+            "start": {
+                "type": "",
+                "action": "",
+                "args": {
+                }
+            }
+        }
+    }
+}

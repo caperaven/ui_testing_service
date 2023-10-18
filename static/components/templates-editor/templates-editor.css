@@ -13,6 +13,17 @@ ul {
     overflow: auto
 }
 
+li {
+    padding: var(--padding);
+    text-overflow: ellipsis;
+    cursor: pointer;
+    user-select: none;
+}
+
+li:hover {
+    background-color: var(--blue-s2)
+}
+
 .container {
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto;

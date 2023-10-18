@@ -2,9 +2,9 @@
     <div role="toolbar">
         <h2>Templates</h2>
         <spacer></spacer>
-        <button>New</button>
+        <button click.call="new">New</button>
     </div>
-    <ul></ul>
+    <ul ref="itemsContainer" click.call="select"></ul>
 </div>
 
 <div class="container">
@@ -13,6 +13,8 @@
     </div>
 
     <div role="toolbar">
-        <button>Save</button>
+        <div>${fileName}</div>
+        <spacer></spacer>
+        <button click.call="save">Save</button>
     </div>
 </div>

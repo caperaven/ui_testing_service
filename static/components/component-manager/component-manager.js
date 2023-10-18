@@ -3,6 +3,7 @@ import "./../compose-test/compose-test.js";
 import "./../history-display/history-display.js";
 import "../templates-editor/templates-editor.js";
 import "../extensions-editor/extensions-editor.js";
+import "./../../packages/crs-framework/components/toast-notification/toast-notification-actions.js";
 
 export default class ComponentManager extends crs.classes.BindableElement {
     get shadowDom() {
@@ -11,6 +12,15 @@ export default class ComponentManager extends crs.classes.BindableElement {
 
     get html() {
         return import.meta.url.replace(".js", ".html");
+    }
+
+    async load() {
+        await crs.call("toast_notification", "enable", { position: "bottom-center", margin: 10 });
+    }
+
+    async disconnectedCallback() {
+        await crs.call("toast_notification", "disable", {});
+        await super.disconnectedCallback();
     }
 
     async menu_selected(event) {

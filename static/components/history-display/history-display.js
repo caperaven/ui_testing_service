@@ -13,6 +13,12 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
         return import.meta.url.replace(".js", ".html");
     }
 
+    async preLoad() {
+        this.setProperty("summary", {
+            total: 0, passed: 0, failed: 0
+        })
+    }
+
     async load() {
         const template = this.shadowRoot.querySelector("template");
         await crs.binding.inflation.manager.register("history_status", template);
