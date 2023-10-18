@@ -16,6 +16,7 @@ export default class ComponentManager extends crs.classes.BindableElement {
 
     async load() {
         await crs.call("toast_notification", "enable", { position: "bottom-center", margin: 10 });
+        await this.set_component("compose-test");
     }
 
     async disconnectedCallback() {
@@ -26,6 +27,10 @@ export default class ComponentManager extends crs.classes.BindableElement {
     async menu_selected(event) {
         const target = event.composedPath()[0];
         const component = target.dataset.component;
+        await this.set_component(component);
+    }
+
+    async set_component(component) {
         const instance = document.createElement(component);
         const main = this.shadowRoot.querySelector("main");
         main.innerHTML = "";
