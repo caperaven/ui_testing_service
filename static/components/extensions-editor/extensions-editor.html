@@ -2,17 +2,19 @@
     <div role="toolbar">
         <h2>Extensions</h2>
         <spacer></spacer>
-        <button>New</button>
+        <button click.call="new">New</button>
     </div>
-    <ul></ul>
+    <ul ref="itemsContainer" click.call="select"></ul>
 </div>
 
 <div class="container">
     <div class="text">
-        <text-editor data-language="json" ref="editor"></text-editor>
+        <text-editor data-language="markdown" ref="editor"></text-editor>
     </div>
 
     <div role="toolbar">
-        <button>Save</button>
+        <div>${fileName}</div>
+        <spacer></spacer>
+        <button click.call="save">Save</button>
     </div>
 </div>

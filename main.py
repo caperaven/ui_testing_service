@@ -261,7 +261,7 @@ async def templates():
     return result
 
 @app.put("/template")
-async def template(name: str, data: Dict = Body(...)):
+async def template_put(name: str, data: Dict = Body(...)):
     folder = os.path.normpath(globals["templates_folder"])
     file = os.path.normpath(folder + "\\" + name)
 
@@ -271,7 +271,7 @@ async def template(name: str, data: Dict = Body(...)):
     return {"message": "Template saved"}
 
 @app.get("/template")
-async def template(name: str):
+async def template_get(name: str):
     folder = os.path.normpath(globals["templates_folder"])
     file = os.path.normpath(folder + "\\" + name)
 
@@ -289,6 +289,30 @@ async def templates():
             result.append(file)
 
     return result
+
+
+@app.put("/extension")
+async def extension_put(name: str, data: Dict = Body(...)):
+    folder = os.path.normpath(globals["ext_folder"])
+    file = os.path.normpath(folder + "\\" + name)
+
+    with open(file, "w") as file:
+        file.write(data["content"])
+
+    return {"message": "extension saved"}
+
+
+@app.get("/extension")
+async def extension_get(name: str):
+    folder = os.path.normpath(globals["ext_folder"])
+    file = os.path.normpath(folder + "\\" + name)
+
+    with open(file, "r") as file:
+        data = file.read()
+
+    return {
+        "content": data
+    }
 
 
 def get_log_file_path(job_id: str):
