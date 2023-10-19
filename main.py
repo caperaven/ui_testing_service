@@ -59,7 +59,14 @@ globals["server"] = "https://localhost"
 process_api.state = globals
 
 register_extensions(process_api)
-process_api.process_templates.load_from_folder(globals["templates_folder"])
+
+for folder in globals["templates_folders"]:
+    if " | " not in folder:
+        process_api.process_templates.load_from_folder(folder)
+    else:
+        parts = folder.split(" | ")
+        new_folder = parts[1]
+        process_api.process_templates.load_from_folder(new_folder)
 
 
 @app.get("/server_list")
@@ -253,32 +260,68 @@ async def history(date: Optional[str] = Query(None)):
 @app.get("/templates")
 async def templates():
     result = []
-    folder = os.path.normpath(globals["templates_folder"])
-    for file in os.listdir(folder):
-        if file.endswith(".json"):
-            result.append(file)
+
+    for folder in globals["templates_folders"]:
+        if " | " not in folder:
+            search_folder = os.path.normpath(folder)
+            get_template_files(None, search_folder, result)
+        else:
+            parts = folder.split(" | ")
+            prefix = parts[0]
+            search_folder = os.path.normpath(parts[1])
+            get_template_files(prefix, search_folder, result)
 
     return result
 
+
+def get_template_files(prefix, folder, result):
+    for file in os.listdir(folder):
+        if file.endswith(".json"):
+            if prefix is None:
+                result.append(file)
+            else:
+                result.append(prefix + " | " + file)
+
+
 @app.put("/template")
 async def template_put(name: str, data: Dict = Body(...)):
-    folder = os.path.normpath(globals["templates_folder"])
-    file = os.path.normpath(folder + "\\" + name)
+    if " | " in name:
+        template_folder = find_folder_for_prefix(name.split(" | ")[0])
+        name = name.split(" | ")[1]
+    else:
+        template_folder = os.path.normpath(globals["templates_folders"][0])
+
+    file = os.path.normpath(template_folder + "\\" + name)
 
     with open(file, "w") as json_file:
         json.dump(data, json_file, indent=2)
 
     return {"message": "Template saved"}
 
+
 @app.get("/template")
 async def template_get(name: str):
-    folder = os.path.normpath(globals["templates_folder"])
-    file = os.path.normpath(folder + "\\" + name)
+    if " | " in name:
+        template_folder = find_folder_for_prefix(name.split(" | ")[0])
+        name = name.split(" | ")[1]
+    else:
+        template_folder = os.path.normpath(globals["templates_folders"][0])
+
+    file = os.path.normpath(template_folder + "\\" + name)
 
     with open(file, "r") as json_file:
         data = json.load(json_file)
 
     return data
+
+
+def find_folder_for_prefix(prefix):
+    for search_folder in globals["templates_folders"]:
+        if search_folder.startswith(prefix):
+            return search_folder.split(" | ")[1]
+
+    return None
+
 
 @app.get("/extensions")
 async def templates():
