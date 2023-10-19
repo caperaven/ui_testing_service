@@ -1,0 +1,8 @@
+{
+    "on_key": "path",
+    "designer": "path",
+    "framework": "path"
+}
+
+/// put:add_batch?=designer
+/// 1. crate templates.json -> loaded at runtime
