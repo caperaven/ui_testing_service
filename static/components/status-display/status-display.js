@@ -16,6 +16,7 @@ export default class StatusDisplay extends crs.classes.BindableElement {
 
     async preLoad() {
         this.setProperty("refreshRate", 0);
+        this.setProperty("browser", "chrome");
     }
 
     async load() {
@@ -50,19 +51,26 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         const elements = await crs.binding.inflation.manager.get("statuses", statuses, this.collection.children);
         this.collection.innerHTML = "";
         this.collection.append(...elements);
+    }
 
+    async #getStatusTimer(){
         const refreshRate = Number(this.getProperty("refreshRate"));
 
+        // don't run
         if (refreshRate == 0) {
-            this.#running = false;
+            return this.#running = false;
         }
 
-        if (this.#running) {
-            const timeout = setTimeout(() => {
-                clearTimeout(timeout);
-                this.#getStatus();
-            }, refreshRate);
-        }
+        const timeout = setTimeout(async () => {
+            clearTimeout(timeout);
+            await this.#getStatus();
+
+            const refreshRate = Number(this.getProperty("refreshRate"));
+
+            if (refreshRate > 0) {
+                await this.#getStatusTimer();
+            }
+        }, refreshRate);
     }
 
     async refreshRateChanged(newValue) {
@@ -73,7 +81,7 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         }
 
         this.#running = true;
-        await this.refresh();
+        await this.#getStatusTimer();
     }
 
     async refresh() {
@@ -102,6 +110,28 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         if (id == null) return;
 
         await crs.call("test_details", "show", { id, name });
+    }
+
+    async loadBundles() {
+        const result = await fetch("/test_bundles").then(result => result.json());
+        const bundles = result.map(name => {
+            return {
+                text: name,
+                value: name
+            }
+        })
+
+        this.cbBundles.items = bundles;
+        this.cbBundles.value = bundles[0].value;
+        this.setProperty("testBundle", bundles[0].value);
+    }
+
+    async add() {
+        const bundle = this.getProperty("testBundle");
+        const browser = this.getProperty("browser");
+
+        await fetch(`/queue_bundle?bundle=${bundle}&browser=${browser}`, { method: "POST" });
+        this.setProperty("refreshRate", 500);
     }
 }
 

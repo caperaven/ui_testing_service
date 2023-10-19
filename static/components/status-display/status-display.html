@@ -5,10 +5,20 @@
 <div role="toolbar">
     <h2>Current Server Status</h2>
     <label>
-        <span>Refresh</span>
+        <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles"></combo-box>
+        <button class="icon" click.call="add" title="add tests to queue">add</button>
+    </label>
+
+    <combo-box value.bind="browser">
+        <option value="chrome">Chrome</option>
+        <option value="firefox">Firefox</option>
+    </combo-box>
+
+    <label>
         <combo-box value.bind="refreshRate">
-            <option value="1000">01 second</option>
-            <option value="5000">05 second</option>
+            <option value="500">0.5 second</option>
+            <option value="1000">1 second</option>
+            <option value="5000">5 second</option>
             <option value="10000">10 second</option>
             <option value="30000">30 second</option>
             <option value="0">Never</option>

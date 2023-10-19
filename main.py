@@ -94,7 +94,8 @@ async def convert_recording(recording_json: Dict = Body(...)):
 
 
 @app.post("/test")
-async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome"), server: Optional[str] = Query("https://localhost")):
+async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome"),
+               server: Optional[str] = Query("https://localhost")):
     json_type = identify_json(data)
     test_id = data.get("id", "unknown")
     process_api.state["server"] = server
@@ -250,12 +251,14 @@ async def test_schema(job_id: str):
 
     return data
 
+
 @app.get("/history")
 async def history(date: Optional[str] = Query(None)):
     if date is None:
         return get_dates()
 
     return get_summary(date)
+
 
 @app.get("/templates")
 async def templates():
@@ -358,6 +361,43 @@ async def extension_get(name: str):
     }
 
 
+@app.get("/test_bundles")
+async def test_bundles_get():
+    file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
+
+    with open(file, "r") as file:
+        data = json.load(file)
+
+    result = []
+    for key, value in data.items():
+        result.append(key)
+
+    return result
+
+
+@app.post("/queue_bundle")
+async def queue_bundle_put(bundle: str, browser: Optional[str] = Query("chrome")):
+    file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
+
+    with open(file, "r") as file:
+        data = json.load(file)
+
+    bundle_folder = data[bundle]
+    test_files = os.listdir(bundle_folder)
+
+    for test_file in test_files:
+        if test_file.endswith(".json"):
+            with open(os.path.normpath(bundle_folder + "\\" + test_file), "r") as json_file:
+                data = json.load(json_file)
+
+            test_id = data["id"]
+            await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+
+    if queue.running is False:
+        threading.Thread(target=run_in_new_loop).start()
+
+
+
 def get_log_file_path(job_id: str):
     return globals["log_folder"] + "\\" + job_id.replace("_35_", "#") + "\\test.log"
 
@@ -371,6 +411,7 @@ def run_in_new_loop():
     loop.run_until_complete(queue.run_first_task())
     # Close the loop after the task is done
     loop.close()
+
 
 host_address = "127.0.0.1"
 host_port = 8000
