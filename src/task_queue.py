@@ -28,6 +28,7 @@ class TaskQueue:
             "start_time": None,
             "end_time": None,
             "duration": None,
+            "browser": args[2]
         }
 
         return task_id

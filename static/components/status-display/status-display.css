@@ -86,6 +86,10 @@ li[data-status="queue"] {
     width: 6rem;
 }
 
+.browser {
+    width: 6rem;
+}
+
 [role="toolbar"] {
     display: flex;
     flex-direction: row;
@@ -107,4 +111,12 @@ li[data-status="queue"] {
 
 [role="toolbar"] label span {
     margin-right: var(--padding);
+}
+
+divider {
+    display: block;
+    height: 1rem;
+    width: 1px;
+    background: var(--grey-s1);
+    margin: var(--padding);
 }

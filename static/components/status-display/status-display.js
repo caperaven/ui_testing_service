@@ -131,6 +131,11 @@ export default class StatusDisplay extends crs.classes.BindableElement {
         const browser = this.getProperty("browser");
 
         await fetch(`/queue_bundle?bundle=${bundle}&browser=${browser}`, { method: "POST" });
+        await this.#getStatus();
+    }
+
+    async runQueue() {
+        await fetch("/run_queue", { method: "POST" });
         this.setProperty("refreshRate", 500);
     }
 }
@@ -144,6 +149,7 @@ function statusToArray(statusObject) {
         time: "Time",
         duration: "Duration",
         memory_diff: "Memory Diff",
+        browser: "Browser"
     }];
 
     const keys = Object.keys(statusObject);
@@ -155,6 +161,7 @@ function statusToArray(statusObject) {
         newStatus.uuid = key;
         newStatus.date = dateParts.date;
         newStatus.time = dateParts.time;
+        newStatus.browser ||= "chrome";
         result.push(newStatus);
     }
 

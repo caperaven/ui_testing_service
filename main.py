@@ -393,9 +393,11 @@ async def queue_bundle_put(bundle: str, browser: Optional[str] = Query("chrome")
             test_id = data["id"]
             await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
 
+
+@app.post("/run_queue")
+async def run_queue():
     if queue.running is False:
         threading.Thread(target=run_in_new_loop).start()
-
 
 
 def get_log_file_path(job_id: str):

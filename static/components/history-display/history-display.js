@@ -96,12 +96,15 @@ function statusToArray(summary) {
         time: "Time",
         duration: "Duration",
         memory_diff: "Memory Diff",
+        browser: "Browser"
     }];
 
     for (const status of summary) {
         const dateParts = cleanTime(status.start_time);
         status.date = dateParts.date;
         status.time = dateParts.time;
+        status.browser ||= "chrome";
+
         result.push(status);
     }
 

@@ -4,27 +4,34 @@
 
 <div role="toolbar">
     <h2>Current Server Status</h2>
-    <label>
-        <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles"></combo-box>
-        <button class="icon" click.call="add" title="add tests to queue">add</button>
-    </label>
+    <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles"></combo-box>
+
+    <divider></divider>
 
     <combo-box value.bind="browser">
         <option value="chrome">Chrome</option>
         <option value="firefox">Firefox</option>
     </combo-box>
 
-    <label>
-        <combo-box value.bind="refreshRate">
-            <option value="500">0.5 second</option>
-            <option value="1000">1 second</option>
-            <option value="5000">5 second</option>
-            <option value="10000">10 second</option>
-            <option value="30000">30 second</option>
-            <option value="0">Never</option>
-        </combo-box>
-        <button class="icon" click.call="refresh">refresh</button>
-    </label>
+    <divider></divider>
+
+    <combo-box value.bind="refreshRate">
+        <option value="500">0.5 second</option>
+        <option value="1000">1 second</option>
+        <option value="5000">5 second</option>
+        <option value="10000">10 second</option>
+        <option value="30000">30 second</option>
+        <option value="0">Never</option>
+    </combo-box>
+
+    <button class="icon" click.call="add" title="add tests to queue">add</button>
+    <button class="icon" click.call="refresh">refresh</button>
+
+    <divider></divider>
+
+    <button click.call="runQueue">Run Queue</button>
+
+    <divider></divider>
 
     <button click.call="clearCache">Clear Cache</button>
 </div>
@@ -38,6 +45,7 @@
         <div class="error-count">${error_count}</div>
         <div class="duration">${duration}</div>
         <div class="memory">${memory_diff}</div>
+        <div class="browser">${browser}</div>
     </li>
 </template>
 
