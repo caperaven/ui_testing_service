@@ -119,18 +119,25 @@ function parseCollection(collection) {
         })
     }
 
+    if (result.length === 1) {
+        return result.push({
+            date: "",
+            time: "",
+            name: "DIFFERENCE",
+            value: 0
+        });
+    }
+
     const startMemory = result[1].value;
     const endMemory = result[result.length - 1].value;
     const memoryChange = endMemory - startMemory;
 
-    result.push({
+    return result.push({
         date: "",
         time: "",
         name: "DIFFERENCE",
         value: memoryChange
     });
-
-    return result;
 }
 
 function parseDate(dateStr) {

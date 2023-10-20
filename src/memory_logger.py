@@ -46,6 +46,13 @@ class MemoryLogger:
     async def save_graph(self, file_name):
         api = globals["api"]
 
+        if len(self.memory) == 0:
+            self.memory.append({
+                "name": "skipped",
+                "memory": 0,
+                "date_time": datetime.now()
+            })
+
         await api.call("data", "set_data", {
             "name": "memory",
             "data": self.memory

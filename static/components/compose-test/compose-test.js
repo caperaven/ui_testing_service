@@ -47,7 +47,7 @@ export default class ComposeTest extends crs.classes.BindableElement {
 
             this.setProperty("status", status);
 
-            if (status.status != "complete" && status.status != "error") {
+            if (status.status != "complete" && status.status != "error" && status.status != "skipped") {
                 await this.#monitorJob();
             }
 
@@ -56,7 +56,16 @@ export default class ComposeTest extends crs.classes.BindableElement {
 
     async runSchema() {
         const schema = this.schemaEditor.value;
-        const json = JSON.parse(schema);
+
+        let json;
+
+        try {
+            json = JSON.parse(schema);
+        }
+        catch (error) {
+            return alert("Invalid JSON");
+        }
+
         const server = this.getProperty("server");
         const browser = this.getProperty("browser");
         const result = await fetch(`/test?browser=${browser}&server=${server}`, {

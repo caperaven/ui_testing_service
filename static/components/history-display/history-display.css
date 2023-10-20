@@ -50,6 +50,10 @@ li[data-status="queue"] {
     border: solid 1px var(--grey);
 }
 
+li[data-status="skipped"] {
+    background-color: var(--orange);
+    color: white;
+}
 
 .error {
     color: var(--red);
