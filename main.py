@@ -376,8 +376,10 @@ async def test_bundles_get():
 
 
 @app.post("/queue_bundle")
-async def queue_bundle_put(bundle: str, browser: Optional[str] = Query("chrome")):
+async def queue_bundle_put(bundle: str, browser: Optional[str] = Query("chrome"), stop_on_error: Optional[bool] = Query(False)):
     file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
+
+    globals["stop_on_error"] = stop_on_error
 
     with open(file, "r") as file:
         data = json.load(file)

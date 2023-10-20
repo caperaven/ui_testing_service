@@ -1,14 +1,12 @@
 {
-    "id": "sample_template",
-
-    "main": {
-        "steps": {
-            "start": {
-                "type": "",
-                "action": "",
-                "args": {
-                }
-            }
-        }
+  "id": "sample_template",
+  "main": {
+    "steps": {
+      "start": {
+        "type": "",
+        "action": "test",
+        "args": {}
+      }
     }
+  }
 }

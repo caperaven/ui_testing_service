@@ -32,9 +32,11 @@ template_folders = [
 
 load_templates_config(template_folders)
 
+
 globals = {
     "log_folder": os.path.join(os.getcwd(), "logs"),
     "ext_folder": os.path.join(os.getcwd(), "extensions"),
     "templates_folders": template_folders,
     "config_folder": os.path.join(os.getcwd(), "config"),
+    "stop_on_error": False
 }

@@ -7,6 +7,7 @@ import json
 
 
 class TaskQueue:
+
     def __init__(self):
         self.queue = []
         self.statuses = {}
@@ -56,10 +57,12 @@ class TaskQueue:
         status["start_time"] = datetime.now()
 
         try:
-            await fn(*args, **kwargs)
-        finally:
-            status = self.statuses[task_id]
+            result = await fn(*args, **kwargs)
 
+            if result == "skipped":
+                status["status"] = "skipped"
+
+        finally:
             date_folder = datetime.today().strftime('%Y-%m-%d')
             time_stamp = datetime.now().strftime('%H-%M-%S')
             test_name = status["name"]
@@ -75,7 +78,10 @@ class TaskQueue:
             status["duration"] = get_time_format(status["start_time"], status["end_time"])
             status["log"] = log_file_path
             status["error_count"] = globals["api"].logger.error_count
-            status["status"] = "complete"
+
+            if status["status"] != "skipped":
+                status["status"] = "complete"
+
             status["memory_diff"] = memory_logger.difference()
 
             if status["error_count"] > 0:
@@ -90,6 +96,10 @@ class TaskQueue:
 
             logger.info(f"Task {task_id} completed in {status['duration']}")
             logger.save_to_file(log_file_path)
+
+            if status["status"] == "error" and globals["stop_on_error"] is True:
+                self.running = False
+                return
 
             # call self recursively to run the next task
             await self.run_first_task()

@@ -4,6 +4,12 @@
 
 <div role="toolbar">
     <h2>Current Server Status</h2>
+
+    <label>
+        <span>stop on error</span>
+        <input type="checkbox" checked.bind="stopOnError"></input>
+    </label>
+
     <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles"></combo-box>
 
     <divider></divider>

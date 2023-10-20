@@ -5,6 +5,10 @@ from src.globals import globals
 class TestRunner:
     @staticmethod
     async def test(api, data, browser, json_type):
+        if "skip" in data:
+            api.logger.info("Skipping: " + data["skip"])
+            return "skipped"
+
         driver = await get_driver(api, browser)
         api.set_variable("driver", driver)
         globals["process_id"] = driver.service.process.pid

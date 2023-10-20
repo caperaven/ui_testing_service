@@ -17,6 +17,7 @@ export default class StatusDisplay extends crs.classes.BindableElement {
     async preLoad() {
         this.setProperty("refreshRate", 0);
         this.setProperty("browser", "chrome");
+        this.setProperty("stopOnError", false);
     }
 
     async load() {
@@ -129,8 +130,9 @@ export default class StatusDisplay extends crs.classes.BindableElement {
     async add() {
         const bundle = this.getProperty("testBundle");
         const browser = this.getProperty("browser");
+        const stop = this.getProperty("stopOnError");
 
-        await fetch(`/queue_bundle?bundle=${bundle}&browser=${browser}`, { method: "POST" });
+        await fetch(`/queue_bundle?bundle=${bundle}&browser=${browser}&stop_on_error=${stop}`, { method: "POST" });
         await this.#getStatus();
     }
 

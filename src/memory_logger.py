@@ -67,6 +67,9 @@ class MemoryLogger:
         })
 
     def difference(self):
+        if len(self.memory) == 0:
+            return 0
+
         start = self.memory[0]["memory"]
         end = self.memory[-1]["memory"]
         diff = end - start

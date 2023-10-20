@@ -199,7 +199,8 @@ export default class ComposeTest extends crs.classes.BindableElement {
                 header, body
             },
             options: {
-                maximized: true
+                maximized: true,
+                modal: false
             }
         })
     }
