@@ -36,6 +36,8 @@ li div {
     padding: var(--padding);
     border-right: var(--border);
     pointer-events: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 li[data-status="running"] {
