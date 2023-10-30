@@ -375,8 +375,51 @@ async def test_bundles_get():
     return result
 
 
+@app.post("/queue_before")
+async def queue_before_post(bundle: str, browser: Optional[str] = Query("chrome")):
+    if "before" not in globals:
+        return
+
+    if bundle not in globals["before"]:
+        return
+
+    before_bundle = globals["before"][bundle]
+    test_files = os.listdir(before_bundle)
+
+    for test_file in test_files:
+        if test_file.endswith(".json"):
+            with open(os.path.normpath(before_bundle + "\\" + test_file), "r") as json_file:
+                data = json.load(json_file)
+
+            test_id = data["id"]
+            await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+
+
+@app.get("/queue_after")
+async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")):
+    if "after" not in globals:
+        return
+
+    if bundle not in globals["after"]:
+        return
+
+    after_bundle = globals["after"][bundle]
+    test_files = os.listdir(after_bundle)
+
+    for test_file in test_files:
+        if test_file.endswith(".json"):
+            with open(os.path.normpath(after_bundle + "\\" + test_file), "r") as json_file:
+                data = json.load(json_file)
+
+            test_id = data["id"]
+            await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+
+
+
 @app.post("/queue_bundle")
-async def queue_bundle_put(bundle: str, browser: Optional[str] = Query("chrome"), stop_on_error: Optional[bool] = Query(False)):
+async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"), stop_on_error: Optional[bool] = Query(False)):
+    await queue_before_post(bundle, browser)
+
     file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
 
     globals["stop_on_error"] = stop_on_error
@@ -394,6 +437,8 @@ async def queue_bundle_put(bundle: str, browser: Optional[str] = Query("chrome")
 
             test_id = data["id"]
             await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+
+    await queue_after_post(bundle, browser)
 
 
 @app.post("/run_queue")

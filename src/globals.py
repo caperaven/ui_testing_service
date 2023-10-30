@@ -20,6 +20,21 @@ def load_templates_config(collection):
                 collection.append(result)
 
 
+def load_before_after_config():
+    before_file = os.path.join(os.getcwd(), "config/before.json")
+    after_file = os.path.join(os.getcwd(), "config/after.json")
+
+    if os.path.exists(before_file):
+        with open(before_file, "r") as f:
+            data = json.load(f)
+            globals["before"] = data
+
+    if os.path.exists(after_file):
+        with open(after_file, "r") as f:
+            data = json.load(f)
+            globals["after"] = data
+
+
 class JsonType(enum.Enum):
     SCHEMA = "schema"
     GOOGLE_RECORDING = "google_recording"
@@ -32,7 +47,6 @@ template_folders = [
 
 load_templates_config(template_folders)
 
-
 globals = {
     "log_folder": os.path.join(os.getcwd(), "logs"),
     "ext_folder": os.path.join(os.getcwd(), "extensions"),
@@ -40,3 +54,5 @@ globals = {
     "config_folder": os.path.join(os.getcwd(), "config"),
     "stop_on_error": False
 }
+
+load_before_after_config()

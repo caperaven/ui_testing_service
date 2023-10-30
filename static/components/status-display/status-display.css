@@ -126,3 +126,8 @@ divider {
     background: var(--grey-s1);
     margin: var(--padding);
 }
+
+input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+}
