@@ -18,7 +18,7 @@ class SystemModule:
         process = await get_value(args.get('process', 'main'), ctx, process, item)
         parameters = await get_value(args.get('parameters'), ctx, process, item)
 
-        api.logger.debug(f'template: {schema} {process} {parameters}')
+        api.logger.info(f'template: {schema} {process} {parameters}')
 
         schema = api.process_templates.get_template(schema)
         return await api.schema_runner.run_process(api, schema, process, ctx, parameters)
@@ -31,7 +31,7 @@ class SystemModule:
         cmd_args = await get_value(args.get('args'), ctx, process, item)
         cwd = await get_value(args.get('cwd'), ctx, process, item)
 
-        api.logger.debug(f'run_command: {id} - {command} {cmd_args} {cwd}')
+        api.logger.info(f'run_command: {id} - {command} {cmd_args} {cwd}')
 
         stack = [command]
 
@@ -46,7 +46,7 @@ class SystemModule:
         args = step.get("args")
         id = await get_value(args.get('id'), ctx, process, item)
 
-        api.logger.debug(f'kill_process: {id}')
+        api.logger.info(f'kill_process: {id}')
 
         if id in processes:
             process = processes[id]
