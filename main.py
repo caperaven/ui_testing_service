@@ -94,12 +94,21 @@ async def convert_recording(recording_json: Dict = Body(...)):
 
 
 @app.post("/test")
-async def test(data: Dict = Body(...), browser: Optional[str] = Query("chrome"),
-               server: Optional[str] = Query("https://localhost")):
+async def test(data: Dict = Body(...),
+               browser: Optional[str] = Query("chrome"),
+               server: Optional[str] = Query("https://localhost"),
+               bundle: Optional[str] = Query("None")):
+
+    if bundle != "None":
+        await queue_before_post(bundle, browser)
+
     json_type = identify_json(data)
     test_id = data.get("id", "unknown")
     process_api.state["server"] = server
     job_id = await queue.add(test_id, TestRunner.test, process_api, data, browser, json_type)
+
+    if bundle != "None":
+        await queue_after_post(bundle, browser)
 
     if queue.running is False:
         threading.Thread(target=run_in_new_loop).start()

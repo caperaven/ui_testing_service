@@ -68,7 +68,9 @@ export default class ComposeTest extends crs.classes.BindableElement {
 
         const server = this.getProperty("server");
         const browser = this.getProperty("browser");
-        const result = await fetch(`/test?browser=${browser}&server=${server}`, {
+        const before = this.getProperty("before");
+
+        const result = await fetch(`/test?browser=${browser}&server=${server}&bundle=${before}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
