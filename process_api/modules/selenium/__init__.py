@@ -37,6 +37,7 @@ class SeleniumModule:
         await goto(selenium_driver, url)
 
         if "wait" in args:
+            api.logger.info(f'waiting for {args["wait"]}')
             await wait(selenium_driver, {
                 "query": args["wait"]
             })
@@ -47,6 +48,7 @@ class SeleniumModule:
 
         args = step["args"]
         if "wait" in args:
+            api.logger.info(f'waiting for {args["wait"]}')
             await wait(selenium_driver, {
                 "query": args["wait"]
             })
@@ -59,6 +61,7 @@ class SeleniumModule:
 
         args = step["args"]
         if "wait" in args:
+            api.logger.info(f'waiting for {args["wait"]}')
             await wait(selenium_driver, {
                 "query": args["wait"]
             })
@@ -77,6 +80,7 @@ class SeleniumModule:
 
         args = step["args"]
         if "wait" in args:
+            api.logger.info(f'waiting for {args["wait"]}')
             await wait(selenium_driver, {
                 "query": args["wait"]
             })

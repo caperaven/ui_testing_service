@@ -1,4 +1,4 @@
-import "./../status-display/status-display.js";
+import "../test-queue/test-queue.js";
 import "./../compose-test/compose-test.js";
 import "./../history-display/history-display.js";
 import "../templates-editor/templates-editor.js";

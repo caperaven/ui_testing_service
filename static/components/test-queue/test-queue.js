@@ -3,7 +3,7 @@ import "./../../packages/crs-framework/components/context-menu/context-menu-acti
 import "./../test-details/test-details-actions.js";
 import {cleanTime} from "../utils/clean-time.js";
 
-export default class StatusDisplay extends crs.classes.BindableElement {
+export default class TestQueue extends crs.classes.BindableElement {
     #running = false;
 
     get shadowDom() {
@@ -170,4 +170,4 @@ function statusToArray(statusObject) {
     return result;
 }
 
-customElements.define("status-display", StatusDisplay);
+customElements.define("test-queue", TestQueue);
