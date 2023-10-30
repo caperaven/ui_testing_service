@@ -375,8 +375,21 @@ async def test_bundles_get():
     return result
 
 
+@app.get("/before_bundles")
+async def before_bundles_get():
+    result = ["None"]
+
+    if "before" in globals:
+        result.extend(globals["before"].keys())
+
+    return result
+
+
 @app.post("/queue_before")
 async def queue_before_post(bundle: str, browser: Optional[str] = Query("chrome")):
+    if bundle == "None":
+        return
+
     if "before" not in globals:
         return
 
@@ -397,6 +410,9 @@ async def queue_before_post(bundle: str, browser: Optional[str] = Query("chrome"
 
 @app.get("/queue_after")
 async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")):
+    if bundle == "None":
+        return
+
     if "after" not in globals:
         return
 
@@ -415,9 +431,9 @@ async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")
             await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
 
 
-
 @app.post("/queue_bundle")
-async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"), stop_on_error: Optional[bool] = Query(False)):
+async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"),
+                            stop_on_error: Optional[bool] = Query(False)):
     await queue_before_post(bundle, browser)
 
     file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"

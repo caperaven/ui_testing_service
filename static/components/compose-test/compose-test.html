@@ -12,6 +12,7 @@
     <spacer></spacer>
     <button click.call="showHelp">Help</button>
 
+    <combo-box id="cbBefore" value.bind="before" ready.call="loadBefore"></combo-box>
     <combo-box id="cbServers" value.bind="server" ready.call="loadServers"></combo-box>
 
     <combo-box value.bind="browser">

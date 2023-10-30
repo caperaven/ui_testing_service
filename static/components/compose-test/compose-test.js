@@ -224,6 +224,25 @@ export default class ComposeTest extends crs.classes.BindableElement {
             this.setProperty("server", servers[0].value);
         })
     }
+
+    async loadBefore() {
+        let before = await fetch("/before_bundles").then(result => result.json());
+        const cb = this.shadowRoot.querySelector("#cbBefore");
+
+        before = before.map(item => {
+            return {
+                value: item,
+                text: item
+            }
+        })
+
+        cb.items = before;
+
+        requestAnimationFrame(() => {
+            cb.value = before[0].value;
+            this.setProperty("before", before[0].value);
+        })
+    }
 }
 
 customElements.define("compose-test", ComposeTest);
