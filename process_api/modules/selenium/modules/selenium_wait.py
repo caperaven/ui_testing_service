@@ -29,84 +29,84 @@ class WaitModule:
 
     @staticmethod
     async def time(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for time: {step["args"]}')
+        api.logger.info(f'wait for time: {step["args"]}')
         args = copy.deepcopy(step["args"])
         timeout = args.get("timeout", 1)
         time.sleep(timeout)
 
     @staticmethod
     async def is_ready(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for is_ready: {step["args"]}')
+        api.logger.info(f'wait for is_ready: {step["args"]}')
         step["args"]["attr"] = "data-ready"
         step["args"]["value"] = "true"
         await WaitModule.attribute(api, step, ctx, process, item)
 
     @staticmethod
     async def element(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for element: {step["args"]}')
+        api.logger.info(f'wait for element: {step["args"]}')
         args = copy.deepcopy(step["args"])
         await api.call("selenium", "get", args, ctx, process, item)
 
     @staticmethod
     async def attribute(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for attribute: {step["args"]}')
+        api.logger.info(f'wait for attribute: {step["args"]}')
         await wait_for_element_details(api, step, attribute_callback, ctx, process, item)
 
     @staticmethod
     async def attributes(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for attributes: {step["args"]}')
+        api.logger.info(f'wait for attributes: {step["args"]}')
         await wait_for_element_details(api, step, attributes_callback, ctx, process, item)
 
     @staticmethod
     async def style_property(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for style_property: {step["args"]}')
+        api.logger.info(f'wait for style_property: {step["args"]}')
         await wait_for_element_details(api, step, style_property_callback, ctx, process, item)
 
     @staticmethod
     async def style_properties(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for style_properties: {step["args"]}')
+        api.logger.info(f'wait for style_properties: {step["args"]}')
         await wait_for_element_details(api, step, style_properties_callback, ctx, process, item)
 
     @staticmethod
     async def element_property(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for element_property: {step["args"]}')
+        api.logger.info(f'wait for element_property: {step["args"]}')
         await wait_for_element_details(api, step, element_property_callback, ctx, process, item)
 
     @staticmethod
     async def element_properties(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for element_properties: {step["args"]}')
+        api.logger.info(f'wait for element_properties: {step["args"]}')
         await wait_for_element_details(api, step, element_properties_callback, ctx, process, item)
 
     @staticmethod
     async def text_content(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for text_content: {step["args"]}')
+        api.logger.info(f'wait for text_content: {step["args"]}')
         step["args"]["property"] = "textContent"
         await wait_for_element_details(api, step, element_property_callback, ctx, process, item)
 
     @staticmethod
     async def text_value(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for text_value: {step["args"]}')
+        api.logger.info(f'wait for text_value: {step["args"]}')
         step["args"]["property"] = "value"
         await wait_for_element_details(api, step, element_property_callback, ctx, process, item)
 
     @staticmethod
     async def selected(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for selected: {step["args"]}')
+        api.logger.info(f'wait for selected: {step["args"]}')
         await wait_for_element_details(api, step, selected_callback, ctx, process, item)
 
     @staticmethod
     async def child_count(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for child_count: {step["args"]}')
+        api.logger.info(f'wait for child_count: {step["args"]}')
         await wait_for_element_details(api, step, child_count_callback, ctx, process, item)
 
     @staticmethod
     async def element_count(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for element_count: {step["args"]}')
+        api.logger.info(f'wait for element_count: {step["args"]}')
         await wait_for_element_details(api, step, element_count_callback, ctx, process, item)
 
     @staticmethod
     async def window_count(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for window_count: {step["args"]}')
+        api.logger.info(f'wait for window_count: {step["args"]}')
         args = copy.deepcopy(step["args"])
         timeout = args.get("timeout", 10)
         selenium_driver = api.get_variable("driver")
@@ -114,7 +114,7 @@ class WaitModule:
 
     @staticmethod
     async def idle(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for idle: {step["args"]}')
+        api.logger.info(f'wait for idle: {step["args"]}')
 
         step_args = {
             "element": "body[idle]"
@@ -124,25 +124,25 @@ class WaitModule:
 
     @staticmethod
     async def has_attribute(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for has_attribute: {step["args"]}')
+        api.logger.info(f'wait for has_attribute: {step["args"]}')
         step["args"]["present"] = True
         await wait_for_element_details(api, step, has_attribute_callback, ctx, process, item)
 
     @staticmethod
     async def has_not_attribute(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for has_not_attribute: {step["args"]}')
+        api.logger.info(f'wait for has_not_attribute: {step["args"]}')
         step["args"]["present"] = False
         await wait_for_element_details(api, step, has_attribute_callback, ctx, process, item)
 
     @staticmethod
     async def has_class(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for has_class: {step["args"]}')
+        api.logger.info(f'wait for has_class: {step["args"]}')
         step["args"]["present"] = True
         await wait_for_element_details(api, step, has_class_callback, ctx, process, item)
 
     @staticmethod
     async def has_not_class(api, step, ctx=None, process=None, item=None):
-        api.infoger.info(f'wait for has_not_class: {step["args"]}')
+        api.logger.info(f'wait for has_not_class: {step["args"]}')
         step["args"]["present"] = False
         await wait_for_element_details(api, step, has_class_callback, ctx, process, item)
 
