@@ -24,6 +24,7 @@ class ProcessRunner:
 
         if hasattr(module, action):
             function = getattr(module, action)
+            step["args"] = await inflate(api, step["args"], ctx, process, item)
             result = await function(api, step, ctx, process, item)
 
             args = step.get("args", None)
@@ -50,3 +51,14 @@ class ProcessRunner:
             return result
         else:
             api.logger.fatal(f"action '{action}' not found in the imported module '{system_type}'.")
+
+
+async def inflate(api, args, ctx, process, item):
+    if args is None:
+        return None
+
+    for key, value in args.items():
+        if isinstance(value, str):
+            args[key] = await api.get_value(value, ctx, process, item)
+
+    return args
