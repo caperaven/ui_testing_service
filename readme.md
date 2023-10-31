@@ -15,13 +15,19 @@ git clone https://github.com/caperaven/ui_testing_service.git
 
 ```bash
 python -m venv venv
-source venv/bin/activate
+.\venv\Scripts\activate
 ```
 
 ## Install the requirements
 
 ```bash
-pip install -r requirements.txt
+pip install fastapi
+pip install uvicorn
+pip install selenium
+pip install pandas
+pip install matplotlib
+pip install aiofiles
+pip install psutil
 ```
 
 ## Run the app
