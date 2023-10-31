@@ -1,0 +1,15 @@
+{
+    "id": "#my_process",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://localhost:1100/contoso/test/"
+                },
+                "name": "start"
+            }
+        }
+    }
+}

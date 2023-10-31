@@ -1,0 +1,11 @@
+{
+    "name": "#my_process",
+    "status": "error",
+    "start_time": "2023-10-31 14:08:08",
+    "end_time": "2023-10-31 14:08:08",
+    "duration": "00:00:00:015",
+    "browser": "chrome",
+    "log": "C:\\Development\\ui_testing_service\\logs\\2023-10-31\\ERROR_14-08-08_#my_process\\test.log",
+    "error_count": 2,
+    "memory_diff": 0
+}
