@@ -34,8 +34,11 @@ pip install psutil
 
 ## Set up drivers
 1. You need to make sure that you have a folder in the root of the project called "chrome". In that folder you need two things.
+
     1.1 copy of the chrome driver
+
     1.2 copy of the chrome binary
+
 You can download both at: https://googlechromelabs.github.io/chrome-for-testing/#stable Make sure you download both as win64.
 2. Extract the chromedriver.exe into the chrome folder.
 3. Extract the contents of the chrome-win64.zip into the chrome folder.
