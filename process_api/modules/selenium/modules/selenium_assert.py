@@ -8,6 +8,68 @@ class AssertModule:
         api.add_module("assert", AssertModule)
 
     @staticmethod
+    async def members(api, step, ctx=None, process=None, item=None):
+        api.logger.info(f'assert members: {step["args"]}')
+        args = step["args"]
+
+        query = args.get("query", None)
+        attributes = args.get("attributes", None)
+        styles = args.get("styles", None)
+        properties = args.get("properties", None)
+        classes = args.get("classes", None)
+        text_content = args.get("text_content", None)
+
+        if attributes:
+            attr_step = {
+                "args": {
+                    "query": query,
+                    "attributes": attributes
+                }
+            }
+
+            await WaitModule.attributes(api, attr_step, ctx, process, item)
+
+        if styles:
+            style_step = {
+                "args": {
+                    "query": query,
+                    "properties": styles
+                }
+            }
+
+            await WaitModule.style_properties(api, style_step, ctx, process, item)
+
+        if properties:
+            prop_step = {
+                "args": {
+                    "query": query,
+                    "properties": properties
+                }
+            }
+
+            await WaitModule.element_properties(api, prop_step, ctx, process, item)
+
+        if classes:
+            class_step = {
+                "args": {
+                    "query": query,
+                    "classes": classes
+                }
+            }
+
+            await WaitModule.has_class(api, class_step, ctx, process, item)
+
+        if text_content:
+            text_step = {
+                "args": {
+                    "query": query,
+                    "value": text_content
+                }
+            }
+
+            await WaitModule.text_content(api, text_step, ctx, process, item)
+
+    @staticmethod
     async def attributes(api, step, ctx=None, process=None, item=None):
         api.logger.info(f'assert attributes: {step["args"]}')
         await WaitModule.attributes(api, step, ctx, process, item)
