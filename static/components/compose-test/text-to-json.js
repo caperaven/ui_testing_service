@@ -1166,10 +1166,6 @@ class Actions {
     static wait_idle (struct, obj, result, state){
         struct.type = "wait";
         struct.action = "idle";
-        struct.args = {
-            query: obj.parts[1]
-        };
-
 
         result[state.name] = struct;
         return result;

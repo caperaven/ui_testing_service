@@ -24,7 +24,11 @@ class ProcessRunner:
 
         if hasattr(module, action):
             function = getattr(module, action)
-            step["args"] = await inflate(api, step["args"], ctx, process, item)
+            if "args" in step:
+                step["args"] = await inflate(api, step["args"], ctx, process, item)
+            else:
+                pass
+
             result = await function(api, step, ctx, process, item)
 
             args = step.get("args", None)

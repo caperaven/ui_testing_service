@@ -209,7 +209,7 @@ class ProcessToText {
 
 
     static wait_time(name, obj, textCollection) {
-        textCollection.push(`wait_time  ${obj.args.query} ${obj.args.timeout}`);
+        textCollection.push(`wait_time ${obj.args.timeout}`);
     }
 
     static wait_is_ready(name, obj, textCollection) {
@@ -274,9 +274,7 @@ class ProcessToText {
     }
 
     static wait_idle(name, obj, textCollection) {
-        if(obj.args != null){
-            textCollection.push(`wait_idle ${obj.args.query} ${obj.args.count}`);
-        }
+        textCollection.push(`wait_idle`);
     }
 
     static wait_has_attribute(name, obj, textCollection) {
