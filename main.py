@@ -441,8 +441,12 @@ async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")
 
 
 @app.post("/queue_bundle")
-async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"),
+async def queue_bundle_post(bundle: str,
+                            browser: Optional[str] = Query("chrome"),
+                            server: Optional[str] = Query("https://localhost"),
                             stop_on_error: Optional[bool] = Query(False)):
+
+    process_api.state["server"] = server
     await queue_before_post(bundle, browser)
 
     file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"

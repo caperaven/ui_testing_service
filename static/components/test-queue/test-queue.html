@@ -12,6 +12,10 @@
 
     <divider></divider>
 
+    <combo-box id="cbServers" value.bind="server" ready.call="loadServers"></combo-box>
+
+    <divider></divider>
+
     <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles"></combo-box>
 
     <divider></divider>
