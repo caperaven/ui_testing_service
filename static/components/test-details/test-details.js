@@ -12,8 +12,8 @@ export default class TestDetails extends crs.classes.BindableElement {
         await crs.binding.inflation.manager.register("memory", template);
 
         await this.#loadLog();
-        await this.#loadMemory();
         await this.#loadSchema();
+        await this.#loadMemory();
     }
 
     async disconnectedCallback() {
@@ -35,7 +35,8 @@ export default class TestDetails extends crs.classes.BindableElement {
         this.memoryContainer.innerHTML = "";
         this.memoryContainer.append(...elements);
 
-        const blob = await fetch(`/memory_graph?job_id=${this.id}`).then(result => result.blob());
+        const response = await fetch(`/memory_graph?job_id=${this.id}`);
+        const blob = await response.blob();
         const url = URL.createObjectURL(blob);
         this.graphContainer.src = url;
     }
@@ -132,12 +133,14 @@ function parseCollection(collection) {
     const endMemory = result[result.length - 1].value;
     const memoryChange = endMemory - startMemory;
 
-    return result.push({
+    result.push({
         date: "",
         time: "",
         name: "DIFFERENCE",
         value: memoryChange
     });
+
+    return result;
 }
 
 function parseDate(dateStr) {
