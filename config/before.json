@@ -1,3 +1,5 @@
 {
-    "designer": "F:\\caperaven projects\\crs-designer-3\\tests-ui\\before"
+    "designer": "F:\\caperaven projects\\crs-designer-3\\tests-ui\\before",
+    "onkey": "C:\\Development\\PragmaDev\\pragma-ui-testing\\tests\\templates",
+    "test": "C:\\Development\\PragmaDev\\pragma-ui-testing\\tests\\test_before"
 }
