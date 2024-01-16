@@ -75,6 +75,8 @@ async def server_list():
     with open(file, "r") as json_file:
         data = json.load(json_file)
 
+    json_file.close()
+
     return data
 
 
@@ -186,6 +188,8 @@ async def log(job_id: str):
             line = line.replace("\t", "    ")
             result.append(line)
 
+    file.close()
+
     return result
 
 
@@ -214,6 +218,8 @@ async def memory_data(job_id: str):
             line = line.replace("\t", "    ")
             result.append(line)
 
+    file.close()
+
     return result
 
 
@@ -236,9 +242,14 @@ async def memory_graph(job_id: str):
     # load the image and return it as a base64 string
     with open(file, "rb") as file:
         image = file.read()
+    file.close()
 
-    return StreamingResponse(io.BytesIO(image), media_type="image/png")
-
+    try:
+        image_stream = io.BytesIO(image)
+        return StreamingResponse(image_stream, media_type="image/png")
+    except Exception as e:
+        print(f"Error loading image: {e}")
+        return None
 
 @app.get("/test_schema")
 async def test_schema(job_id: str):
@@ -257,6 +268,8 @@ async def test_schema(job_id: str):
 
     with open(file, "r") as json_file:
         data = json.load(json_file)
+
+    json_file.close()
 
     return data
 
@@ -308,6 +321,8 @@ async def template_put(name: str, data: Dict = Body(...)):
     with open(file, "w") as json_file:
         json.dump(data, json_file, indent=2)
 
+    json_file.close()
+
     return {"message": "Template saved"}
 
 
@@ -323,6 +338,8 @@ async def template_get(name: str):
 
     with open(file, "r") as json_file:
         data = json.load(json_file)
+
+    json_file.close()
 
     return data
 
@@ -354,6 +371,8 @@ async def extension_put(name: str, data: Dict = Body(...)):
     with open(file, "w") as file:
         file.write(data["content"])
 
+    file.close()
+
     return {"message": "extension saved"}
 
 
@@ -364,6 +383,8 @@ async def extension_get(name: str):
 
     with open(file, "r") as file:
         data = file.read()
+
+    file.close()
 
     return {
         "content": data
@@ -376,6 +397,8 @@ async def test_bundles_get():
 
     with open(file, "r") as file:
         data = json.load(file)
+
+    file.close()
 
     result = []
     for key, value in data.items():
@@ -413,6 +436,8 @@ async def queue_before_post(bundle: str, browser: Optional[str] = Query("chrome"
             with open(os.path.normpath(before_bundle + "\\" + test_file), "r") as json_file:
                 data = json.load(json_file)
 
+            json_file.close()
+
             test_id = data["id"]
             await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
 
@@ -436,13 +461,19 @@ async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")
             with open(os.path.normpath(after_bundle + "\\" + test_file), "r") as json_file:
                 data = json.load(json_file)
 
+            json_file.close()
+
             test_id = data["id"]
             await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
 
 
 @app.post("/queue_bundle")
-async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"),
+async def queue_bundle_post(bundle: str,
+                            browser: Optional[str] = Query("chrome"),
+                            server: Optional[str] = Query("https://localhost"),
                             stop_on_error: Optional[bool] = Query(False)):
+
+    process_api.state["server"] = server
     await queue_before_post(bundle, browser)
 
     file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
@@ -452,6 +483,8 @@ async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"
     with open(file, "r") as file:
         data = json.load(file)
 
+    file.close()
+
     bundle_folder = data[bundle]
     test_files = os.listdir(bundle_folder)
 
@@ -459,6 +492,8 @@ async def queue_bundle_post(bundle: str, browser: Optional[str] = Query("chrome"
         if test_file.endswith(".json"):
             with open(os.path.normpath(bundle_folder + "\\" + test_file), "r") as json_file:
                 data = json.load(json_file)
+
+            json_file.close()
 
             test_id = data["id"]
             await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)

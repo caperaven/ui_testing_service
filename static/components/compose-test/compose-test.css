@@ -117,3 +117,19 @@ divider {
     background: var(--grey-s1);
     margin: var(--padding);
 }
+
+combo-box {
+    position: relative;
+}
+
+combo-box:hover:after {
+    content: attr(aria-label);
+    display: block;
+    position: absolute;
+    padding: var(--padding);
+    border-bottom: var(--border);
+    color: var(--blue-s2);
+    background: var(--blue);
+    border-radius: 5px;
+    z-index: 999999999;
+}
