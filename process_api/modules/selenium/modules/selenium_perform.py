@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver import Keys
+from process_api.utils.utils import replace_server_url
 import time
 import copy
 
@@ -13,10 +14,7 @@ class PerformModule:
     @staticmethod
     async def navigate(api, step, ctx=None, process=None, item=None):
         api.logger.info(f'perform navigate: {step["args"]["url"]}')
-
-        if step["args"]["url"] == "${state.server}":
-            step["args"]["url"] = api.state["server"]
-
+        step["args"]["url"] = replace_server_url(step["args"]["url"], api.state)
         await api.call("selenium", "goto", step["args"], ctx, process, item)
 
     @staticmethod
