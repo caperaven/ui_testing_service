@@ -127,7 +127,8 @@ export default class ComposeTest extends crs.classes.BindableElement {
             this.markdownEditor.value = text;
         }
         catch (error) {
-            alert(error.message)
+            console.error(error);
+            alert(error.message);
         }
         finally {
             this.#loading = false;
