@@ -28,7 +28,12 @@ aside div {
     border-bottom: var(--border);
 }
 
-aside div:hover {
+aside div:hover:not([aria-selected="true"]) {
     color: var(--blue);
     background: var(--blue-s2);
+}
+
+aside [aria-selected="true"] {
+    color: var(--blue-s2);
+    background: var(--blue);
 }

@@ -26,6 +26,10 @@ export default class ComponentManager extends crs.classes.BindableElement {
 
     async menu_selected(event) {
         const target = event.composedPath()[0];
+        const current = target.parentElement.querySelector("[aria-selected='true']");
+        current.removeAttribute("aria-selected");
+        target.setAttribute("aria-selected", "true");
+
         const component = target.dataset.component;
         await this.set_component(component);
     }
