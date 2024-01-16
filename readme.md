@@ -28,6 +28,13 @@ or
 pip install -r requirements.txt
 ```
 
+If you are running the update and you get some wheel errors just run the pip install commands manually.
+
+## Installing selenium drivers.
+
+To run the selenium tests you need to install the drivers for the browsers you want to test with.
+You can see more instructions about it here: https://github.com/caperaven/py_process/blob/main/notebooks/selenium/chrome.ipynb
+
 ## Run the app
 
 ```bash
