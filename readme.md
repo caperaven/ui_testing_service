@@ -14,8 +14,12 @@ git clone https://github.com/caperaven/ui_testing_service.git
 ## Create a virtual environment and activate it
 
 ```bash
-python -m venv venv
+python -m venv venv 
+
+
 source venv/bin/activate
+or 
+./venv/scripts/activate
 ```
 
 ## Install the requirements
