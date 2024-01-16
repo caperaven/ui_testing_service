@@ -274,7 +274,9 @@ class ProcessToText {
     }
 
     static wait_idle(name, obj, textCollection) {
-        textCollection.push(`wait_idle ${obj.args.query} ${obj.args.count}`);
+        if(obj.args != null){
+            textCollection.push(`wait_idle ${obj.args.query} ${obj.args.count}`);
+        }
     }
 
     static wait_has_attribute(name, obj, textCollection) {
