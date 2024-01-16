@@ -12,22 +12,22 @@
 
     <divider></divider>
 
-    <combo-box id="cbServers" value.bind="server" ready.call="loadServers"></combo-box>
+    <combo-box id="cbServers" value.bind="server" ready.call="loadServers" aria-label="Server"></combo-box>
 
     <divider></divider>
 
-    <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles"></combo-box>
+    <combo-box value.bind="testBundle" ready.call="loadBundles" ref="cbBundles" aria-label="Bundle of scripts"></combo-box>
 
     <divider></divider>
 
-    <combo-box value.bind="browser">
+    <combo-box value.bind="browser" aria-label="Browser">
         <option value="chrome">Chrome</option>
         <option value="firefox">Firefox</option>
     </combo-box>
 
     <divider></divider>
 
-    <combo-box value.bind="refreshRate">
+    <combo-box value.bind="refreshRate" aria-label="Refresh rate">
         <option value="500">0.5 second</option>
         <option value="1000">1 second</option>
         <option value="5000">5 second</option>
