@@ -153,5 +153,3 @@ class DataModule:
 
         if file is not None:
             plt.savefig(file, dpi=300, bbox_inches='tight')
-
-        #plt.show()
