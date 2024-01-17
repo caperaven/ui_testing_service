@@ -29,7 +29,6 @@ class TaskQueue:
             "start_time": None,
             "end_time": None,
             "duration": None,
-            "browser": args[2]
         }
 
         return task_id
@@ -121,6 +120,7 @@ def save_summary_to_file(file_name, summary):
     summary_file = file_name.replace(".log", ".summary.json")
     with open(summary_file, 'w') as summary_file:
         json.dump(summary, summary_file, indent=4)
+
 
 def get_time_format(start_time, end_time):
     duration = end_time - start_time

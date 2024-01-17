@@ -140,16 +140,15 @@ export default class TestQueue extends crs.classes.BindableElement {
 
     async add() {
         const bundle = this.getProperty("testBundle");
-        const browser = this.getProperty("browser");
-        const server = this.getProperty("server");
         const stop = this.getProperty("stopOnError");
 
-        await fetch(`/queue_bundle?server=${server}&bundle=${bundle}&browser=${browser}&stop_on_error=${stop}`, { method: "POST" });
+        await fetch(`/queue_bundle?bundle=${bundle}&stop_on_error=${stop}`, { method: "POST" });
         await this.#getStatus();
     }
 
     async runQueue() {
-        await fetch("/run_queue", { method: "POST" });
+        const browser = this.getProperty("browser");
+        await fetch(`/run_queue?browser=${browser}`, { method: "POST" });
         this.setProperty("refreshRate", 500);
     }
 }

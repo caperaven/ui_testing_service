@@ -16,3 +16,4 @@ process_api/__pycache__/
 .idea/ui_testing_service.iml
 src/__pycache__/
 extensions/__pycache__/
+package-lock.json
