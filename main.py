@@ -31,7 +31,7 @@ from process_api.modules.selenium import SeleniumModule
 from process_api.modules.data import DataModule
 from process_api.modules.selenium.conversions import clean_google_recording, GoogleRecording
 from src.json_identifier import identify_json
-from src.test_runner import TestRunner
+from src.test_runner import TestRunner, get_driver
 from src.task_queue import TaskQueue
 from src.globals import globals
 from src.memory_logger import MemoryLogger
@@ -102,15 +102,16 @@ async def test(data: Dict = Body(...),
                bundle: Optional[str] = Query("None")):
 
     if bundle != "None":
-        await queue_before_post(bundle, browser)
+        await queue_before_post(bundle)
 
     json_type = identify_json(data)
     test_id = data.get("id", "unknown")
     process_api.state["server"] = server
-    job_id = await queue.add(test_id, TestRunner.test, process_api, data, browser, json_type)
+    process_api.state["browser"] = browser
+    job_id = await queue.add(test_id, TestRunner.test, process_api, data, json_type)
 
     if bundle != "None":
-        await queue_after_post(bundle, browser)
+        await queue_after_post(bundle)
 
     if queue.running is False:
         threading.Thread(target=run_in_new_loop).start()
@@ -418,7 +419,7 @@ async def before_bundles_get():
 
 
 @app.post("/queue_before")
-async def queue_before_post(bundle: str, browser: Optional[str] = Query("chrome")):
+async def queue_before_post(bundle: str):
     if bundle == "None":
         return
 
@@ -439,11 +440,11 @@ async def queue_before_post(bundle: str, browser: Optional[str] = Query("chrome"
             json_file.close()
 
             test_id = data["id"]
-            await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+            await queue.add(test_id, TestRunner.test, process_api, data, JsonType.SCHEMA)
 
 
 @app.get("/queue_after")
-async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")):
+async def queue_after_post(bundle: str):
     if bundle == "None":
         return
 
@@ -464,17 +465,14 @@ async def queue_after_post(bundle: str, browser: Optional[str] = Query("chrome")
             json_file.close()
 
             test_id = data["id"]
-            await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+            await queue.add(test_id, TestRunner.test, process_api, data, JsonType.SCHEMA)
 
 
 @app.post("/queue_bundle")
 async def queue_bundle_post(bundle: str,
-                            browser: Optional[str] = Query("chrome"),
-                            server: Optional[str] = Query("https://localhost"),
                             stop_on_error: Optional[bool] = Query(False)):
 
-    process_api.state["server"] = server
-    await queue_before_post(bundle, browser)
+    await queue_before_post(bundle)
 
     file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
 
@@ -496,14 +494,15 @@ async def queue_bundle_post(bundle: str,
             json_file.close()
 
             test_id = data["id"]
-            await queue.add(test_id, TestRunner.test, process_api, data, browser, JsonType.SCHEMA)
+            await queue.add(test_id, TestRunner.test, process_api, data, JsonType.SCHEMA)
 
-    await queue_after_post(bundle, browser)
+    await queue_after_post(bundle)
 
 
 @app.post("/run_queue")
-async def run_queue():
+async def run_queue(browser: Optional[str] = Query("chrome")):
     if queue.running is False:
+        process_api.state["browser"] = browser
         threading.Thread(target=run_in_new_loop).start()
 
 
@@ -512,14 +511,35 @@ def get_log_file_path(job_id: str):
 
 
 def run_in_new_loop():
-    # Create a new event loop
+    run_async_function(open_browser)
+    try:
+        run_async_function(queue.run_first_task)
+    except Exception as e:
+        process_api.logger.error(e.__str__() + "\n" + e.__traceback__.__str__())
+    finally:
+        run_async_function(close_browser)
+
+
+def run_async_function(fn):
     loop = asyncio.new_event_loop()
-    # Set the loop as the default for this context
     asyncio.set_event_loop(loop)
-    # Run the async function in the loop
-    loop.run_until_complete(queue.run_first_task())
-    # Close the loop after the task is done
+    loop.run_until_complete(fn())
     loop.close()
+
+
+async def open_browser():
+    browser = process_api.state["browser"]
+    driver = await get_driver(process_api, browser)
+    process_api.set_variable("driver", driver)
+    globals["process_id"] = driver.service.process.pid
+
+
+async def close_browser():
+    driver = process_api.get_variable("driver")
+
+    await process_api.call("selenium", "close_driver", {
+        "driver": driver
+    })
 
 
 host_address = "127.0.0.1"

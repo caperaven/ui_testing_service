@@ -4,22 +4,13 @@ from src.globals import globals
 
 class TestRunner:
     @staticmethod
-    async def test(api, data, browser, json_type):
+    async def test(api, data, json_type):
         if "skip" in data:
             api.logger.info("Skipping: " + data["skip"])
             return "skipped"
 
-        driver = await get_driver(api, browser)
-        api.set_variable("driver", driver)
-        globals["process_id"] = driver.service.process.pid
-
-        try:
-            method = getattr(TestRunner, json_type.value)
-            return await method(api, data)
-        finally:
-            await api.call("selenium", "close_driver", {
-                "driver": driver
-            })
+        method = getattr(TestRunner, json_type.value)
+        return await method(api, data)
 
     @staticmethod
     async def schema(api, data):
