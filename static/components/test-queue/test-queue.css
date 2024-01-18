@@ -138,6 +138,7 @@ combo-box {
 
 combo-box:hover:after {
     content: attr(aria-label);
+    right: 0;
     display: block;
     position: absolute;
     padding: var(--padding);
@@ -146,4 +147,6 @@ combo-box:hover:after {
     background: var(--blue);
     border-radius: 5px;
     z-index: 999999999;
+    opacity: 0.5;
+    pointer-events: none;
 }
