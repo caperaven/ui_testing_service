@@ -1,2 +1,3 @@
 async def goto(driver, url):
-    driver.get(url)
+    if driver.current_url != url:
+        driver.get(url)
