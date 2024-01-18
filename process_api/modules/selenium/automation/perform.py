@@ -151,7 +151,7 @@ class Actions:
 
     @staticmethod
     async def switch_to_default(driver, element, chain, args):
-        driver.switch_to.default_content()
+        driver.switch_to.window(driver.window_handles[0])
 
     @staticmethod
     async def switch_to_tab(driver, element, chain, args):
