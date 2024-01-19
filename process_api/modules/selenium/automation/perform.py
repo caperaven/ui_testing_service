@@ -113,19 +113,29 @@ class Actions:
     @staticmethod
     async def drag_and_drop(driver, element, chain, args):
         target = args["target"]
-        element.drag_and_drop(target)
+        x = args["x"] - target.size["width"] / 2
+        y = args["y"] - target.size["height"] / 2
+        chain.move_to_element(element)
+        chain.click_and_hold(element)
+        chain.move_to_element_with_offset(target, x, y)
+        chain.release().perform()
 
-    @staticmethod
-    async def drag_and_drop_by(driver, element, chain, args):
-        x = args.get("x", 0)
-        y = args.get("y", 0)
-        element.drag_and_drop_by(x, y)
-
-    @staticmethod
-    async def drag_and_drop_by_offset(driver, element, chain, args):
-        x = args.get("x", 0)
-        y = args.get("y", 0)
-        element.drag_and_drop_by_offset(x, y)
+    # @staticmethod
+    # async def drag_and_drop(driver, element, chain, args):
+    #     target = args["target"]
+    #     element.drag_and_drop(target)
+    #
+    # @staticmethod
+    # async def drag_and_drop_by(driver, element, chain, args):
+    #     x = args.get("x", 0)
+    #     y = args.get("y", 0)
+    #     element.drag_and_drop_by(x, y)
+    #
+    # @staticmethod
+    # async def drag_and_drop_by_offset(driver, element, chain, args):
+    #     x = args.get("x", 0)
+    #     y = args.get("y", 0)
+    #     element.drag_and_drop_by_offset(x, y)
 
     @staticmethod
     async def send_keys(driver, element, chain, args):

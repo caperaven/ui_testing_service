@@ -1,7 +1,6 @@
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver import Keys
 from process_api.utils.utils import replace_server_url
-import time
+from process_api.modules.selenium.automation.wait import get_element
 import copy
 
 
@@ -183,22 +182,25 @@ class PerformModule:
     async def drag_and_drop(api, step, ctx=None, process=None, item=None):
         api.logger.info(f'perform drag_and_drop {step["args"]}')
 
+        driver = api.get_variable("driver")
+
         args = copy.deepcopy(step["args"])
         args["action"] = "drag_and_drop"
+        args["target"] = await get_element(driver, args["target"], 10)
         await api.call("selenium", "perform", args, ctx, process, item)
 
-    @staticmethod
-    async def drag_and_drop_by(api, step, ctx=None, process=None, item=None):
-        api.logger.info(f'perform drag_and_drop_by {step["args"]}')
-
-        args = copy.deepcopy(step["args"])
-        args["action"] = "drag_and_drop_by"
-        await api.call("selenium", "perform", args, ctx, process, item)
-
-    @staticmethod
-    async def drag_and_drop_by_offset(api, step, ctx=None, process=None, item=None):
-        api.logger.info(f'perform drag_and_drop_by_offset {step["args"]}')
-
-        args = copy.deepcopy(step["args"])
-        args["action"] = "drag_and_drop_by_offset"
-        await api.call("selenium", "perform", args, ctx, process, item)
+    # @staticmethod
+    # async def drag_and_drop_by(api, step, ctx=None, process=None, item=None):
+    #     api.logger.info(f'perform drag_and_drop_by {step["args"]}')
+    #
+    #     args = copy.deepcopy(step["args"])
+    #     args["action"] = "drag_and_drop_by"
+    #     await api.call("selenium", "perform", args, ctx, process, item)
+    #
+    # @staticmethod
+    # async def drag_and_drop_by_offset(api, step, ctx=None, process=None, item=None):
+    #     api.logger.info(f'perform drag_and_drop_by_offset {step["args"]}')
+    #
+    #     args = copy.deepcopy(step["args"])
+    #     args["action"] = "drag_and_drop_by_offset"
+    #     await api.call("selenium", "perform", args, ctx, process, item)

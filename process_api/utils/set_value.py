@@ -1,3 +1,5 @@
+from selenium.webdriver.remote.webelement import WebElement
+
 from process_api.utils.prefixes import CONTEXT_PREFIX, PROCESS_PARAMETERS_PREFIX, PROCESS_DATA_PREFIX, ITEM_PREFIX
 
 
@@ -5,7 +7,7 @@ from process_api.utils.prefixes import CONTEXT_PREFIX, PROCESS_PARAMETERS_PREFIX
 # depending on the prefix of the path string (e.g. $c{, $p{, $d{, $i{) the value will be set on the context,
 # process parameters, process data, or item
 async def set_value(path, value, context, process, item):
-    if path is None:
+    if path is None or isinstance(path, WebElement):
         return
 
     # if the path starts with $c{, then it is a context variable
