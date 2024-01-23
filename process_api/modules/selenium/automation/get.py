@@ -6,6 +6,14 @@ from process_api.modules.selenium.condition_callbacks import element_callback, e
 
 async def get(driver, args):
     query = args.get("query", args.get("element", None))
+
+    # If query is not provided, construct it from the structure
+    if query is None:
+        for key in args:
+            if key != "query":
+                query = key
+                continue
+
     timeout = args.get("timeout", 10)
     ctx = args.get("context", driver)
     element = await get_element(ctx, query, timeout)
@@ -17,6 +25,7 @@ async def get(driver, args):
         return element.get_property(args["property"])
 
     return element
+
 
 
 async def get_element(driver, query, timeout):

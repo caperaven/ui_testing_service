@@ -1,0 +1,23 @@
+2023-10-31 14:08:08,192 - process_api - ERROR - Message: Unable to locate or obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2023-10-31 14:08:08,192 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\Development\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\Development\ui_testing_service\process_api\process_runner.py", line 28, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\Development\ui_testing_service\process_api\modules\selenium\__init__.py", line 19, in init_driver
+    driver = await DriverActions.init(browser, options)
+  File "C:\Development\ui_testing_service\process_api\modules\selenium\automation\driver.py", line 14, in init
+    driver = await browser_fn(options)
+  File "C:\Development\ui_testing_service\process_api\modules\selenium\automation\driver.py", line 43, in chrome
+    driver = webdriver.Chrome(service=chrome_service, options=opt)
+  File "C:\Development\ui_testing_service\venv\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Development\ui_testing_service\venv\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 51, in __init__
+    self.service.path = DriverFinder.get_path(self.service, options)
+  File "C:\Development\ui_testing_service\venv\lib\site-packages\selenium\webdriver\common\driver_finder.py", line 44, in get_path
+    raise NoSuchDriverException(f"Unable to locate or obtain driver for {options.capabilities['browserName']}")
+selenium.common.exceptions.NoSuchDriverException: Message: Unable to locate or obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+
+2023-10-31 14:08:13,312 - process_api - INFO - Task f30d4fb3-d74c-4a06-9af9-2999a59f5167 completed in 00:00:00:015
