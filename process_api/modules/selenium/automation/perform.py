@@ -6,7 +6,7 @@ from process_api.modules.selenium.automation.get import get_element
 from selenium.webdriver.support.ui import Select
 
 async def perform(driver, args):
-    timeout = args.get("timeout", 10)
+    timeout = args.get("timeout", 30)
     context = args.get("context", driver)
     query = args.get("query", None)
 

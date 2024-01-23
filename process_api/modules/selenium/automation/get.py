@@ -1,4 +1,5 @@
 from selenium.common import TimeoutException
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from process_api.modules.selenium.condition_callbacks import element_callback, element_usable_callback, light_and_shadow_dom_callback
@@ -36,6 +37,17 @@ async def get_element(driver, query, timeout):
         query = " ".join(query)
 
     if ' ' in query:
+        ## find it normally, if found return the element
+        try:
+            found_element = driver.find_element(By.CSS_SELECTOR, query)
+            if found_element is not None:
+                return found_element
+        except:
+            pass
+
+        ## we did not find it normally walk the path and look for it
+        ## look through the path and find it one element at a time
+        ## if this is on a shadowroot, then we need to find the shadowroot else we need to find the element normally
         return await get_element_on_path(driver, query, timeout)
     else:
         wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
