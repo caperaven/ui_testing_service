@@ -3,6 +3,7 @@ from selenium.webdriver import Keys
 from process_api.utils.utils import replace_server_url
 import time
 import copy
+import uuid
 
 
 class PerformModule:
@@ -202,3 +203,40 @@ class PerformModule:
         args = copy.deepcopy(step["args"])
         args["action"] = "drag_and_drop_by_offset"
         await api.call("selenium", "perform", args, ctx, process, item)
+
+    @staticmethod
+    async def set_uuid_variables(api, step, ctx=None, process=None, item=None):
+        # args = step["args"].copy()
+        api.logger.info(f'perform set_uuid_variables {step["args"]}')
+
+        args = copy.deepcopy(step["args"])
+        variables = args["variables"]
+
+        for variable in variables:
+            value = uuid.uuid4()
+            await api.set_value(variable, str(value), ctx, process, item)
+
+        # process["_results"][args["step"]] = "success"
+        # await api.call("selenium", "perform", args, ctx, process, item)
+
+    @staticmethod
+    async def properties_to_variables(api, step, ctx=None, process=None, item=None):
+        api.logger.info(f'perform properties_to_variables {step["args"]}')
+
+        args = step["args"].copy()
+
+        queries = args.keys()
+
+        for query in queries:
+            if query == "step": continue
+            element = await api.call("selenium", "get", args, ctx, process, item)
+            if element is not None:
+                element_def = args[query]
+                properties = element_def.keys()
+
+                for prop in properties:
+                    attr = element.get_property(prop)
+                    prop = element_def[prop]
+                    await api.set_value(prop, attr, ctx, process, item)
+
+        # process["_results"][args["step"]] = "success"

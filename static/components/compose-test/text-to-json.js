@@ -734,10 +734,10 @@ class Actions {
     }
 
     //not yet completed
-    static system_set_uuid_variables(struct, obj, result, state) {
+    static perform_set_uuid_variables(struct, obj, result, state) {
         // obj.parts.shift();
 
-        struct.type = "system";
+        struct.type = "perform";
         struct.action = "set_uuid_variables"
         struct.args = {
             variables : []
@@ -784,9 +784,9 @@ class Actions {
         return result;
     }
 
-    static system_properties_to_variables(struct, obj, result, state){
+    static perform_properties_to_variables(struct, obj, result, state){
         // - create variables from element properties for future use
-        struct.type = "system";
+        struct.type = "perform";
         struct.action = "properties_to_variables";
         struct.args = {
             step: state.name

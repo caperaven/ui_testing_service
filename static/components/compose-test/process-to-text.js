@@ -258,7 +258,7 @@ class ProcessToText {
     }
 
     static wait_selected(name, obj, textCollection) {
-        textCollection.push(`wait_selected  ${obj.args.query} ${obj.args.value}`);
+        textCollection.push(`wait_selected ${obj.args.query} ${obj.args.value}`);
     }
 
     static wait_child_count(name, obj, textCollection) {
@@ -301,8 +301,8 @@ class ProcessToText {
         textCollection.push(`system_sleep ${obj.args.duration}`);
     }
 
-    static system_set_uuid_variables(name, obj, textCollection) {
-        textCollection.push(`system_set_uuid_variables ${obj.args.variables.join(" ")}`);
+    static perform_set_uuid_variables(name, obj, textCollection) {
+        textCollection.push(`perform_set_uuid_variables ${obj.args.variables.join(" ")}`);
     }
 
     static system_attributes_to_variables(name, obj, textCollection) {
@@ -316,7 +316,7 @@ class ProcessToText {
         textCollection.push(`system_attributes_to_variables${attributesString}`);
     }
 
-    static system_properties_to_variables(name, obj, textCollection) {
+    static perform_properties_to_variables(name, obj, textCollection) {
         let attributesString = '';
         for (const [query, properties] of Object.entries(obj.args)) {
             attributesString += ` ${query}`;
@@ -324,7 +324,7 @@ class ProcessToText {
                 attributesString += ` ${attr}="${value}"`;
             }
         }
-        textCollection.push(`system_properties_to_variables${attributesString}`);
+        textCollection.push(`perform_properties_to_variables${attributesString}`);
     }
 
     static system_dimensions_to_variables(name, obj, textCollection) {
