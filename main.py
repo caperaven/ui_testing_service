@@ -54,7 +54,6 @@ process_api.set_value = set_value
 globals["queue"] = queue
 globals["api"] = process_api
 globals["memory_logger"] = MemoryLogger()
-globals["server"] = "https://localhost"
 
 process_api.state = globals
 
@@ -133,6 +132,11 @@ async def test_status(job_id: str):
         raise HTTPException(status_code=404, detail="Job not found")
 
     await queue.remove(job_id)
+
+
+@app.get("/is_running")
+async def is_running():
+    return queue.running
 
 
 @app.get("/status")
@@ -394,7 +398,7 @@ async def extension_get(name: str):
 
 @app.get("/test_bundles")
 async def test_bundles_get():
-    file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
+    file = os.path.normpath(globals["config_folder"] + "\\test_bundles.json")
 
     with open(file, "r") as file:
         data = json.load(file)
@@ -420,17 +424,20 @@ async def before_bundles_get():
 
 @app.post("/queue_before")
 async def queue_before_post(bundle: str):
-    if bundle == "None":
+    if bundle is None or bundle == "None":
         return
 
-    if "before" not in globals:
+    bundle_file = os.path.normpath(globals["config_folder"] + "\\before.json")
+
+    with open(bundle_file, "r") as json_file:
+        data = json.load(json_file)
+    json_file.close()
+
+    if bundle not in data:
         return
 
-    if bundle not in globals["before"]:
-        return
-
-    before_bundle = globals["before"][bundle]
-    test_files = os.listdir(before_bundle)
+    before_bundle = data[bundle].replace("$root", globals["$root"])
+    test_files = os.listdir(os.path.normpath(before_bundle))
 
     for test_file in test_files:
         if test_file.endswith(".json"):
@@ -469,21 +476,18 @@ async def queue_after_post(bundle: str):
 
 
 @app.post("/queue_bundle")
-async def queue_bundle_post(bundle: str,
-                            stop_on_error: Optional[bool] = Query(False)):
+async def queue_bundle_post(bundle: str):
 
     await queue_before_post(bundle)
 
-    file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
-
-    globals["stop_on_error"] = stop_on_error
+    file = os.path.normpath(globals["config_folder"] + "\\test_bundles.json")
 
     with open(file, "r") as file:
         data = json.load(file)
 
     file.close()
 
-    bundle_folder = data[bundle]
+    bundle_folder = data[bundle].replace("$root", globals["$root"])
     test_files = os.listdir(bundle_folder)
 
     for test_file in test_files:
@@ -500,9 +504,14 @@ async def queue_bundle_post(bundle: str,
 
 
 @app.post("/run_queue")
-async def run_queue(browser: Optional[str] = Query("chrome")):
+async def run_queue(browser: Optional[str] = Query("chrome"),
+                    server: Optional[str] = Query("https://localhost"),
+                    stop_on_error: Optional[bool] = Query(False)):
+
     if queue.running is False:
         process_api.state["browser"] = browser
+        process_api.state["server"] = server
+        globals["stop_on_error"] = stop_on_error
         threading.Thread(target=run_in_new_loop).start()
 
 

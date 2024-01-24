@@ -17,7 +17,7 @@ export default class TestQueue extends crs.classes.BindableElement {
     async preLoad() {
         this.setProperty("refreshRate", 0);
         this.setProperty("browser", "chrome");
-        this.setProperty("stopOnError", false);
+        this.setProperty("stopOnError", true);
     }
 
     async load() {
@@ -140,15 +140,18 @@ export default class TestQueue extends crs.classes.BindableElement {
 
     async add() {
         const bundle = this.getProperty("testBundle");
-        const stop = this.getProperty("stopOnError");
 
-        await fetch(`/queue_bundle?bundle=${bundle}&stop_on_error=${stop}`, { method: "POST" });
-        await this.#getStatus();
+        await fetch(`/queue_bundle?bundle=${bundle}`, { method: "POST" });
+        await this.#getStatus(true);
     }
 
     async runQueue() {
         const browser = this.getProperty("browser");
-        await fetch(`/run_queue?browser=${browser}`, { method: "POST" });
+        const server = this.getProperty("server");
+        const stop = this.getProperty("stopOnError");
+
+        await fetch(`/run_queue?browser=${browser}&server=${server}&stop_on_error=${stop}`, { method: "POST" });
+
         this.setProperty("refreshRate", 500);
     }
 }
