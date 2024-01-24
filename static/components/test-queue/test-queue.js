@@ -5,6 +5,7 @@ import {cleanTime} from "../utils/clean-time.js";
 
 export default class TestQueue extends crs.classes.BindableElement {
     #running = false;
+    #monitor_stop = false;
 
     get shadowDom() {
         return true;
@@ -59,6 +60,7 @@ export default class TestQueue extends crs.classes.BindableElement {
 
         // don't run
         if (refreshRate == 0) {
+            this.#monitor_stop = false;
             return this.#running = false;
         }
 
@@ -70,6 +72,17 @@ export default class TestQueue extends crs.classes.BindableElement {
 
             if (refreshRate > 0) {
                 await this.#getStatusTimer();
+            }
+
+            const isRunning = await fetch("/is_running").then(result => result.json());
+
+            // once we are notified that the queue is starting to run then start watching for when it stops.
+            if (isRunning == true) {
+                this.#monitor_stop = true;
+            }
+
+            if (this.#monitor_stop == true && isRunning == false) {
+                this.setProperty("refreshRate", 0);
             }
         }, refreshRate);
     }
