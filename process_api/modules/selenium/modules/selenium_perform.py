@@ -208,7 +208,6 @@ class PerformModule:
 
     @staticmethod
     async def set_uuid_variables(api, step, ctx=None, process=None, item=None):
-        # args = step["args"].copy()
         api.logger.info(f'perform set_uuid_variables {step["args"]}')
 
         args = copy.deepcopy(step["args"])
@@ -217,9 +216,6 @@ class PerformModule:
         for variable in variables:
             value = uuid.uuid4()
             await api.set_value(variable, str(value), ctx, process, item)
-
-        # process["_results"][args["step"]] = "success"
-        # await api.call("selenium", "perform", args, ctx, process, item)
 
     @staticmethod
     async def properties_to_variables(api, step, ctx=None, process=None, item=None):

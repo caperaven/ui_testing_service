@@ -15,13 +15,18 @@ class SystemModule:
     async def template(api, step, ctx=None, process=None, item=None):
         args = step.get("args")
         schema = await get_value(args.get('schema'), ctx, process, item)
-        process = await get_value(args.get('process', 'main'), ctx, process, item)
+        process_name = await get_value(args.get('process', 'main'), ctx, process, item)
         parameters = await get_value(args.get('parameters'), ctx, process, item)
 
-        api.logger.info(f'template: {schema} {process} {parameters}')
+        for key in parameters:
+            value = parameters[key]
+            new_value = await get_value(value, ctx, process, item)
+            parameters[key] = new_value
+
+        api.logger.info(f'template: {schema} {process_name} {parameters}')
 
         schema = api.process_templates.get_template(schema)
-        return await api.schema_runner.run_process(api, schema, process, ctx, parameters)
+        return await api.schema_runner.run_process(api, schema, process_name, ctx, parameters)
 
     @staticmethod
     async def run_command(api, step, ctx=None, process=None, item=None):

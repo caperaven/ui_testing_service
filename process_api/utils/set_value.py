@@ -18,7 +18,10 @@ async def set_value(path, value, context, process, item):
     # if the path starts with $p{, then it is a process parameters variable
     if path.startswith(PROCESS_PARAMETERS_PREFIX) and process is not None:
         # set the parameters property if it does not exist
-        if not hasattr(process, "parameters"):
+        # if not hasattr(process, "parameters"):
+        #     process["parameters"] = {}
+
+        if "parameters" not in process:
             process["parameters"] = {}
 
         set_property_on_path(process["parameters"], path[3:-1].split("."), value)
@@ -26,7 +29,10 @@ async def set_value(path, value, context, process, item):
     # if the path starts with $d{, then it is a process data variable
     if path.startswith(PROCESS_DATA_PREFIX) and process is not None:
         # set the data property if it does not exist
-        if not hasattr(process, "data"):
+        # if not hasattr(process, "data"):
+        #     process["data"] = {}
+
+        if "data" not in process:
             process["data"] = {}
 
         set_property_on_path(process["data"], path[3:-1].split("."), value)
