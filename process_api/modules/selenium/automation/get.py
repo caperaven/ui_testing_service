@@ -15,7 +15,7 @@ async def get(driver, args):
                 query = key
                 continue
 
-    timeout = args.get("timeout", 10)
+    timeout = args.get("timeout", 30)
     ctx = args.get("context", driver)
     element = await get_element(ctx, query, timeout)
 
