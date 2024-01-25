@@ -24,7 +24,7 @@ def get_summary(date):
     return result
 
 
-def get_summary_memory_graph(date):
+def get_summary_memorydiff_graph(date):
     # Your existing code to get data and create DataFrame
     data = get_summary(date)
     memory = []
@@ -35,13 +35,58 @@ def get_summary_memory_graph(date):
 
     # Create the plot
     fig, ax = plt.subplots()
-    df.plot(kind='line', ax=ax, title="Memory", ylabel="Memory", xlabel="Test")
+    df.plot(kind='line', ax=ax, title="Open Close Memory Difference", ylabel="Memory Difference", xlabel="Test")
 
     # Save the plot to a BytesIO object
     image_io = io.BytesIO()
     plt.savefig(image_io, format='png', bbox_inches='tight')
     image_io.seek(0)
     plt.close(fig)
+
+    # Generator function to yield image data
+    def iterfile():
+        image_io.seek(0)  # Ensure you're at the start of the BytesIO object
+        while True:
+            chunk = image_io.read(4096)  # Read in 4KB chunks
+            if not chunk:
+                break
+            yield chunk
+        image_io.close()
+
+    # Return the response
+    return StreamingResponse(iterfile(), media_type="image/png")
+
+
+def get_summary_memory_graph(date):
+    data = get_summary(date)
+    memory = []
+    for item in data:
+        memory.append({"start": item["memory_start"], "end": item["memory_end"]})
+
+    df = pd.DataFrame(memory)
+
+    # Plotting
+    plt.figure(figsize=(10, 6))
+
+    # Plotting start values
+    plt.plot(df.index, df['start'], label='Start', marker='o')  # Marker to highlight points
+
+    # Plotting end values
+    plt.plot(df.index, df['end'], label='End', marker='o')  # Marker to highlight points
+
+    # Adding legend
+    plt.legend()
+
+    # Adding titles and labels
+    plt.title('Start and End Values')
+    plt.xlabel('Index')
+    plt.ylabel('Values')
+
+    # Save the plot to a BytesIO object
+    image_io = io.BytesIO()
+    plt.savefig(image_io, format='png', bbox_inches='tight')
+    image_io.seek(0)
+    plt.close()
 
     # Generator function to yield image data
     def iterfile():

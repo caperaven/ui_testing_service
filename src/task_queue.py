@@ -82,6 +82,8 @@ class TaskQueue:
                 status["status"] = "complete"
 
             status["memory_diff"] = memory_logger.difference()
+            status["memory_start"] = memory_logger.start()
+            status["memory_end"] = memory_logger.end()
 
             if status["error_count"] > 0:
                 status["status"] = "error"

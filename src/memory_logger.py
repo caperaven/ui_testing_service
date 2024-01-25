@@ -82,3 +82,8 @@ class MemoryLogger:
         diff = end - start
         return diff
 
+    def start(self):
+        return self.memory[0]["memory"]
+
+    def end(self):
+        return self.memory[-1]["memory"]
