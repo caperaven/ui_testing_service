@@ -15,7 +15,7 @@ async def get(driver, args):
                 query = key
                 continue
 
-    timeout = args.get("timeout", 10)
+    timeout = args.get("timeout", 30)
     ctx = args.get("context", driver)
     element = await get_element(ctx, query, timeout)
 
@@ -28,7 +28,6 @@ async def get(driver, args):
     return element
 
 
-
 async def get_element(driver, query, timeout):
     if isinstance(query, WebElement):
         return query
@@ -36,12 +35,13 @@ async def get_element(driver, query, timeout):
     if isinstance(query, list):
         query = " ".join(query)
 
+    wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
+
     if ' ' in query:
         ## find it normally, if found return the element
         try:
             found_element = driver.find_element(By.CSS_SELECTOR, query)
-            if found_element is not None:
-                return found_element
+            return wait_for_element(driver, found_element, wait)
         except:
             pass
 
@@ -50,14 +50,21 @@ async def get_element(driver, query, timeout):
         ## if this is on a shadowroot, then we need to find the shadowroot else we need to find the element normally
         return await get_element_on_path(driver, query, timeout)
     else:
-        wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
-
         element = wait.until(element_callback(None, {
             "query": query,
             "present": True
         }))
 
-        return wait.until(element_usable_callback(element))
+        return wait_for_element(driver, element, wait)
+
+def wait_for_element(driver, element, wait):
+    if element is None:
+        return None
+
+    driver.execute_script("arguments[0].scrollIntoView();", element)
+    wait.until(element_usable_callback(element))
+
+    return element
 
 
 
@@ -78,4 +85,5 @@ async def get_element_on_path(driver, query, timeout):
 
         shadow_root = driver.execute_script('return arguments[0].shadowRoot', element)
 
-    return element
+    wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
+    return wait_for_element(driver, element, wait)

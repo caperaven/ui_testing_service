@@ -16,7 +16,7 @@ async def wait_for_element_details(api, step, callback, ctx=None, process=None, 
 
     element = await api.call("selenium", "get", step_args, ctx, process, item)
 
-    timeout = args.get("timeout", 10)
+    timeout = args.get("timeout", 30)
     selenium_driver = api.get_variable("driver")
     WebDriverWait(selenium_driver, timeout).until(callback(element, args))
 
@@ -108,7 +108,7 @@ class WaitModule:
     async def window_count(api, step, ctx=None, process=None, item=None):
         api.logger.info(f'wait for window_count: {step["args"]}')
         args = copy.deepcopy(step["args"])
-        timeout = args.get("timeout", 10)
+        timeout = args.get("timeout", 30)
         selenium_driver = api.get_variable("driver")
         WebDriverWait(selenium_driver, timeout).until(window_count_callback(None, args))
 

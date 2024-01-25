@@ -1,8 +1,9 @@
 :host {
-    display: block;
+    display: grid;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    grid-template-rows: auto 1fr;
 }
 
 h2 {
@@ -14,6 +15,8 @@ ul {
     padding: 0;
     margin: 0;
     border-top: var(--border);
+    height: 100%;
+    overflow: auto;
 }
 
 li {

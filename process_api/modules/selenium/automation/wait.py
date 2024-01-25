@@ -2,7 +2,7 @@ from process_api.modules.selenium.automation.get import get_element
 
 
 async def wait(driver, args):
-    timeout = args["timeout"] if "timeout" in args else 10
+    timeout = args["timeout"] if "timeout" in args else 30
 
     if "query" in args:
         query = args["query"]
