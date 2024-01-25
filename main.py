@@ -54,19 +54,19 @@ process_api.set_value = set_value
 globals["queue"] = queue
 globals["api"] = process_api
 globals["memory_logger"] = MemoryLogger()
+globals["server"] = "https://localhost"
 
 process_api.state = globals
 
 register_extensions(process_api)
 
-# JHR: this needs to be updated so that it works based on the templates config file
-# for folder in globals["templates_folders"]:
-#     if " | " not in folder:
-#         process_api.process_templates.load_from_folder(folder)
-#     else:
-#         parts = folder.split(" | ")
-#         new_folder = parts[1]
-#         process_api.process_templates.load_from_folder(new_folder)
+for folder in globals["templates_folders"]:
+    if " | " not in folder:
+        process_api.process_templates.load_from_folder(folder)
+    else:
+        parts = folder.split(" | ")
+        new_folder = parts[1]
+        process_api.process_templates.load_from_folder(new_folder)
 
 
 @app.get("/server_list")
@@ -133,11 +133,6 @@ async def test_status(job_id: str):
         raise HTTPException(status_code=404, detail="Job not found")
 
     await queue.remove(job_id)
-
-
-@app.get("/is_running")
-async def is_running():
-    return queue.running
 
 
 @app.get("/status")
@@ -292,27 +287,26 @@ async def history(date: Optional[str] = Query(None)):
 async def templates():
     result = []
 
-    # JHR: this needs to be updated so that it works based on the templates config file
-    # for folder in globals["templates_folders"]:
-    #     if " | " not in folder:
-    #         search_folder = os.path.normpath(folder)
-    #         get_template_files(None, search_folder, result)
-    #     else:
-    #         parts = folder.split(" | ")
-    #         prefix = parts[0]
-    #         search_folder = os.path.normpath(parts[1])
-    #         get_template_files(prefix, search_folder, result)
+    for folder in globals["templates_folders"]:
+        if " | " not in folder:
+            search_folder = os.path.normpath(folder)
+            get_template_files(None, search_folder, result)
+        else:
+            parts = folder.split(" | ")
+            prefix = parts[0]
+            search_folder = os.path.normpath(parts[1])
+            get_template_files(prefix, search_folder, result)
 
     return result
 
 
-# def get_template_files(prefix, folder, result):
-#     for file in os.listdir(folder):
-#         if file.endswith(".json"):
-#             if prefix is None:
-#                 result.append(file)
-#             else:
-#                 result.append(prefix + " | " + file)
+def get_template_files(prefix, folder, result):
+    for file in os.listdir(folder):
+        if file.endswith(".json"):
+            if prefix is None:
+                result.append(file)
+            else:
+                result.append(prefix + " | " + file)
 
 
 @app.put("/template")
@@ -400,7 +394,7 @@ async def extension_get(name: str):
 
 @app.get("/test_bundles")
 async def test_bundles_get():
-    file = os.path.normpath(globals["config_folder"] + "\\test_bundles.json")
+    file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
 
     with open(file, "r") as file:
         data = json.load(file)
@@ -426,20 +420,17 @@ async def before_bundles_get():
 
 @app.post("/queue_before")
 async def queue_before_post(bundle: str):
-    if bundle is None or bundle == "None":
+    if bundle == "None":
         return
 
-    bundle_file = os.path.normpath(globals["config_folder"] + "\\before.json")
-
-    with open(bundle_file, "r") as json_file:
-        data = json.load(json_file)
-    json_file.close()
-
-    if bundle not in data:
+    if "before" not in globals:
         return
 
-    before_bundle = data[bundle].replace("$root", globals["$root"])
-    test_files = os.listdir(os.path.normpath(before_bundle))
+    if bundle not in globals["before"]:
+        return
+
+    before_bundle = globals["before"][bundle]
+    test_files = os.listdir(before_bundle)
 
     for test_file in test_files:
         if test_file.endswith(".json"):
@@ -478,18 +469,21 @@ async def queue_after_post(bundle: str):
 
 
 @app.post("/queue_bundle")
-async def queue_bundle_post(bundle: str):
+async def queue_bundle_post(bundle: str,
+                            stop_on_error: Optional[bool] = Query(False)):
 
     await queue_before_post(bundle)
 
-    file = os.path.normpath(globals["config_folder"] + "\\test_bundles.json")
+    file = os.path.normpath(globals["config_folder"]) + "\\test_bundles.json"
+
+    globals["stop_on_error"] = stop_on_error
 
     with open(file, "r") as file:
         data = json.load(file)
 
     file.close()
 
-    bundle_folder = data[bundle].replace("$root", globals["$root"])
+    bundle_folder = data[bundle]
     test_files = os.listdir(bundle_folder)
 
     for test_file in test_files:
@@ -506,14 +500,9 @@ async def queue_bundle_post(bundle: str):
 
 
 @app.post("/run_queue")
-async def run_queue(browser: Optional[str] = Query("chrome"),
-                    server: Optional[str] = Query("https://localhost"),
-                    stop_on_error: Optional[bool] = Query(False)):
-
+async def run_queue(browser: Optional[str] = Query("chrome")):
     if queue.running is False:
         process_api.state["browser"] = browser
-        process_api.state["server"] = server
-        globals["stop_on_error"] = stop_on_error
         threading.Thread(target=run_in_new_loop).start()
 
 

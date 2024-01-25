@@ -15,13 +15,10 @@ def get_dates():
 
 def get_summary(date):
     result = []
-    folder =  os.path.normpath(globals["log_folder"] + "/" + date)
+    folder = globals["log_folder"] + "/" + date
     sub_folders = os.listdir(folder)
-    save_folders_to_result(folder, sub_folders, result)
-    return result
 
-def save_folders_to_result(folder, folders, result):
-    for sub_folder in folders:
+    for sub_folder in sub_folders:
         file = os.path.normpath(folder + "/" + sub_folder + "/test.summary.json")
 
         # check if the file exists
@@ -33,10 +30,4 @@ def save_folders_to_result(folder, folders, result):
                 data["log"] = parts[1].replace("test.log", "").replace("#", "_35_")
                 result.append(data)
 
-            json_file.close()
-
-        else:
-            new_folder = os.path.normpath(folder + "/" + sub_folder)
-            sub_folders = os.listdir(new_folder)
-            save_folders_to_result(new_folder, sub_folders, result)
-
+    return result

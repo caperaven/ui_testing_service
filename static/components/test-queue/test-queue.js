@@ -5,7 +5,6 @@ import {cleanTime} from "../utils/clean-time.js";
 
 export default class TestQueue extends crs.classes.BindableElement {
     #running = false;
-    #monitor_stop = false;
 
     get shadowDom() {
         return true;
@@ -18,7 +17,7 @@ export default class TestQueue extends crs.classes.BindableElement {
     async preLoad() {
         this.setProperty("refreshRate", 0);
         this.setProperty("browser", "chrome");
-        this.setProperty("stopOnError", true);
+        this.setProperty("stopOnError", false);
     }
 
     async load() {
@@ -60,7 +59,6 @@ export default class TestQueue extends crs.classes.BindableElement {
 
         // don't run
         if (refreshRate == 0) {
-            this.#monitor_stop = false;
             return this.#running = false;
         }
 
@@ -72,17 +70,6 @@ export default class TestQueue extends crs.classes.BindableElement {
 
             if (refreshRate > 0) {
                 await this.#getStatusTimer();
-            }
-
-            const isRunning = await fetch("/is_running").then(result => result.json());
-
-            // once we are notified that the queue is starting to run then start watching for when it stops.
-            if (isRunning == true) {
-                this.#monitor_stop = true;
-            }
-
-            if (this.#monitor_stop == true && isRunning == false) {
-                this.setProperty("refreshRate", 0);
             }
         }, refreshRate);
     }
@@ -153,18 +140,15 @@ export default class TestQueue extends crs.classes.BindableElement {
 
     async add() {
         const bundle = this.getProperty("testBundle");
+        const stop = this.getProperty("stopOnError");
 
-        await fetch(`/queue_bundle?bundle=${bundle}`, { method: "POST" });
-        await this.#getStatus(true);
+        await fetch(`/queue_bundle?bundle=${bundle}&stop_on_error=${stop}`, { method: "POST" });
+        await this.#getStatus();
     }
 
     async runQueue() {
         const browser = this.getProperty("browser");
-        const server = this.getProperty("server");
-        const stop = this.getProperty("stopOnError");
-
-        await fetch(`/run_queue?browser=${browser}&server=${server}&stop_on_error=${stop}`, { method: "POST" });
-
+        await fetch(`/run_queue?browser=${browser}`, { method: "POST" });
         this.setProperty("refreshRate", 500);
     }
 }

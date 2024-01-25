@@ -1,6 +1,6 @@
 import json
 import os
-from src.globals import globals
+
 
 class ProcessTemplates:
     def __init__(self):
@@ -25,7 +25,6 @@ class ProcessTemplates:
             self.add_template(data)
 
     def load_from_folder(self, folder):
-        folder = folder.replace("$root", globals["$root"])
         for filename in os.listdir(folder):
             if filename.endswith(".json"):
                 self.load_from_file(os.path.join(folder, filename))
