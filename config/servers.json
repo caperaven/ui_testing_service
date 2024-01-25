@@ -4,15 +4,11 @@
         "value": "https://localhost:1100"
     },
     {
-        "text": "google",
-        "value": "https://www.google.com"
+        "text": "onkey-daily",
+        "value": "https://onkeydev.pragmaproducts.com/contoso/daily"
     },
     {
         "text": "onkey-local",
         "value": "https://localhost:1100/contoso/test"
-    },
-    {
-        "text": "onkey-daily",
-        "value": "https://onkeydev.pragmaproducts.com/contoso/daily"
     }
 ]

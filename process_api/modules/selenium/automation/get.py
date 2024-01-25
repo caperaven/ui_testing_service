@@ -15,7 +15,7 @@ async def get(driver, args):
                 query = key
                 continue
 
-    timeout = args.get("timeout", 10)
+    timeout = args.get("timeout", 30)
     ctx = args.get("context", driver)
     element = await get_element(ctx, query, timeout)
 
@@ -26,7 +26,6 @@ async def get(driver, args):
         return element.get_property(args["property"])
 
     return element
-
 
 
 async def get_element(driver, query, timeout):
@@ -58,6 +57,15 @@ async def get_element(driver, query, timeout):
 
         return wait_for_element(driver, element, wait)
 
+def wait_for_element(driver, element, wait):
+    if element is None:
+        return None
+
+    driver.execute_script("arguments[0].scrollIntoView();", element)
+    wait.until(element_usable_callback(element))
+
+    return element
+
 
 def wait_for_element(driver, element, wait):
     if element is None:
@@ -86,4 +94,5 @@ async def get_element_on_path(driver, query, timeout):
 
         shadow_root = driver.execute_script('return arguments[0].shadowRoot', element)
 
-    return element
+    wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
+    return wait_for_element(driver, element, wait)

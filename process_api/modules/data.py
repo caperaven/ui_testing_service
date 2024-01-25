@@ -148,6 +148,8 @@ class DataModule:
         xlabel = await get_value(args.get("xlabel", ""), ctx, process, item)
         file = await get_value(args.get("file", None), ctx, process, item)
 
+        plt.clf()
+
         df = data_cache.get(name)
         df[field].plot(kind=kind, title=title, ylabel=ylabel, xlabel=xlabel)
 
