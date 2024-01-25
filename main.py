@@ -38,7 +38,7 @@ from src.memory_logger import MemoryLogger
 from src.extensions import register_extensions
 from process_api.utils.get_value import get_value
 from process_api.utils.set_value import set_value
-from src.history import get_dates, get_summary
+from src.history import get_dates, get_summary, get_summary_memory_graph
 
 app = FastAPI()
 queue = TaskQueue()
@@ -256,6 +256,12 @@ async def memory_graph(job_id: str):
     except Exception as e:
         print(f"Error loading image: {e}")
         return None
+
+
+@app.get("/date_memory_graph")
+async def period_memory_graph(date: str):
+    return get_summary_memory_graph(date)
+
 
 @app.get("/test_schema")
 async def test_schema(job_id: str):

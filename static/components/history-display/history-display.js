@@ -85,6 +85,28 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
 
         await crs.call("test_details", "show", { id, name });
     }
+
+    async showMemoryGraph() {
+        const date = this.shadowRoot.querySelector("[data-field='currentDate']").value;
+        const summary = await fetch(`/date_memory_graph?date=${date}`).then(response => response.blob());
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(summary);
+
+        const body = image
+        const header = document.createElement("h2");
+        header.textContent = "Memory Graph";
+
+        await crs.call("dialogs", "show", {
+            id: "memory-details",
+            content: {
+                header, body
+            },
+            options: {
+                maximized: true,
+                modal: true
+            }
+        })
+    }
 }
 
 function statusToArray(summary) {
