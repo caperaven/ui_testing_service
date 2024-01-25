@@ -28,7 +28,6 @@ async def get(driver, args):
     return element
 
 
-
 async def get_element(driver, query, timeout):
     if isinstance(query, WebElement):
         return query
@@ -42,9 +41,7 @@ async def get_element(driver, query, timeout):
         ## find it normally, if found return the element
         try:
             found_element = driver.find_element(By.CSS_SELECTOR, query)
-            if found_element is not None:
-                wait.until(element_usable_callback(found_element))
-                return found_element
+            return wait_for_element(driver, found_element, wait)
         except:
             pass
 
@@ -58,8 +55,16 @@ async def get_element(driver, query, timeout):
             "present": True
         }))
 
-        wait.until(element_usable_callback(element))
-        return element
+        return wait_for_element(driver, element, wait)
+
+def wait_for_element(driver, element, wait):
+    if element is None:
+        return None
+
+    driver.execute_script("arguments[0].scrollIntoView();", element)
+    wait.until(element_usable_callback(element))
+
+    return element
 
 
 
@@ -80,4 +85,5 @@ async def get_element_on_path(driver, query, timeout):
 
         shadow_root = driver.execute_script('return arguments[0].shadowRoot', element)
 
-    return element
+    wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
+    return wait_for_element(driver, element, wait)
