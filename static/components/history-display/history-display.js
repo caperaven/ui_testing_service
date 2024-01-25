@@ -94,7 +94,7 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
 
         const body = image
         const header = document.createElement("h2");
-        header.textContent = "Memory Graph";
+        header.textContent = "Memory Difference Graph";
 
         await crs.call("dialogs", "show", {
             id: "memory-details",
