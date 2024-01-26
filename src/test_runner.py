@@ -27,6 +27,11 @@ class TestRunner:
 
 async def run_callback(api, step, ctx, process, item):
     step_name = step.get("name")
+
+    ## Ignore query steps as they are not part of what we want to log memory for
+    if step_name.startswith("has_"):
+        return
+
     await globals["memory_logger"].log(step_name)
 
 
