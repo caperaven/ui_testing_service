@@ -1,4 +1,5 @@
 # this is a class that allows you to create a queue of tasks that can be executed in a separate thread
+import time
 import uuid
 from datetime import datetime
 from src.globals import globals
@@ -101,6 +102,9 @@ class TaskQueue:
             if status["status"] == "error" and globals["stop_on_error"] is True:
                 self.running = False
                 return
+
+            # sleep for two seconds just to give the system time to catch up and then run the next test.
+            time.sleep(2)
 
             # call self recursively to run the next task
             await self.run_first_task()

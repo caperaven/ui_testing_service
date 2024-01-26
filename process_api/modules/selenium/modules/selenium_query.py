@@ -24,6 +24,8 @@ class QueryModule:
 
         driver = api.variables["driver"]
 
+        found_element = None
+
         try:
             found_element = driver.find_element(By.CSS_SELECTOR, query)
         except:
