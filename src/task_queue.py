@@ -104,6 +104,7 @@ class TaskQueue:
                 return
 
             # sleep for two seconds just to give the system time to catch up and then run the next test.
+            # this is more to give the browser breathing space to do things like GC and other things
             time.sleep(2)
 
             # call self recursively to run the next task
