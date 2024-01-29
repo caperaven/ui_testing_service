@@ -47,6 +47,10 @@ class QueryModule:
         pass_step = args.get("pass_step", None)
         fail_step = args.get("fail_step", None)
 
+        if pass_step == None and fail_step == None:
+            api.logger.critical(f'has_selector {step["args"].get("query")} must have either a pass or fail step in args')
+            return
+
         driver = api.variables["driver"]
 
         found_element = None
