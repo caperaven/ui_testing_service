@@ -59,14 +59,18 @@ process_api.state = globals
 
 register_extensions(process_api)
 
-# JHR: this needs to be updated so that it works based on the templates config file
-# for folder in globals["templates_folders"]:
-#     if " | " not in folder:
-#         process_api.process_templates.load_from_folder(folder)
-#     else:
-#         parts = folder.split(" | ")
-#         new_folder = parts[1]
-#         process_api.process_templates.load_from_folder(new_folder)
+
+def load_templates():
+    file = os.path.normpath(globals["config_folder"] + "\\templates.json")
+    with open(file, "r") as json_file:
+        data = json.load(json_file)
+    json_file.close()
+
+    for key, value in data.items():
+        process_api.process_templates.load_from_folder(value)
+
+
+load_templates()
 
 
 @app.get("/server_list")
@@ -301,30 +305,13 @@ async def history(date: Optional[str] = Query(None)):
 
 @app.get("/templates")
 async def templates():
-    result = []
+    file = os.path.normpath(globals["config_folder"] + "\\templates.json")
+    with open(file, "r") as json_file:
+        data = json.load(json_file)
 
-    # JHR: this needs to be updated so that it works based on the templates config file
-    # for folder in globals["templates_folders"]:
-    #     if " | " not in folder:
-    #         search_folder = os.path.normpath(folder)
-    #         get_template_files(None, search_folder, result)
-    #     else:
-    #         parts = folder.split(" | ")
-    #         prefix = parts[0]
-    #         search_folder = os.path.normpath(parts[1])
-    #         get_template_files(prefix, search_folder, result)
+    json_file.close()
 
-    return result
-
-
-# def get_template_files(prefix, folder, result):
-#     for file in os.listdir(folder):
-#         if file.endswith(".json"):
-#             if prefix is None:
-#                 result.append(file)
-#             else:
-#                 result.append(prefix + " | " + file)
-
+    return data
 
 @app.put("/template")
 async def template_put(name: str, data: Dict = Body(...)):
