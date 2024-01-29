@@ -1,0 +1,4 @@
+date_time,name,memory
+2024-01-25 14:29:39.229941,start,85.0625
+2024-01-25 14:29:42.919367,wait_for_dashboard_grid_to_be_ready,85.0625
+2024-01-25 14:29:43.057236,select_visual_dashboard,85.0625

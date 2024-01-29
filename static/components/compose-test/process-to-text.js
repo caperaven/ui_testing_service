@@ -270,7 +270,7 @@ class ProcessToText {
     }
 
     static wait_window_count(name, obj, textCollection) {
-        textCollection.push(`wait_window_count ${obj.args.query} ${obj.args.count}`);
+        textCollection.push(`wait_window_count ${obj.args.count}`);
     }
 
     static wait_idle(name, obj, textCollection) {

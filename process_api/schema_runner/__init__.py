@@ -61,7 +61,7 @@ async def run_process(api, schema, process_name, ctx=None, parameters=None, item
 async def run_schema(api, schema, ctx=None, parameters=None, callback=None):
     api.logger.info(f'run schema: "{schema.get("id", "unknown")}"')
 
-    sequence = schema.get('sequence', None)
+    sequence = schema.get('sequences', None)
     required_modules = schema.get('required_modules', None)
 
     if required_modules is not None:
@@ -71,8 +71,8 @@ async def run_schema(api, schema, ctx=None, parameters=None, callback=None):
     if sequence is not None:
         result = None
         for process in sequence:
-            api.logger.info(f'run process: "${process}"')
-            result = await run_process(api, schema, process, ctx, parameters, None, callback)
+            api.logger.info(f'run process: "{process["process"]}"')
+            result = await run_process(api, schema, process["process"], ctx, parameters, None, callback)
 
         return result
 

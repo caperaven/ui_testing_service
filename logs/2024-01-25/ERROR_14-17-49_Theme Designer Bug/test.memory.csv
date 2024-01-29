@@ -1,0 +1,18 @@
+date_time,name,memory
+2024-01-25 14:16:48.569387,start,85.859375
+2024-01-25 14:16:48.640994,wait_for_account_button,85.859375
+2024-01-25 14:16:48.907694,open_accounts_panel,85.859375
+2024-01-25 14:16:48.950427,wait_for_accounts_panel,85.859375
+2024-01-25 14:16:49.003275,wait_for_theme_option,85.859375
+2024-01-25 14:16:49.088245,open_theme_panel,85.859375
+2024-01-25 14:16:49.133392,wait_for_list,85.859375
+2024-01-25 14:16:49.170214,assert_theme_list_exists,85.859375
+2024-01-25 14:16:49.219496,wait_for_default_list_item,85.859375
+2024-01-25 14:16:49.255733,assert_default_list_item_exists,85.859375
+2024-01-25 14:16:49.334088,perform_click_close_list,85.859375
+2024-01-25 14:16:49.371895,wait_for_account_close_button,85.859375
+2024-01-25 14:16:49.440115,close_account_window,85.859375
+2024-01-25 14:16:49.465036,navigate_to_theme_designer_screen,85.859375
+2024-01-25 14:16:49.500279,wait_for_profile_button,85.859375
+2024-01-25 14:16:49.583190,perform_click_profile_button,85.859375
+2024-01-25 14:16:49.650231,wait_for_profile_view,85.859375

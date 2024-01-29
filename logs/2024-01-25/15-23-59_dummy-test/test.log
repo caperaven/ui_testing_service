@@ -1,0 +1,13 @@
+2024-01-25 15:23:36,397 - process_api - INFO - run schema: "dummy-test"
+2024-01-25 15:23:52,822 - process_api - INFO - run process: "main"
+2024-01-25 15:23:52,822 - process_api - INFO - run step: "start"
+2024-01-25 15:23:52,824 - process_api - INFO - wait for time: {'timeout': 3}
+2024-01-25 15:23:55,839 - process_api - INFO - run step: "step_1"
+2024-01-25 15:23:55,840 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-01-25 15:23:55,848 - process_api - INFO - run step: "step_2"
+2024-01-25 15:23:55,848 - process_api - INFO - perform click on #btn-menu
+2024-01-25 15:23:55,934 - process_api - INFO - run step: "step_3"
+2024-01-25 15:23:55,934 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'fdfccef9-fd12-4cd3-b7f6-935120da680b'}
+2024-01-25 15:23:56,524 - process_api - INFO - run step: "step_4"
+2024-01-25 15:23:56,524 - process_api - INFO - wait for time: {'timeout': 3}
+2024-01-25 15:24:00,051 - process_api - INFO - Task 0a8b56ea-3691-44e3-a892-f89d0382ed56 completed in 00:00:23:141

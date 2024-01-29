@@ -1,0 +1,160 @@
+{
+    "id": "Query Builder",
+    "sequences": [
+        {
+            "caption": "TC1: Field on the left and right",
+            "process": "main"
+        }
+    ],
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/StockItem"
+                },
+                "next_step": "wait_for_dashboard_to_be_ready",
+                "name": "start"
+            },
+            "wait_for_dashboard_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#dashboard-grid",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "open_query_builder",
+                "name": "wait_for_dashboard_to_be_ready"
+            },
+            "open_query_builder": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#queryBuilder"
+                },
+                "next_step": "wait_for_query_builder",
+                "name": "open_query_builder"
+            },
+            "wait_for_query_builder": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "pragma-query-builder[status='ready']"
+                },
+                "next_step": "click_filter_criteria",
+                "name": "wait_for_query_builder"
+            },
+            "click_filter_criteria": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#pb-1_criteria"
+                },
+                "next_step": "click_remove_criteria",
+                "name": "click_filter_criteria"
+            },
+            "click_remove_criteria": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-icon-button.remove-card"
+                },
+                "next_step": "click_add_criteria",
+                "name": "click_remove_criteria"
+            },
+            "click_add_criteria": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='addCriteriaField']"
+                },
+                "next_step": "click_on_quantity",
+                "name": "click_add_criteria"
+            },
+            "click_on_quantity": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='StockItem->QuantityOnHand']"
+                },
+                "next_step": "click_accept",
+                "name": "click_on_quantity"
+            },
+            "click_accept": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#accept"
+                },
+                "next_step": "select_less_than",
+                "name": "click_accept"
+            },
+            "select_less_than": {
+                "type": "perform",
+                "action": "select_option",
+                "args": {
+                    "query": "[label='Operator'] select",
+                    "value": "lessThan"
+                },
+                "next_step": "click_value_overflow",
+                "name": "select_less_than"
+            },
+            "click_value_overflow": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[label='Operator'] + .criteria-edit-control #btnOverflow"
+                },
+                "next_step": "click_field_option",
+                "name": "click_value_overflow"
+            },
+            "click_field_option": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='field']"
+                },
+                "next_step": "click_maximum_level",
+                "name": "click_field_option"
+            },
+            "click_maximum_level": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='StockItem->MaximumLevel']"
+                },
+                "next_step": "click_accept_maximum",
+                "name": "click_maximum_level"
+            },
+            "click_accept_maximum": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#accept"
+                },
+                "next_step": "run",
+                "name": "click_accept_maximum"
+            },
+            "run": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[aria-label='Run']"
+                },
+                "next_step": "query_builder_closed",
+                "name": "run"
+            },
+            "query_builder_closed": {
+                "type": "wait",
+                "action": "element_count",
+                "args": {
+                    "query": "pragma-query-builder",
+                    "count": 0
+                },
+                "name": "query_builder_closed"
+            }
+        }
+    }
+}

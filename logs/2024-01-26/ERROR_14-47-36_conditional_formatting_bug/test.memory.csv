@@ -1,0 +1,22 @@
+date_time,name,memory
+2024-01-26 14:47:02.155679,start,45.0625
+2024-01-26 14:47:03.361159,start,45.0625
+2024-01-26 14:47:03.455779,wait_for_properties_panel_to_be_visible,45.0625
+2024-01-26 14:47:04.046025,wait_properties_panel_status,45.0625
+2024-01-26 14:47:04.125696,select_conditional_formatting_tab,45.0625
+2024-01-26 14:47:04.169217,wait_for_conditional_formatter_add_button,45.0625
+2024-01-26 14:47:04.250817,select_add_button,45.0625
+2024-01-26 14:47:04.295809,wait_for_column_window_to_be_visible,45.0625
+2024-01-26 14:47:04.851286,perform_add_new_header,45.0625
+2024-01-26 14:47:04.946179,select_apply_button,45.0625
+2024-01-26 14:47:05.069369,select_back_button,45.0625
+2024-01-26 14:47:05.113840,wait_for_label_to_be_visible,45.0625
+2024-01-26 14:47:05.198545,start,45.0625
+2024-01-26 14:47:05.235742,wait_for_conditional_formatter_add_row_button,45.0625
+2024-01-26 14:47:05.325802,select_add_row_button,45.0625
+2024-01-26 14:47:05.365727,wait_for_row_window_to_be_visible,45.0625
+2024-01-26 14:47:05.956154,perform_add_new_header,45.0625
+2024-01-26 14:47:06.037254,select_apply_button,45.0625
+2024-01-26 14:47:06.156264,select_back_button,45.0625
+2024-01-26 14:47:06.198993,wait_for_label_to_be_visible,45.06640625
+2024-01-26 14:47:36.508043,start,45.06640625

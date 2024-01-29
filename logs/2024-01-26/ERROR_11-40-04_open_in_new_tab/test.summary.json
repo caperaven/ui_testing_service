@@ -1,0 +1,10 @@
+{
+    "name": "open_in_new_tab",
+    "status": "error",
+    "start_time": "2024-01-26 11:39:26",
+    "end_time": "2024-01-26 11:40:04",
+    "duration": "00:00:37:486",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-01-26\\ERROR_11-40-04_open_in_new_tab\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.37890625
+}

@@ -1,0 +1,10 @@
+{
+    "name": "#my_process",
+    "status": "complete",
+    "start_time": "2024-01-26 12:13:23",
+    "end_time": "2024-01-26 12:13:32",
+    "duration": "00:00:08:368",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-01-26\\12-13-32_#my_process\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.0
+}
