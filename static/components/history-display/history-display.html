@@ -8,6 +8,7 @@
     <div class="passed">Passed: ${summary.passed}</div>
     <div class="failed">Failed: ${summary.failed}</div>
     <combo-box value.bind="currentDate" ready.call="loadDates"></combo-box>
+    <button class="icon" click.call="showMemoryGraph">leaderboard</button>
 </div>
 
 <template>

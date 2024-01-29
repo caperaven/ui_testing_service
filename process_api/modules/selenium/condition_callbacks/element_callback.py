@@ -3,16 +3,22 @@ from selenium.webdriver.common.by import By
 
 def element_callback(element, args):
     def _predicate(driver):
-        found_element = driver.find_element(By.CSS_SELECTOR, args["query"])
+        found_element = None
+
+        try:
+            found_element = driver.find_element(By.CSS_SELECTOR, args["query"])
+        except:
+            pass
+
         present = args.get("present", True)
 
-        if present and found_element is None:
-            return False
+        if present and found_element:
+            return found_element
 
-        if not present and found_element is not None:
-            return False
+        if not present and found_element is None:
+            return True
 
-        return found_element
+        return False
 
     return _predicate
 

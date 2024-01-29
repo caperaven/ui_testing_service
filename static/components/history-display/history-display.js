@@ -85,6 +85,36 @@ export default class HistoryDisplay extends crs.classes.BindableElement {
 
         await crs.call("test_details", "show", { id, name });
     }
+
+    async showMemoryGraph() {
+        const date = this.shadowRoot.querySelector("[data-field='currentDate']").value;
+        const diff = await fetch(`/date_memory_diff_graph?date=${date}`).then(response => response.blob());
+        const summary = await fetch(`/date_memory_graph?date=${date}`).then(response => response.blob());
+
+        const header = document.createElement("h2");
+        header.textContent = "Memory Difference Graph";
+
+        const body = document.createElement("div");
+        await this.addBlobImage(body, diff);
+        await this.addBlobImage(body, summary);
+
+        await crs.call("dialogs", "show", {
+            id: "memory-details",
+            content: {
+                header, body
+            },
+            options: {
+                maximized: true,
+                modal: true
+            }
+        })
+    }
+
+    async addBlobImage(fragment, blob) {
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(blob);
+        fragment.appendChild(image)
+    }
 }
 
 function statusToArray(summary) {

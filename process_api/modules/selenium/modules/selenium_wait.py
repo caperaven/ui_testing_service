@@ -47,6 +47,18 @@ class WaitModule:
         args = copy.deepcopy(step["args"])
         await api.call("selenium", "get", args, ctx, process, item)
 
+
+    ## JHR: todo finish this
+    @staticmethod
+    async def element_not_exists(api, step, ctx=None, process=None, item=None):
+        api.logger.info(f'wait for element_not_exists: {step["args"]}')
+        args = copy.deepcopy(step["args"])
+        args["present"] = False
+        timeout = args.get("timeout", 30)
+
+        selenium_driver = api.get_variable("driver")
+        WebDriverWait(selenium_driver, timeout).until(element_callback(None, args))
+
     @staticmethod
     async def attribute(api, step, ctx=None, process=None, item=None):
         api.logger.info(f'wait for attribute: {step["args"]}')

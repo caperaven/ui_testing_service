@@ -351,7 +351,7 @@ class ProcessToText {
 
     static system_template(name, obj, textCollection) {
         let str = `system_template `
-        for (const [key, value] of Object.entries(obj.args.parameters)) {
+        for (const [key, value] of Object.entries(obj.args.parameters || {})) {
             str += `${key}="${value}" `
         }
         textCollection.push(str)

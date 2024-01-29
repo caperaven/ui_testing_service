@@ -1,4 +1,5 @@
 # this is a class that allows you to create a queue of tasks that can be executed in a separate thread
+import time
 import uuid
 from datetime import datetime
 from src.globals import globals
@@ -82,6 +83,8 @@ class TaskQueue:
                 status["status"] = "complete"
 
             status["memory_diff"] = memory_logger.difference()
+            status["memory_start"] = memory_logger.start()
+            status["memory_end"] = memory_logger.end()
 
             if status["error_count"] > 0:
                 status["status"] = "error"
@@ -99,6 +102,10 @@ class TaskQueue:
             if status["status"] == "error" and globals["stop_on_error"] is True:
                 self.running = False
                 return
+
+            # sleep for two seconds just to give the system time to catch up and then run the next test.
+            # this is more to give the browser breathing space to do things like GC and other things
+            time.sleep(2)
 
             # call self recursively to run the next task
             await self.run_first_task()

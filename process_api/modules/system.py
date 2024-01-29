@@ -16,7 +16,7 @@ class SystemModule:
         args = step.get("args")
         schema = await get_value(args.get('schema'), ctx, process, item)
         process_name = await get_value(args.get('process', 'main'), ctx, process, item)
-        parameters = await get_value(args.get('parameters'), ctx, process, item)
+        parameters = await get_value(args.get('parameters', {}), ctx, process, item)
 
         for key in parameters:
             value = parameters[key]
