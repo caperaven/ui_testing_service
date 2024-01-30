@@ -60,13 +60,25 @@ process_api.state = globals
 register_extensions(process_api)
 
 
+#def load_templates():
+#    file = os.path.normpath(globals["config_folder"] + "\\templates.json")
+#    with open(file, "r") as json_file:
+#        data = json.load(json_file)
+#    json_file.close()
+#
+#    for key, value in data.items():
+#        process_api.process_templates.load_from_folder(value)
+
+
+#load_templates()
+
 def load_templates():
-    file = os.path.normpath(globals["config_folder"] + "\\templates.json")
+    file = os.path.normpath(os.path.join(globals["config_folder"], "templates.json"))
     with open(file, "r") as json_file:
         data = json.load(json_file)
-    json_file.close()
 
     for key, value in data.items():
+        value = value.replace("\\", "/")
         process_api.process_templates.load_from_folder(value)
 
 
@@ -75,7 +87,7 @@ load_templates()
 
 @app.get("/server_list")
 async def server_list():
-    file = os.path.normpath(globals["config_folder"] + "\\servers.json")
+    file = os.path.normpath(os.path.join(globals["config_folder"], "servers.json"))
     with open(file, "r") as json_file:
         data = json.load(json_file)
 
