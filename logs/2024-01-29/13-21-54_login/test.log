@@ -1,0 +1,25 @@
+2024-01-29 13:21:44,264 - process_api - INFO - run schema: "login"
+2024-01-29 13:21:44,264 - process_api - INFO - run process: "main"
+2024-01-29 13:21:44,264 - process_api - INFO - run step: "start"
+2024-01-29 13:21:44,264 - process_api - INFO - perform navigate: ${state.server}
+2024-01-29 13:21:44,837 - process_api - INFO - run step: "click_development_azure_account_button"
+2024-01-29 13:21:44,838 - process_api - INFO - perform click on li[name='development_azure_account']
+2024-01-29 13:21:45,069 - process_api - INFO - run step: "wait_for_login_tab_to_open_two_items"
+2024-01-29 13:21:45,069 - process_api - INFO - wait for window_count: {'count': 2}
+2024-01-29 13:21:45,600 - process_api - INFO - run step: "swap_to_new_tab"
+2024-01-29 13:21:45,600 - process_api - INFO - perform switch_to_tab {'index': 1}
+2024-01-29 13:21:45,617 - process_api - INFO - run step: "wait_for_user_name"
+2024-01-29 13:21:45,617 - process_api - INFO - wait for element: {'query': "input[name='loginfmt']"}
+2024-01-29 13:21:47,331 - process_api - INFO - run step: "fill_in_user_name"
+2024-01-29 13:21:47,331 - process_api - INFO - perform type_text {'query': "input[name='loginfmt']", 'value': 'test@pragmadeveloper.onmicrosoft.com'}
+2024-01-29 13:21:47,967 - process_api - INFO - run step: "for_password_element"
+2024-01-29 13:21:47,967 - process_api - INFO - wait for element: {'query': "input[name='passwd'][aria-required='true']"}
+2024-01-29 13:21:48,743 - process_api - INFO - run step: "fill_in_password"
+2024-01-29 13:21:48,743 - process_api - INFO - perform type_text {'query': "input[name='passwd']", 'value': 'NtHe7t2EFLqFbM'}
+2024-01-29 13:21:49,753 - process_api - INFO - run step: "stay_signed_in"
+2024-01-29 13:21:49,757 - process_api - INFO - perform click on #idSIButton9
+2024-01-29 13:21:50,844 - process_api - INFO - run step: "switch_to_default"
+2024-01-29 13:21:50,844 - process_api - INFO - perform switch_to_default {}
+2024-01-29 13:21:50,864 - process_api - INFO - run step: "wait_for_main"
+2024-01-29 13:21:50,864 - process_api - INFO - wait for element: {'query': 'view-container', 'timeout': 30}
+2024-01-29 13:21:54,972 - process_api - INFO - Task f011a530-f753-463b-aa7c-c8dd30b72be3 completed in 00:00:10:100

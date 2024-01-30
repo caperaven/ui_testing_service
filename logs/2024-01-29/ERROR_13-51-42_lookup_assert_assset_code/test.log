@@ -1,0 +1,153 @@
+2024-01-29 13:51:25,240 - process_api - INFO - run schema: "lookup_assert_assset_code"
+2024-01-29 13:51:25,240 - process_api - INFO - run process: "main"
+2024-01-29 13:51:25,240 - process_api - INFO - run step: "start"
+2024-01-29 13:51:25,240 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-01-29 13:51:25,265 - process_api - INFO - run step: "set_uuid_variables"
+2024-01-29 13:51:25,266 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{codeName}', '$d{description}']}
+2024-01-29 13:51:25,270 - process_api - INFO - run step: "create_work_order_process"
+2024-01-29 13:51:25,270 - process_api - INFO - template: workOrderCreate work_order_create {'create_btn_selector': 'pragma-panel-bar #create', 'description_field_selector': '5cc859b7-9f34-4188-a235-3cbc374f94f8', 'work_required_field_selector': '5cc859b7-9f34-4188-a235-3cbc374f94f8', 'work_order_code': '24156a71-5deb-4c10-811a-6f0f003ee348'}
+2024-01-29 13:51:25,270 - process_api - INFO - run step: "start"
+2024-01-29 13:51:25,270 - process_api - INFO - perform click on pragma-panel-bar #create
+2024-01-29 13:51:26,067 - process_api - INFO - run step: "wait_for_description_field"
+2024-01-29 13:51:26,067 - process_api - INFO - wait for element: {'query': "dynamic-create[data-template='WorkOrderCreate'] #lbl-description"}
+2024-01-29 13:51:27,688 - process_api - INFO - run step: "fill_in_description"
+2024-01-29 13:51:27,688 - process_api - INFO - perform type_text {'query': "dynamic-create[data-template='WorkOrderCreate'] #lbl-description", 'value': '0b2e9a5c-52b0-4f5b-b4c4-c070d75e6cba'}
+2024-01-29 13:51:28,342 - process_api - INFO - run step: "fill_in_code"
+2024-01-29 13:51:28,342 - process_api - INFO - perform type_text {'query': "[id='model.code'] #lbl-code", 'value': '9710a07a-8e94-4cb8-8325-d9d6b391210d'}
+2024-01-29 13:51:28,966 - process_api - INFO - run step: "click_asset_code"
+2024-01-29 13:51:28,967 - process_api - INFO - perform click on dynamic-create pragma-label-composite[label='Asset'] #btnLookup
+2024-01-29 13:51:29,048 - process_api - INFO - run step: "select_asset_code_record"
+2024-01-29 13:51:29,048 - process_api - INFO - perform dbl_click on pragma-lookup .grid-row
+2024-01-29 13:51:30,302 - process_api - INFO - run step: "wait_for_asset_code_to_finish"
+2024-01-29 13:51:30,302 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 13:51:32,312 - process_api - INFO - run step: "click_work_tab"
+2024-01-29 13:51:32,312 - process_api - INFO - perform click on dynamic-create div#items #pb-1_work
+2024-01-29 13:51:32,403 - process_api - INFO - run step: "wait_for_work_tab"
+2024-01-29 13:51:32,403 - process_api - INFO - wait for element: {'query': "dynamic-create pragma-label-composite[label='Work Required'] #lbl-workRequired"}
+2024-01-29 13:51:32,444 - process_api - INFO - run step: "type_text_in_work_required"
+2024-01-29 13:51:32,444 - process_api - INFO - perform type_text {'query': "dynamic-create pragma-label-composite[label='Work Required'] #lbl-workRequired", 'value': '0b2e9a5c-52b0-4f5b-b4c4-c070d75e6cba'}
+2024-01-29 13:51:33,032 - process_api - INFO - run step: "click_planning_tab"
+2024-01-29 13:51:33,032 - process_api - INFO - perform click on dynamic-create div#items #pb-3_planning
+2024-01-29 13:51:33,133 - process_api - INFO - run step: "wait_for_planning_tab"
+2024-01-29 13:51:33,133 - process_api - INFO - wait for element: {'query': "pragma-group[title='Planning']"}
+2024-01-29 13:51:33,174 - process_api - INFO - run step: "click_type_of_work_lookup"
+2024-01-29 13:51:33,174 - process_api - INFO - perform click on dynamic-create pragma-label-composite[label='Type Of Work'] #btnLookup
+2024-01-29 13:51:33,274 - process_api - INFO - run step: "wait_for_type_records_records"
+2024-01-29 13:51:33,274 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 13:51:35,290 - process_api - INFO - run step: "select_first_type_work_record"
+2024-01-29 13:51:35,290 - process_api - INFO - perform dbl_click on pragma-lookup .grid-row
+2024-01-29 13:51:35,665 - process_api - INFO - run step: "wait_for_type_work_grid_to_finish"
+2024-01-29 13:51:35,665 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 13:51:37,672 - process_api - INFO - run step: "wait_for_section_code_Lookup_to_be_visible"
+2024-01-29 13:51:37,672 - process_api - INFO - wait for element: {'query': "[data-field='model.sectionCode'] #btnLookup"}
+2024-01-29 13:51:37,723 - process_api - INFO - run step: "click_section_code_lookup"
+2024-01-29 13:51:37,723 - process_api - INFO - perform click on [data-field='model.sectionCode'] #btnLookup
+2024-01-29 13:51:37,812 - process_api - INFO - run step: "wait_for_section_lookup_to_be_visible"
+2024-01-29 13:51:37,814 - process_api - INFO - wait for element: {'query': '#sectionCode-lookup .items-container-parent .grid-row'}
+2024-01-29 13:51:38,084 - process_api - INFO - run step: "select_section_code_record"
+2024-01-29 13:51:38,084 - process_api - INFO - perform dbl_click on #sectionCode-lookup .items-container-parent .grid-row
+2024-01-29 13:51:38,474 - process_api - INFO - run step: "wait_for_trade_code_to_be_visible"
+2024-01-29 13:51:38,474 - process_api - INFO - wait for element: {'query': "#planning [id='model.tradeCode'] #btnLookup"}
+2024-01-29 13:51:38,653 - process_api - INFO - run step: "click_trade_code_lookup"
+2024-01-29 13:51:38,653 - process_api - INFO - perform click on #planning [id='model.tradeCode'] #btnLookup
+2024-01-29 13:51:38,750 - process_api - INFO - run step: "wait_for_trade_code_lookup_to_be_visible"
+2024-01-29 13:51:38,750 - process_api - INFO - wait for element: {'query': '#tradeCode-lookup .items-container-parent .grid-row'}
+2024-01-29 13:51:38,999 - process_api - INFO - run step: "select_trade_code_record"
+2024-01-29 13:51:38,999 - process_api - INFO - perform dbl_click on #tradeCode-lookup .items-container-parent .grid-row
+2024-01-29 13:51:39,406 - process_api - INFO - run step: "wait_for_staff_member_code_to_be_visible"
+2024-01-29 13:51:39,406 - process_api - INFO - wait for element: {'query': "#planning [data-field='model.staffMemberCode'] #btnLookup"}
+2024-01-29 13:51:39,585 - process_api - INFO - run step: "click_staff_member_code_lookup"
+2024-01-29 13:51:39,586 - process_api - INFO - perform click on [data-field='model.staffMemberCode'] #btnLookup
+2024-01-29 13:51:39,680 - process_api - INFO - run step: "wait_for_staff_member_code_lookup_to_be_visible"
+2024-01-29 13:51:39,680 - process_api - INFO - wait for element: {'query': '#staffMemberCode-lookup .items-container-parent .grid-row'}
+2024-01-29 13:51:39,931 - process_api - INFO - run step: "select_staff_member_code_record"
+2024-01-29 13:51:39,931 - process_api - INFO - perform dbl_click on #staffMemberCode-lookup .items-container-parent .grid-row
+2024-01-29 13:51:40,322 - process_api - INFO - run step: "wait_for_save_and_close"
+2024-01-29 13:51:40,322 - process_api - INFO - wait for element: {'query': 'dynamic-create pragma-action-button#primary'}
+2024-01-29 13:51:40,501 - process_api - INFO - run step: "click_save_and_close"
+2024-01-29 13:51:40,501 - process_api - INFO - perform click on dynamic-create pragma-action-button#primary
+2024-01-29 13:51:40,595 - process_api - INFO - run step: "wait_for_work_order_to_be_created"
+2024-01-29 13:51:40,595 - process_api - INFO - wait for time: {'timeout': 1}
+2024-01-29 13:51:41,621 - process_api - INFO - run step: "filter_work_order_record"
+2024-01-29 13:51:41,621 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '.dashboard pr-responsive-dropdown#rd-3 #search-button', 'filter_input_selector': ".dashboard pr-responsive-dropdown#rd-3 pragma-filter input[type='search']", 'filter_value': '24156a71-5deb-4c10-811a-6f0f003ee348', 'internal_filter_btn_selector': '.dashboard pr-responsive-dropdown#rd-3 #filter'}
+2024-01-29 13:51:41,626 - process_api - INFO - run step: "start"
+2024-01-29 13:51:41,627 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-01-29 13:51:42,725 - process_api - ERROR - Message: element click intercepted: Element <pragma-icon-button icon-name="preparedQuery" aria-label="Prepared Query" id="prepared-fetch" tooltip="Prepared Query" data-action="prepared-fetch" status="ready" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (1545, 71). Other element would receive the click: <pragma-action-dialog class="small" style="z-index: 400;">...</pragma-action-dialog>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6B7748EF2+54786]
+	(No symbol) [0x00007FF6B76B5612]
+	(No symbol) [0x00007FF6B756A64B]
+	(No symbol) [0x00007FF6B75B1A6B]
+	(No symbol) [0x00007FF6B75AFE39]
+	(No symbol) [0x00007FF6B75ADC08]
+	(No symbol) [0x00007FF6B75ACCC3]
+	(No symbol) [0x00007FF6B75A29CF]
+	(No symbol) [0x00007FF6B75CBE6A]
+	(No symbol) [0x00007FF6B75A22E6]
+	(No symbol) [0x00007FF6B75CC080]
+	(No symbol) [0x00007FF6B75E4D02]
+	(No symbol) [0x00007FF6B75CBC43]
+	(No symbol) [0x00007FF6B75A0941]
+	(No symbol) [0x00007FF6B75A1B84]
+	GetHandleVerifier [0x00007FF6B7A97F52+3524194]
+	GetHandleVerifier [0x00007FF6B7AED800+3874576]
+	GetHandleVerifier [0x00007FF6B7AE5D7F+3843215]
+	GetHandleVerifier [0x00007FF6B77E5086+694166]
+	(No symbol) [0x00007FF6B76C0A88]
+	(No symbol) [0x00007FF6B76BCA94]
+	(No symbol) [0x00007FF6B76BCBC2]
+	(No symbol) [0x00007FF6B76ACC83]
+	BaseThreadInitThunk [0x00007FFFF257257D+29]
+	RtlUserThreadStart [0x00007FFFF326AA58+40]
+
+2024-01-29 13:51:42,725 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 28, in perform
+    await Actions.__dict__[action](driver, element, chain, args)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 38, in click
+    element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <pragma-icon-button icon-name="preparedQuery" aria-label="Prepared Query" id="prepared-fetch" tooltip="Prepared Query" data-action="prepared-fetch" status="ready" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (1545, 71). Other element would receive the click: <pragma-action-dialog class="small" style="z-index: 400;">...</pragma-action-dialog>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6B7748EF2+54786]
+	(No symbol) [0x00007FF6B76B5612]
+	(No symbol) [0x00007FF6B756A64B]
+	(No symbol) [0x00007FF6B75B1A6B]
+	(No symbol) [0x00007FF6B75AFE39]
+	(No symbol) [0x00007FF6B75ADC08]
+	(No symbol) [0x00007FF6B75ACCC3]
+	(No symbol) [0x00007FF6B75A29CF]
+	(No symbol) [0x00007FF6B75CBE6A]
+	(No symbol) [0x00007FF6B75A22E6]
+	(No symbol) [0x00007FF6B75CC080]
+	(No symbol) [0x00007FF6B75E4D02]
+	(No symbol) [0x00007FF6B75CBC43]
+	(No symbol) [0x00007FF6B75A0941]
+	(No symbol) [0x00007FF6B75A1B84]
+	GetHandleVerifier [0x00007FF6B7A97F52+3524194]
+	GetHandleVerifier [0x00007FF6B7AED800+3874576]
+	GetHandleVerifier [0x00007FF6B7AE5D7F+3843215]
+	GetHandleVerifier [0x00007FF6B77E5086+694166]
+	(No symbol) [0x00007FF6B76C0A88]
+	(No symbol) [0x00007FF6B76BCA94]
+	(No symbol) [0x00007FF6B76BCBC2]
+	(No symbol) [0x00007FF6B76ACC83]
+	BaseThreadInitThunk [0x00007FFFF257257D+29]
+	RtlUserThreadStart [0x00007FFFF326AA58+40]
+
+
+2024-01-29 13:51:43,173 - process_api - INFO - Task ddab6b46-5a95-4d31-95ff-4258f15efc9a completed in 00:00:17:484

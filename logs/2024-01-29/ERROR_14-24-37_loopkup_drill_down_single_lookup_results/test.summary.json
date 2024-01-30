@@ -1,0 +1,12 @@
+{
+    "name": "loopkup_drill_down_single_lookup_results",
+    "status": "error",
+    "start_time": "2024-01-29 14:24:20",
+    "end_time": "2024-01-29 14:24:37",
+    "duration": "00:00:17:338",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-01-29\\ERROR_14-24-37_loopkup_drill_down_single_lookup_results\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.01171875,
+    "memory_start": 92.78125,
+    "memory_end": 92.79296875
+}

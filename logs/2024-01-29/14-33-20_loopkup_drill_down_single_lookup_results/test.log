@@ -1,0 +1,115 @@
+2024-01-29 14:32:52,418 - process_api - INFO - run schema: "loopkup_drill_down_single_lookup_results"
+2024-01-29 14:32:52,419 - process_api - INFO - run process: "main"
+2024-01-29 14:32:52,419 - process_api - INFO - run step: "start"
+2024-01-29 14:32:52,419 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-01-29 14:32:52,465 - process_api - INFO - run step: "set_uuid_variables"
+2024-01-29 14:32:52,465 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{codeName}', '$d{description}']}
+2024-01-29 14:32:52,471 - process_api - INFO - run step: "create_work_order_process"
+2024-01-29 14:32:52,471 - process_api - INFO - template: workOrderCreate work_order_create {'create_btn_selector': 'pragma-panel-bar #create', 'description_field_selector': '5c2a7947-5710-4bcb-b29d-edf67151f06e', 'work_required_field_selector': '5c2a7947-5710-4bcb-b29d-edf67151f06e', 'work_order_code': '3fd6b243-95a8-49b3-b711-89d40d740d81'}
+2024-01-29 14:32:52,471 - process_api - INFO - run step: "start"
+2024-01-29 14:32:52,471 - process_api - INFO - perform click on pragma-panel-bar #create
+2024-01-29 14:32:53,255 - process_api - INFO - run step: "wait_for_description_field"
+2024-01-29 14:32:53,255 - process_api - INFO - wait for element: {'query': "dynamic-create[data-template='WorkOrderCreate'] #lbl-description"}
+2024-01-29 14:32:54,656 - process_api - INFO - run step: "fill_in_description"
+2024-01-29 14:32:54,656 - process_api - INFO - perform type_text {'query': "dynamic-create[data-template='WorkOrderCreate'] #lbl-description", 'value': '97c6d835-b17f-4be5-aec6-d17f9d70a383'}
+2024-01-29 14:32:55,247 - process_api - INFO - run step: "fill_in_code"
+2024-01-29 14:32:55,248 - process_api - INFO - perform type_text {'query': "[id='model.code'] #lbl-code", 'value': '7b3d6e1b-a2ea-4d76-916f-8677bb791f86'}
+2024-01-29 14:32:55,870 - process_api - INFO - run step: "click_asset_code"
+2024-01-29 14:32:55,870 - process_api - INFO - perform click on dynamic-create pragma-label-composite[label='Asset'] #btnLookup
+2024-01-29 14:32:55,964 - process_api - INFO - run step: "select_asset_code_record"
+2024-01-29 14:32:55,964 - process_api - INFO - perform dbl_click on pragma-lookup .grid-row
+2024-01-29 14:32:57,212 - process_api - INFO - run step: "wait_for_asset_code_to_finish"
+2024-01-29 14:32:57,212 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 14:32:59,214 - process_api - INFO - run step: "click_work_tab"
+2024-01-29 14:32:59,215 - process_api - INFO - perform click on dynamic-create div#items #pb-1_work
+2024-01-29 14:32:59,359 - process_api - INFO - run step: "wait_for_work_tab"
+2024-01-29 14:32:59,359 - process_api - INFO - wait for element: {'query': "dynamic-create pragma-label-composite[label='Work Required'] #lbl-workRequired"}
+2024-01-29 14:32:59,397 - process_api - INFO - run step: "type_text_in_work_required"
+2024-01-29 14:32:59,398 - process_api - INFO - perform type_text {'query': "dynamic-create pragma-label-composite[label='Work Required'] #lbl-workRequired", 'value': '${description}'}
+2024-01-29 14:32:59,961 - process_api - INFO - run step: "click_planning_tab"
+2024-01-29 14:32:59,961 - process_api - INFO - perform click on dynamic-create div#items #pb-3_planning
+2024-01-29 14:33:00,065 - process_api - INFO - run step: "wait_for_planning_tab"
+2024-01-29 14:33:00,065 - process_api - INFO - wait for element: {'query': "pragma-group[title='Planning']"}
+2024-01-29 14:33:00,102 - process_api - INFO - run step: "click_type_of_work_lookup"
+2024-01-29 14:33:00,102 - process_api - INFO - perform click on dynamic-create pragma-label-composite[label='Type Of Work'] #btnLookup
+2024-01-29 14:33:00,191 - process_api - INFO - run step: "wait_for_type_records_records"
+2024-01-29 14:33:00,191 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 14:33:02,197 - process_api - INFO - run step: "select_first_type_work_record"
+2024-01-29 14:33:02,197 - process_api - INFO - perform dbl_click on pragma-lookup .grid-row
+2024-01-29 14:33:02,585 - process_api - INFO - run step: "wait_for_type_work_grid_to_finish"
+2024-01-29 14:33:02,585 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 14:33:04,588 - process_api - INFO - run step: "wait_for_section_code_Lookup_to_be_visible"
+2024-01-29 14:33:04,588 - process_api - INFO - wait for element: {'query': "[data-field='model.sectionCode'] #btnLookup"}
+2024-01-29 14:33:04,650 - process_api - INFO - run step: "click_section_code_lookup"
+2024-01-29 14:33:04,650 - process_api - INFO - perform click on [data-field='model.sectionCode'] #btnLookup
+2024-01-29 14:33:04,726 - process_api - INFO - run step: "wait_for_section_lookup_to_be_visible"
+2024-01-29 14:33:04,726 - process_api - INFO - wait for element: {'query': '#sectionCode-lookup .items-container-parent .grid-row'}
+2024-01-29 14:33:05,001 - process_api - INFO - run step: "select_section_code_record"
+2024-01-29 14:33:05,001 - process_api - INFO - perform dbl_click on #sectionCode-lookup .items-container-parent .grid-row
+2024-01-29 14:33:05,401 - process_api - INFO - run step: "wait_for_trade_code_to_be_visible"
+2024-01-29 14:33:05,401 - process_api - INFO - wait for element: {'query': "#planning [id='model.tradeCode'] #btnLookup"}
+2024-01-29 14:33:05,573 - process_api - INFO - run step: "click_trade_code_lookup"
+2024-01-29 14:33:05,573 - process_api - INFO - perform click on #planning [id='model.tradeCode'] #btnLookup
+2024-01-29 14:33:05,657 - process_api - INFO - run step: "wait_for_trade_code_lookup_to_be_visible"
+2024-01-29 14:33:05,657 - process_api - INFO - wait for element: {'query': '#tradeCode-lookup .items-container-parent .grid-row'}
+2024-01-29 14:33:05,886 - process_api - INFO - run step: "select_trade_code_record"
+2024-01-29 14:33:05,886 - process_api - INFO - perform dbl_click on #tradeCode-lookup .items-container-parent .grid-row
+2024-01-29 14:33:06,271 - process_api - INFO - run step: "wait_for_staff_member_code_to_be_visible"
+2024-01-29 14:33:06,271 - process_api - INFO - wait for element: {'query': "#planning [data-field='model.staffMemberCode'] #btnLookup"}
+2024-01-29 14:33:06,449 - process_api - INFO - run step: "click_staff_member_code_lookup"
+2024-01-29 14:33:06,449 - process_api - INFO - perform click on [data-field='model.staffMemberCode'] #btnLookup
+2024-01-29 14:33:06,543 - process_api - INFO - run step: "wait_for_staff_member_code_lookup_to_be_visible"
+2024-01-29 14:33:06,543 - process_api - INFO - wait for element: {'query': '#staffMemberCode-lookup .items-container-parent .grid-row'}
+2024-01-29 14:33:06,895 - process_api - INFO - run step: "select_staff_member_code_record"
+2024-01-29 14:33:06,895 - process_api - INFO - perform dbl_click on #staffMemberCode-lookup .items-container-parent .grid-row
+2024-01-29 14:33:07,288 - process_api - INFO - run step: "wait_for_save_and_close"
+2024-01-29 14:33:07,289 - process_api - INFO - wait for element: {'query': 'dynamic-create pragma-action-button#primary'}
+2024-01-29 14:33:07,452 - process_api - INFO - run step: "click_save_and_close"
+2024-01-29 14:33:07,452 - process_api - INFO - perform click on dynamic-create pragma-action-button#primary
+2024-01-29 14:33:07,540 - process_api - INFO - run step: "wait_for_work_order_to_be_created"
+2024-01-29 14:33:07,540 - process_api - INFO - wait for time: {'timeout': 1}
+2024-01-29 14:33:08,567 - process_api - INFO - run step: "filter_work_order_record"
+2024-01-29 14:33:08,568 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '.dashboard pr-responsive-dropdown#rd-3 #search-button', 'filter_input_selector': ".dashboard pr-responsive-dropdown#rd-3 pragma-filter input[type='search']", 'filter_value': '3fd6b243-95a8-49b3-b711-89d40d740d81', 'internal_filter_btn_selector': '.dashboard pr-responsive-dropdown#rd-3 #filter'}
+2024-01-29 14:33:08,568 - process_api - INFO - run step: "start"
+2024-01-29 14:33:08,568 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-01-29 14:33:08,690 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-01-29 14:33:08,690 - process_api - INFO - wait for time: {'timeout': 3}
+2024-01-29 14:33:11,695 - process_api - INFO - run step: "click_filter_button_selector"
+2024-01-29 14:33:11,695 - process_api - INFO - perform click on .dashboard pr-responsive-dropdown#rd-3 #search-button
+2024-01-29 14:33:11,787 - process_api - INFO - run step: "type_in_filter_input"
+2024-01-29 14:33:11,787 - process_api - INFO - perform type_text {'query': ".dashboard pr-responsive-dropdown#rd-3 pragma-filter input[type='search']", 'value': '7b3d6e1b-a2ea-4d76-916f-8677bb791f86'}
+2024-01-29 14:33:12,410 - process_api - INFO - run step: "filter_records"
+2024-01-29 14:33:12,411 - process_api - INFO - perform click on .dashboard pr-responsive-dropdown#rd-3 #filter
+2024-01-29 14:33:12,504 - process_api - INFO - run step: "wait_for_filter"
+2024-01-29 14:33:12,504 - process_api - INFO - wait for time: {'timeout': 1}
+2024-01-29 14:33:13,521 - process_api - INFO - run step: "dblClick_first_wo_record"
+2024-01-29 14:33:13,521 - process_api - INFO - perform dbl_click on pragma-advanced-grid#dashboard-grid .grid-row
+2024-01-29 14:33:13,871 - process_api - INFO - run step: "wait_for_lookup_button"
+2024-01-29 14:33:13,871 - process_api - INFO - wait for attribute: {'query': "[id='model.assetCode'] #btnLookup", 'attr': 'status', 'value': 'ready'}
+2024-01-29 14:33:14,832 - process_api - INFO - run step: "click_lookup"
+2024-01-29 14:33:14,832 - process_api - INFO - perform click on pragma-action-dialog.small [id='model.assetCode'] #btnLookup
+2024-01-29 14:33:15,023 - process_api - INFO - run step: "wait_for_lookup_grid"
+2024-01-29 14:33:15,023 - process_api - INFO - wait for attribute: {'query': '#assetCode-lookup', 'attr': 'status', 'value': 'ready'}
+2024-01-29 14:33:15,761 - process_api - INFO - run step: "wait_for_lookup_search_filter"
+2024-01-29 14:33:15,761 - process_api - INFO - wait for element: {'query': '#search-toolbar pragma-filter input[type=search]'}
+2024-01-29 14:33:15,803 - process_api - INFO - run step: "type_in_lookup_search_filter"
+2024-01-29 14:33:15,803 - process_api - INFO - perform type_text {'query': '#search-toolbar pragma-filter input[type=search]', 'value': 'BOIL001'}
+2024-01-29 14:33:16,420 - process_api - INFO - run step: "click_filter_button"
+2024-01-29 14:33:16,420 - process_api - INFO - perform click on pragma-lookup pragma-icon-button#filter
+2024-01-29 14:33:16,542 - process_api - INFO - run step: "wait_for_lookup_grid_to_be_ready"
+2024-01-29 14:33:16,542 - process_api - INFO - wait for attribute: {'query': '#assetCode-lookup', 'attr': 'status', 'value': 'ready'}
+2024-01-29 14:33:16,589 - process_api - INFO - run step: "select_first_lookup_record"
+2024-01-29 14:33:16,590 - process_api - INFO - perform click on pragma-lookup .grid-row
+2024-01-29 14:33:16,675 - process_api - INFO - run step: "click_accept"
+2024-01-29 14:33:16,675 - process_api - INFO - perform click on #accept
+2024-01-29 14:33:16,765 - process_api - INFO - run step: "wait_for_wo_update"
+2024-01-29 14:33:16,765 - process_api - INFO - wait for time: {'timeout': 2}
+2024-01-29 14:33:18,774 - process_api - INFO - run step: "assert_assetCode_value"
+2024-01-29 14:33:18,774 - process_api - INFO - assert value_eq: {'query': 'pragma-action-dialog [data-template=WorkOrderUpdate] #lbl-assetCode', 'value': 'BOIL001'}
+2024-01-29 14:33:18,774 - process_api - INFO - wait for text_value: {'query': 'pragma-action-dialog [data-template=WorkOrderUpdate] #lbl-assetCode', 'value': 'BOIL001'}
+2024-01-29 14:33:18,814 - process_api - INFO - run step: "dblClick_to_drill_down_input"
+2024-01-29 14:33:18,814 - process_api - INFO - perform dbl_click on pragma-action-dialog [data-template=WorkOrderUpdate] #lbl-assetCode
+2024-01-29 14:33:19,146 - process_api - INFO - run step: "assert_assetCode_on_detailed_screen"
+2024-01-29 14:33:19,146 - process_api - INFO - assert value_eq: {'query': '[data-template=RegularAssetUpdate] #lbl-code', 'value': 'BOIL001'}
+2024-01-29 14:33:19,146 - process_api - INFO - wait for text_value: {'query': '[data-template=RegularAssetUpdate] #lbl-code', 'value': 'BOIL001'}
+2024-01-29 14:33:20,440 - process_api - INFO - Task a76c78ac-b0f5-46a0-9e60-3f460d4ddee1 completed in 00:00:27:756

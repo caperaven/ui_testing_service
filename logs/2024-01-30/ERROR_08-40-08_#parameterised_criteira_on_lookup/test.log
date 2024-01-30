@@ -1,0 +1,43 @@
+2024-01-30 08:39:27,768 - process_api - INFO - run schema: "#parameterised_criteira_on_lookup"
+2024-01-30 08:39:27,768 - process_api - INFO - run process: "main"
+2024-01-30 08:39:27,768 - process_api - INFO - run step: "start"
+2024-01-30 08:39:27,768 - process_api - INFO - perform navigate: ${state.server}
+2024-01-30 08:39:28,671 - process_api - INFO - run step: "open_menu"
+2024-01-30 08:39:28,671 - process_api - INFO - perform click on #btn-menu
+2024-01-30 08:39:33,292 - process_api - INFO - run step: "input_work_order"
+2024-01-30 08:39:33,292 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'work order'}
+2024-01-30 08:39:33,829 - process_api - INFO - run step: "nav_to_work_order_dashboard"
+2024-01-30 08:39:33,829 - process_api - INFO - perform click on [data-id='Work Orders']
+2024-01-30 08:39:33,907 - process_api - INFO - run step: "open_create"
+2024-01-30 08:39:33,907 - process_api - INFO - perform click on #create
+2024-01-30 08:39:35,052 - process_api - INFO - run step: "open_asset_lookup"
+2024-01-30 08:39:35,052 - process_api - INFO - perform click on [id='model.assetCode'] #btnLookup
+2024-01-30 08:39:36,657 - process_api - INFO - run step: "wait_for_asset_lookup"
+2024-01-30 08:39:36,657 - process_api - INFO - wait for element: {'query': "[id='assetCode-lookup'] .grid-row[tabindex='0']"}
+2024-01-30 08:39:37,680 - process_api - INFO - run step: "open_query_builder"
+2024-01-30 08:39:37,680 - process_api - INFO - perform click on #btnEditQuery
+2024-01-30 08:39:37,768 - process_api - INFO - run step: "nav_to_criteria_tab"
+2024-01-30 08:39:37,768 - process_api - INFO - perform click on [data-id='criteria']
+2024-01-30 08:39:38,119 - process_api - INFO - run step: "add_criteria"
+2024-01-30 08:39:38,119 - process_api - INFO - perform click on [data-id='addCriteriaField']
+2024-01-30 08:40:08,242 - process_api - ERROR - Message: 
+
+2024-01-30 08:40:08,242 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 15, in perform
+    element = await get_element(context, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 58, in get_element
+    return wait_for_element(driver, element, wait)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 75, in wait_for_element
+    wait.until(element_usable_callback(element))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-01-30 08:40:08,509 - process_api - INFO - Task 2ff3a7c9-be13-429b-ab32-79c7309b8cf1 completed in 00:00:40:474

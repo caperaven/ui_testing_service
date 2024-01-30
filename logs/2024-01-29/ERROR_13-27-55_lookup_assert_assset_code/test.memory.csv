@@ -1,0 +1,10 @@
+date_time,name,memory
+2024-01-29 13:26:32.128140,start,90.45703125
+2024-01-29 13:26:32.132205,set_uuid_variables,90.45703125
+2024-01-29 13:26:47.164833,create_work_order_process,90.53515625
+2024-01-29 13:26:48.174268,wait_for_work_order_to_be_created,90.53515625
+2024-01-29 13:26:53.113166,filter_work_order_record,90.53515625
+2024-01-29 13:26:53.455944,select_first_wo_record,90.53515625
+2024-01-29 13:26:55.469514,wait_for_lookup_button,90.484375
+2024-01-29 13:26:55.523611,save_asset_description_to_variable,90.48828125
+2024-01-29 13:26:55.609694,click_lookup_button,90.48828125
