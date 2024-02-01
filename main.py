@@ -60,25 +60,13 @@ process_api.state = globals
 register_extensions(process_api)
 
 
-#def load_templates():
-#    file = os.path.normpath(globals["config_folder"] + "\\templates.json")
-#    with open(file, "r") as json_file:
-#        data = json.load(json_file)
-#    json_file.close()
-#
-#    for key, value in data.items():
-#        process_api.process_templates.load_from_folder(value)
-
-
-#load_templates()
-
 def load_templates():
-    file = os.path.normpath(os.path.join(globals["config_folder"], "templates.json"))
+    file = os.path.abspath(os.path.join(globals["config_folder"], "templates.json"))
     with open(file, "r") as json_file:
         data = json.load(json_file)
+    json_file.close()
 
     for key, value in data.items():
-        value = value.replace("\\", "/")
         process_api.process_templates.load_from_folder(value)
 
 
@@ -87,7 +75,7 @@ load_templates()
 
 @app.get("/server_list")
 async def server_list():
-    file = os.path.normpath(os.path.join(globals["config_folder"], "servers.json"))
+    file = os.path.abspath(os.path.join(globals["config_folder"], "servers.json"))
     with open(file, "r") as json_file:
         data = json.load(json_file)
 
@@ -201,7 +189,7 @@ async def log(job_id: str):
         log_file_path = status["log"]
 
     result = []
-    log_file_path = os.path.normpath(log_file_path)
+    log_file_path = os.path.abspath(log_file_path)
 
     with open(log_file_path, "r") as file:
         for line in file:
@@ -317,7 +305,7 @@ async def history(date: Optional[str] = Query(None)):
 
 @app.get("/templates")
 async def templates():
-    file = os.path.normpath(globals["config_folder"] + "\\templates.json")
+    file = os.path.abspath(os.path.join(globals["config_folder"], "templates.json"))
     with open(file, "r") as json_file:
         data = json.load(json_file)
 
@@ -331,9 +319,9 @@ async def template_put(name: str, data: Dict = Body(...)):
         template_folder = find_folder_for_prefix(name.split(" | ")[0])
         name = name.split(" | ")[1]
     else:
-        template_folder = os.path.normpath(globals["templates_folders"][0])
+        template_folder = os.path.abspath(globals["templates_folders"][0])
 
-    file = os.path.normpath(template_folder + "\\" + name)
+    file = os.path.abspath(os.path.join(template_folder, name))
 
     with open(file, "w") as json_file:
         json.dump(data, json_file, indent=2)
@@ -349,9 +337,9 @@ async def template_get(name: str):
         template_folder = find_folder_for_prefix(name.split(" | ")[0])
         name = name.split(" | ")[1]
     else:
-        template_folder = os.path.normpath(globals["templates_folders"][0])
+        template_folder = os.path.abspath(globals["templates_folders"][0])
 
-    file = os.path.normpath(template_folder + "\\" + name)
+    file = os.path.abspath(os.path.join(template_folder, name))
 
     with open(file, "r") as json_file:
         data = json.load(json_file)
@@ -372,7 +360,7 @@ def find_folder_for_prefix(prefix):
 @app.get("/extensions")
 async def templates():
     result = []
-    folder = os.path.normpath(globals["ext_folder"])
+    folder = os.path.abspath(globals["ext_folder"])
     for file in os.listdir(folder):
         if file.endswith(".py"):
             result.append(file)
@@ -382,8 +370,8 @@ async def templates():
 
 @app.put("/extension")
 async def extension_put(name: str, data: Dict = Body(...)):
-    folder = os.path.normpath(globals["ext_folder"])
-    file = os.path.normpath(folder + "\\" + name)
+    folder = os.path.abspath(globals["ext_folder"])
+    file = os.path.abspath(os.path.join(folder, name))
 
     with open(file, "w") as file:
         file.write(data["content"])
@@ -395,8 +383,8 @@ async def extension_put(name: str, data: Dict = Body(...)):
 
 @app.get("/extension")
 async def extension_get(name: str):
-    folder = os.path.normpath(globals["ext_folder"])
-    file = os.path.normpath(folder + "\\" + name)
+    folder = os.path.abspath(globals["ext_folder"])
+    file = os.path.abspath(os.path.join(folder, name))
 
     with open(file, "r") as file:
         data = file.read()
@@ -410,7 +398,7 @@ async def extension_get(name: str):
 
 @app.get("/test_bundles")
 async def test_bundles_get():
-    file = os.path.normpath(globals["config_folder"] + "\\test_bundles.json")
+    file = os.path.abspath(os.path.join(globals["config_folder"], "test_bundles.json"))
 
     with open(file, "r") as file:
         data = json.load(file)
@@ -439,7 +427,7 @@ async def queue_before_post(bundle: str):
     if bundle is None or bundle == "None":
         return
 
-    bundle_file = os.path.normpath(globals["config_folder"] + "\\before.json")
+    bundle_file = os.path.abspath(os.path.join(globals["config_folder"], "before.json"))
 
     with open(bundle_file, "r") as json_file:
         data = json.load(json_file)
@@ -449,11 +437,11 @@ async def queue_before_post(bundle: str):
         return
 
     before_bundle = data[bundle].replace("$root", globals["$root"])
-    test_files = os.listdir(os.path.normpath(before_bundle))
+    test_files = os.listdir(os.path.abspath(before_bundle))
 
     for test_file in test_files:
         if test_file.endswith(".json"):
-            with open(os.path.normpath(before_bundle + "\\" + test_file), "r") as json_file:
+            with open(os.path.abspath(os.path.join(before_bundle, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
             json_file.close()
@@ -478,7 +466,7 @@ async def queue_after_post(bundle: str):
 
     for test_file in test_files:
         if test_file.endswith(".json"):
-            with open(os.path.normpath(after_bundle + "\\" + test_file), "r") as json_file:
+            with open(os.path.abspath(os.path.join(after_bundle, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
             json_file.close()
@@ -492,7 +480,7 @@ async def queue_bundle_post(bundle: str):
 
     await queue_before_post(bundle)
 
-    file = os.path.normpath(globals["config_folder"] + "\\test_bundles.json")
+    file = os.path.abspath(os.path.join(globals["config_folder"], "test_bundles.json"))
 
     with open(file, "r") as file:
         data = json.load(file)
@@ -504,7 +492,7 @@ async def queue_bundle_post(bundle: str):
 
     for test_file in test_files:
         if test_file.endswith(".json"):
-            with open(os.path.normpath(bundle_folder + "\\" + test_file), "r") as json_file:
+            with open(os.path.abspath(os.path.join(bundle_folder, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
             json_file.close()

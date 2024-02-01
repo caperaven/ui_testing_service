@@ -83,6 +83,15 @@ If you are running the update and you get some wheel errors just run the pip ins
 To run the selenium tests you need to install the drivers for the browsers you want to test with.
 You can see more instructions about it here: https://github.com/caperaven/py_process/blob/main/notebooks/selenium/chrome.ipynb
 
+On mac it will not run the driver the first time as it sees it as a security risk.
+After running it the first time and it brings up a dialog telling you that it can't run chrome dirver.
+Open your security settings on mac "apple icon top left / system preferences / security & privacy"
+There you will see the driver listed  in the security section and you click "allow always"
+
+In the terminal in the chrome folder you will need to type the following command.
+
+sudo xattr -cr 'Google Chrome for Testing.app'
+
 ## Run the app
 
 ```bash
