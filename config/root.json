@@ -1,5 +1,5 @@
 {
     "windows": "C:\\PragmaDev",
     "linux": "/opt/PragmaDev",
-    "mac": "/Documents/PragmaDev"
+    "mac": "~/Documents/PragmaDev"
 }
