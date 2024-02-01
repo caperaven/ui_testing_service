@@ -10,5 +10,9 @@
     {
         "text": "localhost",
         "value": "https://localhost:1100"
+    },
+    {
+        "text": "google",
+        "value": "https://google.com"
     }
 ]

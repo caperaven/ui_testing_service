@@ -1,4 +1,5 @@
 import os
+import sys
 from src.globals import globals
 
 
@@ -44,8 +45,14 @@ class DriverFactory:
     @staticmethod
     async def chrome(api):
         current_directory = os.getcwd()
-        full_chrome_path = os.path.join(current_directory, "./chrome/chromedriver.exe")
-        full_chrome_path = os.path.normpath(full_chrome_path)
+
+        driver_file = "chrome/chromedriver"
+
+        if not sys.platform.startswith('darwin'):
+            driver_file += ".exe"
+
+        full_chrome_path = os.path.join(current_directory, driver_file)
+        full_chrome_path = os.path.abspath(full_chrome_path)
 
         return await api.call("selenium", "init_driver", {
             "browser": "chrome",
