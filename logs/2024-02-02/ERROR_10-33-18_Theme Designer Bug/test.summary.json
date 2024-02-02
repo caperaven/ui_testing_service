@@ -1,0 +1,12 @@
+{
+    "name": "Theme Designer Bug",
+    "status": "error",
+    "start_time": "2024-02-02 10:32:32",
+    "end_time": "2024-02-02 10:33:18",
+    "duration": "00:00:46:584",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-02\\ERROR_10-33-18_Theme Designer Bug\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.04296875,
+    "memory_start": 90.09375,
+    "memory_end": 90.13671875
+}
