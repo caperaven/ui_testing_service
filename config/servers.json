@@ -18,5 +18,9 @@
     {
         "text": "google",
         "value": "https://google.com"
+    },
+    {
+        "text": "onkey-daily-DEMO",
+        "value": "https://onkeydev.pragmaproducts.com/demo/daily"
     }
 ]
