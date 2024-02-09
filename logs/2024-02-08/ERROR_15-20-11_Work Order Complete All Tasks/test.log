@@ -1,0 +1,131 @@
+2024-02-08 15:19:13,083 - process_api - INFO - run schema: "Work Order Complete All Tasks"
+2024-02-08 15:19:13,083 - process_api - INFO - run process: "main"
+2024-02-08 15:19:13,083 - process_api - INFO - run step: "start"
+2024-02-08 15:19:13,084 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-08 15:19:13,767 - process_api - INFO - perform refresh
+2024-02-08 15:19:14,124 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-02-08 15:19:14,125 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-08 15:19:19,797 - process_api - INFO - run step: "open_assist"
+2024-02-08 15:19:19,797 - process_api - INFO - perform click on button#assist
+2024-02-08 15:19:19,927 - process_api - INFO - run step: "click_complete_all"
+2024-02-08 15:19:19,928 - process_api - INFO - perform click on #btn-CompleteAllTasks
+2024-02-08 15:19:20,151 - process_api - INFO - run step: "wait_for_toast"
+2024-02-08 15:19:20,151 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-08 15:19:20,321 - process_api - INFO - run step: "assert_toast"
+2024-02-08 15:19:20,322 - process_api - INFO - assert text_content_eq: {'query': 'pr-toast-item span', 'value': 'Please select a work order to continue.'}
+2024-02-08 15:19:20,322 - process_api - INFO - wait for text_content: {'query': 'pr-toast-item span', 'value': 'Please select a work order to continue.'}
+2024-02-08 15:19:20,367 - process_api - INFO - run step: "close_last_toast"
+2024-02-08 15:19:20,367 - process_api - INFO - perform click on pr-toast-item pragma-icon-button
+2024-02-08 15:19:20,450 - process_api - INFO - run process: "completed_successfully"
+2024-02-08 15:19:20,450 - process_api - INFO - run step: "start"
+2024-02-08 15:19:20,450 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#pb-5 #rd-3 #search-button', 'filter_input_selector': '#pb-5 #rd-3 .responsive-dropdown-filter input', 'filter_value': 'S00338', 'internal_filter_btn_selector': '.dashboard pr-responsive-dropdown#rd-3 #filter'}
+2024-02-08 15:19:20,450 - process_api - INFO - run step: "start"
+2024-02-08 15:19:20,450 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-08 15:19:20,534 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-02-08 15:19:20,534 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-08 15:19:23,550 - process_api - INFO - run step: "click_filter_button_selector"
+2024-02-08 15:19:23,550 - process_api - INFO - perform click on #pb-5 #rd-3 #search-button
+2024-02-08 15:19:23,638 - process_api - INFO - run step: "type_in_filter_input"
+2024-02-08 15:19:23,638 - process_api - INFO - perform type_text {'query': '#pb-5 #rd-3 .responsive-dropdown-filter input', 'value': 'S00338'}
+2024-02-08 15:19:24,196 - process_api - INFO - run step: "filter_records"
+2024-02-08 15:19:24,196 - process_api - INFO - perform click on .dashboard pr-responsive-dropdown#rd-3 #filter
+2024-02-08 15:19:24,301 - process_api - INFO - run step: "wait_for_filter"
+2024-02-08 15:19:24,301 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 15:19:26,317 - process_api - INFO - run step: "click_record"
+2024-02-08 15:19:26,317 - process_api - INFO - perform click on .grid-row
+2024-02-08 15:19:26,416 - process_api - INFO - run step: "open_assist"
+2024-02-08 15:19:26,416 - process_api - INFO - perform click on button#assist
+2024-02-08 15:19:26,487 - process_api - INFO - run step: "click_complete_all"
+2024-02-08 15:19:26,488 - process_api - INFO - perform click on #btn-CompleteAllTasks
+2024-02-08 15:19:26,556 - process_api - INFO - run step: "wait_for_toast"
+2024-02-08 15:19:26,556 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-08 15:19:27,116 - process_api - INFO - run step: "close_initial_toast"
+2024-02-08 15:19:27,116 - process_api - INFO - perform click on pr-toast-item pragma-icon-button
+2024-02-08 15:19:27,189 - process_api - INFO - run step: "open_record"
+2024-02-08 15:19:27,189 - process_api - INFO - perform dbl_click on .grid-row
+2024-02-08 15:19:27,523 - process_api - INFO - run step: "wait_for_dialog"
+2024-02-08 15:19:27,523 - process_api - INFO - wait for element: {'query': "[data-template='WorkOrderUpdate'][status='ready'][data-ready='true']"}
+2024-02-08 15:19:28,934 - process_api - INFO - run step: "open_overflow"
+2024-02-08 15:19:28,934 - process_api - INFO - perform click on dynamic-update #ts-1 #btnOptions
+2024-02-08 15:19:29,027 - process_api - INFO - run step: "click_tasks"
+2024-02-08 15:19:29,032 - process_api - INFO - perform click on li[data-id='tasks']
+2024-02-08 15:19:29,126 - process_api - INFO - run step: "open_first_task"
+2024-02-08 15:19:29,126 - process_api - INFO - perform dbl_click on #WorkOrderTasksGrid .grid-row
+2024-02-08 15:19:29,666 - process_api - INFO - run step: "wait_for_task_dialog"
+2024-02-08 15:19:29,666 - process_api - INFO - wait for element: {'query': "[data-template='WorkOrderTaskUpdate'][status='ready'][data-ready='true']"}
+2024-02-08 15:19:30,934 - process_api - INFO - run step: "open_feedback"
+2024-02-08 15:19:30,935 - process_api - INFO - perform click on #pb-3_Feedback
+2024-02-08 15:19:31,022 - process_api - INFO - run step: "click_completed"
+2024-02-08 15:19:31,022 - process_api - INFO - perform click on #cb-completed
+2024-02-08 15:19:31,105 - process_api - INFO - run step: "click_btn_options"
+2024-02-08 15:19:31,105 - process_api - INFO - perform click on [data-template='WorkOrderTaskUpdate'] #btn-1 #btnOptions
+2024-02-08 15:19:31,186 - process_api - INFO - run step: "click_save_close"
+2024-02-08 15:19:31,186 - process_api - INFO - perform click on [data-template='WorkOrderTaskUpdate'] #save-and-close
+2024-02-08 15:19:31,273 - process_api - INFO - run step: "wait_for_work_order"
+2024-02-08 15:19:31,273 - process_api - INFO - wait for element: {'query': "[data-template='WorkOrderUpdate'][status='ready'][data-ready='true']"}
+2024-02-08 15:19:31,584 - process_api - INFO - run step: "close_toast"
+2024-02-08 15:19:31,584 - process_api - INFO - perform click on pr-toast-item pragma-icon-button
+2024-02-08 15:19:31,679 - process_api - INFO - run step: "open_assist_success"
+2024-02-08 15:19:31,679 - process_api - INFO - perform click on button#assist
+2024-02-08 15:19:31,762 - process_api - INFO - run step: "click_complete_all_success"
+2024-02-08 15:19:31,762 - process_api - INFO - perform click on #btn-CompleteAllTasks
+2024-02-08 15:19:31,857 - process_api - INFO - run step: "wait_for_toast_success"
+2024-02-08 15:19:31,857 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-08 15:19:32,286 - process_api - INFO - run step: "assert_toast_success"
+2024-02-08 15:19:32,286 - process_api - INFO - assert text_content_eq: {'query': 'pr-toast-item span', 'value': 'All Tasks Completed Successfully'}
+2024-02-08 15:19:32,286 - process_api - INFO - wait for text_content: {'query': 'pr-toast-item span', 'value': 'All Tasks Completed Successfully'}
+2024-02-08 15:19:32,335 - process_api - INFO - run step: "close_last_toast"
+2024-02-08 15:19:32,335 - process_api - INFO - perform click on pr-toast-item pragma-icon-button
+2024-02-08 15:19:32,434 - process_api - INFO - run process: "all_complete"
+2024-02-08 15:19:32,434 - process_api - INFO - run step: "start"
+2024-02-08 15:19:32,434 - process_api - INFO - perform click on button#assist
+2024-02-08 15:19:32,525 - process_api - INFO - run step: "click_complete_all"
+2024-02-08 15:19:32,525 - process_api - INFO - perform click on #btn-CompleteAllTasks
+2024-02-08 15:19:32,612 - process_api - INFO - run step: "wait_for_toast_success"
+2024-02-08 15:19:32,612 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-08 15:19:32,909 - process_api - INFO - run step: "assert_toast_success"
+2024-02-08 15:19:32,909 - process_api - INFO - assert text_content_eq: {'query': 'pr-toast-item span', 'value': 'No incomplete Tasks found'}
+2024-02-08 15:19:32,909 - process_api - INFO - wait for text_content: {'query': 'pr-toast-item span', 'value': 'No incomplete Tasks found'}
+2024-02-08 15:19:32,941 - process_api - INFO - run step: "close_last_toast"
+2024-02-08 15:19:32,941 - process_api - INFO - perform click on pr-toast-item pragma-icon-button
+2024-02-08 15:19:33,029 - process_api - INFO - run process: "cant_complete"
+2024-02-08 15:19:33,029 - process_api - INFO - run step: "start"
+2024-02-08 15:19:33,029 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-08 15:19:33,264 - process_api - INFO - perform refresh
+2024-02-08 15:19:33,470 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-02-08 15:19:33,470 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-08 15:19:35,801 - process_api - INFO - run step: "filter_record"
+2024-02-08 15:19:35,801 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#pb-5 #rd-3 #search-button', 'filter_input_selector': '#pb-5 #rd-3 .responsive-dropdown-filter input', 'filter_value': 'WOA1', 'internal_filter_btn_selector': '.dashboard pr-responsive-dropdown#rd-3 #filter'}
+2024-02-08 15:19:35,801 - process_api - INFO - run step: "start"
+2024-02-08 15:19:35,801 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-08 15:19:35,897 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-02-08 15:19:35,897 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-08 15:19:38,899 - process_api - INFO - run step: "click_filter_button_selector"
+2024-02-08 15:19:38,899 - process_api - INFO - perform click on #pb-5 #rd-3 #search-button
+2024-02-08 15:19:38,979 - process_api - INFO - run step: "type_in_filter_input"
+2024-02-08 15:19:38,979 - process_api - INFO - perform type_text {'query': '#pb-5 #rd-3 .responsive-dropdown-filter input', 'value': 'WOA1'}
+2024-02-08 15:19:39,511 - process_api - INFO - run step: "filter_records"
+2024-02-08 15:19:39,511 - process_api - INFO - perform click on .dashboard pr-responsive-dropdown#rd-3 #filter
+2024-02-08 15:19:39,611 - process_api - INFO - run step: "wait_for_filter"
+2024-02-08 15:19:39,611 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 15:19:41,623 - process_api - INFO - run step: "click_record"
+2024-02-08 15:19:41,623 - process_api - INFO - perform click on .grid-row
+2024-02-08 15:20:11,666 - process_api - ERROR - Message: 
+
+2024-02-08 15:20:11,666 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 15, in perform
+    element = await get_element(context, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 52, in get_element
+    element = wait.until(element_callback(None, {
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-08 15:20:11,982 - process_api - INFO - Task 3bad54ad-a39a-4da5-95f2-e0587db99a39 completed in 00:00:58:583

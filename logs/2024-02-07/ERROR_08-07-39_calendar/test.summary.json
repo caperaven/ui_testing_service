@@ -1,0 +1,12 @@
+{
+    "name": "calendar",
+    "status": "error",
+    "start_time": "2024-02-07 08:06:17",
+    "end_time": "2024-02-07 08:07:39",
+    "duration": "00:01:21:346",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\ERROR_08-07-39_calendar\\test.log",
+    "error_count": 6,
+    "memory_diff": 0.03515625,
+    "memory_start": 90.0234375,
+    "memory_end": 90.05859375
+}

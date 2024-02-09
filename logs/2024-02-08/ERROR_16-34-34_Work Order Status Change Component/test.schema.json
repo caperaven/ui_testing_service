@@ -1,0 +1,501 @@
+{
+    "id": "Work Order Status Change Component",
+    "sequences": [
+        {
+            "caption": "TC1: Test display status list",
+            "process": "main"
+        },
+        {
+            "caption": "TC2: Test statusId removed",
+            "process": "TC2"
+        }
+    ],
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/demo/daily?AuthenticationProviderName=Development Azure Account/#dashboard/WorkOrder"
+                },
+                "next_step": "create_uuid",
+                "name": "start"
+            },
+            "create_uuid": {
+                "type": "perform",
+                "action": "set_uuid_variables",
+                "args": {
+                    "variables": [
+                        "$d{id}"
+                    ]
+                },
+                "next_step": "create_work_order_record_button",
+                "name": "create_uuid"
+            },
+            "create_work_order_record_button": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "workOrderCreate",
+                    "process": "work_order_create",
+                    "parameters": {
+                        "work_order_code": "216942cc-5903-482d-94b4-3d53df5fd402",
+                        "create_btn_selector": "#create",
+                        "description_field_selector": " ",
+                        "work_required_field_selector": "testing code"
+                    }
+                },
+                "next_step": "perform_work_order_record_filtering",
+                "name": "create_work_order_record_button"
+            },
+            "perform_work_order_record_filtering": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "filterRecord",
+                    "process": "filter_for_record",
+                    "parameters": {
+                        "fetch_all_records_selector": "[for='dashboard-grid'] #prepared-fetch",
+                        "filter_button_selector": "#pb-5 #rd-3 #search-button",
+                        "filter_input_selector": "#pb-5 #rd-3 .responsive-dropdown-filter input",
+                        "filter_value": "216942cc-5903-482d-94b4-3d53df5fd402",
+                        "internal_filter_btn_selector": ".dashboard pr-responsive-dropdown#rd-3 #filter"
+                    }
+                },
+                "next_step": "click_on_status_component",
+                "name": "perform_work_order_record_filtering"
+            },
+            "click_on_status_component": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#work-order-dashboard-status-button"
+                },
+                "next_step": "wait_for_toast_message_no_record_selected",
+                "name": "click_on_status_component"
+            },
+            "wait_for_toast_message_no_record_selected": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "pr-toast-item"
+                },
+                "next_step": "assert_toast_message_no_record_selected",
+                "name": "wait_for_toast_message_no_record_selected"
+            },
+            "assert_toast_message_no_record_selected": {
+                "type": "assert",
+                "action": "element_exists",
+                "args": {
+                    "query": "pr-toast-item"
+                },
+                "next_step": "perform_select_record",
+                "name": "assert_toast_message_no_record_selected"
+            },
+            "perform_select_record": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "perform_select_status_change_component",
+                "name": "perform_select_record"
+            },
+            "perform_select_status_change_component": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#work-order-dashboard-status-button"
+                },
+                "next_step": "wait_for_context_menu_to_be_ready",
+                "name": "perform_select_status_change_component"
+            },
+            "wait_for_context_menu_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "context-menu",
+                    "attr": "data-ready",
+                    "value": "true"
+                },
+                "next_step": "wait_for_list_element_exist",
+                "name": "wait_for_context_menu_to_be_ready"
+            },
+            "wait_for_list_element_exist": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "context-menu",
+                    "wait": "context-menu ul li"
+                },
+                "next_step": "select_new_status",
+                "name": "wait_for_list_element_exist"
+            },
+            "select_new_status": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "context-menu [id='11']"
+                },
+                "next_step": "perform_open_edit_screen",
+                "name": "select_new_status"
+            },
+            "perform_open_edit_screen": {
+                "type": "perform",
+                "action": "dbl_click",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "wait_for_dialog_element_to_exist",
+                "name": "perform_open_edit_screen"
+            },
+            "wait_for_dialog_element_to_exist": {
+                "type": "wait",
+                "action": "element_count",
+                "args": {
+                    "query": "pragma-action-dialog",
+                    "count": 1
+                },
+                "next_step": "wait_for_edit_screen_to_be_ready",
+                "name": "wait_for_dialog_element_to_exist"
+            },
+            "wait_for_edit_screen_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "[data-template='WorkOrderUpdate']",
+                    "attr": "data-ready",
+                    "value": "true"
+                },
+                "next_step": "perform_open_status_list",
+                "name": "wait_for_edit_screen_to_be_ready"
+            },
+            "perform_open_status_list": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#work-order-update-status-button"
+                },
+                "next_step": "wait for_context_menu_to_be_open",
+                "name": "perform_open_status_list"
+            },
+            "wait for_context_menu_to_be_open": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "context-menu"
+                },
+                "next_step": "wait_for_context_menu_to_be_ready_for_assert",
+                "name": "wait for_context_menu_to_be_open"
+            },
+            "wait_for_context_menu_to_be_ready_for_assert": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "context-menu",
+                    "attr": "data-ready",
+                    "value": "true"
+                },
+                "next_step": "wait_for_list_element_to_be_ready",
+                "name": "wait_for_context_menu_to_be_ready_for_assert"
+            },
+            "wait_for_list_element_to_be_ready": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "context-menu [id='11']"
+                },
+                "next_step": "assert_status_is_set_to_ap_approved",
+                "name": "wait_for_list_element_to_be_ready"
+            },
+            "assert_status_is_set_to_ap_approved": {
+                "type": "assert",
+                "action": "attribute_eq",
+                "args": {
+                    "query": "context-menu [id='11']",
+                    "attr": "aria-selected",
+                    "value": "true",
+                    "operator": "eq"
+                },
+                "next_step": "wait_for_close_button",
+                "name": "assert_status_is_set_to_ap_approved"
+            },
+            "wait_for_close_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "pr-status-button#work-order-update-status-button"
+                },
+                "next_step": "perform_select_new_edit_status_change",
+                "name": "wait_for_close_button"
+            },
+            "perform_select_new_edit_status_change": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "context-menu [id='10']"
+                },
+                "next_step": "wait_for_edit_close_button",
+                "name": "perform_select_new_edit_status_change"
+            },
+            "wait_for_edit_close_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "pragma-icon-button#close"
+                },
+                "next_step": "close_edit_screen",
+                "name": "wait_for_edit_close_button"
+            },
+            "close_edit_screen": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-icon-button#close"
+                },
+                "next_step": "wait_for_grid_item",
+                "name": "close_edit_screen"
+            },
+            "wait_for_grid_item": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "select_grid_item_tc1",
+                "name": "wait_for_grid_item"
+            },
+            "select_grid_item_tc1": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "open_context_menu_for_status_list_assertion",
+                "name": "select_grid_item_tc1"
+            },
+            "open_context_menu_for_status_list_assertion": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#work-order-dashboard-status-button"
+                },
+                "next_step": "wait_for_context_menu_to_be_ready_for_assertion",
+                "name": "open_context_menu_for_status_list_assertion"
+            },
+            "wait_for_context_menu_to_be_ready_for_assertion": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "context-menu",
+                    "attr": "data-ready",
+                    "value": "true"
+                },
+                "next_step": "close_context_menu",
+                "name": "wait_for_context_menu_to_be_ready_for_assertion"
+            },
+            "close_context_menu": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "context-menu .back"
+                },
+                "name": "close_context_menu"
+            }
+        }
+    },
+    "TC2": {
+        "steps": {
+            "start": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "[for='dashboard-grid'] #queryBuilder"
+                },
+                "next_step": "perform_click_queryBuilder_button",
+                "name": "start"
+            },
+            "perform_click_queryBuilder_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[for='dashboard-grid'] #queryBuilder"
+                },
+                "next_step": "select_status_id",
+                "name": "perform_click_queryBuilder_button"
+            },
+            "select_status_id": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='22'] .list-item-actions"
+                },
+                "next_step": "select_base_status",
+                "name": "select_status_id"
+            },
+            "select_base_status": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='24'] .list-item-actions"
+                },
+                "next_step": "click_remove_button",
+                "name": "select_base_status"
+            },
+            "click_remove_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btnRemoveSelectedFields"
+                },
+                "next_step": "click_run_button",
+                "name": "click_remove_button"
+            },
+            "click_run_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#dialog-layer #save"
+                },
+                "next_step": "wait_for_grid_to_be_ready",
+                "name": "click_run_button"
+            },
+            "wait_for_grid_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#dashboard-grid",
+                    "attr": "data-loaded",
+                    "value": "true"
+                },
+                "next_step": "wait_for_the_grid_item_to_be_ready",
+                "name": "wait_for_grid_to_be_ready"
+            },
+            "wait_for_the_grid_item_to_be_ready": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "check_if_element_exists",
+                "name": "wait_for_the_grid_item_to_be_ready"
+            },
+            "check_if_element_exists": {
+                "type": "assert",
+                "action": "element_exists",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "assert_pr_loader_does_not_exist",
+                "name": "check_if_element_exists"
+            },
+            "assert_pr_loader_does_not_exist": {
+                "type": "wait",
+                "action": "element_count",
+                "args": {
+                    "query": "pr-loader",
+                    "count": 0
+                },
+                "next_step": "perform_click_filter_button",
+                "name": "assert_pr_loader_does_not_exist"
+            },
+            "perform_click_filter_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#rd-3 #filter"
+                },
+                "next_step": "wait_for_dialog_to_not_exist",
+                "name": "perform_click_filter_button"
+            },
+            "wait_for_dialog_to_not_exist": {
+                "type": "wait",
+                "action": "element_count",
+                "args": {
+                    "query": "pragma-action-dialog",
+                    "count": 0
+                },
+                "next_step": "wait_for_loader_to_not_exist",
+                "name": "wait_for_dialog_to_not_exist"
+            },
+            "wait_for_loader_to_not_exist": {
+                "type": "wait",
+                "action": "element_count",
+                "args": {
+                    "query": "pr-loader",
+                    "count": 0
+                },
+                "next_step": "wait_for_grid_item_to_be_clickable"
+            },
+            "wait_for_grid_item_to_be_clickable": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "select_grid_item_tc2"
+            },
+            "select_grid_item_tc2": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".items-container-parent .grid-row"
+                },
+                "next_step": "wait_for_icon_to_update"
+            },
+            "wait_for_icon_to_update": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#work-order-dashboard-status-button #status-icon-container"
+                },
+                "next_step": "assert_icon_value"
+            },
+            "assert_icon_value": {
+                "type": "assert",
+                "action": "attribute_eq",
+                "args": {
+                    "query": "#work-order-dashboard-status-button #status-icon-container",
+                    "attr": "class",
+                    "value": "icon-awaiting-approval"
+                },
+                "next_step": "open_context_menu_for_status_list_assertion"
+            },
+            "open_context_menu_for_status_list_assertion": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#work-order-dashboard-status-button"
+                },
+                "next_step": "wait_for_context_menu_to_be_ready_for_assertion"
+            },
+            "wait_for_context_menu_to_be_ready_for_assertion": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "context-menu",
+                    "attr": "data-ready",
+                    "value": "true"
+                },
+                "next_step": "wait_for_list_element_to_be_ready_for_assertion"
+            },
+            "wait_for_list_element_to_be_ready_for_assertion": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "context-menu li[data-tags='aa awaitingapproval awaiting approval']",
+                    "attr": "aria-selected",
+                    "value": "true"
+                },
+                "next_step": "close_context_menu"
+            },
+            "close_context_menu": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "context-menu .back"
+                }
+            }
+        }
+    }
+}

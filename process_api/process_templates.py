@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 from src.globals import globals
@@ -13,7 +14,11 @@ class ProcessTemplates:
         self.templates[id_value] = template
 
     def get_template(self, id):
-        return self.templates.get(id, None)
+
+        template = self.templates.get(id, None)
+
+        if template is not None:
+            return copy.deepcopy(template)
 
     def remove_template(self, id):
         del self.templates[id]

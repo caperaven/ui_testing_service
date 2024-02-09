@@ -1,0 +1,12 @@
+{
+    "name": "lookup_empty",
+    "status": "complete",
+    "start_time": "2024-02-07 07:47:53",
+    "end_time": "2024-02-07 07:47:56",
+    "duration": "00:00:02:740",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\07-47-56_lookup_empty\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.01171875,
+    "memory_start": 89.90625,
+    "memory_end": 89.91796875
+}

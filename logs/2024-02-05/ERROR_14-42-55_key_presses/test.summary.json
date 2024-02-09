@@ -1,0 +1,12 @@
+{
+    "name": "key_presses",
+    "status": "error",
+    "start_time": "2024-02-05 14:42:55",
+    "end_time": "2024-02-05 14:42:55",
+    "duration": "00:00:00:208",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-05\\ERROR_14-42-55_key_presses\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.01171875,
+    "memory_start": 93.84765625,
+    "memory_end": 93.859375
+}

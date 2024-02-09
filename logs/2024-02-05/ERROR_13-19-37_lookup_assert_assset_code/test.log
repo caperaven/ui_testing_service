@@ -1,0 +1,31 @@
+2024-02-05 13:19:06,955 - process_api - INFO - run schema: "lookup_assert_assset_code"
+2024-02-05 13:19:06,956 - process_api - INFO - run process: "main"
+2024-02-05 13:19:06,956 - process_api - INFO - run step: "start"
+2024-02-05 13:19:06,956 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-05 13:19:07,006 - process_api - INFO - run step: "set_uuid_variables"
+2024-02-05 13:19:07,006 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{codeName}', '$d{description}']}
+2024-02-05 13:19:07,006 - process_api - INFO - run step: "create_work_order_process"
+2024-02-05 13:19:07,006 - process_api - INFO - template: workOrderCreate work_order_create {'create_btn_selector': 'pragma-panel-bar #create', 'description_field_selector': 'd56e04a0-9f96-4980-8482-7dfa1fca8d1d', 'work_required_field_selector': 'd56e04a0-9f96-4980-8482-7dfa1fca8d1d', 'work_order_code': '96853eac-3eed-4a40-941e-9f611d4a3d3a'}
+2024-02-05 13:19:07,006 - process_api - INFO - run step: "start"
+2024-02-05 13:19:07,006 - process_api - INFO - perform click on pragma-panel-bar #create
+2024-02-05 13:19:37,041 - process_api - ERROR - Message: 
+
+2024-02-05 13:19:37,041 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 15, in perform
+    element = await get_element(context, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 51, in get_element
+    return await get_element_on_path(driver, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 90, in get_element_on_path
+    element = wait.until(light_and_shadow_dom_callback(element, shadow_root, query))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-05 13:19:37,507 - process_api - INFO - Task d95ed69e-8121-4d7f-92db-9aa7d42b1aea completed in 00:00:30:093

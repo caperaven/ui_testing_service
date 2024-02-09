@@ -16,6 +16,7 @@ class PerformModule:
         api.logger.info(f'perform navigate: {step["args"]["url"]}')
         step["args"]["url"] = replace_server_url(step["args"]["url"], api.state)
         await api.call("selenium", "goto", step["args"], ctx, process, item)
+        await PerformModule.refresh(api, step, ctx, process, item)
 
     @staticmethod
     async def close_window(api, step, ctx=None, process=None, item=None):
@@ -226,7 +227,9 @@ class PerformModule:
         queries = args.keys()
 
         for query in queries:
-            if query == "step": continue
+            if query == "step":
+                continue
+
             element = await api.call("selenium", "get", args, ctx, process, item)
             if element is not None:
                 element_def = args[query]
@@ -237,7 +240,6 @@ class PerformModule:
                     prop = element_def[prop]
                     await api.set_value(prop, attr, ctx, process, item)
 
-        # process["_results"][args["step"]] = "success"
     # @staticmethod
     # async def drag_and_drop_by(api, step, ctx=None, process=None, item=None):
     #     api.logger.info(f'perform drag_and_drop_by {step["args"]}')

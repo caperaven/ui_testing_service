@@ -1,0 +1,118 @@
+{
+    "id": "lookup_assert_assset_code",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/WorkOrder"
+                },
+                "next_step": "set_uuid_variables",
+                "name": "start"
+            },
+            "set_uuid_variables": {
+                "type": "perform",
+                "action": "set_uuid_variables",
+                "args": {
+                    "variables": [
+                        "$d{codeName}",
+                        "$d{description}"
+                    ]
+                },
+                "next_step": "create_work_order_process",
+                "name": "set_uuid_variables"
+            },
+            "create_work_order_process": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "workOrderCreate",
+                    "process": "work_order_create",
+                    "parameters": {
+                        "create_btn_selector": "pragma-panel-bar #create",
+                        "description_field_selector": "3c0f4af8-b2a6-4c0e-9a23-256ebfea1b87",
+                        "work_required_field_selector": "3c0f4af8-b2a6-4c0e-9a23-256ebfea1b87",
+                        "work_order_code": "5d13f2a1-381e-4c57-8c1d-f8c42f1fc804"
+                    }
+                },
+                "next_step": "wait_for_work_order_to_be_created",
+                "name": "create_work_order_process"
+            },
+            "wait_for_work_order_to_be_created": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 1
+                },
+                "next_step": "filter_work_order_record",
+                "name": "wait_for_work_order_to_be_created"
+            },
+            "filter_work_order_record": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "filterRecord",
+                    "process": "filter_for_record",
+                    "parameters": {
+                        "fetch_all_records_selector": "[for='dashboard-grid'] #prepared-fetch",
+                        "filter_button_selector": ".dashboard pr-responsive-dropdown#rd-3 #search-button",
+                        "filter_input_selector": ".dashboard pr-responsive-dropdown#rd-3 pragma-filter input[type='search']",
+                        "filter_value": "5d13f2a1-381e-4c57-8c1d-f8c42f1fc804",
+                        "internal_filter_btn_selector": ".dashboard pr-responsive-dropdown#rd-3 #filter"
+                    }
+                },
+                "next_step": "select_first_wo_record",
+                "name": "filter_work_order_record"
+            },
+            "select_first_wo_record": {
+                "type": "perform",
+                "action": "dbl_click",
+                "args": {
+                    "query": "pragma-advanced-grid#dashboard-grid .grid-row"
+                },
+                "next_step": "wait_for_lookup_button",
+                "name": "select_first_wo_record"
+            },
+            "wait_for_lookup_button": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 2
+                },
+                "next_step": "save_asset_description_to_variable",
+                "name": "wait_for_lookup_button"
+            },
+            "save_asset_description_to_variable": {
+                "type": "perform",
+                "action": "properties_to_variables",
+                "args": {
+                    "dynamic-update #lbl-assetCode": {
+                        "value": "$d{assetCodeInputValue}"
+                    }
+                },
+                "next_step": "click_lookup_button",
+                "name": "save_asset_description_to_variable"
+            },
+            "click_lookup_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "dynamic-update [label='Asset'] #btnPeek"
+                },
+                "next_step": "assert_input_value",
+                "name": "click_lookup_button"
+            },
+            "assert_input_value": {
+                "type": "assert",
+                "action": "value_eq",
+                "args": {
+                    "query": "dynamic-peek #lbl-code",
+                    "value": "15118",
+                    "property": "value"
+                },
+                "name": "assert_input_value"
+            }
+        }
+    }
+}

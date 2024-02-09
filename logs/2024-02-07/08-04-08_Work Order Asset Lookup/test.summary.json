@@ -1,0 +1,12 @@
+{
+    "name": "Work Order Asset Lookup",
+    "status": "complete",
+    "start_time": "2024-02-07 08:04:04",
+    "end_time": "2024-02-07 08:04:08",
+    "duration": "00:00:03:703",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\08-04-08_Work Order Asset Lookup\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.0,
+    "memory_start": 96.71875,
+    "memory_end": 96.71875
+}

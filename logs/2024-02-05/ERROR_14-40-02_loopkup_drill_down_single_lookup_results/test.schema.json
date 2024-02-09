@@ -1,0 +1,188 @@
+{
+    "id": "loopkup_drill_down_single_lookup_results",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/WorkOrder"
+                },
+                "next_step": "set_uuid_variables",
+                "name": "start"
+            },
+            "set_uuid_variables": {
+                "type": "perform",
+                "action": "set_uuid_variables",
+                "args": {
+                    "variables": [
+                        "$d{codeName}",
+                        "$d{description}"
+                    ]
+                },
+                "next_step": "create_work_order_process",
+                "name": "set_uuid_variables"
+            },
+            "create_work_order_process": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "workOrderCreate",
+                    "process": "work_order_create",
+                    "parameters": {
+                        "create_btn_selector": "pragma-panel-bar #create",
+                        "description_field_selector": "47a1743c-1628-41e5-bba6-439b3f3e8692",
+                        "work_required_field_selector": "47a1743c-1628-41e5-bba6-439b3f3e8692",
+                        "work_order_code": "7ec86a9a-a0f5-430b-b16a-d8b743ce0395"
+                    }
+                },
+                "next_step": "wait_for_work_order_to_be_created",
+                "name": "create_work_order_process"
+            },
+            "wait_for_work_order_to_be_created": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 1
+                },
+                "next_step": "filter_work_order_record"
+            },
+            "filter_work_order_record": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "filterRecord",
+                    "process": "filter_for_record",
+                    "parameters": {
+                        "fetch_all_records_selector": "[for='dashboard-grid'] #prepared-fetch",
+                        "filter_button_selector": ".dashboard pr-responsive-dropdown#rd-3 #search-button",
+                        "filter_input_selector": ".dashboard pr-responsive-dropdown#rd-3 pragma-filter input[type='search']",
+                        "filter_value": "$d{codeName}",
+                        "internal_filter_btn_selector": ".dashboard pr-responsive-dropdown#rd-3 #filter"
+                    }
+                },
+                "next_step": "dblClick_first_wo_record"
+            },
+            "dblClick_first_wo_record": {
+                "type": "perform",
+                "action": "dbl_click",
+                "args": {
+                    "query": "pragma-advanced-grid#dashboard-grid .grid-row"
+                },
+                "next_step": "wait_for_lookup_button"
+            },
+            "wait_for_lookup_button": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "[id='model.assetCode'] #btnLookup",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "click_lookup"
+            },
+            "click_lookup": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-action-dialog.small [id='model.assetCode'] #btnLookup"
+                },
+                "next_step": "wait_for_lookup_grid"
+            },
+            "wait_for_lookup_grid": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#assetCode-lookup",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "wait_for_lookup_search_filter"
+            },
+            "wait_for_lookup_search_filter": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#search-toolbar pragma-filter input[type=search]"
+                },
+                "next_step": "type_in_lookup_search_filter"
+            },
+            "type_in_lookup_search_filter": {
+                "type": "perform",
+                "action": "type_text",
+                "args": {
+                    "query": "#search-toolbar pragma-filter input[type=search]",
+                    "value": "BOIL001"
+                },
+                "next_step": "click_filter_button"
+            },
+            "click_filter_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-lookup pragma-icon-button#filter"
+                },
+                "next_step": "wait_for_lookup_grid_to_be_ready"
+            },
+            "wait_for_lookup_grid_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#assetCode-lookup",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "select_first_lookup_record"
+            },
+            "select_first_lookup_record": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-lookup .grid-row"
+                },
+                "next_step": "click_accept"
+            },
+            "click_accept": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#accept"
+                },
+                "next_step": "wait_for_wo_update"
+            },
+            "wait_for_wo_update": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 2
+                },
+                "next_step": "assert_assetCode_value"
+            },
+            "assert_assetCode_value": {
+                "type": "assert",
+                "action": "value_eq",
+                "args": {
+                    "query": "pragma-action-dialog [data-template=WorkOrderUpdate] #lbl-assetCode",
+                    "value": "BOIL001"
+                },
+                "next_step": "dblClick_to_drill_down_input"
+            },
+            "dblClick_to_drill_down_input": {
+                "type": "perform",
+                "action": "dbl_click",
+                "args": {
+                    "query": "pragma-action-dialog [data-template=WorkOrderUpdate] #lbl-assetCode"
+                },
+                "next_step": "assert_assetCode_on_detailed_screen"
+            },
+            "assert_assetCode_on_detailed_screen": {
+                "type": "assert",
+                "action": "value_eq",
+                "args": {
+                    "query": "[data-template=RegularAssetUpdate] #lbl-code",
+                    "value": "BOIL001"
+                }
+            }
+        }
+    }
+}

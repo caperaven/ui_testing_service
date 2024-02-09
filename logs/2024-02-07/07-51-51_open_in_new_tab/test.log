@@ -1,0 +1,65 @@
+2024-02-07 07:51:39,146 - process_api - INFO - run schema: "open_in_new_tab"
+2024-02-07 07:51:39,146 - process_api - INFO - run process: "main"
+2024-02-07 07:51:39,146 - process_api - INFO - run step: "start"
+2024-02-07 07:51:39,146 - process_api - INFO - perform navigate: ${state.server}/#dashboard/Resource
+2024-02-07 07:51:39,167 - process_api - INFO - run step: "wait_for_dashboard_grid_to_be_ready"
+2024-02-07 07:51:39,167 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-07 07:51:39,983 - process_api - INFO - run step: "open_context_menu"
+2024-02-07 07:51:39,983 - process_api - INFO - perform context_click on .grid-row[tabindex='0']
+2024-02-07 07:51:40,315 - process_api - INFO - run step: "wait_for_context_menu"
+2024-02-07 07:51:40,315 - process_api - INFO - wait for attribute: {'query': 'pragma-context-menu', 'attr': 'aria-hidden', 'value': 'false'}
+2024-02-07 07:51:40,363 - process_api - INFO - run step: "select_open_in_new_tab"
+2024-02-07 07:51:40,363 - process_api - INFO - perform click on pragma-context-menu .listitem[data-id='0']
+2024-02-07 07:51:40,469 - process_api - INFO - run step: "wait_tab_to_open"
+2024-02-07 07:51:40,469 - process_api - INFO - wait for window_count: {'count': 2}
+2024-02-07 07:51:40,496 - process_api - INFO - run step: "swap_to_new_tab"
+2024-02-07 07:51:40,496 - process_api - INFO - perform switch_to_tab {'index': 1}
+2024-02-07 07:51:40,504 - process_api - INFO - run step: "wait_for_main_view"
+2024-02-07 07:51:40,505 - process_api - INFO - wait for element: {'query': '#main-view'}
+2024-02-07 07:51:44,153 - process_api - INFO - run step: "wait_for_new_tab_dashboard_grid_to_be_ready"
+2024-02-07 07:51:44,153 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'data-loaded', 'value': 'true'}
+2024-02-07 07:51:45,557 - process_api - INFO - run step: "wait_for_update_screen_to_open"
+2024-02-07 07:51:45,557 - process_api - INFO - wait for element: {'query': 'pragma-action-dialog dynamic-update'}
+2024-02-07 07:51:45,605 - process_api - INFO - run step: "close_window"
+2024-02-07 07:51:45,613 - process_api - INFO - perform switch_to_default {}
+2024-02-07 07:51:45,625 - process_api - INFO - run process: "open_in_new_tab_within_update"
+2024-02-07 07:51:45,625 - process_api - INFO - run step: "start"
+2024-02-07 07:51:45,625 - process_api - INFO - perform navigate: ${state.server}/#dashboard/Resource
+2024-02-07 07:51:45,639 - process_api - INFO - run step: "wait_for_dashboard_grid_to_be_ready"
+2024-02-07 07:51:45,639 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-07 07:51:45,692 - process_api - INFO - run step: "open_context_menu"
+2024-02-07 07:51:45,692 - process_api - INFO - perform context_click on .grid-row[tabindex='0']
+2024-02-07 07:51:46,061 - process_api - INFO - run step: "select_open_in_new_tab"
+2024-02-07 07:51:46,061 - process_api - INFO - perform click on pragma-context-menu .listitem[data-id='0']
+2024-02-07 07:51:46,171 - process_api - INFO - run step: "wait_for_new_tab_to_open"
+2024-02-07 07:51:46,172 - process_api - INFO - wait for window_count: {'count': 3}
+2024-02-07 07:51:46,223 - process_api - INFO - run step: "swap_to_new_tab"
+2024-02-07 07:51:46,223 - process_api - INFO - perform switch_to_tab {'index': 2}
+2024-02-07 07:51:46,234 - process_api - INFO - run step: "wait_for_main_view"
+2024-02-07 07:51:46,234 - process_api - INFO - wait for element: {'query': '#main-view'}
+2024-02-07 07:51:47,639 - process_api - INFO - run step: "wait_for_new_tab_dashboard_grid_to_be_ready"
+2024-02-07 07:51:47,639 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-07 07:51:48,223 - process_api - INFO - run step: "wait_for_update_screen_to_open"
+2024-02-07 07:51:48,223 - process_api - INFO - wait for element: {'query': 'pragma-action-dialog dynamic-update'}
+2024-02-07 07:51:48,258 - process_api - INFO - run step: "wait_for_pager_to_be_ready"
+2024-02-07 07:51:48,258 - process_api - INFO - wait for attribute: {'query': '#ts-1', 'attr': 'status', 'value': 'ready'}
+2024-02-07 07:51:48,305 - process_api - INFO - run step: "select_financial_rates_tab"
+2024-02-07 07:51:48,305 - process_api - INFO - perform click on #pb-2_rates
+2024-02-07 07:51:48,373 - process_api - INFO - waiting for #TradeFinancialRateGrid .grid-row[tabindex='0']
+2024-02-07 07:51:48,587 - process_api - INFO - run step: "select_financial_rates_item"
+2024-02-07 07:51:48,587 - process_api - INFO - perform context_click on #TradeFinancialRateGrid .grid-row[tabindex='0']
+2024-02-07 07:51:48,913 - process_api - INFO - run step: "wait_for_context_menu_on_new_tab"
+2024-02-07 07:51:48,913 - process_api - INFO - wait for attribute: {'query': 'pragma-context-menu', 'attr': 'aria-hidden', 'value': 'false'}
+2024-02-07 07:51:48,954 - process_api - INFO - run step: "select_context_menu_open_in_new_tab"
+2024-02-07 07:51:48,954 - process_api - INFO - perform click on pragma-context-menu .listitem[data-id='0']
+2024-02-07 07:51:49,079 - process_api - INFO - run step: "wait_for_third_tab_to_open"
+2024-02-07 07:51:49,079 - process_api - INFO - wait for window_count: {'count': 4}
+2024-02-07 07:51:49,110 - process_api - INFO - run step: "swap_to_third_tab"
+2024-02-07 07:51:49,111 - process_api - INFO - perform switch_to_tab {'index': 3}
+2024-02-07 07:51:49,121 - process_api - INFO - run step: "wait_for_main_view_to_load"
+2024-02-07 07:51:49,122 - process_api - INFO - wait for element: {'query': '#main-view'}
+2024-02-07 07:51:50,374 - process_api - INFO - run step: "wait_for_third_tab_dashboard_grid_to_be_ready"
+2024-02-07 07:51:50,382 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-07 07:51:51,217 - process_api - INFO - run step: "wait_for_update_screen_to_open_on_third_tab"
+2024-02-07 07:51:51,217 - process_api - INFO - wait for element: {'query': 'pragma-action-dialog dynamic-update'}
+2024-02-07 07:51:51,486 - process_api - INFO - Task 858d99ea-9b6c-4c1a-9504-1544162dc7a2 completed in 00:00:12:103

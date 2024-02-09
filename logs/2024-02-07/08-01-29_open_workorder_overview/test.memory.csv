@@ -1,0 +1,5 @@
+date_time,name,memory
+2024-02-07 08:01:27.893638,start,96.01953125
+2024-02-07 08:01:28.664010,wait_for_dashboard_grid_to_be_ready,96.0234375
+2024-02-07 08:01:28.790260,click_btnOverview,96.0234375
+2024-02-07 08:01:29.039871,wait_right_panel_to_open,96.0234375

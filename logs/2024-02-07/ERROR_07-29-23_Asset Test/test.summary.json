@@ -1,0 +1,12 @@
+{
+    "name": "Asset Test",
+    "status": "error",
+    "start_time": "2024-02-07 07:28:21",
+    "end_time": "2024-02-07 07:29:23",
+    "duration": "00:01:01:542",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\ERROR_07-29-23_Asset Test\\test.log",
+    "error_count": 6,
+    "memory_diff": 0.08984375,
+    "memory_start": 90.3046875,
+    "memory_end": 90.39453125
+}

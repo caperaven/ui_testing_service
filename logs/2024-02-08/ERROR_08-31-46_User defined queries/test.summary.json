@@ -1,0 +1,12 @@
+{
+    "name": "User defined queries.",
+    "status": "error",
+    "start_time": "2024-02-08 08:31:25",
+    "end_time": "2024-02-08 08:31:46",
+    "duration": "00:00:20:458",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-08\\ERROR_08-31-46_User defined queries.\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.87890625,
+    "memory_start": 46.06640625,
+    "memory_end": 46.9453125
+}

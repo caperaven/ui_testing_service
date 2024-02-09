@@ -1,0 +1,12 @@
+{
+    "name": "file attachments",
+    "status": "error",
+    "start_time": "2024-02-05 14:40:51",
+    "end_time": "2024-02-05 14:42:53",
+    "duration": "00:02:02:012",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-05\\ERROR_14-42-53_file attachments\\test.log",
+    "error_count": 12,
+    "memory_diff": 0.046875,
+    "memory_start": 93.4609375,
+    "memory_end": 93.5078125
+}

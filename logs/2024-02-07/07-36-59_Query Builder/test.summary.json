@@ -1,0 +1,12 @@
+{
+    "name": "Query Builder",
+    "status": "complete",
+    "start_time": "2024-02-07 07:36:56",
+    "end_time": "2024-02-07 07:36:59",
+    "duration": "00:00:02:928",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\07-36-59_Query Builder\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.0,
+    "memory_start": 94.5390625,
+    "memory_end": 94.5390625
+}

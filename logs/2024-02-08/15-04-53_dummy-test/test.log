@@ -1,0 +1,46 @@
+2024-02-08 15:04:40,470 - process_api - INFO - run schema: "dummy-test"
+2024-02-08 15:04:40,470 - process_api - INFO - run process: "main"
+2024-02-08 15:04:40,470 - process_api - INFO - run step: "start"
+2024-02-08 15:04:40,470 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 15:04:42,487 - process_api - INFO - run step: "step_1"
+2024-02-08 15:04:42,487 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-08 15:04:42,491 - process_api - INFO - run step: "step_2"
+2024-02-08 15:04:42,491 - process_api - INFO - perform click on #btn-menu
+2024-02-08 15:04:42,580 - process_api - INFO - run step: "step_3"
+2024-02-08 15:04:42,580 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'fd8f1865-e26b-4652-b3e7-de649c32ccd5'}
+2024-02-08 15:04:43,184 - process_api - INFO - run step: "step_4"
+2024-02-08 15:04:43,184 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:44,189 - process_api - INFO - run process: "TC2"
+2024-02-08 15:04:44,189 - process_api - INFO - run step: "start"
+2024-02-08 15:04:44,189 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:45,201 - process_api - INFO - run step: "step_1"
+2024-02-08 15:04:45,201 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-08 15:04:45,205 - process_api - INFO - run step: "step_2"
+2024-02-08 15:04:45,206 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'This is Test Case 2'}
+2024-02-08 15:04:45,770 - process_api - INFO - run step: "step_3"
+2024-02-08 15:04:45,770 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:46,789 - process_api - INFO - run process: "TC3"
+2024-02-08 15:04:46,789 - process_api - INFO - run step: "start"
+2024-02-08 15:04:46,789 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:47,806 - process_api - INFO - run step: "step_1"
+2024-02-08 15:04:47,806 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-08 15:04:47,806 - process_api - INFO - run step: "step_2"
+2024-02-08 15:04:47,806 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'This is Test Case 3'}
+2024-02-08 15:04:48,338 - process_api - INFO - run step: "step_3"
+2024-02-08 15:04:48,338 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:49,357 - process_api - INFO - run process: "TC4"
+2024-02-08 15:04:49,358 - process_api - INFO - run step: "start"
+2024-02-08 15:04:49,358 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:50,371 - process_api - INFO - run step: "step_1"
+2024-02-08 15:04:50,371 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-08 15:04:50,371 - process_api - INFO - run step: "step_2"
+2024-02-08 15:04:50,371 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'This is Test Case 4'}
+2024-02-08 15:04:50,973 - process_api - INFO - run step: "step_3"
+2024-02-08 15:04:50,973 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-08 15:04:51,992 - process_api - INFO - run step: "step_4"
+2024-02-08 15:04:51,992 - process_api - INFO - perform click on #btn-menu
+2024-02-08 15:04:52,064 - process_api - INFO - run step: "step_5"
+2024-02-08 15:04:52,064 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-08 15:04:52,342 - process_api - INFO - waiting for view-container
+2024-02-08 15:04:53,459 - process_api - INFO - perform refresh
+2024-02-08 15:04:54,079 - process_api - INFO - Task 80d18c9c-ca81-468a-a125-8ec4247d98f9 completed in 00:00:13:313

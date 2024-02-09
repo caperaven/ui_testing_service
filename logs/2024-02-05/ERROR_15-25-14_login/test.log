@@ -1,0 +1,43 @@
+2024-02-05 15:23:23,858 - process_api - INFO - run schema: "login"
+2024-02-05 15:23:23,858 - process_api - INFO - run process: "main"
+2024-02-05 15:23:23,858 - process_api - INFO - run step: "start"
+2024-02-05 15:23:35,751 - process_api - INFO - perform navigate: ${state.server}
+2024-02-05 15:24:40,646 - process_api - INFO - run step: "click_development_azure_account_button"
+2024-02-05 15:24:40,647 - process_api - INFO - perform click on li[name='development_azure_account']
+2024-02-05 15:24:40,740 - process_api - INFO - run step: "wait_for_login_tab_to_open_two_items"
+2024-02-05 15:24:40,740 - process_api - INFO - wait for window_count: {'count': 2}
+2024-02-05 15:24:40,753 - process_api - INFO - run step: "swap_to_new_tab"
+2024-02-05 15:24:40,753 - process_api - INFO - perform switch_to_tab {'index': 1}
+2024-02-05 15:24:40,770 - process_api - INFO - run step: "wait_for_user_name"
+2024-02-05 15:24:40,770 - process_api - INFO - wait for element: {'query': "input[name='loginfmt']"}
+2024-02-05 15:24:40,831 - process_api - INFO - run step: "fill_in_user_name"
+2024-02-05 15:24:40,831 - process_api - INFO - perform type_text {'query': "input[name='loginfmt']", 'value': 'test@pragmadeveloper.onmicrosoft.com'}
+2024-02-05 15:24:41,467 - process_api - INFO - run step: "for_password_element"
+2024-02-05 15:24:41,468 - process_api - INFO - wait for element: {'query': "input[name='passwd'][aria-required='true']"}
+2024-02-05 15:24:42,234 - process_api - INFO - run step: "fill_in_password"
+2024-02-05 15:24:42,234 - process_api - INFO - perform type_text {'query': "input[name='passwd']", 'value': 'NtHe7t2EFLqFbM'}
+2024-02-05 15:24:43,152 - process_api - INFO - run step: "stay_signed_in"
+2024-02-05 15:24:43,152 - process_api - INFO - perform click on #idSIButton9
+2024-02-05 15:24:44,195 - process_api - INFO - run step: "switch_to_default"
+2024-02-05 15:24:44,195 - process_api - INFO - perform switch_to_default {}
+2024-02-05 15:24:44,221 - process_api - INFO - run step: "wait_for_main"
+2024-02-05 15:24:44,222 - process_api - INFO - wait for element: {'query': 'view-container', 'timeout': 30}
+2024-02-05 15:25:14,355 - process_api - ERROR - Message: 
+
+2024-02-05 15:25:14,357 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 56, in get
+    return await get(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 20, in get
+    element = await get_element(ctx, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 53, in get_element
+    element = wait.until(element_callback(None, {
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-05 15:25:14,819 - process_api - INFO - Task e081b1f5-3661-469d-8755-d466af07a2e9 completed in 00:01:50:510

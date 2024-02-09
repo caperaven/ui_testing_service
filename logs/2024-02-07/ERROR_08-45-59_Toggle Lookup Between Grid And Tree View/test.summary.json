@@ -1,0 +1,12 @@
+{
+    "name": "Toggle Lookup Between Grid And Tree View",
+    "status": "error",
+    "start_time": "2024-02-07 08:45:51",
+    "end_time": "2024-02-07 08:45:59",
+    "duration": "00:00:08:587",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\ERROR_08-45-59_Toggle Lookup Between Grid And Tree View\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.03515625,
+    "memory_start": 91.89453125,
+    "memory_end": 91.9296875
+}

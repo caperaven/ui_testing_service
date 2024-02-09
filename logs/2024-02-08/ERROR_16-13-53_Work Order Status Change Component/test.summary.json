@@ -1,0 +1,12 @@
+{
+    "name": "Work Order Status Change Component",
+    "status": "error",
+    "start_time": "2024-02-08 16:12:57",
+    "end_time": "2024-02-08 16:13:53",
+    "duration": "00:00:56:381",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-08\\ERROR_16-13-53_Work Order Status Change Component\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.03515625,
+    "memory_start": 47.28515625,
+    "memory_end": 47.3203125
+}

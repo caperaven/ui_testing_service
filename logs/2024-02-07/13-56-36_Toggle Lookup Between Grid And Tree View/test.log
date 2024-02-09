@@ -1,0 +1,68 @@
+2024-02-07 13:56:17,900 - process_api - INFO - run schema: "Toggle Lookup Between Grid And Tree View"
+2024-02-07 13:56:17,900 - process_api - INFO - run process: "main"
+2024-02-07 13:56:17,900 - process_api - INFO - run step: "start"
+2024-02-07 13:56:17,900 - process_api - INFO - perform navigate: ${state.server}/#dashboard/PlaceholderAssetType
+2024-02-07 13:56:17,916 - process_api - INFO - perform refresh
+2024-02-07 13:56:18,530 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-02-07 13:56:18,530 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-07 13:56:23,364 - process_api - INFO - run step: "filter_record"
+2024-02-07 13:56:23,364 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#search-button', 'filter_input_selector': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'filter_value': '2030*XWINGL', 'internal_filter_btn_selector': '.dashboard #filter'}
+2024-02-07 13:56:23,364 - process_api - INFO - run step: "start"
+2024-02-07 13:56:23,367 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-07 13:56:23,451 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-02-07 13:56:23,451 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-07 13:56:26,464 - process_api - INFO - run step: "click_filter_button_selector"
+2024-02-07 13:56:26,464 - process_api - INFO - perform click on #search-button
+2024-02-07 13:56:26,554 - process_api - INFO - run step: "type_in_filter_input"
+2024-02-07 13:56:26,554 - process_api - INFO - perform type_text {'query': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'value': '2030*XWINGL'}
+2024-02-07 13:56:27,099 - process_api - INFO - run step: "filter_records"
+2024-02-07 13:56:27,099 - process_api - INFO - perform click on .dashboard #filter
+2024-02-07 13:56:27,195 - process_api - INFO - run step: "wait_for_filter"
+2024-02-07 13:56:27,195 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-07 13:56:29,217 - process_api - INFO - run step: "open_record"
+2024-02-07 13:56:29,217 - process_api - INFO - perform dbl_click on .grid-row
+2024-02-07 13:56:29,560 - process_api - INFO - run step: "open_assist"
+2024-02-07 13:56:29,560 - process_api - INFO - perform click on button#assist
+2024-02-07 13:56:29,659 - process_api - INFO - run step: "set_linked"
+2024-02-07 13:56:29,659 - process_api - INFO - perform click on #btn-SetPlaceholder
+2024-02-07 13:56:30,386 - process_api - INFO - run step: "wait_for_tree"
+2024-02-07 13:56:30,386 - process_api - INFO - wait for element: {'query': "asset-type-tree[status='ready']"}
+2024-02-07 13:56:31,066 - process_api - INFO - run step: "click_grid"
+2024-02-07 13:56:31,066 - process_api - INFO - perform click on #switch-view [data-value='grid']
+2024-02-07 13:56:31,153 - process_api - INFO - run step: "wait_for_grid"
+2024-02-07 13:56:31,153 - process_api - INFO - wait for element: {'query': "#assetTypeCode-lookup[status='ready'][data-loaded='true']"}
+2024-02-07 13:56:31,337 - process_api - INFO - run step: "wait_on_profiles"
+2024-02-07 13:56:31,337 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 13:56:31,853 - process_api - INFO - run step: "select_profiles"
+2024-02-07 13:56:31,853 - process_api - INFO - perform click on #profiles
+2024-02-07 13:56:31,935 - process_api - INFO - run step: "click_save_profile"
+2024-02-07 13:56:31,935 - process_api - INFO - perform click on [icon-name='saveNew']
+2024-02-07 13:56:32,018 - process_api - INFO - run step: "wait_for_save_profile"
+2024-02-07 13:56:32,018 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 13:56:32,543 - process_api - INFO - run step: "fill_profile_name"
+2024-02-07 13:56:32,543 - process_api - INFO - perform type_text {'query': "[aria-label='Profile Name']", 'value': 'Swap Lookup Test Between Grid View And Tree View'}
+2024-02-07 13:56:33,124 - process_api - INFO - run step: "click_accept"
+2024-02-07 13:56:33,124 - process_api - INFO - perform click on .small.dialog-card #accept
+2024-02-07 13:56:33,207 - process_api - INFO - run step: "wait_for_grid_after_save"
+2024-02-07 13:56:33,207 - process_api - INFO - wait for element: {'query': "#assetTypeCode-lookup[status='ready'][data-loaded='true']"}
+2024-02-07 13:56:33,249 - process_api - INFO - run step: "wait_ready"
+2024-02-07 13:56:33,249 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-07 13:56:35,253 - process_api - INFO - run step: "click_tree"
+2024-02-07 13:56:35,253 - process_api - INFO - perform click on #switch-view [data-value='tree']
+2024-02-07 13:56:35,347 - process_api - INFO - run step: "wait_for_tree_going_back"
+2024-02-07 13:56:35,347 - process_api - INFO - wait for element: {'query': "asset-type-tree[status='ready']"}
+2024-02-07 13:56:35,494 - process_api - INFO - run step: "open_up_profiles"
+2024-02-07 13:56:35,494 - process_api - INFO - perform click on #profiles
+2024-02-07 13:56:35,580 - process_api - INFO - run step: "select_profile"
+2024-02-07 13:56:35,580 - process_api - INFO - perform click on .tree-item:has([tooltip='Swap Lookup Test Between Grid View And Tree View'])
+2024-02-07 13:56:35,682 - process_api - INFO - run step: "wait_for_grid_after_profile"
+2024-02-07 13:56:35,682 - process_api - INFO - wait for element: {'query': "#assetTypeCode-lookup[status='ready'][data-loaded='true']"}
+2024-02-07 13:56:35,962 - process_api - INFO - run step: "wait_for_options_toolbar"
+2024-02-07 13:56:35,962 - process_api - INFO - wait for element: {'query': " #switch-view[data-value='grid']"}
+2024-02-07 13:56:36,010 - process_api - INFO - run step: "click_profile_overflow"
+2024-02-07 13:56:36,010 - process_api - INFO - perform click on pr-profiles [data-name='Swap Lookup Test Between Grid View And Tree View'] [data-event='showItemMenu']
+2024-02-07 13:56:36,093 - process_api - INFO - run step: "click_remove"
+2024-02-07 13:56:36,093 - process_api - INFO - perform click on context-menu [id='removeProfile']
+2024-02-07 13:56:36,352 - process_api - INFO - run step: "click_yes"
+2024-02-07 13:56:36,352 - process_api - INFO - perform click on dialog-component button[data-action='yes']
+2024-02-07 13:56:36,924 - process_api - INFO - Task fe78ac09-b572-40cd-8f60-de44b430f389 completed in 00:00:18:608

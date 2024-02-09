@@ -1,0 +1,297 @@
+{
+    "id": "#pin-side-menu",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/demo/daily/#welcome"
+                },
+                "next_step": "step_1",
+                "name": "start"
+            },
+            "step_1": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pr-side-menu #actions"
+                },
+                "next_step": "step_2",
+                "name": "step_1"
+            },
+            "step_2": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_3",
+                "name": "step_2"
+            },
+            "step_3": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel1 [data-id='docker-button']"
+                },
+                "next_step": "step_4",
+                "name": "step_3"
+            },
+            "step_4": {
+                "type": "assert",
+                "action": "attribute_eq",
+                "args": {
+                    "query": "#panel1 [data-id='docker-button']",
+                    "attr": "docked",
+                    "value": "true",
+                    "operator": "eq"
+                },
+                "next_step": "step_5",
+                "name": "step_4"
+            },
+            "step_5": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pr-side-menu #assist"
+                },
+                "next_step": "step_6",
+                "name": "step_5"
+            },
+            "step_6": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pr-side-menu #help"
+                },
+                "next_step": "step_7",
+                "name": "step_6"
+            },
+            "step_7": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_8",
+                "name": "step_7"
+            },
+            "step_8": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel3 [data-id='side-menu-close']"
+                },
+                "next_step": "step_9",
+                "name": "step_8"
+            },
+            "step_9": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_10",
+                "name": "step_9"
+            },
+            "step_10": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pr-side-menu #help"
+                },
+                "next_step": "step_11",
+                "name": "step_10"
+            },
+            "step_11": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_12",
+                "name": "step_11"
+            },
+            "step_12": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel3 [data-id='docker-button']"
+                },
+                "next_step": "step_13",
+                "name": "step_12"
+            },
+            "step_13": {
+                "type": "assert",
+                "action": "attribute_eq",
+                "args": {
+                    "query": "#panel3 [data-id='docker-button']",
+                    "attr": "docked",
+                    "value": "false",
+                    "operator": "eq"
+                },
+                "next_step": "step_14",
+                "name": "step_13"
+            },
+            "step_14": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#messages"
+                },
+                "next_step": "step_15",
+                "name": "step_14"
+            },
+            "step_15": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_16",
+                "name": "step_15"
+            },
+            "step_16": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel4 [data-id='docker-button']"
+                },
+                "next_step": "step_17",
+                "name": "step_16"
+            },
+            "step_17": {
+                "type": "assert",
+                "action": "attribute_eq",
+                "args": {
+                    "query": "#panel4 [data-id='docker-button']",
+                    "attr": "docked",
+                    "value": "true",
+                    "operator": "eq"
+                },
+                "next_step": "step_18",
+                "name": "step_17"
+            },
+            "step_18": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#messages"
+                },
+                "next_step": "step_19",
+                "name": "step_18"
+            },
+            "step_19": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_20",
+                "name": "step_19"
+            },
+            "step_20": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#messages"
+                },
+                "next_step": "step_21",
+                "name": "step_20"
+            },
+            "step_21": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_22",
+                "name": "step_21"
+            },
+            "step_22": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel4 [data-id='docker-button']"
+                },
+                "next_step": "step_23",
+                "name": "step_22"
+            },
+            "step_23": {
+                "type": "assert",
+                "action": "attribute_eq",
+                "args": {
+                    "query": "#panel4 [data-id='docker-button']",
+                    "attr": "docked",
+                    "value": "false",
+                    "operator": "eq"
+                },
+                "next_step": "step_24",
+                "name": "step_23"
+            },
+            "step_24": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel4 #side-menu-close"
+                },
+                "next_step": "step_25",
+                "name": "step_24"
+            },
+            "step_25": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_26",
+                "name": "step_25"
+            },
+            "step_26": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#messages"
+                },
+                "next_step": "step_27",
+                "name": "step_26"
+            },
+            "step_27": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_28",
+                "name": "step_27"
+            },
+            "step_28": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btn-menu"
+                },
+                "next_step": "step_29",
+                "name": "step_28"
+            },
+            "step_29": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 0.5
+                },
+                "next_step": "step_30",
+                "name": "step_29"
+            },
+            "step_30": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btn-menu"
+                },
+                "name": "step_30"
+            }
+        }
+    }
+}

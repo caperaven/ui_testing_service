@@ -1,0 +1,208 @@
+2024-02-07 15:11:00,376 - process_api - INFO - run schema: "Theme Designer Bug"
+2024-02-07 15:11:00,376 - process_api - INFO - run process: "main"
+2024-02-07 15:11:00,376 - process_api - INFO - run step: "start"
+2024-02-07 15:11:00,376 - process_api - INFO - perform navigate: ${state.server}/#theme-designer
+2024-02-07 15:11:00,389 - process_api - INFO - perform refresh
+2024-02-07 15:11:01,063 - process_api - INFO - run step: "set_variables_for_profile"
+2024-02-07 15:11:01,063 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-07 15:11:01,063 - process_api - INFO - run step: "wait_for_account_button"
+2024-02-07 15:11:01,063 - process_api - INFO - wait for element: {'query': '.form-container #btn-account'}
+2024-02-07 15:11:04,640 - process_api - INFO - run step: "open_accounts_panel"
+2024-02-07 15:11:04,640 - process_api - INFO - perform click on .form-container #btn-account
+2024-02-07 15:11:04,898 - process_api - INFO - run step: "wait_for_accounts_panel"
+2024-02-07 15:11:04,898 - process_api - INFO - wait for attribute: {'query': 'pr-account', 'attr': 'status', 'value': 'ready'}
+2024-02-07 15:11:04,936 - process_api - INFO - run step: "wait_for_theme_option"
+2024-02-07 15:11:04,936 - process_api - INFO - wait for element: {'query': '#panel0 #theme-menu-item'}
+2024-02-07 15:11:04,968 - process_api - INFO - run step: "open_theme_panel"
+2024-02-07 15:11:04,968 - process_api - INFO - perform click on #panel0 #theme-menu-item
+2024-02-07 15:11:05,056 - process_api - INFO - run step: "wait_for_list"
+2024-02-07 15:11:05,056 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-07 15:11:05,087 - process_api - INFO - run step: "assert_theme_list_exists"
+2024-02-07 15:11:05,087 - process_api - INFO - assert element_exists: {'query': '#tpl-list'}
+2024-02-07 15:11:05,087 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-07 15:11:05,133 - process_api - INFO - run step: "wait_for_default_list_item"
+2024-02-07 15:11:05,133 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 15:11:05,169 - process_api - INFO - run step: "assert_default_list_item_exists"
+2024-02-07 15:11:05,169 - process_api - INFO - assert element_exists: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 15:11:05,169 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 15:11:05,201 - process_api - INFO - run step: "perform_click_close_list"
+2024-02-07 15:11:05,201 - process_api - INFO - perform click on #theme-picker [data-event='collapseThemes']
+2024-02-07 15:11:05,285 - process_api - INFO - run step: "wait_for_account_close_button"
+2024-02-07 15:11:05,285 - process_api - INFO - wait for element: {'query': '#panel0 #side-menu-close'}
+2024-02-07 15:11:05,325 - process_api - INFO - run step: "close_account_window"
+2024-02-07 15:11:05,325 - process_api - INFO - perform click on #panel0 #side-menu-close
+2024-02-07 15:11:05,390 - process_api - INFO - run step: "navigate_to_theme_designer_screen"
+2024-02-07 15:11:05,390 - process_api - INFO - perform navigate: ${state.server}/#theme-designer
+2024-02-07 15:11:05,400 - process_api - INFO - perform refresh
+2024-02-07 15:11:05,700 - process_api - INFO - run step: "wait_for_profile_button"
+2024-02-07 15:11:05,701 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-07 15:11:08,715 - process_api - INFO - run step: "perform_click_profile_button"
+2024-02-07 15:11:08,715 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-07 15:11:08,797 - process_api - INFO - run step: "wait_for_profile_view"
+2024-02-07 15:11:08,797 - process_api - INFO - wait for element: {'query': '#panel5 #profile-switcher'}
+2024-02-07 15:11:08,827 - process_api - INFO - run step: "wait_for_profile_menu"
+2024-02-07 15:11:08,827 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-07 15:11:10,850 - process_api - INFO - run step: "perform_click_save_button"
+2024-02-07 15:11:10,850 - process_api - INFO - perform click on #profile-switcher [data-event='newProfile']
+2024-02-07 15:11:10,941 - process_api - INFO - run step: "wait_for_profile_input_field"
+2024-02-07 15:11:10,941 - process_api - INFO - wait for element: {'query': "[id='model.name'] input"}
+2024-02-07 15:11:11,023 - process_api - INFO - run step: "perform_enter_profile_name"
+2024-02-07 15:11:11,023 - process_api - INFO - perform type_text {'query': "[id='model.name'] input", 'value': '0feaedc6-9f86-43b6-a63d-fd6677328c0c'}
+2024-02-07 15:11:11,574 - process_api - INFO - run step: "wait_for_accept_button"
+2024-02-07 15:11:11,574 - process_api - INFO - wait for element: {'query': '.dialog-footer #accept'}
+2024-02-07 15:11:11,606 - process_api - INFO - run step: "perform_click_accept_button"
+2024-02-07 15:11:11,606 - process_api - INFO - perform click on .dialog-footer #accept
+2024-02-07 15:11:11,676 - process_api - INFO - run step: "wait_for_account_buttons"
+2024-02-07 15:11:11,676 - process_api - INFO - wait for time: {'timeout': 5}
+2024-02-07 15:11:16,692 - process_api - INFO - run step: "open_profile_menu_for_id"
+2024-02-07 15:11:16,692 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-07 15:11:16,776 - process_api - INFO - run step: "select_account_button"
+2024-02-07 15:11:16,776 - process_api - INFO - perform click on pragma-icon-button#btn-account
+2024-02-07 15:11:16,845 - process_api - INFO - run step: "perform_click_theme_button"
+2024-02-07 15:11:16,845 - process_api - INFO - perform click on #panel0 #theme-menu-item
+2024-02-07 15:11:16,915 - process_api - INFO - run step: "wait_for_theme_list_item"
+2024-02-07 15:11:16,915 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-07 15:11:17,931 - process_api - INFO - run step: "perform_click_theme_list_item"
+2024-02-07 15:11:17,931 - process_api - INFO - perform click on #tpl-list #pal-body .listitem [data-name='0feaedc6-9f86-43b6-a63d-fd6677328c0c']
+2024-02-07 15:11:18,008 - process_api - INFO - run step: "wait_for_profiles_button"
+2024-02-07 15:11:18,008 - process_api - INFO - wait for element: {'query': '#sideMenuTabList #profiles'}
+2024-02-07 15:11:18,043 - process_api - INFO - run step: "perform_click_profiles"
+2024-02-07 15:11:18,043 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-07 15:11:18,114 - process_api - INFO - run step: "wait_for_profile_to_exist"
+2024-02-07 15:11:18,114 - process_api - INFO - wait for element: {'query': "#profile-tree #body [data-name='0feaedc6-9f86-43b6-a63d-fd6677328c0c']"}
+2024-02-07 15:11:18,154 - process_api - INFO - run step: "select_the_profile"
+2024-02-07 15:11:18,154 - process_api - INFO - perform click on #profile-tree #body [data-name='0feaedc6-9f86-43b6-a63d-fd6677328c0c']
+2024-02-07 15:11:18,227 - process_api - INFO - run step: "perform_click_overflow_button"
+2024-02-07 15:11:18,227 - process_api - INFO - perform click on [data-name='0feaedc6-9f86-43b6-a63d-fd6677328c0c'] button[data-event='showItemMenu']
+2024-02-07 15:11:18,309 - process_api - INFO - run step: "perform_click_remove_button"
+2024-02-07 15:11:18,309 - process_api - INFO - perform click on context-menu #removeProfile
+2024-02-07 15:11:19,552 - process_api - ERROR - Message: stale element reference: stale element not found
+  (Session info: chrome=118.0.5993.70); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D606F116]
+	(No symbol) [0x00007FF7D607115F]
+	(No symbol) [0x00007FF7D6071250]
+	(No symbol) [0x00007FF7D60AD265]
+	(No symbol) [0x00007FF7D60A2796]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+2024-02-07 15:11:19,552 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 28, in perform
+    await Actions.__dict__[action](driver, element, chain, args)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 38, in click
+    element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=118.0.5993.70); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D606F116]
+	(No symbol) [0x00007FF7D607115F]
+	(No symbol) [0x00007FF7D6071250]
+	(No symbol) [0x00007FF7D60B1957]
+	(No symbol) [0x00007FF7D60AFBB1]
+	(No symbol) [0x00007FF7D60ADC08]
+	(No symbol) [0x00007FF7D60ACCC3]
+	(No symbol) [0x00007FF7D60A29CF]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 31, in perform
+    await Actions.__dict__[action](driver, element, chain, args)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 38, in click
+    element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=118.0.5993.70); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D606F116]
+	(No symbol) [0x00007FF7D607115F]
+	(No symbol) [0x00007FF7D6071250]
+	(No symbol) [0x00007FF7D60AD265]
+	(No symbol) [0x00007FF7D60A2796]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+
+2024-02-07 15:11:19,568 - process_api - INFO - run process: "TC2"
+2024-02-07 15:11:19,568 - process_api - INFO - run step: "start"
+2024-02-07 15:11:19,568 - process_api - INFO - wait for element: {'query': '.form-container #btn-account'}
+2024-02-07 15:11:19,835 - process_api - INFO - Task ee180732-56c1-40f1-8d4a-5f5ad1d0fdfd completed in 00:00:19:222

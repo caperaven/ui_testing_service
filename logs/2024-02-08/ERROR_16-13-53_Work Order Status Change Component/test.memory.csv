@@ -1,0 +1,14 @@
+date_time,name,memory
+2024-02-08 16:12:58.108830,start,47.28515625
+2024-02-08 16:12:58.112829,create_uuid,47.28515625
+2024-02-08 16:13:16.048788,create_work_order_record_button,47.30859375
+2024-02-08 16:13:22.106833,perform_work_order_record_filtering,47.30859375
+2024-02-08 16:13:22.186436,click_on_status_component,47.30859375
+2024-02-08 16:13:22.353507,wait_for_toast_message_no_record_selected,47.30859375
+2024-02-08 16:13:22.390982,assert_toast_message_no_record_selected,47.30859375
+2024-02-08 16:13:22.481833,perform_select_record,47.30859375
+2024-02-08 16:13:22.555229,perform_select_status_change_component,47.30859375
+2024-02-08 16:13:23.224774,wait_for_context_menu_to_be_ready,47.3125
+2024-02-08 16:13:23.257439,wait_for_list_element_exist,47.3125
+2024-02-08 16:13:53.391443,select_new_status,47.31640625
+2024-02-08 16:13:53.455715,start,47.3203125

@@ -1,0 +1,132 @@
+2024-02-08 08:42:10,380 - process_api - INFO - run schema: "User defined queries."
+2024-02-08 08:42:10,380 - process_api - INFO - run process: "main"
+2024-02-08 08:42:10,380 - process_api - INFO - run step: "start"
+2024-02-08 08:42:10,380 - process_api - INFO - perform navigate: ${state.server}/#dashboard/UserDefinedQuery
+2024-02-08 08:42:10,419 - process_api - INFO - perform refresh
+2024-02-08 08:42:11,406 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-02-08 08:42:11,406 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-08 08:42:18,455 - process_api - INFO - run step: "click_create"
+2024-02-08 08:42:18,455 - process_api - INFO - perform click on #create
+2024-02-08 08:42:18,691 - process_api - INFO - run step: "wait_for_dialog"
+2024-02-08 08:42:18,691 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryCreate'][status='ready']"}
+2024-02-08 08:42:20,012 - process_api - INFO - run step: "fill_code"
+2024-02-08 08:42:20,012 - process_api - INFO - perform type_text {'query': '#lbl-code', 'value': 'TestCode'}
+2024-02-08 08:42:20,906 - process_api - INFO - run step: "fill_description"
+2024-02-08 08:42:20,908 - process_api - INFO - perform type_text {'query': '#lbl-description', 'value': 'TestDescription'}
+2024-02-08 08:42:21,797 - process_api - INFO - run step: "fill_permission"
+2024-02-08 08:42:21,797 - process_api - INFO - perform type_text {'query': '#lbl-permissionTreeCode', 'value': 'A10'}
+2024-02-08 08:42:22,668 - process_api - INFO - run step: "uncheck_permission"
+2024-02-08 08:42:22,668 - process_api - INFO - perform click on #cb-addPermissionFilter
+2024-02-08 08:42:22,962 - process_api - INFO - run step: "click_query"
+2024-02-08 08:42:22,964 - process_api - INFO - perform click on #pb-1_query
+2024-02-08 08:42:23,232 - process_api - INFO - run step: "fill_query"
+2024-02-08 08:42:23,232 - process_api - INFO - perform type_text {'query': '#lbl-query', 'value': 'select * from wm.work_order where code like @code and type_of_work_id = @type_of_work'}
+2024-02-08 08:42:24,474 - process_api - INFO - run step: "click_parameters"
+2024-02-08 08:42:24,474 - process_api - INFO - perform click on #pb-2_parameter
+2024-02-08 08:42:24,691 - process_api - INFO - run step: "click_add_parameter"
+2024-02-08 08:42:24,691 - process_api - INFO - perform click on #ibtn-addParameter
+2024-02-08 08:42:24,882 - process_api - INFO - run step: "wait_create_first"
+2024-02-08 08:42:24,882 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryParameterCreateCustom'][status='ready']"}
+2024-02-08 08:42:25,741 - process_api - INFO - run step: "fill_first"
+2024-02-08 08:42:25,741 - process_api - INFO - perform type_text {'query': '#lbl-parameterName', 'value': '@code'}
+2024-02-08 08:42:26,588 - process_api - INFO - run step: "click_accept"
+2024-02-08 08:42:26,595 - process_api - INFO - perform click on #accept
+2024-02-08 08:42:26,882 - process_api - INFO - run step: "wait_for_dialog_after_first"
+2024-02-08 08:42:26,882 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryCreate'][status='ready']"}
+2024-02-08 08:42:27,206 - process_api - INFO - run step: "click_add_again"
+2024-02-08 08:42:27,206 - process_api - INFO - perform click on #ibtn-addParameter
+2024-02-08 08:42:27,496 - process_api - INFO - run step: "wait_create_second"
+2024-02-08 08:42:27,496 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryParameterCreateCustom'][status='ready']"}
+2024-02-08 08:42:27,904 - process_api - INFO - run step: "fill_second"
+2024-02-08 08:42:27,904 - process_api - INFO - perform type_text {'query': '#lbl-parameterName', 'value': '@type_of_work'}
+2024-02-08 08:42:28,834 - process_api - INFO - run step: "click_accept_second"
+2024-02-08 08:42:28,834 - process_api - INFO - perform click on #accept
+2024-02-08 08:42:29,016 - process_api - INFO - run step: "wait_for_dialog_after_second"
+2024-02-08 08:42:29,016 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryCreate'][status='ready']"}
+2024-02-08 08:42:29,320 - process_api - INFO - run step: "click_save"
+2024-02-08 08:42:29,320 - process_api - INFO - perform click on #primary
+2024-02-08 08:42:29,599 - process_api - INFO - run step: "wait_for_dashboard_again"
+2024-02-08 08:42:29,601 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-08 08:42:29,724 - process_api - INFO - run step: "filter_record"
+2024-02-08 08:42:29,724 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#search-button', 'filter_input_selector': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'filter_value': 'TestTwoParameters', 'internal_filter_btn_selector': '.dashboard #filter'}
+2024-02-08 08:42:29,724 - process_api - INFO - run step: "start"
+2024-02-08 08:42:29,724 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-08 08:42:31,031 - process_api - ERROR - Message: element click intercepted: Element <pragma-icon-button icon-name="preparedQuery" aria-label="Prepared Query" id="prepared-fetch" tooltip="Prepared Query" data-action="prepared-fetch" status="ready" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (1558, 71). Other element would receive the click: <pragma-action-dialog class="small" style="z-index: 400;">...</pragma-action-dialog>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D60B1A6B]
+	(No symbol) [0x00007FF7D60AFE39]
+	(No symbol) [0x00007FF7D60ADC08]
+	(No symbol) [0x00007FF7D60ACCC3]
+	(No symbol) [0x00007FF7D60A29CF]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+2024-02-08 08:42:31,031 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 28, in perform
+    await Actions.__dict__[action](driver, element, chain, args)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 38, in click
+    element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <pragma-icon-button icon-name="preparedQuery" aria-label="Prepared Query" id="prepared-fetch" tooltip="Prepared Query" data-action="prepared-fetch" status="ready" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (1558, 71). Other element would receive the click: <pragma-action-dialog class="small" style="z-index: 400;">...</pragma-action-dialog>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D60B1A6B]
+	(No symbol) [0x00007FF7D60AFE39]
+	(No symbol) [0x00007FF7D60ADC08]
+	(No symbol) [0x00007FF7D60ACCC3]
+	(No symbol) [0x00007FF7D60A29CF]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+
+2024-02-08 08:42:31,780 - process_api - INFO - Task a877cad9-6ddf-4512-be12-16e0a058e2fc completed in 00:00:20:666
