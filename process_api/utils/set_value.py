@@ -38,22 +38,41 @@ async def set_value(path, value, context, process, item):
 
 # set a property on a path for a given object.
 # this is a recursive function and it will create dictionaries as needed
+
+# def set_property_on_path(obj, path, value):
+#     if obj is None or path is None or len(path) == 0:
+#         return
+#
+#     if len(path) == 1:
+#         if isinstance(obj, dict):
+#             obj[path[0]] = value
+#         else:
+#             setattr(obj, path[0], value)
+#         return
+#
+#     if isinstance(obj, dict):
+#         if obj.get(path[0]) is None:
+#             obj[path[0]] = {}
+#     else:
+#         if getattr(obj, path[0]) is None:
+#             setattr(obj, path[0], {})
+#
+#     set_property_on_path(obj[path[0]], path[1:], value)
+
 def set_property_on_path(obj, path, value):
     if obj is None or path is None or len(path) == 0:
         return
 
-    if len(path) == 1:
+    keys = path.split('.')  # Split the path string into a list of keys
+
+    for key in keys[:-1]:
         if isinstance(obj, dict):
-            obj[path[0]] = value
+            obj = obj.setdefault(key, {})  # Create nested dictionaries as needed
         else:
-            setattr(obj, path[0], value)
-        return
+            obj = getattr(obj, key, {})  # Create nested objects as needed
 
+    # Set the value at the last key in the path
     if isinstance(obj, dict):
-        if obj.get(path[0]) is None:
-            obj[path[0]] = {}
+        obj[keys[-1]] = value
     else:
-        if getattr(obj, path[0]) is None:
-            setattr(obj, path[0], {})
-
-    set_property_on_path(obj[path[0]], path[1:], value)
+        setattr(obj, keys[-1], value)

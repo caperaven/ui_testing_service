@@ -1,0 +1,27 @@
+2024-02-12 14:12:28,777 - process_api - INFO - run schema: "extension"
+2024-02-12 14:12:28,777 - process_api - INFO - run process: "main"
+2024-02-12 14:12:28,777 - process_api - INFO - run step: "start"
+2024-02-12 14:12:28,777 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 14:12:30,044 - process_api - INFO - perform refresh
+2024-02-12 14:12:30,476 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 14:12:30,476 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 14:12:37,974 - process_api - INFO - run step: "just_wait"
+2024-02-12 14:12:37,974 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-12 14:12:40,980 - process_api - INFO - run step: "find_element"
+2024-02-12 14:15:10,528 - process_api - ERROR - 'ProcessAPI' object has no attribute 'find_tree_element'
+2024-02-12 14:15:10,538 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\extensions\asset_tree.py", line 49, in locate_element
+    new_element = api.find_tree_element(driver, data_id_value)
+AttributeError: 'ProcessAPI' object has no attribute 'find_tree_element'
+
+2024-02-12 14:15:11,779 - process_api - INFO - Task 2ce2429a-b54f-4814-bc13-386ecc0dee00 completed in 00:02:41:767

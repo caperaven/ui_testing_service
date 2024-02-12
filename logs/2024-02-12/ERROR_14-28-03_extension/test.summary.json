@@ -1,0 +1,12 @@
+{
+    "name": "extension",
+    "status": "error",
+    "start_time": "2024-02-12 14:27:18",
+    "end_time": "2024-02-12 14:28:03",
+    "duration": "00:00:44:274",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-12\\ERROR_14-28-03_extension\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.015625,
+    "memory_start": 99.87890625,
+    "memory_end": 99.89453125
+}

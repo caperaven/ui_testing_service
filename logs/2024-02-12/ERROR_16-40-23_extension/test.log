@@ -1,0 +1,95 @@
+2024-02-12 16:39:05,185 - process_api - INFO - run schema: "extension"
+2024-02-12 16:39:05,185 - process_api - INFO - run process: "main"
+2024-02-12 16:39:05,185 - process_api - INFO - run step: "start"
+2024-02-12 16:39:05,185 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 16:39:05,914 - process_api - INFO - perform refresh
+2024-02-12 16:39:06,293 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 16:39:06,294 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 16:39:12,088 - process_api - INFO - run step: "just_wait"
+2024-02-12 16:39:12,100 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-12 16:39:15,106 - process_api - INFO - run step: "find_element"
+2024-02-12 16:40:19,155 - process_api - INFO - run step: "step_4"
+2024-02-12 16:40:20,569 - process_api - INFO - perform click on [data-id='RegularAsset_1707726914300001']
+2024-02-12 16:40:20,660 - process_api - INFO - run step: "step_5"
+2024-02-12 16:40:23,474 - process_api - ERROR - Message: element click intercepted: Element <div class="tree-item" tabindex="-1" role="group" data-type="group" aria-selected="false" style="position: absolute; left: 0px; top: 0px; right: 0px; align-items: center; min-width: 1901px; --scroll-top: 0px; padding-left: 0rem;" data-template-key="null" data-name="undefined" data-id="RegularAsset_1">...</div> is not clickable at point (935, 111). Other element would receive the click: <pragma-split-view split-percentage="50" id="asset-tree-split-view" style="--split-percentage: 50%;" class="visible left-spaced">...</pragma-split-view>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6951E8EF2+54786]
+	(No symbol) [0x00007FF695155612]
+	(No symbol) [0x00007FF69500A64B]
+	(No symbol) [0x00007FF695051A6B]
+	(No symbol) [0x00007FF69504FE39]
+	(No symbol) [0x00007FF69504DC08]
+	(No symbol) [0x00007FF69504CCC3]
+	(No symbol) [0x00007FF6950429CF]
+	(No symbol) [0x00007FF69506BE6A]
+	(No symbol) [0x00007FF6950422E6]
+	(No symbol) [0x00007FF69506C080]
+	(No symbol) [0x00007FF695084D02]
+	(No symbol) [0x00007FF69506BC43]
+	(No symbol) [0x00007FF695040941]
+	(No symbol) [0x00007FF695041B84]
+	GetHandleVerifier [0x00007FF695537F52+3524194]
+	GetHandleVerifier [0x00007FF69558D800+3874576]
+	GetHandleVerifier [0x00007FF695585D7F+3843215]
+	GetHandleVerifier [0x00007FF695285086+694166]
+	(No symbol) [0x00007FF695160A88]
+	(No symbol) [0x00007FF69515CA94]
+	(No symbol) [0x00007FF69515CBC2]
+	(No symbol) [0x00007FF69514CC83]
+	BaseThreadInitThunk [0x00007FFB195A257D+29]
+	RtlUserThreadStart [0x00007FFB1B20AA58+40]
+
+2024-02-12 16:40:23,486 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  [Previous line repeated 2 more times]
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\extensions\asset_tree.py", line 65, in locate_element
+    new_element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="tree-item" tabindex="-1" role="group" data-type="group" aria-selected="false" style="position: absolute; left: 0px; top: 0px; right: 0px; align-items: center; min-width: 1901px; --scroll-top: 0px; padding-left: 0rem;" data-template-key="null" data-name="undefined" data-id="RegularAsset_1">...</div> is not clickable at point (935, 111). Other element would receive the click: <pragma-split-view split-percentage="50" id="asset-tree-split-view" style="--split-percentage: 50%;" class="visible left-spaced">...</pragma-split-view>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6951E8EF2+54786]
+	(No symbol) [0x00007FF695155612]
+	(No symbol) [0x00007FF69500A64B]
+	(No symbol) [0x00007FF695051A6B]
+	(No symbol) [0x00007FF69504FE39]
+	(No symbol) [0x00007FF69504DC08]
+	(No symbol) [0x00007FF69504CCC3]
+	(No symbol) [0x00007FF6950429CF]
+	(No symbol) [0x00007FF69506BE6A]
+	(No symbol) [0x00007FF6950422E6]
+	(No symbol) [0x00007FF69506C080]
+	(No symbol) [0x00007FF695084D02]
+	(No symbol) [0x00007FF69506BC43]
+	(No symbol) [0x00007FF695040941]
+	(No symbol) [0x00007FF695041B84]
+	GetHandleVerifier [0x00007FF695537F52+3524194]
+	GetHandleVerifier [0x00007FF69558D800+3874576]
+	GetHandleVerifier [0x00007FF695585D7F+3843215]
+	GetHandleVerifier [0x00007FF695285086+694166]
+	(No symbol) [0x00007FF695160A88]
+	(No symbol) [0x00007FF69515CA94]
+	(No symbol) [0x00007FF69515CBC2]
+	(No symbol) [0x00007FF69514CC83]
+	BaseThreadInitThunk [0x00007FFB195A257D+29]
+	RtlUserThreadStart [0x00007FFB1B20AA58+40]
+
+
+2024-02-12 16:40:23,972 - process_api - INFO - Task a17098dd-19f4-423d-b309-f5825be33059 completed in 00:01:18:300

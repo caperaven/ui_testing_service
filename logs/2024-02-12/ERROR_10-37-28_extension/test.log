@@ -1,0 +1,90 @@
+2024-02-12 10:37:21,540 - process_api - INFO - run schema: "extension"
+2024-02-12 10:37:21,540 - process_api - INFO - run process: "main"
+2024-02-12 10:37:21,540 - process_api - INFO - run step: "start"
+2024-02-12 10:37:21,540 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 10:37:22,473 - process_api - INFO - perform refresh
+2024-02-12 10:37:22,787 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 10:37:22,787 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 10:37:27,773 - process_api - INFO - run step: "just_wait"
+2024-02-12 10:37:27,778 - process_api - INFO - run step: "find_element"
+2024-02-12 10:37:27,861 - process_api - INFO - run step: "type_greeting"
+2024-02-12 10:37:27,861 - process_api - INFO - perform click on #btn-menu
+2024-02-12 10:37:28,966 - process_api - ERROR - Message: element click intercepted: Element <pragma-icon-button id="btn-menu" aria-haspopup="true" icon-name="menu" aria-label="Menu" status="ready" tooltip="Menu" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (24, 23). Other element would receive the click: <pragma-dialogs class="dialog">...</pragma-dialogs>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6951E8EF2+54786]
+	(No symbol) [0x00007FF695155612]
+	(No symbol) [0x00007FF69500A64B]
+	(No symbol) [0x00007FF695051A6B]
+	(No symbol) [0x00007FF69504FE39]
+	(No symbol) [0x00007FF69504DC08]
+	(No symbol) [0x00007FF69504CCC3]
+	(No symbol) [0x00007FF6950429CF]
+	(No symbol) [0x00007FF69506BE6A]
+	(No symbol) [0x00007FF6950422E6]
+	(No symbol) [0x00007FF69506C080]
+	(No symbol) [0x00007FF695084D02]
+	(No symbol) [0x00007FF69506BC43]
+	(No symbol) [0x00007FF695040941]
+	(No symbol) [0x00007FF695041B84]
+	GetHandleVerifier [0x00007FF695537F52+3524194]
+	GetHandleVerifier [0x00007FF69558D800+3874576]
+	GetHandleVerifier [0x00007FF695585D7F+3843215]
+	GetHandleVerifier [0x00007FF695285086+694166]
+	(No symbol) [0x00007FF695160A88]
+	(No symbol) [0x00007FF69515CA94]
+	(No symbol) [0x00007FF69515CBC2]
+	(No symbol) [0x00007FF69514CC83]
+	BaseThreadInitThunk [0x00007FFB195A257D+29]
+	RtlUserThreadStart [0x00007FFB1B20AA58+40]
+
+2024-02-12 10:37:28,966 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 28, in perform
+    await Actions.__dict__[action](driver, element, chain, args)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 38, in click
+    element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <pragma-icon-button id="btn-menu" aria-haspopup="true" icon-name="menu" aria-label="Menu" status="ready" tooltip="Menu" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (24, 23). Other element would receive the click: <pragma-dialogs class="dialog">...</pragma-dialogs>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6951E8EF2+54786]
+	(No symbol) [0x00007FF695155612]
+	(No symbol) [0x00007FF69500A64B]
+	(No symbol) [0x00007FF695051A6B]
+	(No symbol) [0x00007FF69504FE39]
+	(No symbol) [0x00007FF69504DC08]
+	(No symbol) [0x00007FF69504CCC3]
+	(No symbol) [0x00007FF6950429CF]
+	(No symbol) [0x00007FF69506BE6A]
+	(No symbol) [0x00007FF6950422E6]
+	(No symbol) [0x00007FF69506C080]
+	(No symbol) [0x00007FF695084D02]
+	(No symbol) [0x00007FF69506BC43]
+	(No symbol) [0x00007FF695040941]
+	(No symbol) [0x00007FF695041B84]
+	GetHandleVerifier [0x00007FF695537F52+3524194]
+	GetHandleVerifier [0x00007FF69558D800+3874576]
+	GetHandleVerifier [0x00007FF695585D7F+3843215]
+	GetHandleVerifier [0x00007FF695285086+694166]
+	(No symbol) [0x00007FF695160A88]
+	(No symbol) [0x00007FF69515CA94]
+	(No symbol) [0x00007FF69515CBC2]
+	(No symbol) [0x00007FF69514CC83]
+	BaseThreadInitThunk [0x00007FFB195A257D+29]
+	RtlUserThreadStart [0x00007FFB1B20AA58+40]
+
+
+2024-02-12 10:37:29,248 - process_api - INFO - Task 62671ffb-e13f-4979-8413-5b63c173404d completed in 00:00:07:441

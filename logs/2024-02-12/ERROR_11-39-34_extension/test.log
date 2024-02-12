@@ -1,0 +1,27 @@
+2024-02-12 11:39:11,681 - process_api - INFO - run schema: "extension"
+2024-02-12 11:39:11,681 - process_api - INFO - run process: "main"
+2024-02-12 11:39:11,681 - process_api - INFO - run step: "start"
+2024-02-12 11:39:11,681 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 11:39:12,401 - process_api - INFO - perform refresh
+2024-02-12 11:39:12,698 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 11:39:12,699 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 11:39:17,557 - process_api - INFO - run step: "just_wait"
+2024-02-12 11:39:17,557 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-12 11:39:20,584 - process_api - INFO - run step: "find_element"
+2024-02-12 11:39:34,036 - process_api - ERROR - object NoneType can't be used in 'await' expression
+2024-02-12 11:39:34,039 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\extensions\asset_tree.py", line 43, in find_element
+    await set_property_on_path(process, "parameters.found_element", element)
+TypeError: object NoneType can't be used in 'await' expression
+
+2024-02-12 11:39:34,479 - process_api - INFO - Task 9b3deb27-3aa6-4f0a-bbe1-8799b30ad9df completed in 00:00:22:359
