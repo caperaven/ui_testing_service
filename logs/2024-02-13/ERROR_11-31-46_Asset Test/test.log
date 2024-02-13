@@ -1,0 +1,141 @@
+2024-02-13 11:31:05,250 - process_api - INFO - run schema: "Asset Test"
+2024-02-13 11:31:05,250 - process_api - INFO - run process: "main"
+2024-02-13 11:31:05,250 - process_api - INFO - run step: "start"
+2024-02-13 11:31:05,250 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-13 11:31:05,933 - process_api - INFO - perform refresh
+2024-02-13 11:31:06,316 - process_api - INFO - run step: "wait_for_tree"
+2024-02-13 11:31:06,316 - process_api - INFO - wait for attribute: {'query': '#asset-tree', 'attr': 'status', 'value': 'ready'}
+2024-02-13 11:31:11,864 - process_api - INFO - run step: "assert_correct_spelling"
+2024-02-13 11:31:11,865 - process_api - INFO - assert text_content_eq: {'query': '#pb-1 h2', 'value': 'Asset Tree'}
+2024-02-13 11:31:11,865 - process_api - INFO - wait for text_content: {'query': '#pb-1 h2', 'value': 'Asset Tree'}
+2024-02-13 11:31:11,996 - process_api - INFO - run step: "assert_font_family"
+2024-02-13 11:31:11,996 - process_api - INFO - assert style_property_eq: {'query': '#pb-1 h2', 'property': 'font-family', 'value': '"Source Sans Pro", sans-serif'}
+2024-02-13 11:31:11,996 - process_api - INFO - wait for style_property: {'query': '#pb-1 h2', 'property': 'font-family', 'value': '"Source Sans Pro", sans-serif'}
+2024-02-13 11:31:12,074 - process_api - INFO - run process: "TC2"
+2024-02-13 11:31:12,075 - process_api - INFO - run step: "start"
+2024-02-13 11:31:12,075 - process_api - INFO - template: system tooltip {'hover': '#ibtn-Search', 'value': 'Search'}
+2024-02-13 11:31:12,075 - process_api - INFO - run step: "start"
+2024-02-13 11:31:12,075 - process_api - INFO - perform hover_over_element {'query': '#ibtn-Search'}
+2024-02-13 11:31:12,402 - process_api - INFO - run step: "check_value"
+2024-02-13 11:31:12,402 - process_api - INFO - wait for text_content: {'query': 'pragma-tooltip div', 'value': 'Search'}
+2024-02-13 11:31:12,451 - process_api - INFO - run step: "perform_hover_properties_panel"
+2024-02-13 11:31:12,451 - process_api - INFO - template: system tooltip {'hover': '#ibtn-PropertiesPanel', 'value': 'Properties Panel'}
+2024-02-13 11:31:12,451 - process_api - INFO - run step: "start"
+2024-02-13 11:31:12,451 - process_api - INFO - perform hover_over_element {'query': '#ibtn-PropertiesPanel'}
+2024-02-13 11:31:12,764 - process_api - INFO - run step: "check_value"
+2024-02-13 11:31:12,764 - process_api - INFO - wait for text_content: {'query': 'pragma-tooltip div', 'value': 'Properties Panel'}
+2024-02-13 11:31:12,831 - process_api - INFO - run step: "perform_hover_refresh"
+2024-02-13 11:31:12,831 - process_api - INFO - template: system tooltip {'hover': '#ibtn-Refresh', 'value': 'Refresh'}
+2024-02-13 11:31:12,831 - process_api - INFO - run step: "start"
+2024-02-13 11:31:12,831 - process_api - INFO - perform hover_over_element {'query': '#ibtn-Refresh'}
+2024-02-13 11:31:13,138 - process_api - INFO - run step: "check_value"
+2024-02-13 11:31:13,138 - process_api - INFO - wait for text_content: {'query': 'pragma-tooltip div', 'value': 'Refresh'}
+2024-02-13 11:31:13,180 - process_api - INFO - run step: "perform_pre_select_asset_tree_node"
+2024-02-13 11:31:13,180 - process_api - INFO - perform click on #pb-1 .tree-item[data-id]
+2024-02-13 11:31:13,270 - process_api - INFO - run step: "assert_add_button_is_visible"
+2024-02-13 11:31:13,270 - process_api - INFO - assert attribute_eq: {'query': '#ibtn-Add', 'attr': 'aria-hidden', 'value': 'false'}
+2024-02-13 11:31:13,270 - process_api - INFO - wait for attribute: {'query': '#ibtn-Add', 'attr': 'aria-hidden', 'value': 'false', 'operator': 'eq'}
+2024-02-13 11:31:13,316 - process_api - INFO - run step: "perform_hover_add"
+2024-02-13 11:31:13,316 - process_api - INFO - perform hover_over_element {'query': '#ibtn-Add'}
+2024-02-13 11:31:13,622 - process_api - INFO - run step: "assert_search_alignment_touch_area_width"
+2024-02-13 11:31:13,623 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-Search', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,623 - process_api - INFO - wait for style_property: {'query': '#ibtn-Search', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,670 - process_api - INFO - run step: "assert_add_alignment_touch_area_width"
+2024-02-13 11:31:13,670 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-Add', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,670 - process_api - INFO - wait for style_property: {'query': '#ibtn-Add', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,715 - process_api - INFO - run step: "assert_properties_panel_alignment_touch_area_width"
+2024-02-13 11:31:13,715 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-PropertiesPanel', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,716 - process_api - INFO - wait for style_property: {'query': '#ibtn-PropertiesPanel', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,760 - process_api - INFO - run step: "assert_refresh_alignment_touch_area_width"
+2024-02-13 11:31:13,760 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-Refresh', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,760 - process_api - INFO - wait for style_property: {'query': '#ibtn-Refresh', 'property': 'width', 'value': '40px'}
+2024-02-13 11:31:13,804 - process_api - INFO - run step: "assert_search_alignment_touch_area_height"
+2024-02-13 11:31:13,804 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-Search', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,804 - process_api - INFO - wait for style_property: {'query': '#ibtn-Search', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,849 - process_api - INFO - run step: "assert_add_alignment_touch_area_height"
+2024-02-13 11:31:13,849 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-Add', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,849 - process_api - INFO - wait for style_property: {'query': '#ibtn-Add', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,894 - process_api - INFO - run step: "assert_properties_panel_alignment_touch_area_height"
+2024-02-13 11:31:13,894 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-PropertiesPanel', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,894 - process_api - INFO - wait for style_property: {'query': '#ibtn-PropertiesPanel', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,937 - process_api - INFO - run step: "assert_refresh_alignment_touch_area_height"
+2024-02-13 11:31:13,937 - process_api - INFO - assert style_property_eq: {'query': '#ibtn-Refresh', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,938 - process_api - INFO - wait for style_property: {'query': '#ibtn-Refresh', 'property': 'height', 'value': '40px'}
+2024-02-13 11:31:13,980 - process_api - INFO - run process: "TC3"
+2024-02-13 11:31:13,980 - process_api - INFO - run step: "start"
+2024-02-13 11:31:13,980 - process_api - INFO - perform click on #ibtn-Search
+2024-02-13 11:31:14,053 - process_api - INFO - run step: "wait_for_search_panel_to_be_visible"
+2024-02-13 11:31:14,053 - process_api - INFO - wait for attribute: {'query': '#asset-tree-split-view', 'attr': 'class', 'value': 'visible left-spaced'}
+2024-02-13 11:31:14,630 - process_api - INFO - run step: "perform_close_search_panel"
+2024-02-13 11:31:14,630 - process_api - INFO - perform click on #ibtn-close
+2024-02-13 11:31:14,711 - process_api - INFO - run step: "perform_select_properties_panel"
+2024-02-13 11:31:14,711 - process_api - INFO - perform click on #ibtn-PropertiesPanel
+2024-02-13 11:31:14,795 - process_api - INFO - run step: "wait_for_properties_panel_to_exist"
+2024-02-13 11:31:14,795 - process_api - INFO - wait for element: {'query': '.visible .properties-panel-wrapper'}
+2024-02-13 11:31:14,975 - process_api - INFO - run step: "perform_close_properties_panel"
+2024-02-13 11:31:14,975 - process_api - INFO - perform click on .properties-panel-wrapper .close
+2024-02-13 11:31:15,441 - process_api - INFO - run step: "perform_pre_asset_tree_node_to_refresh"
+2024-02-13 11:31:15,441 - process_api - INFO - perform click on #pb-1 .tree-item[data-id]
+2024-02-13 11:31:15,516 - process_api - INFO - run step: "perform_refresh"
+2024-02-13 11:31:15,516 - process_api - INFO - perform click on #ibtn-Refresh
+2024-02-13 11:31:15,740 - process_api - INFO - run step: "wait_for_refresh_status_to_be_visible"
+2024-02-13 11:31:15,740 - process_api - INFO - wait for element: {'query': '.success'}
+2024-02-13 11:31:15,898 - process_api - INFO - run process: "TC4"
+2024-02-13 11:31:15,898 - process_api - INFO - run step: "start"
+2024-02-13 11:31:15,898 - process_api - INFO - perform click on [data-id = 'RegularAsset_1'] .tree-expand-arrow-container
+2024-02-13 11:31:15,983 - process_api - INFO - run step: "assert_root_asset_is_collapsed"
+2024-02-13 11:31:15,983 - process_api - INFO - assert attribute_eq: {'query': "[data-id = 'RegularAsset_1'] .tree-expand-arrow-container svg", 'attr': 'aria-expanded', 'value': 'false'}
+2024-02-13 11:31:15,983 - process_api - INFO - wait for attribute: {'query': "[data-id = 'RegularAsset_1'] .tree-expand-arrow-container svg", 'attr': 'aria-expanded', 'value': 'false', 'operator': 'eq'}
+2024-02-13 11:31:16,030 - process_api - INFO - run step: "perform_expand_root_asset"
+2024-02-13 11:31:16,031 - process_api - INFO - perform click on .tree-expand-arrow-container
+2024-02-13 11:31:16,117 - process_api - INFO - run step: "assert_root_asset_is_expanded"
+2024-02-13 11:31:16,117 - process_api - INFO - assert attribute_eq: {'query': "[data-id = 'RegularAsset_1'] .tree-expand-arrow-container svg", 'attr': 'aria-expanded', 'value': 'true'}
+2024-02-13 11:31:16,117 - process_api - INFO - wait for attribute: {'query': "[data-id = 'RegularAsset_1'] .tree-expand-arrow-container svg", 'attr': 'aria-expanded', 'value': 'true', 'operator': 'eq'}
+2024-02-13 11:31:16,163 - process_api - INFO - run step: "perform_expand_regular_asset_node"
+2024-02-13 11:31:16,163 - process_api - INFO - perform click on [data-id ='RegularAsset_1002'] .tree-expand-arrow-container
+2024-02-13 11:31:16,241 - process_api - INFO - run step: "wait_regular_asset_node_expanded"
+2024-02-13 11:31:16,241 - process_api - INFO - wait for attribute: {'query': "[data-id ='1002'] .tree-expand-arrow-container #rightchevron", 'timeout': 40, 'attr': 'aria-expanded', 'value': 'true'}
+2024-02-13 11:31:46,405 - process_api - ERROR - Message: 
+
+2024-02-13 11:31:46,408 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 56, in get
+    return await get(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 19, in get
+    element = await get_element(ctx, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 50, in get_element
+    return await get_element_on_path(driver, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 89, in get_element_on_path
+    element = wait.until(light_and_shadow_dom_callback(element, shadow_root, query))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-13 11:31:46,408 - process_api - ERROR - 'NoneType' object has no attribute 'get_attribute'
+2024-02-13 11:31:46,411 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  [Previous line repeated 2 more times]
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\modules\selenium_wait.py", line 65, in attribute
+    await wait_for_element_details(api, step, attribute_callback, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\modules\selenium_wait.py", line 21, in wait_for_element_details
+    WebDriverWait(selenium_driver, timeout).until(callback(element, args))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\condition_callbacks\attribute_callback.py", line 6, in _predicate
+    value = element.get_attribute(args["attr"])
+AttributeError: 'NoneType' object has no attribute 'get_attribute'. Did you mean: '__getattribute__'?
+
+2024-02-13 11:31:46,646 - process_api - INFO - Task 76a60ef3-ecfe-4da4-9d15-8ff9fdcd0883 completed in 00:00:41:161

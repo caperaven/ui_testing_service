@@ -1,0 +1,24 @@
+{
+    "id": "#my_process",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/demo/daily/"
+                },
+                "next_step": "step_1",
+                "name": "start"
+            },
+            "step_1": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 10
+                },
+                "name": "step_1"
+            }
+        }
+    }
+}

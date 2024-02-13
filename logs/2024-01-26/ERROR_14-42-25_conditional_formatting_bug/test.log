@@ -1,0 +1,76 @@
+2024-01-26 14:41:51,092 - process_api - INFO - run schema: "conditional_formatting_bug"
+2024-01-26 14:41:51,092 - process_api - INFO - run process: "main"
+2024-01-26 14:41:51,092 - process_api - INFO - run step: "start"
+2024-01-26 14:41:51,093 - process_api - INFO - perform navigate: ${state.server}/#dashboard/Resource
+2024-01-26 14:41:51,108 - process_api - INFO - run process: "TC1"
+2024-01-26 14:41:51,108 - process_api - INFO - run step: "start"
+2024-01-26 14:41:51,108 - process_api - INFO - perform click on #propertiesPanel
+2024-01-26 14:41:52,050 - process_api - INFO - run step: "wait_for_properties_panel_to_be_visible"
+2024-01-26 14:41:52,051 - process_api - INFO - wait for element: {'query': 'properties-panel'}
+2024-01-26 14:41:52,094 - process_api - INFO - run step: "wait_properties_panel_status"
+2024-01-26 14:41:52,095 - process_api - INFO - wait for attribute: {'query': 'properties-panel', 'attr': 'status', 'value': 'ready'}
+2024-01-26 14:41:52,653 - process_api - INFO - run step: "select_conditional_formatting_tab"
+2024-01-26 14:41:52,658 - process_api - INFO - perform click on .panel-options [value='1']
+2024-01-26 14:41:52,737 - process_api - INFO - run step: "wait_for_conditional_formatter_add_button"
+2024-01-26 14:41:52,737 - process_api - INFO - wait for element: {'query': ".condition-add-button-container [data-call='addColumnFormatter']"}
+2024-01-26 14:41:52,780 - process_api - INFO - run step: "select_add_button"
+2024-01-26 14:41:52,780 - process_api - INFO - perform click on .condition-add-button-container [data-call='addColumnFormatter']
+2024-01-26 14:41:52,865 - process_api - INFO - run step: "wait_for_column_window_to_be_visible"
+2024-01-26 14:41:52,865 - process_api - INFO - wait for element: {'query': '#column'}
+2024-01-26 14:41:52,913 - process_api - INFO - run step: "perform_add_new_header"
+2024-01-26 14:41:52,913 - process_api - INFO - perform type_text {'query': '#model\\.selectedColumnFormatter\\.conditionTitle input', 'value': 'Test Condition'}
+2024-01-26 14:41:53,495 - process_api - INFO - run step: "select_apply_button"
+2024-01-26 14:41:53,495 - process_api - INFO - perform click on .properties-dialog-footer [data-call='applyFormatters']
+2024-01-26 14:41:53,588 - process_api - INFO - run step: "select_back_button"
+2024-01-26 14:41:53,588 - process_api - INFO - perform click on #column pr-sub-group .expand-button
+2024-01-26 14:41:53,704 - process_api - INFO - run step: "wait_for_label_to_be_visible"
+2024-01-26 14:41:53,704 - process_api - INFO - wait for element: {'query': "#column>pr-sub-group .list li [data-call='setColumnFormatter']"}
+2024-01-26 14:41:53,743 - process_api - INFO - run process: "TC2"
+2024-01-26 14:41:53,743 - process_api - INFO - run step: "start"
+2024-01-26 14:41:53,743 - process_api - INFO - perform click on #pb-1_row
+2024-01-26 14:41:53,828 - process_api - INFO - run step: "wait_for_conditional_formatter_add_row_button"
+2024-01-26 14:41:53,828 - process_api - INFO - wait for element: {'query': ".condition-add-button-container [data-call='addRowFormatter']"}
+2024-01-26 14:41:53,864 - process_api - INFO - run step: "select_add_row_button"
+2024-01-26 14:41:53,864 - process_api - INFO - perform click on .condition-add-button-container [data-call='addRowFormatter']
+2024-01-26 14:41:53,949 - process_api - INFO - run step: "wait_for_row_window_to_be_visible"
+2024-01-26 14:41:53,949 - process_api - INFO - wait for element: {'query': '#row'}
+2024-01-26 14:41:53,994 - process_api - INFO - run step: "perform_add_new_header"
+2024-01-26 14:41:53,994 - process_api - INFO - perform type_text {'query': '#model\\.selectedRowFormatter\\.conditionTitle input', 'value': 'Test Condition'}
+2024-01-26 14:41:54,546 - process_api - INFO - run step: "select_apply_button"
+2024-01-26 14:41:54,546 - process_api - INFO - perform click on .properties-dialog-footer [data-call='applyFormatters']
+2024-01-26 14:41:54,626 - process_api - INFO - run step: "select_back_button"
+2024-01-26 14:41:54,626 - process_api - INFO - perform click on #row pr-sub-group .expand-button
+2024-01-26 14:41:54,744 - process_api - INFO - run step: "wait_for_label_to_be_visible"
+2024-01-26 14:41:54,744 - process_api - INFO - wait for element: {'query': "#row pr-sub-group .list li [data-call='setRowFormatter']"}
+2024-01-26 14:41:54,787 - process_api - INFO - run step: "assert_correct_formatter_label"
+2024-01-26 14:41:54,787 - process_api - INFO - assert text_content_eq: {'query': '#row li label', 'value': 'Test Condition'}
+2024-01-26 14:41:54,787 - process_api - INFO - wait for text_content: {'query': '#row li label', 'value': 'Test Condition'}
+2024-01-26 14:42:25,005 - process_api - ERROR - Message: 
+
+2024-01-26 14:42:25,005 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  [Previous line repeated 5 more times]
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\modules\selenium_assert.py", line 135, in text_content_eq
+    await WaitModule.text_content(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\modules\selenium_wait.py", line 84, in text_content
+    await wait_for_element_details(api, step, element_property_callback, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\modules\selenium_wait.py", line 21, in wait_for_element_details
+    WebDriverWait(selenium_driver, timeout).until(callback(element, args))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-01-26 14:42:25,005 - process_api - INFO - run process: "TC3"
+2024-01-26 14:42:25,005 - process_api - INFO - run step: "start"
+2024-01-26 14:42:25,005 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{profileName}']}
+2024-01-26 14:42:25,503 - process_api - INFO - Task d68e288d-f1ba-4d83-adaa-0f1932b3ea1a completed in 00:00:33:929

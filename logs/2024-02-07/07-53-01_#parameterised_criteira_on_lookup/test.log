@@ -1,0 +1,57 @@
+2024-02-07 07:52:44,905 - process_api - INFO - run schema: "#parameterised_criteira_on_lookup"
+2024-02-07 07:52:44,905 - process_api - INFO - run process: "main"
+2024-02-07 07:52:44,906 - process_api - INFO - run step: "start"
+2024-02-07 07:52:44,906 - process_api - INFO - perform navigate: ${state.server}
+2024-02-07 07:52:45,619 - process_api - INFO - run step: "open_menu"
+2024-02-07 07:52:45,619 - process_api - INFO - perform click on #btn-menu
+2024-02-07 07:52:50,236 - process_api - INFO - run step: "input_work_order"
+2024-02-07 07:52:50,236 - process_api - INFO - perform type_text {'query': 'pr-menu input', 'value': 'work order'}
+2024-02-07 07:52:50,766 - process_api - INFO - run step: "nav_to_work_order_dashboard"
+2024-02-07 07:52:50,766 - process_api - INFO - perform click on [data-id='Work Orders']
+2024-02-07 07:52:50,858 - process_api - INFO - run step: "open_create"
+2024-02-07 07:52:50,858 - process_api - INFO - perform click on #create
+2024-02-07 07:52:51,956 - process_api - INFO - run step: "open_asset_lookup"
+2024-02-07 07:52:51,956 - process_api - INFO - perform click on [id='model.assetCode'] #btnLookup
+2024-02-07 07:52:52,770 - process_api - INFO - run step: "wait_for_asset_lookup"
+2024-02-07 07:52:52,770 - process_api - INFO - wait for element: {'query': "[id='assetCode-lookup'] .grid-row[tabindex='0']"}
+2024-02-07 07:52:53,650 - process_api - INFO - run step: "open_query_builder"
+2024-02-07 07:52:53,650 - process_api - INFO - perform click on #btnEditQuery
+2024-02-07 07:52:53,746 - process_api - INFO - run step: "nav_to_criteria_tab"
+2024-02-07 07:52:53,746 - process_api - INFO - perform dbl_click on #pb-1_criteria
+2024-02-07 07:52:54,346 - process_api - INFO - waiting for pragma-pager #criteria
+2024-02-07 07:52:54,403 - process_api - INFO - run step: "wait_for_add_criteria"
+2024-02-07 07:52:54,403 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-07 07:52:57,421 - process_api - INFO - run step: "add_criteria"
+2024-02-07 07:52:57,421 - process_api - INFO - perform click on [data-id='addCriteriaField']
+2024-02-07 07:52:57,511 - process_api - INFO - run step: "select_code"
+2024-02-07 07:52:57,511 - process_api - INFO - perform click on [data-id='Asset->Code'] div.tree-item-container
+2024-02-07 07:52:57,892 - process_api - INFO - run step: "select_accept_button"
+2024-02-07 07:52:57,892 - process_api - INFO - perform click on pragma-action-dialog:nth-of-type(4) button:nth-of-type(2)
+2024-02-07 07:52:57,976 - process_api - INFO - run step: "select_toggle_options"
+2024-02-07 07:52:57,976 - process_api - INFO - perform click on .criteria-edit-control:nth-of-type(2) #btnOverflow
+2024-02-07 07:52:58,136 - process_api - INFO - run step: "select_parameter"
+2024-02-07 07:52:58,136 - process_api - INFO - perform click on [data-id='parameter']
+2024-02-07 07:52:58,226 - process_api - INFO - run step: "focus_input"
+2024-02-07 07:52:58,226 - process_api - INFO - perform click on pragma-action-dialog.dialog-card pragma-label-composite input
+2024-02-07 07:52:58,395 - process_api - INFO - run step: "set_parameter_name"
+2024-02-07 07:52:58,395 - process_api - INFO - perform type_text {'query': 'pragma-action-dialog.dialog-card pragma-label-composite input', 'value': 'test'}
+2024-02-07 07:52:58,950 - process_api - INFO - run step: "select_accept"
+2024-02-07 07:52:58,950 - process_api - INFO - perform click on pragma-action-dialog.dialog-card button:nth-of-type(2)
+2024-02-07 07:52:59,025 - process_api - INFO - run step: "select_run"
+2024-02-07 07:52:59,025 - process_api - INFO - perform click on pragma-action-dialog.large pragma-action-button
+2024-02-07 07:52:59,126 - process_api - INFO - waiting for pr-query-parameters-panel input
+2024-02-07 07:52:59,626 - process_api - INFO - run step: "set_parameter_value"
+2024-02-07 07:52:59,626 - process_api - INFO - perform type_text {'query': 'pr-query-parameters-panel input', 'value': 'test'}
+2024-02-07 07:53:00,265 - process_api - INFO - run step: "select_continue"
+2024-02-07 07:53:00,265 - process_api - INFO - perform click on pr-query-parameters-panel pragma-action-button.primary
+2024-02-07 07:53:00,354 - process_api - INFO - run step: "select_close_button"
+2024-02-07 07:53:00,354 - process_api - INFO - perform click on pragma-action-dialog.medium div.dialog-header #close
+2024-02-07 07:53:00,466 - process_api - INFO - run step: "wait_for_create_dialog"
+2024-02-07 07:53:00,466 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-07 07:53:01,477 - process_api - INFO - run step: "select_create_dialog_close_button"
+2024-02-07 07:53:01,477 - process_api - INFO - perform click on div.dialog-header pragma-icon-button:nth-of-type(2)
+2024-02-07 07:53:01,568 - process_api - INFO - run step: "open_nav_menu"
+2024-02-07 07:53:01,568 - process_api - INFO - perform click on #btn-menu
+2024-02-07 07:53:01,667 - process_api - INFO - run step: "navigate_home"
+2024-02-07 07:53:01,667 - process_api - INFO - perform click on [data-id='1'] a
+2024-02-07 07:53:02,036 - process_api - INFO - Task bb6673ed-13ba-4106-b566-25563178d694 completed in 00:00:16:875

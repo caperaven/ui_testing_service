@@ -1,0 +1,27 @@
+2024-02-12 14:18:00,938 - process_api - INFO - run schema: "extension"
+2024-02-12 14:18:00,938 - process_api - INFO - run process: "main"
+2024-02-12 14:18:00,938 - process_api - INFO - run step: "start"
+2024-02-12 14:18:00,938 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 14:18:02,303 - process_api - INFO - perform refresh
+2024-02-12 14:18:02,781 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 14:18:02,781 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 14:18:12,208 - process_api - INFO - run step: "just_wait"
+2024-02-12 14:18:12,208 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-12 14:18:15,218 - process_api - INFO - run step: "find_element"
+2024-02-12 14:21:01,116 - process_api - ERROR - 'coroutine' object has no attribute 'tag_name'
+2024-02-12 14:21:01,122 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\extensions\asset_tree.py", line 53, in locate_element
+    "tag_name": new_element.tag_name,
+AttributeError: 'coroutine' object has no attribute 'tag_name'
+
+2024-02-12 14:21:01,907 - process_api - INFO - Task 01bb9be4-84bb-4f03-b1a3-caa2a5a853d8 completed in 00:03:00:188

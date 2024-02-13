@@ -1,0 +1,4 @@
+date_time,name,memory
+2024-02-05 14:42:57.963965,start,94.07421875
+2024-02-05 14:42:58.930079,wait_for_dashboard_to_be_ready,94.078125
+2024-02-05 14:43:32.165724,filter_record,94.08203125

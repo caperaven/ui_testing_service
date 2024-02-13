@@ -1,0 +1,48 @@
+{
+    "id": "open_workorder_overview",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/WorkOrder"
+                },
+                "next_step": "wait_for_dashboard_grid_to_be_ready",
+                "name": "start"
+            },
+            "wait_for_dashboard_grid_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#dashboard-grid",
+                    "attr": "status",
+                    "value": "ready",
+                    "timeout": 30
+                },
+                "next_step": "click_btnOverview",
+                "name": "wait_for_dashboard_grid_to_be_ready"
+            },
+            "click_btnOverview": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btnOverview"
+                },
+                "next_step": "wait_right_panel_to_open",
+                "name": "click_btnOverview"
+            },
+            "wait_right_panel_to_open": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": ".dashboard [slot='right'] pragma-pager",
+                    "attr": "status",
+                    "value": "ready",
+                    "timeout": 30
+                },
+                "name": "wait_right_panel_to_open"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+2024-02-12 10:59:52,928 - process_api - INFO - run schema: "extension"
+2024-02-12 10:59:52,928 - process_api - INFO - run process: "main"
+2024-02-12 10:59:52,928 - process_api - INFO - run step: "start"
+2024-02-12 10:59:52,928 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 10:59:53,758 - process_api - INFO - perform refresh
+2024-02-12 10:59:54,028 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 10:59:54,029 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 10:59:59,560 - process_api - INFO - run step: "just_wait"
+2024-02-12 10:59:59,561 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-12 11:00:02,570 - process_api - INFO - run step: "find_element"
+2024-02-12 11:00:02,638 - process_api - INFO - run step: "step_4"
+2024-02-12 11:00:02,638 - process_api - INFO - wait for time: {'timeout': 5}
+2024-02-12 11:00:07,857 - process_api - INFO - Task cbe3f1c0-7cd2-4a9b-bc67-ef213e524d6f completed in 00:00:14:725

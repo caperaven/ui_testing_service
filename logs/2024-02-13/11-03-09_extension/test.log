@@ -1,0 +1,16 @@
+2024-02-13 11:02:59,158 - process_api - INFO - run schema: "extension"
+2024-02-13 11:02:59,158 - process_api - INFO - run process: "main"
+2024-02-13 11:02:59,158 - process_api - INFO - run step: "start"
+2024-02-13 11:02:59,158 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-13 11:03:00,043 - process_api - INFO - perform refresh
+2024-02-13 11:03:00,349 - process_api - INFO - run step: "just_wait"
+2024-02-13 11:03:00,350 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-13 11:03:03,352 - process_api - INFO - run step: "find_element"
+2024-02-13 11:03:06,345 - process_api - INFO - run step: "step_4"
+2024-02-13 11:03:06,345 - process_api - INFO - perform click on [data-id='RegularAsset_1707726914300001']
+2024-02-13 11:03:06,418 - process_api - INFO - run step: "open_tree_search_again"
+2024-02-13 11:03:06,418 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-13 11:03:08,435 - process_api - INFO - run step: "step_5"
+2024-02-13 11:03:09,123 - process_api - INFO - run step: "step_6"
+2024-02-13 11:03:09,123 - process_api - INFO - perform click on [data-id='RegularAssetComponent_3188']
+2024-02-13 11:03:09,455 - process_api - INFO - Task 3535eaae-a9bf-4811-bd6b-5f94d8693c7f completed in 00:00:10:050

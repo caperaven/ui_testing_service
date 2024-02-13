@@ -1154,7 +1154,6 @@ class Actions {
         struct.type = "wait";
         struct.action = "window_count";
         struct.args = {
-            query: obj.parts[1],
             count: Number(obj.parts[2])
         };
 

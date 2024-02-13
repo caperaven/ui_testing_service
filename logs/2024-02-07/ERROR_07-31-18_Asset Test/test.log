@@ -1,0 +1,42 @@
+2024-02-07 07:30:46,443 - process_api - INFO - run schema: "Asset Test"
+2024-02-07 07:30:46,443 - process_api - INFO - run process: "main"
+2024-02-07 07:30:46,443 - process_api - INFO - run step: "start"
+2024-02-07 07:30:46,443 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-07 07:30:46,459 - process_api - INFO - run step: "wait_for_tree"
+2024-02-07 07:30:46,459 - process_api - INFO - wait for attribute: {'query': '#asset-tree', 'attr': 'status', 'value': 'ready'}
+2024-02-07 07:30:47,578 - process_api - INFO - run step: "assert_correct_spelling"
+2024-02-07 07:30:47,578 - process_api - INFO - assert text_content_eq: {'query': '#pb-1 h2', 'value': 'Asset Tree'}
+2024-02-07 07:30:47,578 - process_api - INFO - wait for text_content: {'query': '#pb-1 h2', 'value': 'Asset Tree'}
+2024-02-07 07:30:47,678 - process_api - INFO - run step: "assert_font_family"
+2024-02-07 07:30:47,678 - process_api - INFO - assert style_property_eq: {'query': '#pb-1 h2', 'property': 'font-family', 'value': '"Source Sans Pro", sans-serif'}
+2024-02-07 07:30:47,678 - process_api - INFO - wait for style_property: {'query': '#pb-1 h2', 'property': 'font-family', 'value': '"Source Sans Pro", sans-serif'}
+2024-02-07 07:30:47,752 - process_api - INFO - run process: "TC2"
+2024-02-07 07:30:47,752 - process_api - INFO - run step: "start"
+2024-02-07 07:30:47,752 - process_api - INFO - template: system tooltip {'hover': '#ibtn-Search', 'value': 'Search'}
+2024-02-07 07:30:47,752 - process_api - INFO - run step: "start"
+2024-02-07 07:30:47,752 - process_api - INFO - perform hover_over_element {'query': '$parameters.hover'}
+2024-02-07 07:31:17,849 - process_api - ERROR - Message: 
+
+2024-02-07 07:31:17,850 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 15, in perform
+    element = await get_element(context, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 53, in get_element
+    element = wait.until(element_callback(None, {
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-07 07:31:17,850 - process_api - INFO - run process: "TC3"
+2024-02-07 07:31:17,850 - process_api - INFO - run step: "start"
+2024-02-07 07:31:17,850 - process_api - INFO - perform click on #ibtn-Search
+2024-02-07 07:31:17,937 - process_api - INFO - run process: "TC4"
+2024-02-07 07:31:17,939 - process_api - INFO - run step: "start"
+2024-02-07 07:31:17,939 - process_api - INFO - perform click on [data-id = 'RegularAsset_1'] .tree-expand-arrow-container
+2024-02-07 07:31:18,320 - process_api - INFO - Task 07744016-828d-410a-a7a3-b07d831e9880 completed in 00:00:31:591

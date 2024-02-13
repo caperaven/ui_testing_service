@@ -1,0 +1,13 @@
+2024-01-25 15:02:15,725 - process_api - INFO - run schema: "Asset Test"
+2024-01-25 15:02:15,725 - process_api - INFO - run process: "main"
+2024-01-25 15:02:15,725 - process_api - INFO - run step: "start"
+2024-01-25 15:02:15,725 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-01-25 15:02:15,751 - process_api - INFO - run step: "wait_for_tree"
+2024-01-25 15:02:15,751 - process_api - INFO - wait for attribute: {'query': '#asset-tree', 'attr': 'status', 'value': 'ready'}
+2024-01-25 15:02:17,324 - process_api - INFO - run step: "assert_correct_spelling"
+2024-01-25 15:02:17,324 - process_api - INFO - assert text_content_eq: {'query': '#pb-1 h2', 'value': 'Asset Tree'}
+2024-01-25 15:02:17,324 - process_api - INFO - wait for text_content: {'query': '#pb-1 h2', 'value': 'Asset Tree'}
+2024-01-25 15:02:17,435 - process_api - INFO - run step: "assert_font_family"
+2024-01-25 15:02:17,435 - process_api - INFO - assert style_property_eq: {'query': '#pb-1 h2', 'property': 'font-family', 'value': '"Source Sans Pro", sans-serif'}
+2024-01-25 15:02:17,435 - process_api - INFO - wait for style_property: {'query': '#pb-1 h2', 'property': 'font-family', 'value': '"Source Sans Pro", sans-serif'}
+2024-01-25 15:02:17,845 - process_api - INFO - Task b25adfee-7dec-45ec-bbc6-87858957b98d completed in 00:00:01:810

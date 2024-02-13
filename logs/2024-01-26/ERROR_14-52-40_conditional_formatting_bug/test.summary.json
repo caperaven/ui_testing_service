@@ -1,0 +1,10 @@
+{
+    "name": "conditional_formatting_bug",
+    "status": "error",
+    "start_time": "2024-01-26 14:51:16",
+    "end_time": "2024-01-26 14:52:40",
+    "duration": "00:01:23:437",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-01-26\\ERROR_14-52-40_conditional_formatting_bug\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.19921875
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Work Order Complete All Tasks",
+    "status": "error",
+    "start_time": "2024-02-08 15:48:13",
+    "end_time": "2024-02-08 15:49:10",
+    "duration": "00:00:56:917",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-08\\ERROR_15-49-10_Work Order Complete All Tasks\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.0,
+    "memory_start": 83.234375,
+    "memory_end": 83.234375
+}

@@ -1,0 +1,5 @@
+2024-02-05 15:25:16,833 - process_api - INFO - run schema: "#my_process"
+2024-02-05 15:25:16,833 - process_api - INFO - run process: "main"
+2024-02-05 15:25:16,833 - process_api - INFO - run step: "start"
+2024-02-05 15:25:19,527 - process_api - INFO - perform navigate: ${state.server}
+2024-02-05 15:26:09,446 - process_api - INFO - Task c13668a0-634e-4cb2-b9a0-a482660596fa completed in 00:00:52:161

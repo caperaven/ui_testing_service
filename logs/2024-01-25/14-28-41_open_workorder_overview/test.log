@@ -1,0 +1,11 @@
+2024-01-25 14:28:36,493 - process_api - INFO - run schema: "open_workorder_overview"
+2024-01-25 14:28:36,493 - process_api - INFO - run process: "main"
+2024-01-25 14:28:36,493 - process_api - INFO - run step: "start"
+2024-01-25 14:28:36,493 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-01-25 14:28:36,517 - process_api - INFO - run step: "wait_for_dashboard_grid_to_be_ready"
+2024-01-25 14:28:36,517 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready', 'timeout': 30}
+2024-01-25 14:28:40,277 - process_api - INFO - run step: "click_btnOverview"
+2024-01-25 14:28:40,277 - process_api - INFO - perform click on #btnOverview
+2024-01-25 14:28:40,356 - process_api - INFO - run step: "wait_right_panel_to_open"
+2024-01-25 14:28:40,356 - process_api - INFO - wait for attribute: {'query': ".dashboard [slot='right'] pragma-pager", 'attr': 'status', 'value': 'ready', 'timeout': 30}
+2024-01-25 14:28:41,320 - process_api - INFO - Task ee580737-2587-45b4-9f75-6a4dc01d874b completed in 00:00:04:575

@@ -1,0 +1,85 @@
+2024-02-07 10:08:08,547 - process_api - INFO - run schema: "lookup_empty"
+2024-02-07 10:08:08,547 - process_api - INFO - run process: "main"
+2024-02-07 10:08:08,547 - process_api - INFO - run step: "start"
+2024-02-07 10:08:08,547 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-07 10:08:08,563 - process_api - INFO - run step: "click_create_button"
+2024-02-07 10:08:08,563 - process_api - INFO - perform click on #create
+2024-02-07 10:08:09,707 - process_api - ERROR - Message: element click intercepted: Element <pragma-icon-button icon-name="add" aria-label="Create" id="create" tooltip="Create" data-action="create" status="ready" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (1265, 71). Other element would receive the click: <pr-menu>...</pr-menu>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D60B1A6B]
+	(No symbol) [0x00007FF7D60AFE39]
+	(No symbol) [0x00007FF7D60ADC08]
+	(No symbol) [0x00007FF7D60ACCC3]
+	(No symbol) [0x00007FF7D60A29CF]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+2024-02-07 10:08:09,710 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 79, in perform
+    await perform(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 28, in perform
+    await Actions.__dict__[action](driver, element, chain, args)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\perform.py", line 38, in click
+    element.click()
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <pragma-icon-button icon-name="add" aria-label="Create" id="create" tooltip="Create" data-action="create" status="ready" role="button" tabindex="0">...</pragma-icon-button> is not clickable at point (1265, 71). Other element would receive the click: <pr-menu>...</pr-menu>
+  (Session info: chrome=118.0.5993.70)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7D6248EF2+54786]
+	(No symbol) [0x00007FF7D61B5612]
+	(No symbol) [0x00007FF7D606A64B]
+	(No symbol) [0x00007FF7D60B1A6B]
+	(No symbol) [0x00007FF7D60AFE39]
+	(No symbol) [0x00007FF7D60ADC08]
+	(No symbol) [0x00007FF7D60ACCC3]
+	(No symbol) [0x00007FF7D60A29CF]
+	(No symbol) [0x00007FF7D60CBE6A]
+	(No symbol) [0x00007FF7D60A22E6]
+	(No symbol) [0x00007FF7D60CC080]
+	(No symbol) [0x00007FF7D60E4D02]
+	(No symbol) [0x00007FF7D60CBC43]
+	(No symbol) [0x00007FF7D60A0941]
+	(No symbol) [0x00007FF7D60A1B84]
+	GetHandleVerifier [0x00007FF7D6597F52+3524194]
+	GetHandleVerifier [0x00007FF7D65ED800+3874576]
+	GetHandleVerifier [0x00007FF7D65E5D7F+3843215]
+	GetHandleVerifier [0x00007FF7D62E5086+694166]
+	(No symbol) [0x00007FF7D61C0A88]
+	(No symbol) [0x00007FF7D61BCA94]
+	(No symbol) [0x00007FF7D61BCBC2]
+	(No symbol) [0x00007FF7D61ACC83]
+	BaseThreadInitThunk [0x00007FFA01AB257D+29]
+	RtlUserThreadStart [0x00007FFA03D2AA58+40]
+
+
+2024-02-07 10:08:09,939 - process_api - INFO - Task f3ce3c57-e4e8-474e-8f3b-a0d1f732d5d3 completed in 00:00:01:175

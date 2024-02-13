@@ -1,0 +1,31 @@
+2024-02-07 08:04:04,844 - process_api - INFO - run schema: "Work Order Asset Lookup"
+2024-02-07 08:04:04,844 - process_api - INFO - run process: "main"
+2024-02-07 08:04:04,844 - process_api - INFO - run step: "start"
+2024-02-07 08:04:04,844 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-07 08:04:04,863 - process_api - INFO - run step: "wait_for_create_button"
+2024-02-07 08:04:04,863 - process_api - INFO - wait for element: {'query': '#create'}
+2024-02-07 08:04:05,678 - process_api - INFO - run step: "click_create_button"
+2024-02-07 08:04:05,678 - process_api - INFO - perform click on #create
+2024-02-07 08:04:05,758 - process_api - INFO - run step: "wait_for_create_dialog"
+2024-02-07 08:04:05,758 - process_api - INFO - wait for attribute: {'query': "[data-template='WorkOrderCreate']", 'attr': 'data-ready', 'value': 'true'}
+2024-02-07 08:04:06,708 - process_api - INFO - run step: "wait_for_asset_lookup_button"
+2024-02-07 08:04:06,708 - process_api - INFO - wait for element: {'query': "[id='model.assetCode'] #btnTreeLookup"}
+2024-02-07 08:04:06,754 - process_api - INFO - run step: "click_asset_lookup_button"
+2024-02-07 08:04:06,754 - process_api - INFO - perform click on [id='model.assetCode'] #btnTreeLookup
+2024-02-07 08:04:06,843 - process_api - INFO - run step: "wait_for_asset_lookup_dialog"
+2024-02-07 08:04:06,843 - process_api - INFO - wait for attribute: {'query': '#asset-tree', 'attr': 'status', 'value': 'ready'}
+2024-02-07 08:04:07,558 - process_api - INFO - run step: "wait_for_asset"
+2024-02-07 08:04:07,558 - process_api - INFO - wait for element: {'query': "[data-id='RegularAsset_5000001854']"}
+2024-02-07 08:04:07,609 - process_api - INFO - run step: "click_asset"
+2024-02-07 08:04:07,609 - process_api - INFO - perform click on [data-id='RegularAsset_5000001854'] .tree-item-actions
+2024-02-07 08:04:07,692 - process_api - INFO - run step: "wait_for_icon_value_to_be_inplace_asset"
+2024-02-07 08:04:07,692 - process_api - INFO - wait for attribute: {'query': "[data-id='InPlaceAsset_5000001855'] .icon-container [icon='InPlaceAsset']", 'attr': 'icon', 'value': 'InPlaceAsset'}
+2024-02-07 08:04:07,928 - process_api - INFO - run step: "select_asset"
+2024-02-07 08:04:07,928 - process_api - INFO - perform dbl_click on [data-id='InPlaceAsset_5000001855']
+2024-02-07 08:04:08,282 - process_api - INFO - run step: "wait_for_create_dialog_to_be_visible"
+2024-02-07 08:04:08,285 - process_api - INFO - wait for attribute: {'query': "[data-template='WorkOrderCreate']", 'attr': 'data-ready', 'value': 'true'}
+2024-02-07 08:04:08,468 - process_api - INFO - run step: "wait_for_asset_input_to_be_visible"
+2024-02-07 08:04:08,468 - process_api - INFO - wait for element: {'query': "[id='model.assetCode'] #lbl-assetCode"}
+2024-02-07 08:04:08,508 - process_api - INFO - run step: "wait_for_the_text_value_of_asset_input"
+2024-02-07 08:04:08,508 - process_api - INFO - wait for text_value: {'query': "[id='model.assetCode'] #lbl-assetCode", 'value': 'AA_IN_PLACE (5000001855)'}
+2024-02-07 08:04:08,758 - process_api - INFO - Task c5e2cbb5-faf8-4f13-bc2a-6df2ff2b0e21 completed in 00:00:03:703

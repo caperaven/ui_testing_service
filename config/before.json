@@ -8,5 +8,5 @@
     "onkey_theme_designer": "$root\\pragma-ui-testing\\before",
     "onkey_user_defined_queries": "$root\\pragma-ui-testing\\before",
     "onkey_work_orders": "$root\\pragma-ui-testing\\before",
-    "work_request": "$root\\pragma-ui-testing\\before"
+    "onkey_work_request": "$root\\pragma-ui-testing\\before"
 }

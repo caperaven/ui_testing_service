@@ -1,0 +1,32 @@
+2024-02-13 09:30:17,822 - process_api - INFO - run schema: "extension"
+2024-02-13 09:30:17,822 - process_api - INFO - run process: "main"
+2024-02-13 09:30:17,822 - process_api - INFO - run step: "start"
+2024-02-13 09:30:17,822 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-13 09:30:18,649 - process_api - INFO - perform refresh
+2024-02-13 09:30:19,004 - process_api - INFO - run step: "just_wait"
+2024-02-13 09:30:19,005 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-13 09:30:22,014 - process_api - INFO - run step: "find_element"
+2024-02-13 09:30:25,149 - process_api - INFO - run step: "step_4"
+2024-02-13 09:30:25,149 - process_api - ERROR - 'parameters'
+2024-02-13 09:30:25,150 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 31, in run_step
+    step["args"] = await inflate(api, step["args"], ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 66, in inflate
+    args[key] = await api.get_value(value, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\utils\get_value.py", line 42, in get_value
+    return await inflate_value(value, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\utils\get_value.py", line 54, in inflate_value
+    result = await get_value(match, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\utils\get_value.py", line 29, in get_value
+    result = get_property_on_path(process["parameters"], value[3:-1].split("."))
+KeyError: 'parameters'
+
+2024-02-13 09:30:25,427 - process_api - INFO - Task dd8f9220-9e5e-4326-a0d3-57a3af5751a5 completed in 00:00:07:327

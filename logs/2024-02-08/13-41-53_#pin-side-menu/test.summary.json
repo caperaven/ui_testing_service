@@ -1,0 +1,12 @@
+{
+    "name": "#pin-side-menu",
+    "status": "complete",
+    "start_time": "2024-02-08 13:41:44",
+    "end_time": "2024-02-08 13:41:53",
+    "duration": "00:00:08:651",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-08\\13-41-53_#pin-side-menu\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.015625,
+    "memory_start": 43.265625,
+    "memory_end": 43.28125
+}

@@ -1,0 +1,69 @@
+2024-02-07 07:53:46,939 - process_api - INFO - run schema: "#pin-side-menu"
+2024-02-07 07:53:46,939 - process_api - INFO - run process: "main"
+2024-02-07 07:53:46,939 - process_api - INFO - run step: "start"
+2024-02-07 07:53:46,939 - process_api - INFO - perform navigate: ${state.server}/#welcome
+2024-02-07 07:53:46,987 - process_api - INFO - run step: "step_1"
+2024-02-07 07:53:46,987 - process_api - INFO - perform click on pr-side-menu #actions
+2024-02-07 07:53:47,073 - process_api - INFO - run step: "step_2"
+2024-02-07 07:53:47,073 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:47,583 - process_api - INFO - run step: "step_3"
+2024-02-07 07:53:47,583 - process_api - INFO - perform click on #panel1 [data-id='docker-button']
+2024-02-07 07:53:47,665 - process_api - INFO - run step: "step_4"
+2024-02-07 07:53:47,665 - process_api - INFO - assert attribute_eq: {'query': "#panel1 [data-id='docker-button']", 'attr': 'docked', 'value': 'true'}
+2024-02-07 07:53:47,665 - process_api - INFO - wait for attribute: {'query': "#panel1 [data-id='docker-button']", 'attr': 'docked', 'value': 'true', 'operator': 'eq'}
+2024-02-07 07:53:47,708 - process_api - INFO - run step: "step_5"
+2024-02-07 07:53:47,708 - process_api - INFO - perform click on pr-side-menu #assist
+2024-02-07 07:53:47,778 - process_api - INFO - run step: "step_6"
+2024-02-07 07:53:47,778 - process_api - INFO - perform click on pr-side-menu #help
+2024-02-07 07:53:47,858 - process_api - INFO - run step: "step_7"
+2024-02-07 07:53:47,858 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:48,370 - process_api - INFO - run step: "step_8"
+2024-02-07 07:53:48,370 - process_api - INFO - perform click on #panel3 [data-id='side-menu-close']
+2024-02-07 07:53:48,440 - process_api - INFO - run step: "step_9"
+2024-02-07 07:53:48,440 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:48,948 - process_api - INFO - run step: "step_10"
+2024-02-07 07:53:48,948 - process_api - INFO - perform click on pr-side-menu #help
+2024-02-07 07:53:49,019 - process_api - INFO - run step: "step_11"
+2024-02-07 07:53:49,019 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:49,528 - process_api - INFO - run step: "step_12"
+2024-02-07 07:53:49,528 - process_api - INFO - perform click on #panel3 [data-id='docker-button']
+2024-02-07 07:53:49,600 - process_api - INFO - run step: "step_13"
+2024-02-07 07:53:49,600 - process_api - INFO - assert attribute_eq: {'query': "#panel3 [data-id='docker-button']", 'attr': 'docked', 'value': 'false'}
+2024-02-07 07:53:49,600 - process_api - INFO - wait for attribute: {'query': "#panel3 [data-id='docker-button']", 'attr': 'docked', 'value': 'false', 'operator': 'eq'}
+2024-02-07 07:53:49,639 - process_api - INFO - run step: "step_14"
+2024-02-07 07:53:49,639 - process_api - INFO - perform click on #messages
+2024-02-07 07:53:49,721 - process_api - INFO - run step: "step_15"
+2024-02-07 07:53:49,721 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:50,240 - process_api - INFO - run step: "step_16"
+2024-02-07 07:53:50,240 - process_api - INFO - perform click on #panel4 [data-id='docker-button']
+2024-02-07 07:53:50,316 - process_api - INFO - run step: "step_17"
+2024-02-07 07:53:50,316 - process_api - INFO - assert attribute_eq: {'query': "#panel4 [data-id='docker-button']", 'attr': 'docked', 'value': 'true'}
+2024-02-07 07:53:50,316 - process_api - INFO - wait for attribute: {'query': "#panel4 [data-id='docker-button']", 'attr': 'docked', 'value': 'true', 'operator': 'eq'}
+2024-02-07 07:53:50,358 - process_api - INFO - run step: "step_18"
+2024-02-07 07:53:50,358 - process_api - INFO - perform click on #messages
+2024-02-07 07:53:50,420 - process_api - INFO - run step: "step_19"
+2024-02-07 07:53:50,420 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:50,942 - process_api - INFO - run step: "step_20"
+2024-02-07 07:53:50,942 - process_api - INFO - perform click on #messages
+2024-02-07 07:53:51,008 - process_api - INFO - run step: "step_21"
+2024-02-07 07:53:51,008 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:51,528 - process_api - INFO - run step: "step_22"
+2024-02-07 07:53:51,528 - process_api - INFO - perform click on #panel4 [data-id='docker-button']
+2024-02-07 07:53:51,608 - process_api - INFO - run step: "step_23"
+2024-02-07 07:53:51,608 - process_api - INFO - assert attribute_eq: {'query': "#panel4 [data-id='docker-button']", 'attr': 'docked', 'value': 'false'}
+2024-02-07 07:53:51,608 - process_api - INFO - wait for attribute: {'query': "#panel4 [data-id='docker-button']", 'attr': 'docked', 'value': 'false', 'operator': 'eq'}
+2024-02-07 07:53:51,648 - process_api - INFO - run step: "step_24"
+2024-02-07 07:53:51,648 - process_api - INFO - perform click on #panel4 #side-menu-close
+2024-02-07 07:53:51,712 - process_api - INFO - run step: "step_25"
+2024-02-07 07:53:51,712 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:52,228 - process_api - INFO - run step: "step_26"
+2024-02-07 07:53:52,228 - process_api - INFO - perform click on #messages
+2024-02-07 07:53:52,290 - process_api - INFO - run step: "step_27"
+2024-02-07 07:53:52,294 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:52,802 - process_api - INFO - run step: "step_28"
+2024-02-07 07:53:52,802 - process_api - INFO - perform click on #btn-menu
+2024-02-07 07:53:52,879 - process_api - INFO - run step: "step_29"
+2024-02-07 07:53:52,879 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 07:53:53,388 - process_api - INFO - run step: "step_30"
+2024-02-07 07:53:53,388 - process_api - INFO - perform click on #btn-menu
+2024-02-07 07:53:53,730 - process_api - INFO - Task 9e537a3c-bfdf-4005-82ac-111e5240012f completed in 00:00:06:521

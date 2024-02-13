@@ -1,0 +1,69 @@
+2024-01-26 13:47:56,036 - process_api - INFO - run schema: "open_in_new_tab"
+2024-01-26 13:47:56,036 - process_api - INFO - run process: "main"
+2024-01-26 13:47:56,036 - process_api - INFO - run step: "start"
+2024-01-26 13:47:56,036 - process_api - INFO - perform navigate: ${state.server}/#dashboard/Resource
+2024-01-26 13:47:56,056 - process_api - INFO - run step: "wait_for_dashboard_grid_to_be_ready"
+2024-01-26 13:47:56,056 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-01-26 13:47:57,711 - process_api - INFO - run step: "open_context_menu"
+2024-01-26 13:47:57,711 - process_api - INFO - perform context_click on .grid-row[tabindex='0']
+2024-01-26 13:47:58,050 - process_api - INFO - run step: "wait_for_context_menu"
+2024-01-26 13:47:58,050 - process_api - INFO - wait for attribute: {'query': 'pragma-context-menu', 'attr': 'aria-hidden', 'value': 'false'}
+2024-01-26 13:47:58,106 - process_api - INFO - run step: "select_open_in_new_tab"
+2024-01-26 13:47:58,106 - process_api - INFO - perform click on pragma-context-menu .listitem[data-id='0']
+2024-01-26 13:47:58,226 - process_api - INFO - run step: "wait_tab_to_open"
+2024-01-26 13:47:58,226 - process_api - INFO - wait for window_count: {'count': 2}
+2024-01-26 13:47:58,236 - process_api - INFO - run step: "swap_to_new_tab"
+2024-01-26 13:47:58,236 - process_api - INFO - perform switch_to_tab {'index': 1}
+2024-01-26 13:47:58,249 - process_api - INFO - run step: "wait_for_main_view"
+2024-01-26 13:47:58,249 - process_api - INFO - wait for element: {'query': '#main-view'}
+2024-01-26 13:48:06,014 - process_api - INFO - run step: "wait_for_new_tab_dashboard_grid_to_be_ready"
+2024-01-26 13:48:06,014 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'data-loaded', 'value': 'true'}
+2024-01-26 13:48:07,262 - process_api - INFO - run step: "wait_for_update_screen_to_open"
+2024-01-26 13:48:07,262 - process_api - INFO - wait for element: {'query': 'pragma-action-dialog dynamic-update'}
+2024-01-26 13:48:07,299 - process_api - INFO - run step: "close_window"
+2024-01-26 13:48:07,299 - process_api - INFO - perform switch_to_default {}
+2024-01-26 13:48:07,329 - process_api - INFO - run process: "open_in_new_tab_within_update"
+2024-01-26 13:48:07,330 - process_api - INFO - run step: "start"
+2024-01-26 13:48:07,330 - process_api - INFO - perform navigate: ${state.server}/#dashboard/Resource
+2024-01-26 13:48:07,334 - process_api - INFO - run step: "wait_for_dashboard_grid_to_be_ready"
+2024-01-26 13:48:07,344 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-01-26 13:48:07,392 - process_api - INFO - run step: "open_context_menu"
+2024-01-26 13:48:07,392 - process_api - INFO - perform context_click on .grid-row[tabindex='0']
+2024-01-26 13:48:07,792 - process_api - INFO - run step: "select_open_in_new_tab"
+2024-01-26 13:48:07,793 - process_api - INFO - perform click on pragma-context-menu .listitem[data-id='0']
+2024-01-26 13:48:07,910 - process_api - INFO - run step: "wait_for_new_tab_to_open"
+2024-01-26 13:48:07,911 - process_api - INFO - wait for window_count: {'count': 3}
+2024-01-26 13:48:07,928 - process_api - INFO - run step: "swap_to_new_tab"
+2024-01-26 13:48:07,929 - process_api - INFO - perform switch_to_tab {'index': 2}
+2024-01-26 13:48:07,941 - process_api - INFO - run step: "wait_for_main_view"
+2024-01-26 13:48:07,942 - process_api - INFO - wait for element: {'query': '#main-view'}
+2024-01-26 13:48:09,701 - process_api - INFO - run step: "wait_for_new_tab_dashboard_grid_to_be_ready"
+2024-01-26 13:48:09,701 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-01-26 13:48:10,737 - process_api - INFO - run step: "wait_for_update_screen_to_open"
+2024-01-26 13:48:10,737 - process_api - INFO - wait for element: {'query': 'pragma-action-dialog dynamic-update'}
+2024-01-26 13:48:10,783 - process_api - INFO - run step: "wait_for_pager_to_be_ready"
+2024-01-26 13:48:10,783 - process_api - INFO - wait for attribute: {'query': '#ts-1', 'attr': 'status', 'value': 'ready'}
+2024-01-26 13:48:10,831 - process_api - INFO - run step: "select_financial_rates_tab"
+2024-01-26 13:48:10,831 - process_api - INFO - perform click on #pb-2_rates
+2024-01-26 13:48:10,924 - process_api - INFO - waiting for #TradeFinancialRateGrid .grid-row[tabindex='0']
+2024-01-26 13:48:41,078 - process_api - ERROR - Message: 
+
+2024-01-26 13:48:41,078 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 84, in perform
+    await wait(selenium_driver, {
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\wait.py", line 9, in wait
+    element = await get_element(driver, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 51, in get_element
+    return await get_element_on_path(driver, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 90, in get_element_on_path
+    element = wait.until(light_and_shadow_dom_callback(element, shadow_root, query))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-01-26 13:48:41,555 - process_api - INFO - Task 1e38adc8-db3d-473f-b150-3e4e5629393a completed in 00:00:45:042

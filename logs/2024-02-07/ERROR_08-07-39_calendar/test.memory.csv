@@ -1,0 +1,14 @@
+date_time,name,memory
+2024-02-07 08:06:17.772229,start,90.0234375
+2024-02-07 08:06:17.772229,create_uuid,90.0234375
+2024-02-07 08:06:31.644845,create_work_order_record_button,90.08984375
+2024-02-07 08:06:36.628448,perform_work_order_record_filtering,90.08984375
+2024-02-07 08:06:36.662825,wait_for_record_to_be_available,90.08984375
+2024-02-07 08:06:37.002988,select_work_order_record,90.08984375
+2024-02-07 08:06:37.962693,start,90.08984375
+2024-02-07 08:06:38.242674,open_planning_tab,90.08984375
+2024-02-07 08:06:38.336707,wait_for_planning_tab_to_be_visible,90.08984375
+2024-02-07 08:06:38.692763,perform_hover_on_date_picker_button,90.08984375
+2024-02-07 08:06:38.777789,click_date_picker_button,90.09375
+2024-02-07 08:06:38.992833,wait_for_dialog_to_be_visible,90.09375
+2024-02-07 08:07:09.013830,wait_for_calendar_to_be_visible,90.05859375

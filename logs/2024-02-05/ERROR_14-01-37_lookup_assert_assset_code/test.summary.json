@@ -1,0 +1,12 @@
+{
+    "name": "lookup_assert_assset_code",
+    "status": "error",
+    "start_time": "2024-02-05 14:01:07",
+    "end_time": "2024-02-05 14:01:37",
+    "duration": "00:00:30:104",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-05\\ERROR_14-01-37_lookup_assert_assset_code\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.0,
+    "memory_start": 92.98046875,
+    "memory_end": 92.98046875
+}

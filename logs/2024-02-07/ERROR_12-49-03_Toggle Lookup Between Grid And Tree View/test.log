@@ -1,0 +1,62 @@
+2024-02-07 12:48:19,991 - process_api - INFO - run schema: "Toggle Lookup Between Grid And Tree View"
+2024-02-07 12:48:19,991 - process_api - INFO - run process: "main"
+2024-02-07 12:48:19,991 - process_api - INFO - run step: "start"
+2024-02-07 12:48:19,991 - process_api - INFO - perform navigate: ${state.server}/#dashboard/PlaceholderAssetType
+2024-02-07 12:48:20,005 - process_api - INFO - perform refresh
+2024-02-07 12:48:20,628 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-02-07 12:48:20,628 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-07 12:48:24,989 - process_api - INFO - run step: "filter_record"
+2024-02-07 12:48:24,989 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#search-button', 'filter_input_selector': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'filter_value': '2030*XWINGL', 'internal_filter_btn_selector': '.dashboard #filter'}
+2024-02-07 12:48:24,989 - process_api - INFO - run step: "start"
+2024-02-07 12:48:24,989 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-07 12:48:25,089 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-02-07 12:48:25,089 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-07 12:48:28,095 - process_api - INFO - run step: "click_filter_button_selector"
+2024-02-07 12:48:28,095 - process_api - INFO - perform click on #search-button
+2024-02-07 12:48:28,180 - process_api - INFO - run step: "type_in_filter_input"
+2024-02-07 12:48:28,180 - process_api - INFO - perform type_text {'query': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'value': '2030*XWINGL'}
+2024-02-07 12:48:28,747 - process_api - INFO - run step: "filter_records"
+2024-02-07 12:48:28,747 - process_api - INFO - perform click on .dashboard #filter
+2024-02-07 12:48:28,827 - process_api - INFO - run step: "wait_for_filter"
+2024-02-07 12:48:28,839 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-07 12:48:30,852 - process_api - INFO - run step: "open_record"
+2024-02-07 12:48:30,852 - process_api - INFO - perform dbl_click on .grid-row
+2024-02-07 12:48:31,188 - process_api - INFO - run step: "open_assist"
+2024-02-07 12:48:31,188 - process_api - INFO - perform click on button#assist
+2024-02-07 12:48:31,295 - process_api - INFO - run step: "set_linked"
+2024-02-07 12:48:31,295 - process_api - INFO - perform click on #btn-SetPlaceholder
+2024-02-07 12:48:31,970 - process_api - INFO - run step: "wait_for_tree"
+2024-02-07 12:48:31,970 - process_api - INFO - wait for element: {'query': "asset-type-tree[status='ready']"}
+2024-02-07 12:48:32,482 - process_api - INFO - run step: "click_grid"
+2024-02-07 12:48:32,482 - process_api - INFO - perform click on #switch-view [data-value='grid']
+2024-02-07 12:48:32,586 - process_api - INFO - run step: "wait_for_grid"
+2024-02-07 12:48:32,586 - process_api - INFO - wait for element: {'query': "#assetTypeCode-lookup[status='ready'][data-loaded='true']"}
+2024-02-07 12:48:32,749 - process_api - INFO - run step: "wait_on_profiles"
+2024-02-07 12:48:32,749 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 12:48:33,265 - process_api - INFO - run step: "select_profiles"
+2024-02-07 12:48:33,265 - process_api - INFO - perform click on #profiles
+2024-02-07 12:48:33,352 - process_api - INFO - run step: "click_save_profile"
+2024-02-07 12:48:33,352 - process_api - INFO - perform click on [icon-name='saveNew']
+2024-02-07 12:48:33,439 - process_api - INFO - run step: "wait_for_save_profile"
+2024-02-07 12:48:33,439 - process_api - INFO - wait for element: {'query': "[aria-label='Profile Name']"}
+2024-02-07 12:49:03,485 - process_api - ERROR - Message: 
+
+2024-02-07 12:49:03,485 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 56, in get
+    return await get(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 20, in get
+    element = await get_element(ctx, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 51, in get_element
+    return await get_element_on_path(driver, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 90, in get_element_on_path
+    element = wait.until(light_and_shadow_dom_callback(element, shadow_root, query))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-07 12:49:03,859 - process_api - INFO - Task 3608a67d-06a9-48ba-91fd-df60a897a58e completed in 00:00:43:493

@@ -1,0 +1,12 @@
+{
+    "name": "login",
+    "status": "complete",
+    "start_time": "2024-02-13 11:33:35",
+    "end_time": "2024-02-13 11:33:47",
+    "duration": "00:00:11:959",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-13\\11-33-47_login\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.01171875,
+    "memory_start": 92.48828125,
+    "memory_end": 92.5
+}

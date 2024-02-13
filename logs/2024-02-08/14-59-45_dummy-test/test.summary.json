@@ -1,0 +1,12 @@
+{
+    "name": "dummy-test",
+    "status": "complete",
+    "start_time": "2024-02-08 14:59:26",
+    "end_time": "2024-02-08 14:59:45",
+    "duration": "00:00:18:610",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-08\\14-59-45_dummy-test\\test.log",
+    "error_count": 0,
+    "memory_diff": 0.01171875,
+    "memory_start": 92.02734375,
+    "memory_end": 92.0390625
+}

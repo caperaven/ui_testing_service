@@ -1,0 +1,178 @@
+2024-02-08 16:38:15,794 - process_api - INFO - run schema: "Work Order Status Change Component"
+2024-02-08 16:38:15,794 - process_api - INFO - run process: "main"
+2024-02-08 16:38:15,794 - process_api - INFO - run step: "start"
+2024-02-08 16:38:15,794 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-08 16:38:16,423 - process_api - INFO - perform refresh
+2024-02-08 16:38:16,755 - process_api - INFO - run step: "create_uuid"
+2024-02-08 16:38:16,755 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-08 16:38:16,760 - process_api - INFO - run step: "create_work_order_record_button"
+2024-02-08 16:38:16,760 - process_api - INFO - template: workOrderCreate work_order_create {'work_order_code': 'd080cf24-214b-44fe-b033-16ed28220596', 'create_btn_selector': '#create', 'description_field_selector': ' ', 'work_required_field_selector': 'testing code'}
+2024-02-08 16:38:16,761 - process_api - INFO - run step: "start"
+2024-02-08 16:38:16,761 - process_api - INFO - perform click on #create
+2024-02-08 16:38:22,335 - process_api - INFO - run step: "wait_for_description_field"
+2024-02-08 16:38:22,335 - process_api - INFO - wait for element: {'query': "dynamic-create[data-template='WorkOrderCreate'] #lbl-description"}
+2024-02-08 16:38:22,835 - process_api - INFO - run step: "fill_in_description"
+2024-02-08 16:38:22,835 - process_api - INFO - perform type_text {'query': "dynamic-create[data-template='WorkOrderCreate'] #lbl-description", 'value': ' '}
+2024-02-08 16:38:23,395 - process_api - INFO - run step: "fill_in_code"
+2024-02-08 16:38:23,395 - process_api - INFO - perform type_text {'query': "[id='model.code'] #lbl-code", 'value': 'd080cf24-214b-44fe-b033-16ed28220596'}
+2024-02-08 16:38:23,984 - process_api - INFO - run step: "click_asset_code"
+2024-02-08 16:38:23,984 - process_api - INFO - perform click on dynamic-create pragma-label-composite[label='Asset'] #btnLookup
+2024-02-08 16:38:24,066 - process_api - INFO - run step: "select_asset_code_record"
+2024-02-08 16:38:24,066 - process_api - INFO - perform dbl_click on pragma-lookup .grid-row
+2024-02-08 16:38:24,868 - process_api - INFO - run step: "wait_for_asset_code_to_finish"
+2024-02-08 16:38:24,868 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 16:38:26,880 - process_api - INFO - run step: "click_work_tab"
+2024-02-08 16:38:26,880 - process_api - INFO - perform click on dynamic-create div#items #pb-1_work
+2024-02-08 16:38:27,018 - process_api - INFO - run step: "wait_for_work_tab"
+2024-02-08 16:38:27,018 - process_api - INFO - wait for element: {'query': "dynamic-create pragma-label-composite[label='Work Required'] #lbl-workRequired"}
+2024-02-08 16:38:27,046 - process_api - INFO - run step: "type_text_in_work_required"
+2024-02-08 16:38:27,046 - process_api - INFO - perform type_text {'query': "dynamic-create pragma-label-composite[label='Work Required'] #lbl-workRequired", 'value': 'testing code'}
+2024-02-08 16:38:27,592 - process_api - INFO - run step: "click_planning_tab"
+2024-02-08 16:38:27,592 - process_api - INFO - perform click on dynamic-create div#items #pb-3_planning
+2024-02-08 16:38:27,684 - process_api - INFO - run step: "wait_for_planning_tab"
+2024-02-08 16:38:27,684 - process_api - INFO - wait for element: {'query': "pragma-group[title='Planning']"}
+2024-02-08 16:38:27,720 - process_api - INFO - run step: "click_type_of_work_lookup"
+2024-02-08 16:38:27,720 - process_api - INFO - perform click on dynamic-create pragma-label-composite[label='Type Of Work'] #btnLookup
+2024-02-08 16:38:27,799 - process_api - INFO - run step: "wait_for_type_records_records"
+2024-02-08 16:38:27,799 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 16:38:29,813 - process_api - INFO - run step: "select_first_type_work_record"
+2024-02-08 16:38:29,813 - process_api - INFO - perform dbl_click on pragma-lookup .grid-row
+2024-02-08 16:38:30,185 - process_api - INFO - run step: "wait_for_type_work_grid_to_finish"
+2024-02-08 16:38:30,185 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 16:38:32,198 - process_api - INFO - run step: "wait_for_section_code_Lookup_to_be_visible"
+2024-02-08 16:38:32,198 - process_api - INFO - wait for element: {'query': "[data-field='model.sectionCode'] #btnLookup"}
+2024-02-08 16:38:32,276 - process_api - INFO - run step: "click_section_code_lookup"
+2024-02-08 16:38:32,276 - process_api - INFO - perform click on [data-field='model.sectionCode'] #btnLookup
+2024-02-08 16:38:32,352 - process_api - INFO - run step: "wait_for_section_lookup_to_be_visible"
+2024-02-08 16:38:32,353 - process_api - INFO - wait for element: {'query': '#sectionCode-lookup .items-container-parent .grid-row'}
+2024-02-08 16:38:32,693 - process_api - INFO - run step: "select_section_code_record"
+2024-02-08 16:38:32,693 - process_api - INFO - perform dbl_click on #sectionCode-lookup .items-container-parent .grid-row
+2024-02-08 16:38:33,063 - process_api - INFO - run step: "wait_for_trade_code_to_be_visible"
+2024-02-08 16:38:33,063 - process_api - INFO - wait for element: {'query': "#planning [id='model.tradeCode'] #btnLookup"}
+2024-02-08 16:38:33,679 - process_api - INFO - run step: "click_trade_code_lookup"
+2024-02-08 16:38:33,679 - process_api - INFO - perform click on #planning [id='model.tradeCode'] #btnLookup
+2024-02-08 16:38:33,764 - process_api - INFO - run step: "wait_for_trade_code_lookup_to_be_visible"
+2024-02-08 16:38:33,765 - process_api - INFO - wait for element: {'query': '#tradeCode-lookup .items-container-parent .grid-row'}
+2024-02-08 16:38:34,151 - process_api - INFO - run step: "select_trade_code_record"
+2024-02-08 16:38:34,151 - process_api - INFO - perform dbl_click on #tradeCode-lookup .items-container-parent .grid-row
+2024-02-08 16:38:34,535 - process_api - INFO - run step: "wait_for_staff_member_code_to_be_visible"
+2024-02-08 16:38:34,535 - process_api - INFO - wait for element: {'query': "#planning [data-field='model.staffMemberCode'] #btnLookup"}
+2024-02-08 16:38:34,598 - process_api - INFO - run step: "click_staff_member_code_lookup"
+2024-02-08 16:38:34,598 - process_api - INFO - perform click on [data-field='model.staffMemberCode'] #btnLookup
+2024-02-08 16:38:34,688 - process_api - INFO - run step: "wait_for_staff_member_code_lookup_to_be_visible"
+2024-02-08 16:38:34,688 - process_api - INFO - wait for element: {'query': '#staffMemberCode-lookup .items-container-parent .grid-row'}
+2024-02-08 16:38:35,308 - process_api - INFO - run step: "select_staff_member_code_record"
+2024-02-08 16:38:35,309 - process_api - INFO - perform dbl_click on #staffMemberCode-lookup .items-container-parent .grid-row
+2024-02-08 16:38:35,670 - process_api - INFO - run step: "wait_for_save_and_close"
+2024-02-08 16:38:35,670 - process_api - INFO - wait for element: {'query': 'dynamic-create pragma-action-button#primary'}
+2024-02-08 16:38:35,849 - process_api - INFO - run step: "click_save_and_close"
+2024-02-08 16:38:35,849 - process_api - INFO - perform click on dynamic-create pragma-action-button#primary
+2024-02-08 16:38:35,925 - process_api - INFO - run step: "perform_work_order_record_filtering"
+2024-02-08 16:38:35,925 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#pb-5 #rd-3 #search-button', 'filter_input_selector': '#pb-5 #rd-3 .responsive-dropdown-filter input', 'filter_value': 'd080cf24-214b-44fe-b033-16ed28220596', 'internal_filter_btn_selector': '.dashboard pr-responsive-dropdown#rd-3 #filter'}
+2024-02-08 16:38:35,925 - process_api - INFO - run step: "start"
+2024-02-08 16:38:35,925 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-08 16:38:36,091 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-02-08 16:38:36,091 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-08 16:38:39,096 - process_api - INFO - run step: "click_filter_button_selector"
+2024-02-08 16:38:39,096 - process_api - INFO - perform click on #pb-5 #rd-3 #search-button
+2024-02-08 16:38:39,182 - process_api - INFO - run step: "type_in_filter_input"
+2024-02-08 16:38:39,182 - process_api - INFO - perform type_text {'query': '#pb-5 #rd-3 .responsive-dropdown-filter input', 'value': 'd080cf24-214b-44fe-b033-16ed28220596'}
+2024-02-08 16:38:39,760 - process_api - INFO - run step: "filter_records"
+2024-02-08 16:38:39,760 - process_api - INFO - perform click on .dashboard pr-responsive-dropdown#rd-3 #filter
+2024-02-08 16:38:39,856 - process_api - INFO - run step: "wait_for_filter"
+2024-02-08 16:38:39,856 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 16:38:41,867 - process_api - INFO - run step: "click_on_status_component"
+2024-02-08 16:38:41,867 - process_api - INFO - perform click on #work-order-dashboard-status-button
+2024-02-08 16:38:41,952 - process_api - INFO - run step: "wait_for_toast_message_no_record_selected"
+2024-02-08 16:38:41,952 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-08 16:38:42,183 - process_api - INFO - run step: "assert_toast_message_no_record_selected"
+2024-02-08 16:38:42,183 - process_api - INFO - assert element_exists: {'query': 'pr-toast-item'}
+2024-02-08 16:38:42,183 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-08 16:38:42,216 - process_api - INFO - run step: "perform_select_record"
+2024-02-08 16:38:42,216 - process_api - INFO - perform click on .items-container-parent .grid-row
+2024-02-08 16:38:42,304 - process_api - INFO - run step: "perform_select_status_change_component"
+2024-02-08 16:38:42,304 - process_api - INFO - perform click on #work-order-dashboard-status-button
+2024-02-08 16:38:42,380 - process_api - INFO - run step: "wait_for_context_menu_to_be_ready"
+2024-02-08 16:38:42,380 - process_api - INFO - wait for attribute: {'query': 'context-menu', 'attr': 'data-ready', 'value': 'true'}
+2024-02-08 16:38:42,657 - process_api - INFO - run step: "wait_for_list_element_exist"
+2024-02-08 16:38:42,657 - process_api - INFO - wait for element: {'query': 'context-menu', 'wait': 'context-menu ul li'}
+2024-02-08 16:38:42,657 - process_api - INFO - waiting for context-menu ul li
+2024-02-08 16:38:42,779 - process_api - INFO - run step: "select_new_status"
+2024-02-08 16:38:42,779 - process_api - INFO - perform click on context-menu [id='11']
+2024-02-08 16:38:42,904 - process_api - INFO - run step: "perform_open_edit_screen"
+2024-02-08 16:38:42,904 - process_api - INFO - perform dbl_click on .items-container-parent .grid-row
+2024-02-08 16:38:43,245 - process_api - INFO - run step: "wait_for_dialog_element_to_exist"
+2024-02-08 16:38:43,245 - process_api - INFO - wait for element_count: {'query': 'pragma-action-dialog', 'count': 1}
+2024-02-08 16:38:43,306 - process_api - INFO - run step: "wait_for_edit_screen_to_be_ready"
+2024-02-08 16:38:43,306 - process_api - INFO - wait for attribute: {'query': "[data-template='WorkOrderUpdate']", 'attr': 'data-ready', 'value': 'true'}
+2024-02-08 16:38:44,887 - process_api - INFO - run step: "perform_open_status_list"
+2024-02-08 16:38:44,887 - process_api - INFO - perform click on #work-order-update-status-button
+2024-02-08 16:38:44,987 - process_api - INFO - run step: "wait for_context_menu_to_be_open"
+2024-02-08 16:38:44,987 - process_api - INFO - wait for element: {'query': 'context-menu'}
+2024-02-08 16:38:45,136 - process_api - INFO - run step: "wait_for_context_menu_to_be_ready_for_assert"
+2024-02-08 16:38:45,136 - process_api - INFO - wait for attribute: {'query': 'context-menu', 'attr': 'data-ready', 'value': 'true'}
+2024-02-08 16:38:45,188 - process_api - INFO - run step: "wait_for_list_element_to_be_ready"
+2024-02-08 16:38:45,188 - process_api - INFO - wait for element: {'query': "context-menu [id='11']"}
+2024-02-08 16:38:45,258 - process_api - INFO - run step: "assert_status_is_set_to_ap_approved"
+2024-02-08 16:38:45,258 - process_api - INFO - assert attribute_eq: {'query': "context-menu [id='11']", 'attr': 'aria-selected', 'value': 'true'}
+2024-02-08 16:38:45,258 - process_api - INFO - wait for attribute: {'query': "context-menu [id='11']", 'attr': 'aria-selected', 'value': 'true', 'operator': 'eq'}
+2024-02-08 16:38:45,330 - process_api - INFO - run step: "wait_for_close_button"
+2024-02-08 16:38:45,330 - process_api - INFO - wait for element: {'query': 'pr-status-button#work-order-update-status-button'}
+2024-02-08 16:38:45,374 - process_api - INFO - run step: "perform_select_new_edit_status_change"
+2024-02-08 16:38:45,374 - process_api - INFO - perform click on context-menu [id='10']
+2024-02-08 16:38:45,491 - process_api - INFO - run step: "wait_for_edit_close_button"
+2024-02-08 16:38:45,491 - process_api - INFO - wait for element: {'query': 'pragma-icon-button#close'}
+2024-02-08 16:38:45,534 - process_api - INFO - run step: "close_edit_screen"
+2024-02-08 16:38:45,534 - process_api - INFO - perform click on pragma-icon-button#close
+2024-02-08 16:38:45,641 - process_api - INFO - run step: "wait_for_grid_item"
+2024-02-08 16:38:45,641 - process_api - INFO - wait for element: {'query': '.items-container-parent .grid-row'}
+2024-02-08 16:38:45,692 - process_api - INFO - run step: "select_grid_item_tc1"
+2024-02-08 16:38:45,692 - process_api - INFO - perform click on .items-container-parent .grid-row
+2024-02-08 16:38:45,788 - process_api - INFO - run step: "open_context_menu_for_status_list_assertion"
+2024-02-08 16:38:45,788 - process_api - INFO - perform click on #work-order-dashboard-status-button
+2024-02-08 16:38:45,866 - process_api - INFO - run step: "wait_for_context_menu_to_be_ready_for_assertion"
+2024-02-08 16:38:45,866 - process_api - INFO - wait for attribute: {'query': 'context-menu', 'attr': 'data-ready', 'value': 'true'}
+2024-02-08 16:38:46,024 - process_api - INFO - run step: "close_context_menu"
+2024-02-08 16:38:46,024 - process_api - INFO - perform click on context-menu .back
+2024-02-08 16:38:46,156 - process_api - INFO - run process: "TC2"
+2024-02-08 16:38:46,156 - process_api - INFO - run step: "start"
+2024-02-08 16:38:46,157 - process_api - INFO - wait for element: {'query': "[for='dashboard-grid'] #queryBuilder"}
+2024-02-08 16:38:46,195 - process_api - INFO - run step: "perform_click_queryBuilder_button"
+2024-02-08 16:38:46,195 - process_api - INFO - perform click on [for='dashboard-grid'] #queryBuilder
+2024-02-08 16:38:46,271 - process_api - INFO - run step: "select_status_id"
+2024-02-08 16:38:46,271 - process_api - INFO - perform click on [data-id='22'] .list-item-actions
+2024-02-08 16:38:46,758 - process_api - INFO - run step: "select_base_status"
+2024-02-08 16:38:46,758 - process_api - INFO - perform click on [data-id='24'] .list-item-actions
+2024-02-08 16:38:46,840 - process_api - INFO - run step: "click_remove_button"
+2024-02-08 16:38:46,840 - process_api - INFO - perform click on #btnRemoveSelectedFields
+2024-02-08 16:38:46,942 - process_api - INFO - run step: "click_run_button"
+2024-02-08 16:38:46,942 - process_api - INFO - perform click on #dialog-layer #save
+2024-02-08 16:38:47,029 - process_api - INFO - run step: "wait_for_grid_to_be_ready"
+2024-02-08 16:38:47,029 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'data-loaded', 'value': 'true'}
+2024-02-08 16:38:47,072 - process_api - INFO - run step: "wait_for_the_grid_item_to_be_ready"
+2024-02-08 16:38:47,072 - process_api - INFO - wait for element: {'query': '.items-container-parent .grid-row'}
+2024-02-08 16:38:47,107 - process_api - INFO - run step: "check_if_element_exists"
+2024-02-08 16:38:47,107 - process_api - INFO - assert element_exists: {'query': '.items-container-parent .grid-row'}
+2024-02-08 16:38:47,107 - process_api - INFO - wait for element: {'query': '.items-container-parent .grid-row'}
+2024-02-08 16:38:47,154 - process_api - INFO - run step: "assert_pr_loader_does_not_exist"
+2024-02-08 16:38:47,154 - process_api - INFO - wait for element_count: {'query': 'pr-loader', 'count': 0}
+2024-02-08 16:38:47,714 - process_api - INFO - run step: "perform_click_filter_button"
+2024-02-08 16:38:47,714 - process_api - INFO - perform click on #rd-3 #filter
+2024-02-08 16:38:47,791 - process_api - INFO - run step: "wait_for_grid_item_to_be_clickable"
+2024-02-08 16:38:47,791 - process_api - INFO - wait for element: {'query': '.items-container-parent .grid-row'}
+2024-02-08 16:38:47,837 - process_api - INFO - run step: "select_grid_item_tc2"
+2024-02-08 16:38:47,837 - process_api - INFO - perform click on .items-container-parent .grid-row
+2024-02-08 16:38:47,919 - process_api - INFO - run step: "wait_for_icon_to_update"
+2024-02-08 16:38:47,919 - process_api - INFO - wait for element: {'query': '#work-order-dashboard-status-button #status-icon-container'}
+2024-02-08 16:38:47,997 - process_api - INFO - run step: "assert_icon_value"
+2024-02-08 16:38:47,997 - process_api - INFO - assert attribute_eq: {'query': '#work-order-dashboard-status-button #status-icon-container', 'attr': 'class', 'value': 'icon-awaiting-approval'}
+2024-02-08 16:38:47,997 - process_api - INFO - wait for attribute: {'query': '#work-order-dashboard-status-button #status-icon-container', 'attr': 'class', 'value': 'icon-awaiting-approval', 'operator': 'eq'}
+2024-02-08 16:38:48,063 - process_api - INFO - run step: "open_context_menu_for_status_list_assertion"
+2024-02-08 16:38:48,063 - process_api - INFO - perform click on #work-order-dashboard-status-button
+2024-02-08 16:38:48,146 - process_api - INFO - run step: "wait_for_context_menu_to_be_ready_for_assertion"
+2024-02-08 16:38:48,146 - process_api - INFO - wait for attribute: {'query': 'context-menu', 'attr': 'data-ready', 'value': 'true'}
+2024-02-08 16:38:48,305 - process_api - INFO - run step: "wait_for_list_element_to_be_ready_for_assertion"
+2024-02-08 16:38:48,306 - process_api - INFO - wait for attribute: {'query': "context-menu [id='10']", 'attr': 'aria-selected', 'value': 'true'}
+2024-02-08 16:38:48,381 - process_api - INFO - run step: "close_context_menu"
+2024-02-08 16:38:48,381 - process_api - INFO - perform click on context-menu .back
+2024-02-08 16:38:48,730 - process_api - INFO - Task 5ce3a314-cdd2-485d-ba35-5dbf6f9b1335 completed in 00:00:32:679

@@ -1,0 +1,102 @@
+2024-02-07 16:14:47,524 - process_api - INFO - run schema: "Theme Designer Bug"
+2024-02-07 16:14:47,524 - process_api - INFO - run process: "main"
+2024-02-07 16:14:47,524 - process_api - INFO - run step: "start"
+2024-02-07 16:14:47,524 - process_api - INFO - perform navigate: ${state.server}/#theme-designer
+2024-02-07 16:14:47,571 - process_api - INFO - run step: "set_variables_for_profile"
+2024-02-07 16:14:47,572 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-07 16:14:47,578 - process_api - INFO - run step: "wait_for_account_button"
+2024-02-07 16:14:47,578 - process_api - INFO - wait for element: {'query': '.form-container #btn-account'}
+2024-02-07 16:14:47,618 - process_api - INFO - run step: "open_accounts_panel"
+2024-02-07 16:14:47,618 - process_api - INFO - perform click on .form-container #btn-account
+2024-02-07 16:14:47,740 - process_api - INFO - run step: "wait_for_theme_option"
+2024-02-07 16:14:47,740 - process_api - INFO - wait for element: {'query': '#panel0 #theme-menu-item'}
+2024-02-07 16:14:47,780 - process_api - INFO - run step: "open_theme_panel"
+2024-02-07 16:14:47,780 - process_api - INFO - perform click on #panel0 #theme-menu-item
+2024-02-07 16:14:47,853 - process_api - INFO - run step: "wait_for_list"
+2024-02-07 16:14:47,853 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-07 16:14:47,883 - process_api - INFO - run step: "assert_theme_list_exists"
+2024-02-07 16:14:47,883 - process_api - INFO - assert element_exists: {'query': '#tpl-list'}
+2024-02-07 16:14:47,883 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-07 16:14:47,916 - process_api - INFO - run step: "wait_for_default_list_item"
+2024-02-07 16:14:47,916 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 16:14:47,972 - process_api - INFO - run step: "assert_default_list_item_exists"
+2024-02-07 16:14:47,972 - process_api - INFO - assert element_exists: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 16:14:47,972 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 16:14:48,003 - process_api - INFO - run step: "perform_click_close_list"
+2024-02-07 16:14:48,003 - process_api - INFO - perform click on #theme-picker [data-event='collapseThemes']
+2024-02-07 16:14:48,076 - process_api - INFO - run step: "wait_for_account_close_button"
+2024-02-07 16:14:48,076 - process_api - INFO - wait for element: {'query': '#panel0 #side-menu-close'}
+2024-02-07 16:14:48,121 - process_api - INFO - run step: "close_account_window"
+2024-02-07 16:14:48,122 - process_api - INFO - perform click on #panel0 #side-menu-close
+2024-02-07 16:14:48,190 - process_api - INFO - run step: "wait_for_profile_button"
+2024-02-07 16:14:48,190 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-07 16:14:51,198 - process_api - INFO - run step: "perform_click_profile_button"
+2024-02-07 16:14:51,198 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-07 16:14:51,280 - process_api - INFO - run step: "wait_for_profile_view"
+2024-02-07 16:14:51,280 - process_api - INFO - wait for element: {'query': '#panel5 #profile-switcher'}
+2024-02-07 16:14:51,309 - process_api - INFO - run step: "wait_for_profile_menu"
+2024-02-07 16:14:51,309 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-07 16:14:53,332 - process_api - INFO - run step: "perform_click_save_button"
+2024-02-07 16:14:53,332 - process_api - INFO - perform click on #profile-switcher [data-event='newProfile']
+2024-02-07 16:14:53,422 - process_api - INFO - run step: "wait_for_profile_input_field"
+2024-02-07 16:14:53,422 - process_api - INFO - wait for element: {'query': "[id='model.name'] input"}
+2024-02-07 16:14:53,506 - process_api - INFO - run step: "perform_enter_profile_name"
+2024-02-07 16:14:53,506 - process_api - INFO - perform type_text {'query': "[id='model.name'] input", 'value': '24dc83fa-9482-44bc-b5bf-5fd2e8a4b8e7'}
+2024-02-07 16:14:54,094 - process_api - INFO - run step: "wait_for_accept_button"
+2024-02-07 16:14:54,094 - process_api - INFO - wait for element: {'query': '.dialog-footer #accept'}
+2024-02-07 16:14:54,120 - process_api - INFO - run step: "perform_click_accept_button"
+2024-02-07 16:14:54,120 - process_api - INFO - perform click on .dialog-footer #accept
+2024-02-07 16:14:54,208 - process_api - INFO - run step: "wait_for_account_buttons"
+2024-02-07 16:14:54,208 - process_api - INFO - wait for time: {'timeout': 5}
+2024-02-07 16:14:59,212 - process_api - INFO - run step: "open_profile_menu_for_id"
+2024-02-07 16:14:59,212 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-07 16:14:59,290 - process_api - INFO - run step: "select_account_button"
+2024-02-07 16:14:59,290 - process_api - INFO - perform click on pragma-icon-button#btn-account
+2024-02-07 16:14:59,364 - process_api - INFO - run step: "perform_click_theme_button"
+2024-02-07 16:14:59,364 - process_api - INFO - perform click on #panel0 #theme-menu-item
+2024-02-07 16:14:59,428 - process_api - INFO - run step: "wait_for_theme_list_item"
+2024-02-07 16:14:59,428 - process_api - INFO - wait for time: {'timeout': 1}
+2024-02-07 16:15:00,448 - process_api - INFO - run step: "perform_click_theme_list_item"
+2024-02-07 16:15:00,448 - process_api - INFO - perform click on #tpl-list #pal-body .listitem [data-name='24dc83fa-9482-44bc-b5bf-5fd2e8a4b8e7']
+2024-02-07 16:15:00,531 - process_api - INFO - run step: "wait_for_profiles_button"
+2024-02-07 16:15:00,531 - process_api - INFO - wait for element: {'query': '#sideMenuTabList #profiles'}
+2024-02-07 16:15:00,568 - process_api - INFO - run step: "perform_click_profiles"
+2024-02-07 16:15:00,568 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-07 16:15:00,638 - process_api - INFO - run step: "wait_for_profile_to_exist"
+2024-02-07 16:15:00,638 - process_api - INFO - wait for element: {'query': "#profile-tree #body [data-name='24dc83fa-9482-44bc-b5bf-5fd2e8a4b8e7']"}
+2024-02-07 16:15:00,675 - process_api - INFO - run step: "select_the_profile"
+2024-02-07 16:15:00,675 - process_api - INFO - perform click on #profile-tree #body [data-name='24dc83fa-9482-44bc-b5bf-5fd2e8a4b8e7']
+2024-02-07 16:15:00,748 - process_api - INFO - run step: "perform_click_overflow_button"
+2024-02-07 16:15:00,748 - process_api - INFO - perform click on [data-name='24dc83fa-9482-44bc-b5bf-5fd2e8a4b8e7'] button[data-event='showItemMenu']
+2024-02-07 16:15:00,825 - process_api - INFO - run step: "perform_click_remove_button"
+2024-02-07 16:15:00,825 - process_api - INFO - perform click on context-menu #removeProfile
+2024-02-07 16:15:01,062 - process_api - INFO - run step: "wait_for_the_accept_button"
+2024-02-07 16:15:01,062 - process_api - INFO - wait for element: {'query': "dialog-component button[data-action='yes']"}
+2024-02-07 16:15:01,266 - process_api - INFO - run step: "perform_click_accept"
+2024-02-07 16:15:01,266 - process_api - INFO - perform click on dialog-component button[data-action='yes']
+2024-02-07 16:15:01,371 - process_api - INFO - run process: "TC2"
+2024-02-07 16:15:01,371 - process_api - INFO - run step: "start"
+2024-02-07 16:15:01,371 - process_api - INFO - wait for time: {'timeout': 0.5}
+2024-02-07 16:15:01,872 - process_api - INFO - run step: "wait_for_account_button"
+2024-02-07 16:15:01,872 - process_api - INFO - wait for element: {'query': '.form-container #btn-account'}
+2024-02-07 16:15:01,904 - process_api - INFO - run step: "perform_click_account_button"
+2024-02-07 16:15:01,904 - process_api - INFO - perform dbl_click on .form-container #btn-account
+2024-02-07 16:15:02,246 - process_api - INFO - run step: "wait_for_accounts_panel_to_be_visible"
+2024-02-07 16:15:02,246 - process_api - INFO - wait for attribute: {'query': 'pr-account', 'attr': 'status', 'value': 'ready'}
+2024-02-07 16:15:02,286 - process_api - INFO - run step: "wait_for_theme_option_to_be_visible"
+2024-02-07 16:15:02,286 - process_api - INFO - wait for element: {'query': '#panel0 #theme-menu-item'}
+2024-02-07 16:15:02,320 - process_api - INFO - run step: "select_the_theme_panel"
+2024-02-07 16:15:02,320 - process_api - INFO - perform click on #panel0 #theme-menu-item
+2024-02-07 16:15:02,406 - process_api - INFO - run step: "wait_for_theme_list"
+2024-02-07 16:15:02,406 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-07 16:15:02,439 - process_api - INFO - run step: "assert_the_theme_list_exists"
+2024-02-07 16:15:02,439 - process_api - INFO - assert element_exists: {'query': '#tpl-list'}
+2024-02-07 16:15:02,452 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-07 16:15:02,486 - process_api - INFO - run step: "wait_for_the_default_list_item"
+2024-02-07 16:15:02,486 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 16:15:02,519 - process_api - INFO - run step: "assert_the_default_list_item_exists"
+2024-02-07 16:15:02,519 - process_api - INFO - assert element_exists: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 16:15:02,519 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-07 16:15:02,552 - process_api - INFO - run step: "wait_for_default_list_item_to_be_selected"
+2024-02-07 16:15:02,552 - process_api - INFO - wait for attribute: {'query': "#tpl-list [data-id='11'] pragma-icon", 'attr': 'aria-hidden', 'value': 'false'}
+2024-02-07 16:15:34,767 - process_api - INFO - Task 98d117ec-1370-468d-beee-057e3ba2975f completed in 00:00:47:010

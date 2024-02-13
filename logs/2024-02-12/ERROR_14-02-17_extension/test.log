@@ -1,0 +1,27 @@
+2024-02-12 14:01:42,089 - process_api - INFO - run schema: "extension"
+2024-02-12 14:01:42,089 - process_api - INFO - run process: "main"
+2024-02-12 14:01:42,089 - process_api - INFO - run step: "start"
+2024-02-12 14:01:42,089 - process_api - INFO - perform navigate: ${state.server}/#dashboard/AssetTree
+2024-02-12 14:01:42,740 - process_api - INFO - perform refresh
+2024-02-12 14:01:43,026 - process_api - INFO - run step: "open_tree_search"
+2024-02-12 14:01:43,026 - process_api - INFO - perform click on #ibtn-Search
+2024-02-12 14:01:47,661 - process_api - INFO - run step: "just_wait"
+2024-02-12 14:01:47,661 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-12 14:01:50,677 - process_api - INFO - run step: "find_element"
+2024-02-12 14:02:17,091 - process_api - ERROR - 'coroutine' object has no attribute 'tag_name'
+2024-02-12 14:02:17,093 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\extensions\asset_tree.py", line 52, in locate_element
+    "tag_name": new_element.tag_name,
+AttributeError: 'coroutine' object has no attribute 'tag_name'
+
+2024-02-12 14:02:17,545 - process_api - INFO - Task 06966717-3edc-4acb-b24b-d3df7dcdbdba completed in 00:00:35:006

@@ -1,0 +1,245 @@
+{
+    "id": "#parameterised_criteira_on_lookup",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily"
+                },
+                "next_step": "open_menu",
+                "name": "start"
+            },
+            "open_menu": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btn-menu"
+                },
+                "next_step": "input_work_order",
+                "name": "open_menu"
+            },
+            "input_work_order": {
+                "type": "perform",
+                "action": "type_text",
+                "args": {
+                    "query": "pr-menu input",
+                    "value": "work order"
+                },
+                "next_step": "nav_to_work_order_dashboard",
+                "name": "input_work_order"
+            },
+            "nav_to_work_order_dashboard": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='Work Orders']"
+                },
+                "next_step": "open_create",
+                "name": "nav_to_work_order_dashboard"
+            },
+            "open_create": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#create"
+                },
+                "next_step": "open_asset_lookup",
+                "name": "open_create"
+            },
+            "open_asset_lookup": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[id='model.assetCode'] #btnLookup"
+                },
+                "next_step": "wait_for_asset_lookup",
+                "name": "open_asset_lookup"
+            },
+            "wait_for_asset_lookup": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "[id='assetCode-lookup'] .grid-row[tabindex='0']"
+                },
+                "next_step": "open_query_builder",
+                "name": "wait_for_asset_lookup"
+            },
+            "open_query_builder": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btnEditQuery"
+                },
+                "next_step": "nav_to_criteria_tab",
+                "name": "open_query_builder"
+            },
+            "nav_to_criteria_tab": {
+                "type": "perform",
+                "action": "dbl_click",
+                "args": {
+                    "query": "#pb-1_criteria",
+                    "wait": "pragma-pager #criteria"
+                },
+                "next_step": "wait_for_add_criteria",
+                "name": "nav_to_criteria_tab"
+            },
+            "wait_for_add_criteria": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 3
+                },
+                "next_step": "add_criteria",
+                "name": "wait_for_add_criteria"
+            },
+            "add_criteria": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='addCriteriaField']"
+                },
+                "next_step": "select_code",
+                "name": "add_criteria"
+            },
+            "select_code": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='Asset->Code'] div.tree-item-container"
+                },
+                "next_step": "select_accept_button",
+                "name": "select_code"
+            },
+            "select_accept_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-action-dialog:nth-of-type(4) button:nth-of-type(2)"
+                },
+                "next_step": "select_toggle_options",
+                "name": "select_accept_button"
+            },
+            "select_toggle_options": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".criteria-edit-control:nth-of-type(2) #btnOverflow"
+                },
+                "next_step": "select_parameter",
+                "name": "select_toggle_options"
+            },
+            "select_parameter": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='parameter']"
+                },
+                "next_step": "focus_input",
+                "name": "select_parameter"
+            },
+            "focus_input": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-action-dialog.dialog-card pragma-label-composite input"
+                },
+                "next_step": "set_parameter_name",
+                "name": "focus_input"
+            },
+            "set_parameter_name": {
+                "type": "perform",
+                "action": "type_text",
+                "args": {
+                    "query": "pragma-action-dialog.dialog-card pragma-label-composite input",
+                    "value": "test"
+                },
+                "next_step": "select_accept",
+                "name": "set_parameter_name"
+            },
+            "select_accept": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-action-dialog.dialog-card button:nth-of-type(2)"
+                },
+                "next_step": "select_run",
+                "name": "select_accept"
+            },
+            "select_run": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-action-dialog.large pragma-action-button",
+                    "wait": "pr-query-parameters-panel input"
+                },
+                "next_step": "set_parameter_value",
+                "name": "select_run"
+            },
+            "set_parameter_value": {
+                "type": "perform",
+                "action": "type_text",
+                "args": {
+                    "query": "pr-query-parameters-panel input",
+                    "value": "test"
+                },
+                "next_step": "select_continue",
+                "name": "set_parameter_value"
+            },
+            "select_continue": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pr-query-parameters-panel pragma-action-button.primary"
+                },
+                "next_step": "select_close_button",
+                "name": "select_continue"
+            },
+            "select_close_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-action-dialog.medium div.dialog-header #close"
+                },
+                "next_step": "wait_for_create_dialog",
+                "name": "select_close_button"
+            },
+            "wait_for_create_dialog": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 1
+                },
+                "next_step": "select_create_dialog_close_button",
+                "name": "wait_for_create_dialog"
+            },
+            "select_create_dialog_close_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "div.dialog-header pragma-icon-button:nth-of-type(2)"
+                },
+                "next_step": "open_nav_menu",
+                "name": "select_create_dialog_close_button"
+            },
+            "open_nav_menu": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#btn-menu"
+                },
+                "next_step": "navigate_home",
+                "name": "open_nav_menu"
+            },
+            "navigate_home": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-id='1'] a"
+                },
+                "name": "navigate_home"
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+2024-01-29 10:27:53,156 - process_api - INFO - run schema: "lookup_basic"
+2024-01-29 10:27:53,156 - process_api - INFO - run process: "main"
+2024-01-29 10:27:53,156 - process_api - INFO - run step: "start"
+2024-01-29 10:27:53,156 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-01-29 10:27:53,180 - process_api - INFO - run step: "set_uuid_variables"
+2024-01-29 10:27:53,180 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{codeName}', '$d{description}']}
+2024-01-29 10:27:53,180 - process_api - INFO - run step: "create_work_order_process"
+2024-01-29 10:27:53,180 - process_api - INFO - template: workOrderCreate work_order_create {'create_btn_selector': 'pragma-panel-bar #create', 'description_field_selector': '057a10da-48e1-422f-a438-d88abceba9bd', 'work_required_field_selector': '057a10da-48e1-422f-a438-d88abceba9bd', 'work_order_code': '34e9a9da-3354-4708-85da-d3423c282d44'}
+2024-01-29 10:27:53,180 - process_api - ERROR - 'NoneType' object has no attribute 'get'
+2024-01-29 10:27:53,191 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\system.py", line 29, in template
+    return await api.schema_runner.run_process(api, schema, process_name, ctx, parameters)
+  File "C:\PragmaDev\ui_testing_service\process_api\schema_runner\__init__.py", line 109, in run_process
+    return await run_process(api, schema, process_name, ctx, parameters)
+  File "C:\PragmaDev\ui_testing_service\process_api\schema_runner\__init__.py", line 46, in run_process
+    process = schema.get(process_name, None)
+AttributeError: 'NoneType' object has no attribute 'get'
+
+2024-01-29 10:27:53,405 - process_api - INFO - Task aaa8ffff-4afd-417e-ab17-e45f506d5dd5 completed in 00:00:00:035

@@ -1,0 +1,191 @@
+{
+    "id": "lookup_tree",
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/WorkOrder"
+                },
+                "next_step": "wait_for_dashboard_grid_to_be_ready",
+                "name": "start"
+            },
+            "wait_for_dashboard_grid_to_be_ready": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#dashboard-grid",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "set_uuid_variables",
+                "name": "wait_for_dashboard_grid_to_be_ready"
+            },
+            "set_uuid_variables": {
+                "type": "perform",
+                "action": "set_uuid_variables",
+                "args": {
+                    "variables": [
+                        "$d{codeName}",
+                        "$d{description}"
+                    ]
+                },
+                "next_step": "create_work_order_process",
+                "name": "set_uuid_variables"
+            },
+            "create_work_order_process": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "workOrderCreate",
+                    "process": "work_order_create",
+                    "parameters": {
+                        "create_btn_selector": "pragma-panel-bar #create",
+                        "description_field_selector": "b7f67571-c885-4792-95e4-e389b2ec0b81",
+                        "work_required_field_selector": "b7f67571-c885-4792-95e4-e389b2ec0b81",
+                        "work_order_code": "27459bcc-6d84-4907-97d2-e4236f460164"
+                    }
+                },
+                "next_step": "wait_for_work_order_to_be_created",
+                "name": "create_work_order_process"
+            },
+            "wait_for_work_order_to_be_created": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "pragma-advanced-grid#dashboard-grid",
+                    "attr": "data-loaded",
+                    "value": "true"
+                },
+                "next_step": "filter_work_order_record",
+                "name": "wait_for_work_order_to_be_created"
+            },
+            "filter_work_order_record": {
+                "type": "system",
+                "action": "template",
+                "args": {
+                    "schema": "filterRecord",
+                    "process": "filter_for_record",
+                    "parameters": {
+                        "fetch_all_records_selector": "[for='dashboard-grid'] #prepared-fetch",
+                        "filter_button_selector": ".dashboard pr-responsive-dropdown#rd-3 #search-button",
+                        "filter_input_selector": ".dashboard pr-responsive-dropdown#rd-3 pragma-filter input[type='search']",
+                        "filter_value": "27459bcc-6d84-4907-97d2-e4236f460164",
+                        "internal_filter_btn_selector": ".dashboard pr-responsive-dropdown#rd-3 #filter"
+                    }
+                },
+                "next_step": "dblClick_first_wo_record",
+                "name": "filter_work_order_record"
+            },
+            "dblClick_first_wo_record": {
+                "type": "perform",
+                "action": "dbl_click",
+                "args": {
+                    "query": "pragma-advanced-grid#dashboard-grid .grid-row"
+                },
+                "next_step": "wait_for_asset_code_element"
+            },
+            "wait_for_asset_code_element": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "dynamic-update [id='model.assetCode']"
+                },
+                "next_step": "click_tree_lookup"
+            },
+            "click_tree_lookup": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "dynamic-update [id='model.assetCode'] #btnTreeLookup"
+                },
+                "next_step": "wait_for_asset_tree"
+            },
+            "wait_for_asset_tree": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#asset-tree",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "wait_for_first_asset"
+            },
+            "wait_for_first_asset": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "asset-tree .tree-item:nth-child(2)"
+                },
+                "next_step": "click_asset_expand_arrow"
+            },
+            "click_asset_expand_arrow": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "asset-tree .tree-item:nth-child(2) .tree-item-actions div"
+                },
+                "next_step": "wait_for_asset"
+            },
+            "wait_for_asset": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "asset-tree .tree-item:nth-child(3) .tree-item-actions div"
+                },
+                "next_step": "select_sub_asset"
+            },
+            "select_sub_asset": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "asset-tree .tree-item:nth-child(3)"
+                },
+                "next_step": "save_AssetA_assetCode_to_variable"
+            },
+            "save_AssetA_assetCode_to_variable": {
+                "type": "perform",
+                "action": "properties_to_variables",
+                "args": {
+                    "asset-tree .tree-item:nth-child(3) span": {
+                        "textContent": "$d{treeItemText}"
+                    }
+                },
+                "next_step": "click_accept"
+            },
+            "click_accept": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".dialog-footer #accept"
+                },
+                "next_step": "wait_for_asset_code_input"
+            },
+            "wait_for_asset_code_input": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "pragma-action-dialog.small #lbl-assetCode"
+                },
+                "next_step": "save_updated_work_order"
+            },
+            "save_updated_work_order": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "dynamic-update pragma-action-button#primary"
+                },
+                "next_step": "assert_input_value_is_same_as_tree_selection"
+            },
+            "assert_input_value_is_same_as_tree_selection": {
+                "type": "assert",
+                "action": "value_eq",
+                "args": {
+                    "query": "pragma-action-dialog.small #lbl-assetCode",
+                    "value": "$d{treeItemText}"
+                }
+            }
+        }
+    }
+}

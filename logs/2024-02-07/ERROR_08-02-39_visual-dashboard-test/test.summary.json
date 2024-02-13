@@ -1,0 +1,12 @@
+{
+    "name": "visual-dashboard-test",
+    "status": "error",
+    "start_time": "2024-02-07 08:02:08",
+    "end_time": "2024-02-07 08:02:39",
+    "duration": "00:00:31:098",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-07\\ERROR_08-02-39_visual-dashboard-test\\test.log",
+    "error_count": 4,
+    "memory_diff": 0.0,
+    "memory_start": 96.4921875,
+    "memory_end": 96.4921875
+}

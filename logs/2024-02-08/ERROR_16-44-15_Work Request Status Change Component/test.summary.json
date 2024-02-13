@@ -1,0 +1,12 @@
+{
+    "name": "Work Request Status Change Component",
+    "status": "error",
+    "start_time": "2024-02-08 16:42:59",
+    "end_time": "2024-02-08 16:44:15",
+    "duration": "00:01:15:774",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-08\\ERROR_16-44-15_Work Request Status Change Component\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.0,
+    "memory_start": 86.15234375,
+    "memory_end": 86.15234375
+}

@@ -1,0 +1,12 @@
+{
+    "name": "#parameterised_criteira_on_lookup",
+    "status": "error",
+    "start_time": "2024-01-30 08:41:21",
+    "end_time": "2024-01-30 08:41:40",
+    "duration": "00:00:18:673",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-01-30\\ERROR_08-41-40_#parameterised_criteira_on_lookup\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.24609375,
+    "memory_start": 40.1328125,
+    "memory_end": 40.37890625
+}

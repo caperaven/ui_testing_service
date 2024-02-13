@@ -1,4 +1,3 @@
-from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
@@ -38,16 +37,16 @@ async def get_element(driver, query, timeout):
     wait = WebDriverWait(driver, timeout, poll_frequency=0.1)
 
     if ' ' in query:
-        ## find it normally, if found return the element
+        # find it normally, if found return the element
         try:
             found_element = driver.find_element(By.CSS_SELECTOR, query)
             return wait_for_element(driver, found_element, wait)
         except:
             pass
 
-        ## we did not find it normally walk the path and look for it
-        ## look through the path and find it one element at a time
-        ## if this is on a shadowroot, then we need to find the shadowroot else we need to find the element normally
+        # we did not find it normally walk the path and look for it
+        # look through the path and find it one element at a time
+        # if this is on a shadowroot, then we need to find the shadowroot else we need to find the element normally
         return await get_element_on_path(driver, query, timeout)
     else:
         element = wait.until(element_callback(None, {
@@ -66,6 +65,15 @@ def wait_for_element(driver, element, wait):
 
     return element
 
+
+def wait_for_element(driver, element, wait):
+    if element is None:
+        return None
+
+    driver.execute_script("arguments[0].scrollIntoView();", element)
+    wait.until(element_usable_callback(element))
+
+    return element
 
 
 async def get_element_on_path(driver, query, timeout):

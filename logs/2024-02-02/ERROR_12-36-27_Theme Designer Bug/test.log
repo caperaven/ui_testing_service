@@ -1,0 +1,80 @@
+2024-02-02 12:33:50,719 - process_api - INFO - run schema: "Theme Designer Bug"
+2024-02-02 12:33:50,719 - process_api - INFO - run process: "main"
+2024-02-02 12:33:50,719 - process_api - INFO - run step: "start"
+2024-02-02 12:33:50,719 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{id}']}
+2024-02-02 12:33:50,724 - process_api - INFO - run step: "wait_for_account_button"
+2024-02-02 12:33:50,724 - process_api - INFO - wait for element: {'query': '.form-container #btn-account'}
+2024-02-02 12:33:50,767 - process_api - INFO - run step: "open_accounts_panel"
+2024-02-02 12:33:50,767 - process_api - INFO - perform click on .form-container #btn-account
+2024-02-02 12:33:50,852 - process_api - INFO - run step: "wait_for_accounts_panel"
+2024-02-02 12:33:50,852 - process_api - INFO - wait for attribute: {'query': 'pr-account', 'attr': 'status', 'value': 'ready'}
+2024-02-02 12:33:50,906 - process_api - INFO - run step: "wait_for_theme_option"
+2024-02-02 12:33:50,906 - process_api - INFO - wait for element: {'query': '#panel0 #theme-menu-item'}
+2024-02-02 12:33:50,947 - process_api - INFO - run step: "open_theme_panel"
+2024-02-02 12:33:50,949 - process_api - INFO - perform click on #panel0 #theme-menu-item
+2024-02-02 12:33:51,033 - process_api - INFO - run step: "wait_for_list"
+2024-02-02 12:33:51,033 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-02 12:33:51,094 - process_api - INFO - run step: "assert_theme_list_exists"
+2024-02-02 12:33:51,094 - process_api - INFO - assert element_exists: {'query': '#tpl-list'}
+2024-02-02 12:33:51,094 - process_api - INFO - wait for element: {'query': '#tpl-list'}
+2024-02-02 12:33:51,132 - process_api - INFO - run step: "wait_for_default_list_item"
+2024-02-02 12:33:51,132 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-02 12:33:51,177 - process_api - INFO - run step: "assert_default_list_item_exists"
+2024-02-02 12:33:51,177 - process_api - INFO - assert element_exists: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-02 12:33:51,178 - process_api - INFO - wait for element: {'query': "#tpl-list #pal-body [data-id='11']"}
+2024-02-02 12:33:51,216 - process_api - INFO - run step: "perform_click_close_list"
+2024-02-02 12:33:51,216 - process_api - INFO - perform click on #theme-picker [data-event='collapseThemes']
+2024-02-02 12:33:51,301 - process_api - INFO - run step: "wait_for_account_close_button"
+2024-02-02 12:33:51,301 - process_api - INFO - wait for element: {'query': '#panel0 #side-menu-close'}
+2024-02-02 12:33:51,343 - process_api - INFO - run step: "close_account_window"
+2024-02-02 12:33:51,343 - process_api - INFO - perform click on #panel0 #side-menu-close
+2024-02-02 12:33:51,421 - process_api - INFO - run step: "navigate_to_theme_designer_screen"
+2024-02-02 12:33:51,421 - process_api - INFO - perform navigate: ${state.server}/#theme-designer
+2024-02-02 12:33:51,441 - process_api - INFO - run step: "wait_for_profile_button"
+2024-02-02 12:33:51,441 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-02 12:33:54,450 - process_api - INFO - run step: "perform_click_profile_button"
+2024-02-02 12:33:54,451 - process_api - INFO - perform click on #sideMenuTabList #profiles
+2024-02-02 12:33:54,533 - process_api - INFO - run step: "wait_for_profile_view"
+2024-02-02 12:33:54,533 - process_api - INFO - wait for element: {'query': '#panel5 #profile-switcher'}
+2024-02-02 12:33:54,600 - process_api - INFO - run step: "wait_for_profile_menu"
+2024-02-02 12:33:54,600 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-02 12:33:56,614 - process_api - INFO - run step: "perform_click_save_button"
+2024-02-02 12:33:56,615 - process_api - INFO - perform click on #profile-switcher [data-event='newProfile']
+2024-02-02 12:33:56,724 - process_api - INFO - run step: "wait_for_profile_input_field"
+2024-02-02 12:33:56,724 - process_api - INFO - wait for element: {'query': "[id='model.name'] input"}
+2024-02-02 12:33:56,774 - process_api - INFO - run step: "perform_enter_profile_name"
+2024-02-02 12:33:56,775 - process_api - INFO - perform type_text {'query': "[id='model.name'] input", 'value': 'f1ab8a5e-6300-4bc8-9f54-7d2cac98f28b'}
+2024-02-02 12:33:57,350 - process_api - INFO - run step: "wait_for_accept_button"
+2024-02-02 12:33:57,350 - process_api - INFO - wait for element: {'query': '.dialog-footer #accept'}
+2024-02-02 12:33:57,393 - process_api - INFO - run step: "perform_click_accept_button"
+2024-02-02 12:33:57,394 - process_api - INFO - perform click on .dialog-footer #accept
+2024-02-02 12:33:57,476 - process_api - INFO - run step: "wait_for_account_buttons"
+2024-02-02 12:33:57,476 - process_api - INFO - wait for time: {'timeout': 5}
+2024-02-02 12:34:02,499 - process_api - INFO - run step: "save_button_id"
+2024-02-02 12:34:05,282 - process_api - INFO - perform properties_to_variables {'#panel5 pr-profiles #profile-tree [data-name]': {'class': '$d{btnId}'}}
+2024-02-02 12:35:09,127 - process_api - ERROR - Message: 
+
+2024-02-02 12:35:09,130 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 56, in get
+    return await get(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 20, in get
+    element = await get_element(ctx, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 51, in get_element
+    return await get_element_on_path(driver, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 98, in get_element_on_path
+    return wait_for_element(driver, element, wait)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 75, in wait_for_element
+    wait.until(element_usable_callback(element))
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-02 12:36:27,892 - process_api - INFO - run process: "TC2"
+2024-02-02 12:36:27,893 - process_api - INFO - run step: "start"
+2024-02-02 12:36:27,893 - process_api - INFO - wait for element: {'query': '.form-container #btn-account'}
+2024-02-02 12:36:28,412 - process_api - INFO - Task 4f8f5d23-bfec-4838-b223-446acb51b5bf completed in 00:02:37:214

@@ -1,0 +1,12 @@
+{
+    "name": "UDF tests",
+    "status": "error",
+    "start_time": "2024-02-13 12:27:16",
+    "end_time": "2024-02-13 12:28:21",
+    "duration": "00:01:04:971",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-02-13\\ERROR_12-28-21_UDF tests\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.0,
+    "memory_start": 84.2578125,
+    "memory_end": 84.2578125
+}

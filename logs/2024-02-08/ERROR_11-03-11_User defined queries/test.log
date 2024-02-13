@@ -1,0 +1,92 @@
+2024-02-08 11:02:23,644 - process_api - INFO - run schema: "User defined queries."
+2024-02-08 11:02:23,644 - process_api - INFO - run process: "main"
+2024-02-08 11:02:23,644 - process_api - INFO - run step: "start"
+2024-02-08 11:02:23,644 - process_api - INFO - perform navigate: ${state.server}/#dashboard/UserDefinedQuery
+2024-02-08 11:02:23,661 - process_api - INFO - perform refresh
+2024-02-08 11:02:24,464 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-02-08 11:02:24,465 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-08 11:02:29,131 - process_api - INFO - run step: "click_create"
+2024-02-08 11:02:29,132 - process_api - INFO - perform click on #create
+2024-02-08 11:02:29,218 - process_api - INFO - run step: "wait_for_dialog"
+2024-02-08 11:02:29,218 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryCreate'][status='ready']"}
+2024-02-08 11:02:29,872 - process_api - INFO - run step: "fill_code"
+2024-02-08 11:02:29,872 - process_api - INFO - perform type_text {'query': '#lbl-code', 'value': 'TestCode'}
+2024-02-08 11:02:30,387 - process_api - INFO - run step: "fill_description"
+2024-02-08 11:02:30,387 - process_api - INFO - perform type_text {'query': '#lbl-description', 'value': 'TestDescription'}
+2024-02-08 11:02:30,952 - process_api - INFO - run step: "fill_permission"
+2024-02-08 11:02:30,952 - process_api - INFO - perform type_text {'query': '#lbl-permissionTreeCode', 'value': 'A10'}
+2024-02-08 11:02:31,475 - process_api - INFO - run step: "uncheck_permission"
+2024-02-08 11:02:31,476 - process_api - INFO - perform click on #cb-addPermissionFilter
+2024-02-08 11:02:31,553 - process_api - INFO - run step: "click_query"
+2024-02-08 11:02:31,553 - process_api - INFO - perform click on #pb-1_query
+2024-02-08 11:02:31,633 - process_api - INFO - run step: "fill_query"
+2024-02-08 11:02:31,633 - process_api - INFO - perform type_text {'query': '#lbl-query', 'value': 'select * from wm.work_order where code like @code and type_of_work_id = @type_of_work'}
+2024-02-08 11:02:32,302 - process_api - INFO - run step: "click_parameters"
+2024-02-08 11:02:32,302 - process_api - INFO - perform click on #pb-2_parameter
+2024-02-08 11:02:32,389 - process_api - INFO - run step: "click_add_parameter"
+2024-02-08 11:02:32,389 - process_api - INFO - perform click on #ibtn-addParameter
+2024-02-08 11:02:32,468 - process_api - INFO - run step: "wait_create_first"
+2024-02-08 11:02:32,468 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryParameterCreateCustom'][status='ready']"}
+2024-02-08 11:02:32,974 - process_api - INFO - run step: "fill_first"
+2024-02-08 11:02:32,974 - process_api - INFO - perform type_text {'query': '#lbl-parameterName', 'value': '@code'}
+2024-02-08 11:02:33,486 - process_api - INFO - run step: "click_accept"
+2024-02-08 11:02:33,487 - process_api - INFO - perform click on #accept
+2024-02-08 11:02:33,563 - process_api - INFO - run step: "wait_for_dialog_after_first"
+2024-02-08 11:02:33,563 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryCreate'][status='ready']"}
+2024-02-08 11:02:33,764 - process_api - INFO - run step: "click_add_again"
+2024-02-08 11:02:33,764 - process_api - INFO - perform click on #ibtn-addParameter
+2024-02-08 11:02:33,835 - process_api - INFO - run step: "wait_create_second"
+2024-02-08 11:02:33,839 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryParameterCreateCustom'][status='ready']"}
+2024-02-08 11:02:34,107 - process_api - INFO - run step: "fill_second"
+2024-02-08 11:02:34,107 - process_api - INFO - perform type_text {'query': '#lbl-parameterName', 'value': '@type_of_work'}
+2024-02-08 11:02:34,617 - process_api - INFO - run step: "click_accept_second"
+2024-02-08 11:02:34,617 - process_api - INFO - perform click on #accept
+2024-02-08 11:02:34,692 - process_api - INFO - run step: "wait_for_dialog_after_second"
+2024-02-08 11:02:34,692 - process_api - INFO - wait for element: {'query': "[data-template='UserDefinedQueryCreate'][status='ready']"}
+2024-02-08 11:02:34,847 - process_api - INFO - run step: "click_save"
+2024-02-08 11:02:34,847 - process_api - INFO - perform click on #primary
+2024-02-08 11:02:34,933 - process_api - INFO - run step: "wait_for_dashboard_again"
+2024-02-08 11:02:34,933 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-08 11:02:34,978 - process_api - INFO - run step: "filter_record"
+2024-02-08 11:02:34,978 - process_api - INFO - template: filterRecord filter_for_record {'fetch_all_records_selector': "[for='dashboard-grid'] #prepared-fetch", 'filter_button_selector': '#search-button', 'filter_input_selector': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'filter_value': 'TestTwoParameters', 'internal_filter_btn_selector': '.dashboard #filter'}
+2024-02-08 11:02:34,978 - process_api - INFO - run step: "start"
+2024-02-08 11:02:34,979 - process_api - INFO - perform click on [for='dashboard-grid'] #prepared-fetch
+2024-02-08 11:02:35,107 - process_api - INFO - run step: "wait_for_data_loaded"
+2024-02-08 11:02:35,108 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-08 11:02:38,121 - process_api - INFO - run step: "click_filter_button_selector"
+2024-02-08 11:02:38,121 - process_api - INFO - perform click on #search-button
+2024-02-08 11:02:38,190 - process_api - INFO - run step: "type_in_filter_input"
+2024-02-08 11:02:38,190 - process_api - INFO - perform type_text {'query': '#pb-1 #rd-1 .responsive-dropdown-filter input', 'value': 'TestTwoParameters'}
+2024-02-08 11:02:38,739 - process_api - INFO - run step: "filter_records"
+2024-02-08 11:02:38,739 - process_api - INFO - perform click on .dashboard #filter
+2024-02-08 11:02:38,823 - process_api - INFO - run step: "wait_for_filter"
+2024-02-08 11:02:38,823 - process_api - INFO - wait for time: {'timeout': 2}
+2024-02-08 11:02:40,824 - process_api - INFO - run step: "select_row"
+2024-02-08 11:02:40,824 - process_api - INFO - perform click on .grid-row
+2024-02-08 11:02:40,914 - process_api - INFO - run step: "run"
+2024-02-08 11:02:40,914 - process_api - INFO - perform click on #btn-RunQuery
+2024-02-08 11:02:41,028 - process_api - INFO - run step: "wait_tab_to_open"
+2024-02-08 11:02:41,028 - process_api - INFO - wait for window_count: {'count': 2}
+2024-02-08 11:02:41,055 - process_api - INFO - run step: "swap_to_new_tab"
+2024-02-08 11:02:41,055 - process_api - INFO - perform switch_to_tab {'index': 1}
+2024-02-08 11:02:41,067 - process_api - INFO - run step: "wait_for_parameters"
+2024-02-08 11:02:41,067 - process_api - INFO - wait for element: {'query': '#user-defined-query-parameters'}
+2024-02-08 11:03:11,091 - process_api - ERROR - Message: 
+
+2024-02-08 11:03:11,100 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 56, in get
+    return await get(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 19, in get
+    element = await get_element(ctx, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 52, in get_element
+    element = wait.until(element_callback(None, {
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-08 11:03:11,339 - process_api - INFO - Task 1643b44d-0364-4c11-9f0c-43bc4225971f completed in 00:00:47:458

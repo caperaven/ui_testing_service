@@ -1,0 +1,28 @@
+2024-02-13 09:16:16,167 - process_api - INFO - run schema: "lookup_tree"
+2024-02-13 09:16:16,167 - process_api - INFO - run process: "main"
+2024-02-13 09:16:16,167 - process_api - INFO - run step: "start"
+2024-02-13 09:16:16,167 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-13 09:16:16,829 - process_api - INFO - perform refresh
+2024-02-13 09:16:17,189 - process_api - INFO - run step: "wait_for_dashboard_grid_to_be_ready"
+2024-02-13 09:16:17,190 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-13 09:16:22,297 - process_api - INFO - run step: "set_uuid_variables"
+2024-02-13 09:16:22,297 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{codeName}', '$d{description}']}
+2024-02-13 09:16:22,297 - process_api - ERROR - 'list' object has no attribute 'split'
+2024-02-13 09:16:22,300 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 53, in run_step
+    return await self.run_step(api, next_step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\modules\selenium_perform.py", line 219, in set_uuid_variables
+    await api.set_value(variable, str(value), ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\utils\set_value.py", line 32, in set_value
+    set_property_on_path(process["data"], path[3:-1].split("."), value)
+  File "C:\PragmaDev\ui_testing_service\process_api\utils\set_value.py", line 66, in set_property_on_path
+    keys = path.split('.')  # Split the path string into a list of keys
+AttributeError: 'list' object has no attribute 'split'
+
+2024-02-13 09:16:22,542 - process_api - INFO - Task 7aa0045d-ce13-479f-bd62-d4ac82df4d00 completed in 00:00:06:132

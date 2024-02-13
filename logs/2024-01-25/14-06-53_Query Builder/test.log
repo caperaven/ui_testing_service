@@ -1,0 +1,35 @@
+2024-01-25 14:06:50,158 - process_api - INFO - run schema: "Query Builder"
+2024-01-25 14:06:50,158 - process_api - INFO - run process: "main"
+2024-01-25 14:06:50,158 - process_api - INFO - run step: "start"
+2024-01-25 14:06:50,158 - process_api - INFO - perform navigate: ${state.server}/#dashboard/StockItem
+2024-01-25 14:06:50,182 - process_api - INFO - run step: "wait_for_dashboard_to_be_ready"
+2024-01-25 14:06:50,182 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-01-25 14:06:51,370 - process_api - INFO - run step: "open_query_builder"
+2024-01-25 14:06:51,370 - process_api - INFO - perform click on #queryBuilder
+2024-01-25 14:06:51,466 - process_api - INFO - run step: "wait_for_query_builder"
+2024-01-25 14:06:51,466 - process_api - INFO - wait for element: {'query': "pragma-query-builder[status='ready']"}
+2024-01-25 14:06:51,617 - process_api - INFO - run step: "click_filter_criteria"
+2024-01-25 14:06:51,617 - process_api - INFO - perform click on #pb-1_criteria
+2024-01-25 14:06:51,723 - process_api - INFO - run step: "click_remove_criteria"
+2024-01-25 14:06:51,723 - process_api - INFO - perform click on pragma-icon-button.remove-card
+2024-01-25 14:06:51,938 - process_api - INFO - run step: "click_add_criteria"
+2024-01-25 14:06:51,938 - process_api - INFO - perform click on [data-id='addCriteriaField']
+2024-01-25 14:06:52,015 - process_api - INFO - run step: "click_on_quantity"
+2024-01-25 14:06:52,016 - process_api - INFO - perform click on [data-id='StockItem->QuantityOnHand']
+2024-01-25 14:06:52,235 - process_api - INFO - run step: "click_accept"
+2024-01-25 14:06:52,235 - process_api - INFO - perform click on #accept
+2024-01-25 14:06:52,322 - process_api - INFO - run step: "select_less_than"
+2024-01-25 14:06:52,322 - process_api - INFO - perform select_option {'query': "[label='Operator'] select", 'value': 'lessThan'}
+2024-01-25 14:06:52,452 - process_api - INFO - run step: "click_value_overflow"
+2024-01-25 14:06:52,452 - process_api - INFO - perform click on [label='Operator'] + .criteria-edit-control #btnOverflow
+2024-01-25 14:06:52,537 - process_api - INFO - run step: "click_field_option"
+2024-01-25 14:06:52,537 - process_api - INFO - perform click on [data-id='field']
+2024-01-25 14:06:52,610 - process_api - INFO - run step: "click_maximum_level"
+2024-01-25 14:06:52,610 - process_api - INFO - perform click on [data-id='StockItem->MaximumLevel']
+2024-01-25 14:06:52,824 - process_api - INFO - run step: "click_accept_maximum"
+2024-01-25 14:06:52,824 - process_api - INFO - perform click on #accept
+2024-01-25 14:06:52,891 - process_api - INFO - run step: "run"
+2024-01-25 14:06:52,891 - process_api - INFO - perform click on [aria-label='Run']
+2024-01-25 14:06:52,969 - process_api - INFO - run step: "query_builder_closed"
+2024-01-25 14:06:52,969 - process_api - INFO - wait for element_count: {'query': 'pragma-query-builder', 'count': 0}
+2024-01-25 14:06:53,787 - process_api - INFO - Task 041f98a9-fb27-401c-942b-d9fbc4faed7b completed in 00:00:03:377

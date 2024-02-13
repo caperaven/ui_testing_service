@@ -1,0 +1,3 @@
+2024-01-25 15:26:47,770 - process_api - INFO - run schema: "dummy-test"
+2024-01-25 15:26:47,770 - process_api - INFO - run process: "${'caption': 'TC1: Test Dashboard Label Formatting', 'process': 'main'}"
+2024-01-25 15:26:48,229 - process_api - INFO - Task d1687c29-68bf-489b-b827-fe8f87df089f completed in 00:00:00:000

@@ -1,15 +1,19 @@
 [
     {
         "text": "onkey-daily",
-        "value": "https://onkeydev.pragmaproducts.com/contoso/daily"
+        "value": "https://onkeydev.pragmaproducts.com/contoso/daily?AuthenticationProviderName=Development Azure Account"
     },
     {
         "text": "onkey-local",
-        "value": "https://localhost:1100/Contoso/test/"
+        "value": "https://localhost:1100/Contoso/test/?AuthenticationProviderName=Development Azure Account"
     },
     {
         "text": "localhost",
         "value": "https://localhost:1100"
+    },
+    {
+        "text": "onkey-DEMO",
+        "value": "https://onkeydev.pragmaproducts.com/demo/daily?AuthenticationProviderName=Development Azure Account"
     },
     {
         "text": "google",

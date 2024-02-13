@@ -1,0 +1,8 @@
+2024-02-09 09:17:07,675 - process_api - INFO - run schema: "test_regular"
+2024-02-09 09:17:07,675 - process_api - INFO - run process: "main"
+2024-02-09 09:17:07,675 - process_api - INFO - run step: "start"
+2024-02-09 09:17:07,675 - process_api - INFO - perform navigate: ${state.server}/#dashboard/RegularAsset
+2024-02-09 09:17:07,929 - process_api - INFO - perform refresh
+2024-02-09 09:17:08,144 - process_api - INFO - run step: "just_wait"
+2024-02-09 09:17:08,145 - process_api - INFO - wait for time: {'timeout': 3}
+2024-02-09 09:17:11,426 - process_api - INFO - Task b076c86c-e1d7-4a69-a546-73a48115a3a6 completed in 00:00:03:484

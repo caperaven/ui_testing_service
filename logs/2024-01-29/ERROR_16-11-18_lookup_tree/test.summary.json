@@ -1,0 +1,12 @@
+{
+    "name": "lookup_tree",
+    "status": "error",
+    "start_time": "2024-01-29 16:10:23",
+    "end_time": "2024-01-29 16:11:18",
+    "duration": "00:00:54:587",
+    "log": "C:\\PragmaDev\\ui_testing_service\\logs\\2024-01-29\\ERROR_16-11-18_lookup_tree\\test.log",
+    "error_count": 2,
+    "memory_diff": 0.02734375,
+    "memory_start": 89.9296875,
+    "memory_end": 89.95703125
+}

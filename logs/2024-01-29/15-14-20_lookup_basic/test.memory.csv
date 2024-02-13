@@ -1,0 +1,16 @@
+date_time,name,memory
+2024-01-29 15:13:55.650718,start,90.3046875
+2024-01-29 15:13:57.902615,wait_for_dashboard_grid_to_be_ready,90.3203125
+2024-01-29 15:13:57.902615,set_uuid_variables,90.3203125
+2024-01-29 15:14:11.491211,create_work_order_process,90.33984375
+2024-01-29 15:14:12.498592,wait_for_work_order_to_be_created,90.34375
+2024-01-29 15:14:17.430084,filter_work_order_record,90.29296875
+2024-01-29 15:14:17.782677,select_first_wo_record,90.29296875
+2024-01-29 15:14:18.973342,wait_for_lookup_button,90.30859375
+2024-01-29 15:14:19.198682,click_assetCode_lookup,90.30859375
+2024-01-29 15:14:19.406607,wait_for_lookup_grid,90.30859375
+2024-01-29 15:14:19.968465,wait_for_lookup_grid_to_be_ready,90.30859375
+2024-01-29 15:14:20.332100,select_first_lookup_record,90.30859375
+2024-01-29 15:14:20.504072,save_cell_value_to_variable,90.30859375
+2024-01-29 15:14:20.550977,wait_for_asset_code_input,90.30859375
+2024-01-29 15:14:20.598226,assert_input_value,90.30859375

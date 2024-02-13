@@ -1,0 +1,24 @@
+2024-02-12 10:38:53,347 - process_api - INFO - run schema: "login"
+2024-02-12 10:38:53,348 - process_api - INFO - run process: "main"
+2024-02-12 10:38:53,348 - process_api - INFO - run step: "start"
+2024-02-12 10:38:53,348 - process_api - INFO - perform navigate: ${state.server}
+2024-02-12 10:38:54,171 - process_api - INFO - perform refresh
+2024-02-12 10:38:54,654 - process_api - INFO - run step: "wait_for_login_tab_to_open_two_items"
+2024-02-12 10:38:54,654 - process_api - INFO - wait for window_count: {'count': 2}
+2024-02-12 10:38:55,179 - process_api - INFO - run step: "swap_to_new_tab"
+2024-02-12 10:38:55,180 - process_api - INFO - perform switch_to_tab {'index': 1}
+2024-02-12 10:38:55,187 - process_api - INFO - run step: "wait_for_user_name"
+2024-02-12 10:38:55,187 - process_api - INFO - wait for element: {'query': "input[name='loginfmt']"}
+2024-02-12 10:38:56,968 - process_api - INFO - run step: "fill_in_user_name"
+2024-02-12 10:38:56,968 - process_api - INFO - perform type_text {'query': "input[name='loginfmt']", 'value': 'test@pragmadeveloper.onmicrosoft.com'}
+2024-02-12 10:38:57,617 - process_api - INFO - run step: "for_password_element"
+2024-02-12 10:38:57,617 - process_api - INFO - wait for element: {'query': "input[name='passwd'][aria-required='true']"}
+2024-02-12 10:38:58,348 - process_api - INFO - run step: "fill_in_password"
+2024-02-12 10:38:58,348 - process_api - INFO - perform type_text {'query': "input[name='passwd']", 'value': 'NtHe7t2EFLqFbM'}
+2024-02-12 10:38:59,373 - process_api - INFO - run step: "stay_signed_in"
+2024-02-12 10:38:59,373 - process_api - INFO - perform click on #idSIButton9
+2024-02-12 10:39:00,418 - process_api - INFO - run step: "switch_to_default"
+2024-02-12 10:39:00,418 - process_api - INFO - perform switch_to_default {}
+2024-02-12 10:39:00,433 - process_api - INFO - run step: "wait_for_main"
+2024-02-12 10:39:00,433 - process_api - INFO - wait for element: {'query': 'view-container', 'timeout': 30}
+2024-02-12 10:39:04,562 - process_api - INFO - Task 71ad5259-5141-40eb-a401-6fd63bbaed04 completed in 00:00:10:820

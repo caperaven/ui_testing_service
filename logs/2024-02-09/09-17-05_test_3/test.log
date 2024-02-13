@@ -1,0 +1,19 @@
+2024-02-09 09:17:02,071 - process_api - INFO - run schema: "test_3"
+2024-02-09 09:17:02,072 - process_api - INFO - run process: "main"
+2024-02-09 09:17:02,072 - process_api - INFO - run step: "start"
+2024-02-09 09:17:02,072 - process_api - INFO - perform navigate: ${state.server}/#dashboard/WorkOrder
+2024-02-09 09:17:02,320 - process_api - INFO - perform refresh
+2024-02-09 09:17:02,543 - process_api - INFO - run step: "click_create_button"
+2024-02-09 09:17:02,543 - process_api - INFO - perform click on #create
+2024-02-09 09:17:04,181 - process_api - INFO - run step: "click_lookup"
+2024-02-09 09:17:04,181 - process_api - INFO - perform click on dynamic-create [id='model.assetCode'] #btnLookup
+2024-02-09 09:17:04,763 - process_api - INFO - run step: "select_first_lookup_record"
+2024-02-09 09:17:04,763 - process_api - INFO - perform click on pragma-lookup .grid-row
+2024-02-09 09:17:05,208 - process_api - INFO - run step: "save_cell_value_to_variable"
+2024-02-09 09:17:05,208 - process_api - INFO - perform properties_to_variables {"pragma-lookup .grid-row [role='cell']:nth-child(1)": {'textContent': '$d{assetCodeInputValue}'}}
+2024-02-09 09:17:05,259 - process_api - INFO - run step: "click_accept"
+2024-02-09 09:17:05,259 - process_api - INFO - perform click on pragma-action-dialog #accept
+2024-02-09 09:17:05,342 - process_api - INFO - run step: "assert_input_value"
+2024-02-09 09:17:05,342 - process_api - INFO - assert value_eq: {'query': "dynamic-create [label='Asset'] #lbl-assetCode", 'value': 'PUMP008(1185)'}
+2024-02-09 09:17:05,342 - process_api - INFO - wait for text_value: {'query': "dynamic-create [label='Asset'] #lbl-assetCode", 'value': 'PUMP008(1185)'}
+2024-02-09 09:17:05,671 - process_api - INFO - Task d1ee20d0-9a07-4f5d-94d1-97a75a9cb42a completed in 00:00:03:337

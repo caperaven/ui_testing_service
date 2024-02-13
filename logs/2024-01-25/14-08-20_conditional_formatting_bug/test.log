@@ -1,0 +1,5 @@
+2024-01-25 14:08:20,881 - process_api - INFO - run schema: "conditional_formatting_bug"
+2024-01-25 14:08:20,881 - process_api - INFO - run process: "main"
+2024-01-25 14:08:20,881 - process_api - INFO - run step: "start"
+2024-01-25 14:08:20,881 - process_api - INFO - perform navigate: ${state.server}/#dashboard/Resource
+2024-01-25 14:08:21,149 - process_api - INFO - Task 6730a10c-01bd-4aec-9874-54216fb56be9 completed in 00:00:00:017

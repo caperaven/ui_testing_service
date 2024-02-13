@@ -1,0 +1,411 @@
+{
+    "id": "Theme Designer Bug",
+    "sequences": [
+        {
+            "caption": "TC1: Test Whether The Default Theme Is Visible In te Account Theme List",
+            "process": "main"
+        },
+        {
+            "caption": "TC2: Test Whether Default Theme Is The Current Theme After Profile Theme Was Deleted",
+            "process": "TC2"
+        }
+    ],
+    "main": {
+        "steps": {
+            "start": {
+                "type": "perform",
+                "action": "navigate",
+                "args": {
+                    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#theme-designer",
+                    "refresh": true
+                },
+                "next_step": "set_variables_for_profile",
+                "name": "start"
+            },
+            "set_variables_for_profile": {
+                "type": "perform",
+                "action": "set_uuid_variables",
+                "args": {
+                    "variables": [
+                        "$d{id}"
+                    ]
+                },
+                "next_step": "wait_for_account_button",
+                "name": "set_variables_for_profile"
+            },
+            "wait_for_account_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": ".form-container #btn-account"
+                },
+                "next_step": "open_accounts_panel",
+                "name": "wait_for_account_button"
+            },
+            "open_accounts_panel": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".form-container #btn-account"
+                },
+                "next_step": "wait_for_accounts_panel",
+                "name": "open_accounts_panel"
+            },
+            "wait_for_accounts_panel": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "pr-account",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "wait_for_theme_option",
+                "name": "wait_for_accounts_panel"
+            },
+            "wait_for_theme_option": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#panel0 #theme-menu-item"
+                },
+                "next_step": "open_theme_panel"
+            },
+            "open_theme_panel": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel0 #theme-menu-item"
+                },
+                "next_step": "wait_for_list"
+            },
+            "wait_for_list": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#tpl-list"
+                },
+                "next_step": "assert_theme_list_exists"
+            },
+            "assert_theme_list_exists": {
+                "type": "assert",
+                "action": "element_exists",
+                "args": {
+                    "query": "#tpl-list"
+                },
+                "next_step": "wait_for_default_list_item"
+            },
+            "wait_for_default_list_item": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#tpl-list #pal-body [data-id='11']"
+                },
+                "next_step": "assert_default_list_item_exists"
+            },
+            "assert_default_list_item_exists": {
+                "type": "assert",
+                "action": "element_exists",
+                "args": {
+                    "query": "#tpl-list #pal-body [data-id='11']"
+                },
+                "next_step": "perform_click_close_list"
+            },
+            "perform_click_close_list": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#theme-picker [data-event='collapseThemes']"
+                },
+                "next_step": "wait_for_account_close_button"
+            },
+            "wait_for_account_close_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#panel0 #side-menu-close"
+                },
+                "next_step": "close_account_window"
+            },
+            "close_account_window": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel0 #side-menu-close"
+                },
+                "next_step": "wait_for_profile_button"
+            },
+            "wait_for_profile_button": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 3
+                },
+                "next_step": "perform_click_profile_button"
+            },
+            "perform_click_profile_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#sideMenuTabList #profiles"
+                },
+                "next_step": "wait_for_profile_view"
+            },
+            "wait_for_profile_view": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#panel5 #profile-switcher"
+                },
+                "next_step": "wait_for_profile_menu"
+            },
+            "wait_for_profile_menu": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 2
+                },
+                "next_step": "perform_click_save_button"
+            },
+            "perform_click_save_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#profile-switcher [data-event='newProfile']"
+                },
+                "next_step": "wait_for_profile_input_field"
+            },
+            "wait_for_profile_input_field": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "[id='model.name'] input"
+                },
+                "next_step": "perform_enter_profile_name"
+            },
+            "perform_enter_profile_name": {
+                "type": "perform",
+                "action": "type_text",
+                "args": {
+                    "query": "[id='model.name'] input",
+                    "value": "$d{id}"
+                },
+                "next_step": "wait_for_accept_button"
+            },
+            "wait_for_accept_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": ".dialog-footer #accept"
+                },
+                "next_step": "perform_click_accept_button"
+            },
+            "perform_click_accept_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".dialog-footer #accept"
+                },
+                "next_step": "wait_for_account_buttons"
+            },
+            "wait_for_account_buttons": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 5
+                },
+                "next_step": "open_profile_menu_for_id"
+            },
+            "open_profile_menu_for_id": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#sideMenuTabList #profiles"
+                },
+                "next_step": "select_account_button"
+            },
+            "select_account_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "pragma-icon-button#btn-account"
+                },
+                "next_step": "perform_click_theme_button"
+            },
+            "perform_click_theme_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel0 #theme-menu-item"
+                },
+                "next_step": "wait_for_theme_list_item"
+            },
+            "wait_for_theme_list_item": {
+                "type": "wait",
+                "action": "time",
+                "args": {
+                    "timeout": 1
+                },
+                "next_step": "perform_click_theme_list_item"
+            },
+            "perform_click_theme_list_item": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#tpl-list #pal-body .listitem [data-name='$d{id}']"
+                },
+                "next_step": "wait_for_profiles_button"
+            },
+            "wait_for_profiles_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#sideMenuTabList #profiles"
+                },
+                "next_step": "perform_click_profiles"
+            },
+            "perform_click_profiles": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#sideMenuTabList #profiles"
+                },
+                "next_step": "wait_for_profile_to_exist"
+            },
+            "wait_for_profile_to_exist": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#profile-tree #body [data-name='$d{id}']"
+                },
+                "next_step": "select_the_profile"
+            },
+            "select_the_profile": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#profile-tree #body [data-name='$d{id}']"
+                },
+                "next_step": "perform_click_overflow_button"
+            },
+            "perform_click_overflow_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "[data-name='$d{id}'] button[data-event='showItemMenu']"
+                },
+                "next_step": "perform_click_remove_button"
+            },
+            "perform_click_remove_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "context-menu #removeProfile"
+                },
+                "next_step": "wait_for_the_accept_button"
+            },
+            "wait_for_the_accept_button": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "dialog-component button[data-action='yes']"
+                },
+                "next_step": "perform_click_accept"
+            },
+            "perform_click_accept": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "dialog-component button[data-action='yes']"
+                }
+            }
+        }
+    },
+    "TC2": {
+        "steps": {
+            "start": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": ".form-container #btn-account"
+                },
+                "next_step": "perform_click_account_button",
+                "name": "start"
+            },
+            "perform_click_account_button": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": ".form-container #btn-account"
+                },
+                "next_step": "wait_for_accounts_panel_to_be_visible"
+            },
+            "wait_for_accounts_panel_to_be_visible": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "pr-account",
+                    "attr": "status",
+                    "value": "ready"
+                },
+                "next_step": "wait_for_theme_option_to_be_visible"
+            },
+            "wait_for_theme_option_to_be_visible": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#panel0 #theme-menu-item"
+                },
+                "next_step": "select_the_theme_panel"
+            },
+            "select_the_theme_panel": {
+                "type": "perform",
+                "action": "click",
+                "args": {
+                    "query": "#panel0 #theme-menu-item"
+                },
+                "next_step": "wait_for_theme_list"
+            },
+            "wait_for_theme_list": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#tpl-list"
+                },
+                "next_step": "assert_the_theme_list_exists"
+            },
+            "assert_the_theme_list_exists": {
+                "type": "assert",
+                "action": "element_exists",
+                "args": {
+                    "query": "#tpl-list"
+                },
+                "next_step": "wait_for_the_default_list_item"
+            },
+            "wait_for_the_default_list_item": {
+                "type": "wait",
+                "action": "element",
+                "args": {
+                    "query": "#tpl-list #pal-body [data-id='11']"
+                },
+                "next_step": "assert_the_default_list_item_exists"
+            },
+            "assert_the_default_list_item_exists": {
+                "type": "assert",
+                "action": "element_exists",
+                "args": {
+                    "query": "#tpl-list #pal-body [data-id='11']"
+                },
+                "next_step": "wait_for_default_list_item_to_be_selected"
+            },
+            "wait_for_default_list_item_to_be_selected": {
+                "type": "wait",
+                "action": "attribute",
+                "args": {
+                    "query": "#tpl-list [data-id='11'] pragma-icon",
+                    "attr": "aria-hidden",
+                    "value": "false"
+                }
+            }
+        }
+    }
+}
