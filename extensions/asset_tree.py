@@ -42,7 +42,7 @@ class AssetTreeModule:
                 "type": args["element_type"]
             }
             # Execute the JavaScript function on the element
-            driver.execute_script("arguments[0].viewInTree.apply(arguments[0], arguments[1])", element, [parameters])
+            driver.execute_script("arguments[0].expandToEntity.apply(arguments[0], arguments[1])", element, [parameters])
 
             data_id_value = f"{args['element_type']}_{args['element_id']}"
 
@@ -73,7 +73,7 @@ class AssetTreeModule:
             print(f"Process info: {process}")
 
     @staticmethod
-    async def find_tree_element(driver, data_id_value, timeout=10):
+    async def find_tree_element(driver, data_id_value, timeout=30):
         """
         Find element by its data-id attribute value.
         """

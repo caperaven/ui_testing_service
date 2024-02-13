@@ -1,0 +1,62 @@
+2024-02-13 12:11:26,295 - process_api - INFO - run schema: "UDF tests"
+2024-02-13 12:11:26,295 - process_api - INFO - run process: "main"
+2024-02-13 12:11:26,295 - process_api - INFO - run step: "start"
+2024-02-13 12:11:26,295 - process_api - INFO - perform navigate: ${state.server}/#dashboard/RegularAsset
+2024-02-13 12:11:27,217 - process_api - INFO - perform refresh
+2024-02-13 12:11:27,713 - process_api - INFO - run step: "wait_for_dashboard_grid_ready"
+2024-02-13 12:11:27,713 - process_api - INFO - wait for attribute: {'query': '#dashboard-grid', 'attr': 'status', 'value': 'ready'}
+2024-02-13 12:11:34,220 - process_api - INFO - run step: "generate_uuid"
+2024-02-13 12:11:34,220 - process_api - INFO - perform set_uuid_variables {'variables': ['$d{regularAssetCode}']}
+2024-02-13 12:11:34,227 - process_api - INFO - run step: "create_regular_asset"
+2024-02-13 12:11:34,227 - process_api - INFO - template: regularAssetCreate regular_asset_create {'create_btn_selector': '#create', 'regular_asset_dialog_selector': "[data-template='RegularAssetCreate'][status='ready'][data-template='RegularAssetCreate']", 'regular_asset_description': 'd67e559a-4ec1-4865-b76a-44a62c10a9da', 'permission_tree_lookup': 'VIRTUAL - GLOBAL', 'general_ledger_code': 'UNKNOWN', 'cost_centre_code': 'UNKNOWN', 'asset_calender_code': 'UNKNOWN', 'parent_asset_code': 'UI-TESTING'}
+2024-02-13 12:11:34,227 - process_api - INFO - run step: "start"
+2024-02-13 12:11:34,227 - process_api - INFO - perform click on #create
+2024-02-13 12:11:34,426 - process_api - INFO - run step: "wait_for_dialog_to_open"
+2024-02-13 12:11:34,426 - process_api - INFO - wait for element: {'query': "[data-template='RegularAssetCreate'][status='ready'][data-template='RegularAssetCreate']"}
+2024-02-13 12:11:35,049 - process_api - INFO - run step: "wait_for_description"
+2024-02-13 12:11:35,049 - process_api - INFO - wait for attribute: {'query': "[id='model.description'][status='ready']", 'attr': 'data-status', 'value': 'normal'}
+2024-02-13 12:11:35,107 - process_api - INFO - run step: "fill_in_description"
+2024-02-13 12:11:35,107 - process_api - INFO - perform type_text {'query': "[id='model.description'] #lbl-description.non-translated", 'value': 'd67e559a-4ec1-4865-b76a-44a62c10a9da'}
+2024-02-13 12:11:35,971 - process_api - INFO - run step: "wait_for_permission_tree"
+2024-02-13 12:11:35,971 - process_api - INFO - wait for attribute: {'query': "[id='model.permissionTreeCode'][status='ready']", 'attr': 'data-status', 'value': 'normal'}
+2024-02-13 12:11:36,082 - process_api - INFO - run step: "fill_in_permission_tree"
+2024-02-13 12:11:36,082 - process_api - INFO - perform type_text {'query': "[id='model.permissionTreeCode'] #lbl-permissionTreeCode", 'value': 'VIRTUAL - GLOBAL'}
+2024-02-13 12:11:36,878 - process_api - INFO - run step: "wait_for_general_ledger"
+2024-02-13 12:11:36,878 - process_api - INFO - wait for attribute: {'query': "[id='model.generalLedgerCode'][status='ready']", 'attr': 'data-status', 'value': 'normal'}
+2024-02-13 12:11:36,938 - process_api - INFO - run step: "fill_in_general_ledger"
+2024-02-13 12:11:36,938 - process_api - INFO - perform type_text {'query': "[id='model.generalLedgerCode'] #lbl-generalLedgerCode", 'value': 'UNKNOWN'}
+2024-02-13 12:11:37,656 - process_api - INFO - run step: "wait_for_cost_centre"
+2024-02-13 12:11:37,656 - process_api - INFO - wait for attribute: {'query': "[id='model.costCentreCode'][status='ready']", 'attr': 'data-status', 'value': 'normal'}
+2024-02-13 12:11:37,724 - process_api - INFO - run step: "fill_in_cost_centre"
+2024-02-13 12:11:37,724 - process_api - INFO - perform type_text {'query': "[id='model.costCentreCode'] #lbl-costCentreCode", 'value': 'UNKNOWN'}
+2024-02-13 12:11:38,492 - process_api - INFO - run step: "wait_for_asset_calendar"
+2024-02-13 12:11:38,492 - process_api - INFO - wait for attribute: {'query': "[id='model.calendarCode'][status='ready']", 'attr': 'data-status', 'value': 'normal'}
+2024-02-13 12:11:38,566 - process_api - INFO - run step: "fill_in_asset_calendar"
+2024-02-13 12:11:38,566 - process_api - INFO - perform type_text {'query': "[id='model.calendarCode'] #lbl-calendarCode", 'value': 'UNKNOWN'}
+2024-02-13 12:11:39,297 - process_api - INFO - run step: "wait_for_parent_asset"
+2024-02-13 12:11:39,297 - process_api - INFO - wait for attribute: {'query': "[id='model.parentAssetCode'][status='ready']", 'attr': 'data-status', 'value': 'normal'}
+2024-02-13 12:11:39,368 - process_api - INFO - run step: "fill_in_parent_asset"
+2024-02-13 12:11:39,368 - process_api - INFO - perform type_text {'query': "[id='model.parentAssetCode'] #lbl-parentAssetCode", 'value': 'UI-TESTING'}
+2024-02-13 12:11:40,169 - process_api - INFO - run step: "click_save_and_close"
+2024-02-13 12:11:40,169 - process_api - INFO - perform click on dynamic-create pragma-action-button#primary
+2024-02-13 12:11:40,295 - process_api - INFO - run step: "wait_for_toast"
+2024-02-13 12:11:40,295 - process_api - INFO - wait for element: {'query': 'pr-toast-item'}
+2024-02-13 12:12:10,366 - process_api - ERROR - Message: 
+
+2024-02-13 12:12:10,366 - process_api - ERROR - Traceback (most recent call last):
+  File "C:\PragmaDev\ui_testing_service\process_api\__init__.py", line 82, in run
+    return await self.process_runner.run_step(self, step, ctx, process, item, callback)
+  File "C:\PragmaDev\ui_testing_service\process_api\process_runner.py", line 32, in run_step
+    result = await function(api, step, ctx, process, item)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\__init__.py", line 56, in get
+    return await get(selenium_driver, step["args"])
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 19, in get
+    element = await get_element(ctx, query, timeout)
+  File "C:\PragmaDev\ui_testing_service\process_api\modules\selenium\automation\get.py", line 52, in get_element
+    element = wait.until(element_callback(None, {
+  File "C:\PragmaDev\ui_testing_service\venv\lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-02-13 12:12:10,712 - process_api - INFO - Task 13b45ca1-548c-4a96-a735-1e7c26d9dbc7 completed in 00:00:44:086

@@ -1,0 +1,13 @@
+date_time,name,memory
+2024-02-13 10:25:25.439858,start,33.72265625
+2024-02-13 10:25:30.349464,wait_for_dashboard_grid_to_be_ready,33.76953125
+2024-02-13 10:25:30.363349,set_uuid_variables,33.77734375
+2024-02-13 10:25:43.201755,create_work_order_process,34.00390625
+2024-02-13 10:25:43.255942,wait_for_work_order_to_be_created,34.00390625
+2024-02-13 10:25:49.213249,filter_work_order_record,34.02734375
+2024-02-13 10:25:49.551919,dblClick_first_wo_record,34.03515625
+2024-02-13 10:25:50.656291,wait_for_asset_code_element,34.03515625
+2024-02-13 10:25:50.875672,click_tree_lookup,34.03515625
+2024-02-13 10:25:51.556383,wait_for_asset_tree,34.03515625
+2024-02-13 10:25:52.242936,find_element,34.06640625
+2024-02-13 10:26:22.379349,save_AssetA_assetCode_to_variable,34.25
