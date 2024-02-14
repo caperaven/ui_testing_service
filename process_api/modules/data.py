@@ -1,6 +1,8 @@
 import pandas as pd
 from process_api.utils.get_value import get_value
+import matplotlib
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')  # Set the backend to Agg
 
 
 class DataCache:
