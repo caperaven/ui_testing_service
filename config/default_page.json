@@ -1,0 +1,4 @@
+{
+  "url": "${state.server}",
+  "query": "pr-svg[url='./app/images/welcome-screen.svg']"
+}

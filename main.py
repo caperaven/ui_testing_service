@@ -543,6 +543,7 @@ def run_async_function(fn):
 
 async def open_browser():
     browser = process_api.state["browser"]
+    globals["browser"] = browser
     driver = await get_driver(process_api, browser)
     process_api.set_variable("driver", driver)
     globals["process_id"] = driver.service.process.pid

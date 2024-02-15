@@ -1,6 +1,0 @@
-date_time,name,memory
-2024-02-07 10:28:40.888403,start,102.13671875
-2024-02-07 10:31:34.576203,set_uuid_variables,102.48828125
-2024-02-07 10:31:48.653056,create_work_order_process,102.5234375
-2024-02-07 10:31:49.672424,wait_for_work_order_to_be_created,102.5234375
-2024-02-07 10:31:50.779465,filter_work_order_record,102.64453125

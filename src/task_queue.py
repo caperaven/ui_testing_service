@@ -1,11 +1,13 @@
 # this is a class that allows you to create a queue of tasks that can be executed in a separate thread
 import time
 import uuid
-from datetime import datetime
-from src.globals import globals
 import os
 import json
 
+from datetime import datetime
+from src.globals import globals
+from process_api.modules.selenium.automation.get import get_element
+from process_api.modules.selenium.modules.selenium_perform import PerformModule
 
 class TaskQueue:
 
@@ -63,6 +65,8 @@ class TaskQueue:
                 status["status"] = "skipped"
 
         finally:
+            await goto_default_page()
+
             date_folder = datetime.today().strftime('%Y-%m-%d')
             time_stamp = datetime.now().strftime('%H-%M-%S')
             test_name = status["name"]
@@ -85,6 +89,7 @@ class TaskQueue:
             status["memory_diff"] = memory_logger.difference()
             status["memory_start"] = memory_logger.start()
             status["memory_end"] = memory_logger.end()
+            status["browser"] = globals["browser"]
 
             if status["error_count"] > 0:
                 status["status"] = "error"
@@ -113,6 +118,15 @@ class TaskQueue:
     async def remove(self, task_id):
         del self.statuses[task_id]
 
+
+async def goto_default_page():
+    api = globals["api"]
+    driver = api.variables["driver"]
+    url = globals["default_page"]["url"]
+    query = globals["default_page"]["query"]
+
+    await PerformModule.navigate(api, {"args": { "url": url }})
+    await get_element(driver, query, 30)
 
 def save_schema_to_file(file_name, test_schema):
     schema_file = file_name.replace(".log", ".schema.json")

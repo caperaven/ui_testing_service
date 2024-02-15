@@ -1,8 +1,0 @@
-date_time,name,memory
-2024-02-05 14:58:56.691518,start,90.984375
-2024-02-05 14:58:57.071090,click_development_azure_account_button,90.98828125
-2024-02-05 14:58:57.087345,wait_for_login_tab_to_open_two_items,90.98828125
-2024-02-05 14:58:57.087345,swap_to_new_tab,90.98828125
-2024-02-05 14:58:59.000453,wait_for_user_name,90.9921875
-2024-02-05 14:58:59.638221,fill_in_user_name,90.9921875
-2024-02-05 14:59:29.756257,for_password_element,90.9609375

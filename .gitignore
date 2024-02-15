@@ -3,7 +3,7 @@
 /venv/*
 
 # all files in the log folder
-/log/*
+/logs/*
 
 .idea/*
 */__pycache__/*
