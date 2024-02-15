@@ -16,7 +16,10 @@ class PerformModule:
         api.logger.info(f'perform navigate: {step["args"]["url"]}')
         step["args"]["url"] = replace_server_url(step["args"]["url"], api.state)
         await api.call("selenium", "goto", step["args"], ctx, process, item)
-        await PerformModule.refresh(api, step, ctx, process, item)
+
+        perform_refresh = step["args"].get("refresh", True)
+        if perform_refresh:
+            await PerformModule.refresh(api, step, ctx, process, item)
 
     @staticmethod
     async def close_window(api, step, ctx=None, process=None, item=None):
