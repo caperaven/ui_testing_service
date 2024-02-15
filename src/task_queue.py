@@ -85,6 +85,7 @@ class TaskQueue:
             status["memory_diff"] = memory_logger.difference()
             status["memory_start"] = memory_logger.start()
             status["memory_end"] = memory_logger.end()
+            status["browser"] = globals["browser"]
 
             if status["error_count"] > 0:
                 status["status"] = "error"

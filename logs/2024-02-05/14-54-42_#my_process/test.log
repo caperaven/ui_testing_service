@@ -1,7 +1,0 @@
-2024-02-05 14:54:32,866 - process_api - INFO - run schema: "#my_process"
-2024-02-05 14:54:32,867 - process_api - INFO - run process: "main"
-2024-02-05 14:54:32,867 - process_api - INFO - run step: "start"
-2024-02-05 14:54:32,867 - process_api - INFO - perform navigate: ${state.server}
-2024-02-05 14:54:32,867 - process_api - INFO - run step: "step_1"
-2024-02-05 14:54:32,867 - process_api - INFO - wait for time: {'timeout': 10}
-2024-02-05 14:54:43,094 - process_api - INFO - Task 33bc985d-f301-490c-8a1a-ceaf659403ba completed in 00:00:10:028

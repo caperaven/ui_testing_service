@@ -1,9 +1,0 @@
-date_time,name,memory
-2024-02-08 16:22:57.816628,start,84.9921875
-2024-02-08 16:22:57.821626,create_uuid,84.9921875
-2024-02-08 16:23:15.972918,create_work_order_record_button,85.0
-2024-02-08 16:23:22.028075,perform_work_order_record_filtering,85.0
-2024-02-08 16:23:22.214677,select_a_record,85.0
-2024-02-08 16:23:22.294152,click_on_status_component,85.0
-2024-02-08 16:23:52.379883,wait_for_toast_message_no_record_selected,85.0
-2024-02-08 16:23:52.448288,start,85.0
