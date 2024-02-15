@@ -61,6 +61,14 @@ def get_root():
             return data[operating_system]
 
 
+def get_default_page():
+    default_page_file = os.path.join(os.getcwd(), "config/default_page.json")
+    if os.path.exists(default_page_file):
+        with open(default_page_file, "r") as f:
+            data = json.load(f)
+            return data
+
+
 class JsonType(enum.Enum):
     SCHEMA = "schema"
     GOOGLE_RECORDING = "google_recording"
@@ -79,7 +87,8 @@ globals = {
     "ext_folder": os.path.join(os.getcwd(), "extensions"),
     "templates_folders": template_folders,
     "config_folder": os.path.join(os.getcwd(), "config"),
-    "stop_on_error": False
+    "stop_on_error": False,
+    "default_page": get_default_page(),
 }
 
 load_before_after_config()
