@@ -437,18 +437,23 @@ async def queue_before_post(bundle: str):
         return
 
     before_bundle = data[bundle].replace("$root", globals["$root"])
-    test_files = os.listdir(os.path.abspath(before_bundle))
+    before_bundle = os.path.expanduser(before_bundle)
+    corrected_bundle_path = before_bundle.replace("\\", "/")
+
+    # Use os.path.normpath to normalize the path
+    normalized_bundle_path = os.path.normpath(corrected_bundle_path)
+
+    test_files = os.listdir(os.path.abspath(normalized_bundle_path))
 
     for test_file in test_files:
         if test_file.endswith(".json"):
-            with open(os.path.abspath(os.path.join(before_bundle, test_file)), "r") as json_file:
+            with open(os.path.abspath(os.path.join(normalized_bundle_path, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
             json_file.close()
 
             test_id = data["id"]
             await queue.add(test_id, TestRunner.test, process_api, data, JsonType.SCHEMA)
-
 
 @app.get("/queue_after")
 async def queue_after_post(bundle: str):
