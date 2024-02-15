@@ -437,7 +437,7 @@ async def queue_before_post(bundle: str):
         return
 
     before_bundle = data[bundle].replace("$root", globals["$root"])
-    before_bundle = os.path.expanduser(before_bundle)  # Expand tilde to user's home directory
+    before_bundle = os.path.expanduser(before_bundle)
     corrected_bundle_path = before_bundle.replace("\\", "/")
 
     # Use os.path.normpath to normalize the path

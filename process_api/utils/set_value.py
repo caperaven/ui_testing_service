@@ -42,7 +42,6 @@ def set_property_on_path(obj, path, value):
     if obj is None or path is None or len(path) == 0:
         return
 
-    # Convert dot-separated path string to list if path is a string
     if isinstance(path, str):
         path = path.split('.')
 
