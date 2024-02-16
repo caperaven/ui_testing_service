@@ -447,6 +447,10 @@ async def queue_before_post(bundle: str):
 
     for test_file in test_files:
         if test_file.endswith(".json"):
+            if test_file.startswith("skip."):
+                print(f"Skipping test file: {test_file}")
+                continue
+
             with open(os.path.abspath(os.path.join(normalized_bundle_path, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
@@ -466,12 +470,23 @@ async def queue_after_post(bundle: str):
     if bundle not in globals["after"]:
         return
 
-    after_bundle = globals["after"][bundle]
-    test_files = os.listdir(after_bundle)
+
+    after_bundle = globals["after"][bundle].replace("$root", globals["$root"])
+    after_bundle = os.path.expanduser(after_bundle)
+    corrected_bundle_path = after_bundle.replace("\\", "/")
+
+    # Use os.path.normpath to normalize the path
+    normalized_bundle_path = os.path.normpath(corrected_bundle_path)
+
+    test_files = os.listdir(os.path.abspath(normalized_bundle_path))
 
     for test_file in test_files:
         if test_file.endswith(".json"):
-            with open(os.path.abspath(os.path.join(after_bundle, test_file)), "r") as json_file:
+            if test_file.startswith("skip."):
+                print(f"Skipping test file: {test_file}")
+                continue
+
+            with open(os.path.abspath(os.path.join(normalized_bundle_path, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
             json_file.close()
@@ -493,11 +508,21 @@ async def queue_bundle_post(bundle: str):
     file.close()
 
     bundle_folder = data[bundle].replace("$root", globals["$root"])
-    test_files = os.listdir(bundle_folder)
+    bundle_folder = os.path.expanduser(bundle_folder)
+    corrected_bundle_path = bundle_folder.replace("\\", "/")
+
+    # Use os.path.normpath to normalize the path
+    normalized_bundle_path = os.path.normpath(corrected_bundle_path)
+
+    test_files = os.listdir(os.path.abspath(normalized_bundle_path))
 
     for test_file in test_files:
         if test_file.endswith(".json"):
-            with open(os.path.abspath(os.path.join(bundle_folder, test_file)), "r") as json_file:
+            if test_file.startswith("skip."):
+                print(f"Skipping test file: {test_file}")
+                continue
+
+            with open(os.path.abspath(os.path.join(normalized_bundle_path, test_file)), "r") as json_file:
                 data = json.load(json_file)
 
             json_file.close()
